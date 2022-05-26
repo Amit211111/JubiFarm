@@ -53,7 +53,7 @@ import retrofit2.Response;
 public class FarmerRegistrationForm extends AppCompatActivity {
 
     Spinner IdCard,State, District, Village, Block, religion, cast, Category, annualIncome,
-            Agrozone, alternetLivehood;
+            Agrozone, alternetLivehood,education;
 
 
     private static final int CAMERA_REQUEST=1888;
@@ -92,7 +92,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     HashMap<String, Integer> stateNameHM, districtNameHM, blockNameHM, villageNameHM;
     ArrayList<String> stateArrayList, distrcitArrayList, blockArrayList, villageArrayList;
     int annualicme = 0,ID_Card = 0, hmReligion = 0, hmcaste = 0, hmEducation = 0, hmCategory = 0,
-            AgroZone = 0;
+            AgroZone = 0,alternativeLivelihood = 0;
     int state_id = 0, district_id = 0, block_id = 0, village_id = 0;
 
     @Override
@@ -103,54 +103,19 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 
         intializeAll();
         sqliteHelper = new SqliteHelper(getApplicationContext());
-        getGrampanchayatSpinner();
-
-        //All Spinner Value
-//        ArrayAdapter state_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_state);
-//        state_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        State.setAdapter(state_adapter);
-//
-//        ArrayAdapter district_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_district);
-//        district_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        District.setAdapter(district_adapter);
-//
-//        ArrayAdapter block_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_block);
-//        block_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Block.setAdapter(block_adapter);
-//
-//        ArrayAdapter village_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_village);
-//        village_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Village.setAdapter(village_adapter);
-//
-//        ArrayAdapter religion_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_religion);
-//        religion_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        religion.setAdapter(religion_adapter);
-//
-//        ArrayAdapter cast_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_cast);
-//        cast_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        cast.setAdapter(cast_adapter);
-//
-//        ArrayAdapter education_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_education);
-//        education_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        education.setAdapter(education_adapter);
-//
-//        ArrayAdapter category_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_category);
-//        category_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Category.setAdapter(category_adapter);
-//
-//        ArrayAdapter annual_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_income);
-//        annual_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        annualIncome.setAdapter(annual_adapter);
-//
-//        ArrayAdapter zone_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_zone);
-//        zone_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Agrozone.setAdapter(zone_adapter);
-//        ArrayAdapter livelihood_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_livelihood);
-//        livelihood_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        alternetLivehood.setAdapter(livelihood_adapter);
-//        ArrayAdapter otherid_adapter = new ArrayAdapter(FarmerRegistrationForm.this, R.layout.spinner_list, sp_otherid);
-//        otherid_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        IdCard.setAdapter(otherid_adapter);
+        getAnnualIncomeSpinner();
+        getIdCardSpinner();
+        getStateSpinner();
+        getDistrictSpinner();
+        getBlockSpinner();
+        getVillageSpinner();
+        getReligionSpinner();
+        getCasteSpinner();
+        getMartialSpinner();
+        getAgroClimateSpinner();
+        getAlternativeLivelihoodSpinner();
+        getEducationSpinner();
+        //  getStateSpinner()
 
 
 
@@ -283,7 +248,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                 paryavaranSakhiRegistrationPojo.setBpl(str_bpl);
 
                 paryavaranSakhiRegistrationPojo.setTotal_land_holding(TotalLandHoldingArea.getText().toString().trim());
-            //    paryavaranSakhiRegistrationPojo.setAnnual_income(annualIncome.getSelectedItem().toString().trim());
+                //    paryavaranSakhiRegistrationPojo.setAnnual_income(annualIncome.getSelectedItem().toString().trim());
                 paryavaranSakhiRegistrationPojo.setAgro_climat_zone_id(Agrozone.getSelectedItem().toString().trim());
                 paryavaranSakhiRegistrationPojo.setAlternative_livelihood_id(alternetLivehood.getSelectedItem().toString().trim());
                 paryavaranSakhiRegistrationPojo.setNo_of_member_migrated(NoOfMembers.getText().toString().trim());
@@ -307,7 +272,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 
         });
     }
-        
+
 
 //    private void callFarmerRegistrationAPI(RequestBody body){
 //            dialog = ProgressDialog.show(this, "", "Please wait...", true);
@@ -349,7 +314,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                    dialog.dismiss();
 //                }
 //            });
-       // }
+    // }
 
     private void intializeAll()
     {
@@ -360,7 +325,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         ll_dob=findViewById(R.id.ll_dob);
         rl_profile_image=findViewById(R.id.rl_profile_image);
         //Card View
-       // imageView_profile=findViewById(R.id.imageView_profile);
+        // imageView_profile=findViewById(R.id.imageView_profile);
         //Submit All Button
         alldataSubmit =findViewById(R.id.alldataSubmit);
         //All Edit Text
@@ -382,8 +347,9 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         Block =findViewById(R.id.Block);
         Village =findViewById(R.id.Village);
         religion =findViewById(R.id.religion);
+        education =findViewById(R.id.education);
         cast =findViewById(R.id.cast);
- //       education =findViewById(R.id.education);
+        //       education =findViewById(R.id.education);
         Category =findViewById(R.id.Category);
         annualIncome =findViewById(R.id.annualIncome);
         Agrozone =findViewById(R.id.Agrozone);
@@ -408,6 +374,13 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         term_condition=findViewById(R.id.term_condition);
         //IMage view
         img_selection_pencil=findViewById(R.id.img_selection_pencil);
+        stateArrayList=new ArrayList<>();
+        blockArrayList=new ArrayList<>();
+        distrcitArrayList=new ArrayList<>();
+        villageArrayList=new ArrayList<>();
+        Agro_climaticZoneArrayList=new ArrayList<>();
+        alternetLivehoodArrayList=new ArrayList<>();
+        EducationArrayList=new ArrayList<>();
     }
 
     @Override
@@ -438,7 +411,40 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
     }
 
-    private void getGrampanchayatSpinner() {
+    private void getIdCardSpinner() {
+
+        IdCardArrayList.clear();
+        IdCardNameHM = sqliteHelper.getMasterSpinnerId(2,1);
+        for (int i = 0; i < IdCardNameHM.size(); i++) {
+            IdCardArrayList.add(IdCardNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        IdCardArrayList.add(0, "Select Id Card");
+        //state spinner choose
+        ArrayAdapter panchayat_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IdCardArrayList);
+        panchayat_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        IdCard.setAdapter(panchayat_adapter);
+
+
+        IdCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ID_Card = 0;
+                if (!IdCard.getSelectedItem().toString().trim().equalsIgnoreCase("Select Id Card")) {
+                    if (IdCard.getSelectedItem().toString().trim() != null) {
+                        ID_Card = Integer.parseInt(String.valueOf(IdCardNameHM.get(IdCard.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getAnnualIncomeSpinner() {
 
         AnnualIncomeArrayList.clear();
         AnnualIncomeNameHM = sqliteHelper.getMasterSpinnerId(1,1);
@@ -470,4 +476,337 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             }
         });
     }
+
+    private void getStateSpinner() {
+
+        stateArrayList.clear();
+        stateNameHM = sqliteHelper.getAllState(1);
+        for (int i = 0; i < stateNameHM.size(); i++) {
+            stateArrayList.add(stateNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        stateArrayList.add(0, "Select State");
+        //state spinner choose
+        ArrayAdapter state_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, stateArrayList);
+        state_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        State.setAdapter(state_adapter);
+
+
+        State.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                state_id = 0;
+                if (!State.getSelectedItem().toString().trim().equalsIgnoreCase("Select State")) {
+                    if (State.getSelectedItem().toString().trim() != null) {
+                        state_id = Integer.parseInt(String.valueOf(stateNameHM.get(State.getSelectedItem().toString().trim())));
+                    }
+                    getDistrictSpinner();
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getDistrictSpinner() {
+
+        distrcitArrayList.clear();
+        districtNameHM = sqliteHelper.getAllDistrict(state_id,1);
+        for (int i = 0; i < districtNameHM.size(); i++) {
+            distrcitArrayList.add(districtNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        distrcitArrayList.add(0, "Select District");
+        //state spinner choose
+        ArrayAdapter state_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, distrcitArrayList);
+        state_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        District.setAdapter(state_adapter);
+
+
+        District.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                district_id = 0;
+                if (!District.getSelectedItem().toString().trim().equalsIgnoreCase("Select District")) {
+                    if (District.getSelectedItem().toString().trim() != null) {
+                        district_id = Integer.parseInt(String.valueOf(districtNameHM.get(District.getSelectedItem().toString().trim())));
+                    }
+                    getBlockSpinner();
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getBlockSpinner() {
+
+        blockArrayList.clear();
+        blockNameHM = sqliteHelper.getAllBlock(district_id,1);
+        for (int i = 0; i < blockNameHM.size(); i++) {
+            blockArrayList.add(blockNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        blockArrayList.add(0, "Select Block");
+        //state spinner choose
+        ArrayAdapter block_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, blockArrayList);
+        block_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Block.setAdapter(block_adapter);
+
+
+        Block.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                block_id = 0;
+                if (!Block.getSelectedItem().toString().trim().equalsIgnoreCase("Select Block")) {
+                    if (Block.getSelectedItem().toString().trim() != null) {
+                        block_id = Integer.parseInt(String.valueOf(blockNameHM.get(Block.getSelectedItem().toString().trim())));
+                    }
+                    getDistrictSpinner();
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getVillageSpinner() {
+
+        villageArrayList.clear();
+        villageNameHM = sqliteHelper.getAllBlock(block_id,1);
+        for (int i = 0; i < villageNameHM.size(); i++) {
+            villageArrayList.add(villageNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        villageArrayList.add(0, "Select Village");
+        //state spinner choose
+        ArrayAdapter block_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, villageArrayList);
+        block_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Village.setAdapter(block_adapter);
+
+
+        Village.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                village_id = 0;
+                if (!Village.getSelectedItem().toString().trim().equalsIgnoreCase("Select Village")) {
+                    if (Village.getSelectedItem().toString().trim() != null) {
+                        village_id = Integer.parseInt(String.valueOf(villageNameHM.get(Village.getSelectedItem().toString().trim())));
+                    }
+                }
+                getBlockSpinner();
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private void getReligionSpinner() {
+
+        ReligionArrayList.clear();
+        ReligionNameHM = sqliteHelper.getMasterSpinnerId(7,1);
+        for (int i = 0; i < ReligionNameHM.size(); i++) {
+            ReligionArrayList.add(ReligionNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        ReligionArrayList.add(0, "Select Religion");
+        //state spinner choose
+        ArrayAdapter block_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, ReligionArrayList);
+        block_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        religion.setAdapter(block_adapter);
+
+
+        religion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                hmReligion = 0;
+                if (!religion.getSelectedItem().toString().trim().equalsIgnoreCase("Select Religion")) {
+                    if (religion.getSelectedItem().toString().trim() != null) {
+                        hmReligion = Integer.parseInt(String.valueOf(ReligionNameHM.get(Village.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private void getCasteSpinner() {
+
+        CasteArrayList.clear();
+        CasteNameHM = sqliteHelper.getMasterSpinnerId(8,1);
+        for (int i = 0; i < CasteNameHM.size(); i++) {
+            CasteArrayList.add(CasteNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        CasteArrayList.add(0, "Select Caste");
+        //state spinner choose
+        ArrayAdapter block_caste = new ArrayAdapter(this, android.R.layout.simple_spinner_item, CasteArrayList);
+        block_caste.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cast.setAdapter(block_caste);
+
+
+        cast.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                hmcaste = 0;
+                if (!cast.getSelectedItem().toString().trim().equalsIgnoreCase("Select Caste")) {
+                    if (cast.getSelectedItem().toString().trim() != null) {
+                        hmcaste = Integer.parseInt(String.valueOf(CasteNameHM.get(cast.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private void getMartialSpinner() {
+
+        CategoryArrayList.clear();
+        CategoryNameHM = sqliteHelper.getMasterSpinnerId(10,1);
+        for (int i = 0; i < CategoryNameHM.size(); i++) {
+            CategoryArrayList.add(CategoryNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        CategoryArrayList.add(0, "Select Martial Category");
+        //state spinner choose
+        ArrayAdapter block_category = new ArrayAdapter(this, android.R.layout.simple_spinner_item, CategoryArrayList);
+        block_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Category.setAdapter(block_category);
+
+
+        Category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                hmCategory = 0;
+                if (!Category.getSelectedItem().toString().trim().equalsIgnoreCase("Select Martial Category")) {
+                    if (Category.getSelectedItem().toString().trim() != null) {
+                        hmCategory = Integer.parseInt(String.valueOf(CategoryNameHM.get(Category.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+    private void getAgroClimateSpinner() {
+
+        Agro_climaticZoneArrayList.clear();
+        Agro_climaticZoneNameHM = sqliteHelper.getMasterSpinnerId(11,1);
+        for (int i = 0; i < Agro_climaticZoneNameHM.size(); i++) {
+            Agro_climaticZoneArrayList.add(Agro_climaticZoneNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        Agro_climaticZoneArrayList.add(0, "Select Agro Climate Zone");
+        //state spinner choose
+        ArrayAdapter block_category = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Agro_climaticZoneArrayList);
+        block_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Agrozone.setAdapter(block_category);
+
+
+        Agrozone.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                AgroZone = 0;
+                if (!Agrozone.getSelectedItem().toString().trim().equalsIgnoreCase("Select Agro Climate Zone")) {
+                    if (Agrozone.getSelectedItem().toString().trim() != null) {
+                        AgroZone = Integer.parseInt(String.valueOf(Agro_climaticZoneNameHM.get(Agrozone.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getAlternativeLivelihoodSpinner() {
+
+        alternetLivehoodArrayList.clear();
+        alternetLivehoodNameHM = sqliteHelper.getMasterSpinnerId(12,1);
+        for (int i = 0; i < alternetLivehoodNameHM.size(); i++) {
+            alternetLivehoodArrayList.add(alternetLivehoodNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        alternetLivehoodArrayList.add(0, "Select Alternative Livelihood");
+        //state spinner choose
+        ArrayAdapter block_category = new ArrayAdapter(this, android.R.layout.simple_spinner_item, alternetLivehoodArrayList);
+        block_category.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        alternetLivehood.setAdapter(block_category);
+
+
+        alternetLivehood.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                alternativeLivelihood = 0;
+                if (!alternetLivehood.getSelectedItem().toString().trim().equalsIgnoreCase("Select Alternative Livelihood")) {
+                    if (alternetLivehood.getSelectedItem().toString().trim() != null) {
+                        alternativeLivelihood = Integer.parseInt(String.valueOf(alternetLivehoodNameHM.get(alternetLivehood.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void getEducationSpinner() {
+
+        EducationArrayList.clear();
+        EducationNameHM = sqliteHelper.getMasterSpinnerId(9,1);
+        for (int i = 0; i < EducationNameHM.size(); i++) {
+            EducationArrayList.add(EducationNameHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        EducationArrayList.add(0, "Select Education");
+        //state spinner choose
+        ArrayAdapter education_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, EducationArrayList);
+        education_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        education.setAdapter(education_adapter);
+
+
+        education.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                hmEducation = 0;
+                if (!education.getSelectedItem().toString().trim().equalsIgnoreCase("Select Education")) {
+                    if (education.getSelectedItem().toString().trim() != null) {
+                        hmEducation = Integer.parseInt(String.valueOf(EducationNameHM.get(education.getSelectedItem().toString().trim())));
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+
+
 }
