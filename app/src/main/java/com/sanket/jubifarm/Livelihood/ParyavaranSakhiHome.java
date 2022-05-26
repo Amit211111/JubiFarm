@@ -1,4 +1,4 @@
-    package com.sanket.jubifarm.Livelihood;
+package com.sanket.jubifarm.Livelihood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.sanket.jubifarm.R;
 
-    public class ParyavaranSakhiHome extends AppCompatActivity {
+public class ParyavaranSakhiHome extends AppCompatActivity {
     TextView farmer,tv_neem_plantation,txt_LandHolding,txt_Monitoring,txt_Syncronize;
 
     @Override

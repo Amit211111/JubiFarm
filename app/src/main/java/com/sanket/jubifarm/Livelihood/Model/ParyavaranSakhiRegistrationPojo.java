@@ -31,6 +31,54 @@ public class ParyavaranSakhiRegistrationPojo
     private String pincode;
     private String annual_income;
     private String martial_category;
+    private String household_no;
+    private String what_you_know;
+        private String id_other_name;
+    private String date_of_birth;
+    private String farmer_image;
+    private String aadhar_no;
+
+    public String getHousehold_no() {
+        return household_no;
+    }
+
+    public void setHousehold_no(String household_no) {
+        this.household_no = household_no;
+    }
+
+    public String getWhat_you_know() {
+        return what_you_know;
+    }
+
+    public void setWhat_you_know(String what_you_know) {
+        this.what_you_know = what_you_know;
+    }
+
+    public String getId_other_name() {
+        return id_other_name;
+    }
+
+    public void setId_other_name(String id_other_name) {
+        this.id_other_name = id_other_name;
+    }
+
+    public String getDate_of_birth() {
+        return date_of_birth;
+    }
+
+    public void setDate_of_birth(String date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+
+
+    public String getAadhar_no() {
+        return aadhar_no;
+    }
+
+    public void setAadhar_no(String aadhar_no) {
+        this.aadhar_no = aadhar_no;
+    }
 
     public String getLocal_id() {
         return local_id;
@@ -216,6 +264,14 @@ public class ParyavaranSakhiRegistrationPojo
         this.annual_income = annual_income;
     }
 
+    public String getFarmer_image() {
+        return farmer_image;
+    }
+
+    public void setFarmer_image(String farmer_image) {
+        this.farmer_image = farmer_image;
+    }
+
     public String getMartial_category() {
         return martial_category;
     }
@@ -227,15 +283,15 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String TABLE_NAME = "ps_farmer_registration";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_LOCAL_ID = "local_id";
-//    public static final String COLUMN_FARMER_IMAGE = "farmer_image";
-
-//    public static final String COLUMN_HOUSEHOLD_NO = "household_no";
-//    public static final String COLUMN_AADHAR_NO = "aadhar_no";
-//    public static final String COLUMN_ID_OTHER_NAME = "id_other_name";
+    public static final String COLUMN_FARMER_IMAGE = "farmer_image";
+    public static final String COLUMN_HOUSEHOLD_NO = "household_no";
+    public static final String COLUMN_AADHAR_NO = "aadhar_no";
+    public static final String COLUMN_ID_OTHER_NAME = "id_other_name";
+    public static final String COLUMN_WHAT_YOU_KNOW = "what_you_know";
     public static final String COLUMN_FARMER_NAME = "farmer_name";
     public static final String COLUMN_FATHER_HUSBAND_NAME = "father_husband_name";
     public static final String COLUMN_AGE = "age";
-//    public static final String COLUMN_DATE_OF_BIRTH = "date_of_birth";
+    public static final String COLUMN_DATE_OF_BIRTH = "date_of_birth";
     public static final String COLUMN_BPL = "bpl";
     public static final String COLUMN_ADDRESS = "address";
     public static final String COLUMN_MOBILE = "mobile";
@@ -252,10 +308,11 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_PINCODE = "pincode";
     public static final String COLUMN_CASTE = "caste";
     public static final String COLUMN_MARTIAL_CATEGORY = "martial_category";
-//    public static final String COLUMN_EDUCATION_QUALIFICATION = "education_qualification";
+    //    public static final String COLUMN_EDUCATION_QUALIFICATION = "education_qualification";
     public static final String COLUMN_TOTAL_LANDHOLDING = "total_land_holding";
     public static final String COLUMN_AGRO_CLIMAT_ZONE_ID = "agro_climat_zone_id";
     public static final String COLUMN_NO_OF_MEMBER_MIGRATED= "no_of_member_migrated";
+//    public static final String COLUMN_HOUSEHOLD_NUMBER= "household_number";
 
 
 
@@ -264,19 +321,19 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COLUMN_ID + " INTEGER,"
                     + COLUMN_MOBILE + " INTEGER ,"
-//                    + COLUMN_AADHAR_NO + " INTEGER ,"
-//                    + COLUMN_HOUSEHOLD_NO + " INTEGER ,"
+                    + COLUMN_AADHAR_NO + " INTEGER ,"
+                    + COLUMN_HOUSEHOLD_NO + " INTEGER ,"
                     + COLUMN_FARMER_NAME + " TEXT ,"
-   //                 + COLUMN_ID_TYPE_ID + " INTEGER ,"
+                    //                 + COLUMN_ID_TYPE_ID + " INTEGER ,"
                     + COLUMN_AGE + " INTEGER ,"
-                //    + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
-//                    + COLUMN_DATE_OF_BIRTH + " TEXT ,"
+                    + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
+                    + COLUMN_DATE_OF_BIRTH + " TEXT ,"
                     + COLUMN_RELIGION_ID + " INTEGER ,"
                     + COLUMN_ALTERNATIVE_LIVELIHOOD_ID + " INTEGER ,"
- //                   + COLUMN_ID_TYPE_NAME + " TEXT ,"
+                    //                   + COLUMN_ID_TYPE_NAME + " TEXT ,"
                     + COLUMN_ADDRESS + " TEXT ,"
                     + COLUMN_CASTE + " TEXT ,"
-//                    + COLUMN_ID_OTHER_NAME + " TEXT ,"
+                    + COLUMN_ID_OTHER_NAME + " TEXT ,"
                     + COLUMN_CATEGORY_ID + " TEXT ,"
                     + COLUMN_STATE_ID + " INTEGER ,"
                     + COLUMN_DISTRICT_ID + " INTEGER ,"
@@ -290,10 +347,11 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_BPL + " TEXT ,"
 //                    + COLUMN_EDUCATION_QUALIFICATION + " TEXT ,"
                     + COLUMN_TOTAL_LANDHOLDING + " TEXT ,"
-                  //  + COLUMN_GENDER + " TEXT ,"
- //                   + COLUMN_FARMER_IMAGE + " TEXT ,"
+                    //  + COLUMN_GENDER + " TEXT ,"
+                    + COLUMN_FARMER_IMAGE + " TEXT ,"
                     + COLUMN_AGRO_CLIMAT_ZONE_ID + " TEXT ,"
                     + COLUMN_MARTIAL_CATEGORY + " TEXT ,"
+//                    + COLUMN_HOUSEHOLD_NUMBER + " TEXT ,"
                     +COLUMN_NO_OF_MEMBER_MIGRATED + " TEXT "
                     + ")";
 

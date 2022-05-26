@@ -83,85 +83,6 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ll_neem_plantation"
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="5dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_crop_planning" />
-
-                            <TextView
-                                android:id="@+id/tv_neem_plantation"
-                                android:layout_width="match_parent"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buttanshapbalck"
-                                android:gravity="center"
-                                android:text="Neem Plantation"
-                                android:textColor="@android:color/white"
-                                android:textSize="10dp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_row3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <LinearLayout
-                            android:id="@+id/ll_crop_planning"
-                            android:layout_width="0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginHorizontal="5dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:weightSum="2">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:src="@drawable/ic_crop_monitoring"/>
-
-                            <TextView
-                                android:id="@+id/txt_Monitoring"
-
-                                android:layout_width="match_parent"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="2dp"
-                                android:layout_marginRight="10dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/buttanshapbalck"
-                                android:gravity="center"
-                                android:text="Neem Monitoring"
-                                android:textColor="@android:color/white"
-                                android:textSize="10dp" />
-
-                        </LinearLayout>
-                        <LinearLayout
                             android:id="@+id/ll_land_holding"
                             android:layout_width="0dip"
                             android:layout_height="match_parent"
@@ -197,6 +118,84 @@
 
                         </LinearLayout>
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_row3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:id="@+id/ll_neem_plantation"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_crop_planning" />
+
+                            <TextView
+                                android:id="@+id/tv_neem_plantation"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:gravity="center"
+                                android:text="Neem Plantation"
+                                android:textColor="@android:color/white"
+                                android:textSize="10dp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_crop_planning"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_crop_monitoring"/>
+
+                            <TextView
+                                android:id="@+id/txt_Monitoring"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:gravity="center"
+                                android:text="Neem Monitoring"
+                                android:textColor="@android:color/white"
+                                android:textSize="10dp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 

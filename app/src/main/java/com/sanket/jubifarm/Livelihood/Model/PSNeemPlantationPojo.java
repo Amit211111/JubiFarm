@@ -6,7 +6,7 @@ public class PSNeemPlantationPojo
     private String id;
     private String NeemPlantation_Image;
     private String Neem_Plantation;
-    private String Sub_Neem_Category;
+    //   private String Sub_Neem_Category;
     private String Land;
 
     private String Plantation_Date;
@@ -43,14 +43,14 @@ public class PSNeemPlantationPojo
     public void setNeem_Plantation(String neem_Plantation) {
         Neem_Plantation = neem_Plantation;
     }
-
-    public String getSub_Neem_Category() {
-        return Sub_Neem_Category;
-    }
-
-    public void setSub_Neem_Category(String sub_Neem_Category) {
-        Sub_Neem_Category = sub_Neem_Category;
-    }
+//
+//    public String getSub_Neem_Category() {
+//        return Sub_Neem_Category;
+//    }
+//
+//    public void setSub_Neem_Category(String sub_Neem_Category) {
+//        Sub_Neem_Category = sub_Neem_Category;
+//    }
 
     public String getLand() {
         return Land;
@@ -83,7 +83,7 @@ public class PSNeemPlantationPojo
     private static final String COLUMN_ID="id";
     private static final String COLUMN_NEEMPLANTATION_IMAGE= "NeemPlantation_Image";
     private static final String COLUMN_NEEM_PLANTATION = "Neem_Plantation";
-    private static final String COLUMN_SUB_NEEM_CATEGORY = "Sub_Neem_Category";
+    //    private static final String COLUMN_SUB_NEEM_CATEGORY = "Sub_Neem_Category";
     private static final String COLUMN_LAND = "Land";
     private static final String COLUMN_PLANTATION_DATE = "Plantation_Date";
     private static final String COLUMN_GEO_COORDINATES = "Geo_Coordinates";
@@ -95,7 +95,7 @@ public class PSNeemPlantationPojo
             +COLUMN_ID + " INTEGER, "
             + COLUMN_NEEMPLANTATION_IMAGE + " TEXT, "
             + COLUMN_NEEM_PLANTATION+ " TEXT, "
-            + COLUMN_SUB_NEEM_CATEGORY + " TEXT, "
+//            + COLUMN_SUB_NEEM_CATEGORY + " TEXT, "
             + COLUMN_LAND + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_GEO_COORDINATES + " TEXT "

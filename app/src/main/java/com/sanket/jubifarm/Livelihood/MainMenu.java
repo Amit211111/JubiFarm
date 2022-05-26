@@ -76,7 +76,7 @@ public class MainMenu extends AppCompatActivity {
                 }else {
                     callLoginApi();
                 }
-                }
+            }
 
         });
 
@@ -86,7 +86,7 @@ public class MainMenu extends AppCompatActivity {
                 Intent intent = new Intent(MainMenu.this,Skill_Tracking_List.class);
                 startActivity(intent);
 
-                }
+            }
 
         });
     }
@@ -103,9 +103,9 @@ public class MainMenu extends AppCompatActivity {
         dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
         LoginPojo login = new LoginPojo();
 
-            login.setEmail(sharedPrefHelper.getString("setEmail",""));
-            login.setMobile(sharedPrefHelper.getString("setMobile",""));
-            login.setLogin_type(sharedPrefHelper.getString("setLogin_type","")); //if login with email.
+        login.setEmail(sharedPrefHelper.getString("setEmail",""));
+        login.setMobile(sharedPrefHelper.getString("setMobile",""));
+        login.setLogin_type(sharedPrefHelper.getString("setLogin_type","")); //if login with email.
         login.setPassword(sharedPrefHelper.getString("setPassword", ""));
         login.setToken(sharedPrefHelper.getString("setToken",""));
 

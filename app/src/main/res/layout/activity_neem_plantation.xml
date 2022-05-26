@@ -132,7 +132,7 @@
                             <TextView
                                 android:id="@+id/CLICKIMAGE"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/margin50"
+                                android:layout_height="55dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/editplant"
                                 android:fontFamily="@font/itcavantagradestdbk"
@@ -158,106 +158,6 @@
                 android:orientation="vertical"
                 android:padding="@dimen/_10dp">
 
-
-
-                <LinearLayout
-                    android:id="@+id/categery_crop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/itcavantagradestdbk"
-                            android:text="Neem Plantation"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="@dimen/text_15" />
-
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-
-                        android:orientation="vertical">
-
-
-                        <Spinner
-                            android:id="@+id/spnNeemPlantation"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:drawSelectorOnTop="true" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/sub_cropcategery"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp"
-                    android:visibility="visible"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/itcavantagradestdbk"
-                            android:text="Sub Neem Category"
-                            android:textColor="@android:color/darker_gray"
-                            android:textSize="@dimen/text_15" />
-
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-
-                        <Spinner
-                            android:id="@+id/spnsub_NeemCategory"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:clickable="false"
-                            android:drawSelectorOnTop="true" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -883,14 +783,6 @@
                 android:layout_marginHorizontal="10dp"
                 android:orientation="vertical">
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/badderline"
-                    android:text="@string/Close"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13dp" />
 
 
             </LinearLayout>

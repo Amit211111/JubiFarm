@@ -180,7 +180,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 tablename.equals("farmer_family") || tablename.equals("land_holding") ||
                 tablename.equals("crop_planning") || tablename.equals("input_ordering") ||
                 tablename.equals("input_ordering_vender") || tablename.equals("supplier_registration") ||
-                 tablename.equals("production_details") ||
+                tablename.equals("production_details") ||
                 tablename.equals("crop_vegetable_details")) {
             contentValues.put("flag", 1);
         }else if ( tablename.equals("sale_details")){
@@ -295,13 +295,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 String query = "";
                 if (name.equals("")) {
 
-                  //  query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id ";
+                    //  query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id ";
                     query = "select f.farmer_name, f.address, f.mobile, f.user_id, f.id,u.profile_photo from farmer_registration f INNER JOIN users u ON f.user_id = u.id order by f.id desc";
 
                 } else {
 
                     query = "select f.farmer_name, f.address, f.mobile, f.user_id, f.id,u.profile_photo from farmer_registration f INNER JOIN users u ON f.user_id = u.id where f.farmer_name LIKE " + "'" + name + "%'" ;
-                 //   query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id  where farmer_registration.farmer_name LIKE " + "'" + name + "%'";
+                    //   query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id  where farmer_registration.farmer_name LIKE " + "'" + name + "%'";
 
                 }
                 Cursor cursor = db.rawQuery(query, null);
@@ -447,7 +447,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         farmerRegistrationPojo.setSeason_id(cursor.getString(cursor.getColumnIndex("season_id")));
                         farmerRegistrationPojo.setUnit_id(cursor.getString(cursor.getColumnIndex("unit_id")));
                         farmerRegistrationPojo.setUnits_id(cursor.getString(cursor.getColumnIndex("units_id")));
-                         arrayList.add(farmerRegistrationPojo);
+                        arrayList.add(farmerRegistrationPojo);
                         cursor.moveToNext();
                     }
                     db.close();
@@ -607,18 +607,18 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 String query = "";
-                 if (screen_type.equals("crop_monitoring")){
+                if (screen_type.equals("crop_monitoring")){
                     query = "select *,sum(total_tree) as totals from crop_planning where crop_type_catagory_id = '" + id + "' and land_id = '" + land_id + "' group by crop_type_subcatagory_id  ";
 
                 }else
                 if (!screen_type.equals("view_land")){
-                if (farmer_id.equals("")) {
-                    query = "select * from crop_planning where crop_type_catagory_id = '" + id + "' order by local_id desc";
+                    if (farmer_id.equals("")) {
+                        query = "select * from crop_planning where crop_type_catagory_id = '" + id + "' order by local_id desc";
 
-                } else {
-                    query = "select * from crop_planning where crop_type_catagory_id = '" + id + "' and farmer_id = '" + farmer_id + "' order by local_id desc";
+                    } else {
+                        query = "select * from crop_planning where crop_type_catagory_id = '" + id + "' and farmer_id = '" + farmer_id + "' order by local_id desc";
 
-                }}else  {
+                    }}else  {
 
                     query = "select * from crop_planning where crop_type_catagory_id = '" + id + "' and land_id = '" + land_id + "' order by local_id desc";
 
@@ -638,7 +638,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         plantSubCategoryPojo.setPlant_image(cursor.getString(cursor.getColumnIndex("plant_image")));
                         plantSubCategoryPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
                         if (screen_type.equals("crop_monitoring"))
-                        plantSubCategoryPojo.setTotal_tree(cursor.getString(cursor.getColumnIndex("totals")));
+                            plantSubCategoryPojo.setTotal_tree(cursor.getString(cursor.getColumnIndex("totals")));
                         else
                             plantSubCategoryPojo.setTotal_tree(cursor.getString(cursor.getColumnIndex("total_tree")));
 
@@ -1771,7 +1771,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 String query = "";
-              if (year != "" && !year.equals("null") && year != "null" && season_id != 0) {
+                if (year != "" && !year.equals("null") && year != "null" && season_id != 0) {
                     query = "select * from sale_details where season_id = '" + season_id + "' and year = '" + year + "'  group by crop_type_subcatagory_id ";
                 } else if (year != "" && !year.equals("null") && year != "null" && farmerId != 0) {
                     query = "select * from sale_details where farmer_id = '" + farmerId + "' and year = '" + year + "'  group by crop_type_subcatagory_id ";
@@ -1780,14 +1780,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 } else if (farmerId != 0 && year != "" && !year.equals("null") && year != "null" && season_id != 0) {
                     query = "select * from sale_details where season_id = '" + season_id + "' and year = '" + year + "' and farmer_id = '" + farmerId + "'  group by crop_type_subcatagory_id ";
                 }else   if (farmerId != 0) {
-                  query = "select * from sale_details where farmer_id = '" + farmerId + "'  group by crop_type_subcatagory_id";
-              } else if (year != "" && !year.equals("null") && year != "null") {
-                  query = "select * from sale_details where year = '" + year + "' ";
-              } else if (season_id != 0) {
-                  query = "select * from sale_details where season_id = '" + season_id + "'  group by crop_type_subcatagory_id";
-              }
+                    query = "select * from sale_details where farmer_id = '" + farmerId + "'  group by crop_type_subcatagory_id";
+                } else if (year != "" && !year.equals("null") && year != "null") {
+                    query = "select * from sale_details where year = '" + year + "' ";
+                } else if (season_id != 0) {
+                    query = "select * from sale_details where season_id = '" + season_id + "'  group by crop_type_subcatagory_id";
+                }
 
-                  Cursor cursor = db.rawQuery(query, null);
+                Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
 
@@ -1862,7 +1862,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 String query = "";
-                 if (year != "" && !year.equals("null") && year != "null" && season_id != 0) {
+                if (year != "" && !year.equals("null") && year != "null" && season_id != 0) {
                     query = "select * from production_details where season_id = '" + season_id + "' and year = '" + year + "' ";
                 } else if (year != "" && !year.equals("null") && year != "null" && farmerId != 0) {
                     query = "select * from production_details where farmer_id = '" + farmerId + "' and year = '" + year + "' ";
@@ -2423,7 +2423,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         trainingattendancePojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
                         trainingattendancePojo.setTraining_id(cursor.getString(cursor.getColumnIndex("training_id")));
                         trainingattendancePojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
-                         trainingattendancePojo.setUser_id(cursor.getString(cursor.getColumnIndex("added_by")));
+                        trainingattendancePojo.setUser_id(cursor.getString(cursor.getColumnIndex("added_by")));
                         trainingattendancePojo.setRole_id(sharedPrefHelper.getString("role_id",""));
                         cursor.moveToNext();
                         arrayList.add(trainingattendancePojo);
@@ -2551,8 +2551,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("total_plant", landHoldingPojo.getTotal_plant());
                 values.put("soil_type_id", landHoldingPojo.getSoil_type_id());
                 values.put("soil_color_id", landHoldingPojo.getSoil_color_id());
-          //    values.put("soil_characteristics_id", landHoldingPojo.getSoil_characteristics_id());
-          //    values.put("soil_chemical_composition_id", landHoldingPojo.getSoil_chemical_composition_id());
+                //    values.put("soil_characteristics_id", landHoldingPojo.getSoil_characteristics_id());
+                //    values.put("soil_chemical_composition_id", landHoldingPojo.getSoil_chemical_composition_id());
                 values.put("filtration_rate", landHoldingPojo.getFiltration_rate());
                 values.put("soil_texture",landHoldingPojo.getSoil_texture());
                 values.put("ph",landHoldingPojo.getPh());
@@ -2596,8 +2596,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("total_plant", landHoldingPojo.getTotal_plant());
                 values.put("soil_type_id", landHoldingPojo.getSoil_type_id());
                 values.put("soil_color_id", landHoldingPojo.getSoil_color_id());
-          //      values.put("soil_characteristics_id", landHoldingPojo.getSoil_characteristics_id());
-          //      values.put("soil_chemical_composition_id", landHoldingPojo.getSoil_chemical_composition_id());
+                //      values.put("soil_characteristics_id", landHoldingPojo.getSoil_characteristics_id());
+                //      values.put("soil_chemical_composition_id", landHoldingPojo.getSoil_chemical_composition_id());
                 values.put("filtration_rate", landHoldingPojo.getFiltration_rate());
                 values.put("soil_texture",landHoldingPojo.getSoil_texture());
                 values.put("ph",landHoldingPojo.getPh());
@@ -3210,7 +3210,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 ContentValues value = new ContentValues();
                 value.put(updateFieldName, server_id); // Name
 
-               long id= db.update(tableName, value, wherefieldName + " = " + localId, null);
+                long id= db.update(tableName, value, wherefieldName + " = " + localId, null);
                 db.close();
                 Log.e("Tag", "updateId: " +id);
             }
@@ -3659,8 +3659,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         landHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
                         landHoldingPojo.setSoil_type_id(cursor.getString(cursor.getColumnIndex("soil_type_id")));
                         landHoldingPojo.setSoil_color_id(cursor.getString(cursor.getColumnIndex("soil_color_id")));
-                  //      landHoldingPojo.setSoil_characteristics_id(cursor.getString(cursor.getColumnIndex("soil_characteristics_id")));
-                  //      landHoldingPojo.setSoil_chemical_composition_id(cursor.getString(cursor.getColumnIndex("soil_chemical_composition_id")));
+                        //      landHoldingPojo.setSoil_characteristics_id(cursor.getString(cursor.getColumnIndex("soil_characteristics_id")));
+                        //      landHoldingPojo.setSoil_chemical_composition_id(cursor.getString(cursor.getColumnIndex("soil_chemical_composition_id")));
                         landHoldingPojo.setFiltration_rate(cursor.getString(cursor.getColumnIndex("filtration_rate")));
                         landHoldingPojo.setSoil_texture(cursor.getString(cursor.getColumnIndex("soil_texture")));
                         landHoldingPojo.setPh(cursor.getString(cursor.getColumnIndex("ph")));
@@ -3860,7 +3860,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         disclaimerPojo.setTitle(cursor.getString(cursor.getColumnIndex("title")));
                         disclaimerPojo.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                         cursor.moveToNext();
-                       // hashMap.put(disclaimerPojo.getTitle(), Integer.parseInt(disclaimerPojo.getDescription()));
+                        // hashMap.put(disclaimerPojo.getTitle(), Integer.parseInt(disclaimerPojo.getDescription()));
                     }
                 }
             }
@@ -3945,7 +3945,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             e.printStackTrace();
             db.close();
         }
-         return arrayList;
+        return arrayList;
     }
 
     public FarmerRegistrationPojo getFarmerDetailsForEdit(String user_id) {
@@ -3997,7 +3997,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setFertilizer(cursor.getString(cursor.getColumnIndex("fertilizer")));
                     registrationPojo.setGender(cursor.getString(cursor.getColumnIndex("gender")));
                     registrationPojo.setAgro_climat_zone_id(cursor.getString(cursor.getColumnIndex("agro_climat_zone_id")));
-                        registrationPojo.setProfile_photo(cursor.getString(cursor.getColumnIndex("profile_photo")));
+                    registrationPojo.setProfile_photo(cursor.getString(cursor.getColumnIndex("profile_photo")));
                     registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
 
                     cursor.moveToNext();
@@ -4555,12 +4555,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
 
                 values.put("id",user.getId());
-               // values.put("household_no", user.getHousehold_no());
-              // values.put("farmer_image", user.getFarmer_image());
+                values.put("household_no", user.getHousehold_no());
+                values.put("farmer_image", user.getFarmer_image());
 
                 values.put("farmer_name", user.getFarmer_name());
                 values.put("age", user.getAge());
-                //values.put("date_of_birth", user.getDate_of_birth());
+                values.put("date_of_birth", user.getDate_of_birth());
                 values.put("father_husband_name", user.getFather_husband_name());
                 values.put("mobile", user.getMobile());
                 values.put("bpl", user.getBpl());
@@ -4580,7 +4580,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("block_id", user.getBlock_id());
                 values.put("village_id", user.getVillage_id());
                 values.put("pincode", user.getPincode());
-                //values.put("id_other_name", user.getId_other_name());
+                values.put("id_other_name", user.getId_other_name());
                 values.put("alternative_livelihood_id", user.getAlternative_livelihood_id());
                 values.put("address", user.getAddress());
                 values.put("martial_category", user.getMartial_category());
@@ -4621,17 +4621,17 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
                         ParyavaranSakhiRegistrationPojo list1 = new ParyavaranSakhiRegistrationPojo();
                         list1.setId(cursor.getString(cursor.getColumnIndex("id")));
-                       // list1.setHousehold_no(cursor.getString(cursor.getColumnIndex("household_no")));
-                       // list1.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
+                        list1.setHousehold_no(cursor.getString(cursor.getColumnIndex("household_no")));
+                        list1.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
                         list1.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
-                       // list1.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
+                        list1.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
 
-                       // list1.setId_type_name(cursor.getString(cursor.getColumnIndex("id_type_name")));
-                       // list1.setId_other_name(cursor.getString(cursor.getColumnIndex("id_other_name")));
+                        // list1.setId_type_name(cursor.getString(cursor.getColumnIndex("id_type_name")));
+                        list1.setId_other_name(cursor.getString(cursor.getColumnIndex("id_other_name")));
                         list1.setFather_husband_name(cursor.getString(cursor.getColumnIndex("father_husband_name")));
                         list1.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
                         list1.setAge(cursor.getString(cursor.getColumnIndex("age")));
-                        //list1.setDate_of_birth(cursor.getString(cursor.getColumnIndex("date_of_birth")));
+                        list1.setDate_of_birth(cursor.getString(cursor.getColumnIndex("date_of_birth")));
                         list1.setAddress(cursor.getString(cursor.getColumnIndex("address")));
                         list1.setState_id(cursor.getString(cursor.getColumnIndex("state_id")));
                         list1.setDistrict_id(cursor.getString(cursor.getColumnIndex("district_id")));
@@ -4648,6 +4648,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         list1.setAgro_climat_zone_id(cursor.getString(cursor.getColumnIndex("agro_climat_zone_id")));
                         list1.setAlternative_livelihood_id(cursor.getString(cursor.getColumnIndex("alternative_livelihood_id")));
                         list1.setNo_of_member_migrated(cursor.getString(cursor.getColumnIndex("no_of_member_migrated")));
+                        list1.setWhat_you_know(cursor.getString(cursor.getColumnIndex("what_you_know")));
 
                         registerTableArrayList1.add(list1);
                         cursor.moveToNext();
@@ -4676,7 +4677,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("id",householdMasterModel.getId());
                 values.put("NeemPlantation_Image",householdMasterModel.getNeemPlantation_Image());
                 values.put("Neem_Plantation",householdMasterModel.getNeem_Plantation());
-                values.put("Sub_Neem_Category",householdMasterModel.getSub_Neem_Category());
+                //               values.put("Sub_Neem_Category",householdMasterModel.getSub_Neem_Category());
                 values.put("Land",householdMasterModel.getLand());
 
                 values.put("Plantation_Date",householdMasterModel.getPlantation_Date());
@@ -4716,7 +4717,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         psNeemPlantationPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
                         psNeemPlantationPojo.setNeemPlantation_Image(cursor.getString(cursor.getColumnIndex("NeemPlantation_Image")));
                         psNeemPlantationPojo.setNeem_Plantation(cursor.getString(cursor.getColumnIndex("Neem_Plantation")));
-                        psNeemPlantationPojo.setSub_Neem_Category(cursor.getString(cursor.getColumnIndex("Sub_Neem_Category")));
+//                        psNeemPlantationPojo.setSub_Neem_Category(cursor.getString(cursor.getColumnIndex("Sub_Neem_Category")));
                         psNeemPlantationPojo.setLand(cursor.getString(cursor.getColumnIndex("Land")));
                         psNeemPlantationPojo.setPlantation_Date(cursor.getString(cursor.getColumnIndex("Plantation_Date")));
                         psNeemPlantationPojo.setGeo_Coordinates(cursor.getString(cursor.getColumnIndex("Geo_Coordinates")));
@@ -4745,7 +4746,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             {
                 ContentValues values =new ContentValues();
                 values.put("id",householdMasterModel.getId());
-               // values.put("farmer_id",householdMasterModel.getFarmer_id());
+                // values.put("farmer_id",householdMasterModel.getFarmer_id());
 
                 values.put("Land_id",householdMasterModel.getLand_id());
 
@@ -4786,7 +4787,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
                         PSLandHoldingPojo psLandHoldingPojo = new PSLandHoldingPojo();
                         psLandHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
-                       // psLandHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+                        // psLandHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
 
                         psLandHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("Land_id")));
 

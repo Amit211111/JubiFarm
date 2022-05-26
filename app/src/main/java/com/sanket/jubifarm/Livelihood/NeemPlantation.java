@@ -20,12 +20,12 @@ import com.sanket.jubifarm.data_base.SqliteHelper;
 import java.util.Calendar;
 
 public class NeemPlantation extends AppCompatActivity {
-    String [] sp_neemPlantation ={"Select Neem Plantation","Neem"};
-    String [] sp_NeemCategory={"Select Neem Category"};
+//    String [] sp_neemPlantation ={"Select Neem Plantation","Neem"};
+    //  String [] sp_NeemCategory={"Select Neem Category"};
     String [] sp_land={"Select Land"};
     Button btn_submitDetls;
     TextView CLICKIMAGE,GeoCoodinate;
-    Spinner spnNeemPlantation,spnsub_NeemCategory,spnLandSelection;
+    Spinner spnNeemPlantation,spnLandSelection;
     EditText et_plant_date;
     SqliteHelper sqliteHelper;
     PSNeemPlantationPojo psNeemPlantationPojo;
@@ -42,8 +42,8 @@ public class NeemPlantation extends AppCompatActivity {
         CLICKIMAGE=findViewById(R.id.CLICKIMAGE);
         GeoCoodinate=findViewById(R.id.GeoCoodinate);
         //All Spinner
-        spnNeemPlantation=findViewById(R.id.spnNeemPlantation);
-        spnsub_NeemCategory=findViewById(R.id.spnsub_NeemCategory);
+ //       spnNeemPlantation=findViewById(R.id.spnNeemPlantation);
+//        spnsub_NeemCategory=findViewById(R.id.spnsub_NeemCategory);
         spnLandSelection=findViewById(R.id.spnLandSelection);
         //All Edit Text
         et_plant_date=findViewById(R.id.et_plant_date);
@@ -53,18 +53,18 @@ public class NeemPlantation extends AppCompatActivity {
 
         //All Spinner
 
-        ArrayAdapter Neem_adapter=new ArrayAdapter(NeemPlantation.this, R.layout.spinner_list,sp_neemPlantation);
-        Neem_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnNeemPlantation.setAdapter(Neem_adapter);
+//        ArrayAdapter Neem_adapter=new ArrayAdapter(NeemPlantation.this, R.layout.spinner_list,sp_neemPlantation);
+//        Neem_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spnNeemPlantation.setAdapter(Neem_adapter);
 
-        ArrayAdapter Category_adapter=new ArrayAdapter(NeemPlantation.this,R.layout.spinner_list,sp_NeemCategory);
-        Category_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnsub_NeemCategory.setAdapter(Category_adapter);
+//        ArrayAdapter Category_adapter=new ArrayAdapter(NeemPlantation.this,R.layout.spinner_list,sp_NeemCategory);
+//        Category_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spnsub_NeemCategory.setAdapter(Category_adapter);
 
         ArrayAdapter land_adapter=new ArrayAdapter(NeemPlantation.this, R.layout.spinner_list,sp_land);
         land_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnLandSelection.setAdapter(land_adapter);
-         //Date Picker
+        //Date Picker
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +102,7 @@ public class NeemPlantation extends AppCompatActivity {
                 psNeemPlantationPojo=new PSNeemPlantationPojo();
                 psNeemPlantationPojo.setNeemPlantation_Image(CLICKIMAGE.getText().toString().trim());
                 psNeemPlantationPojo.setNeem_Plantation(spnNeemPlantation.getSelectedItem().toString().trim());
-                psNeemPlantationPojo.setSub_Neem_Category(spnsub_NeemCategory.getSelectedItem().toString().trim());
+//                psNeemPlantationPojo.setSub_Neem_Category(spnsub_NeemCategory.getSelectedItem().toString().trim());
                 psNeemPlantationPojo.setLand(spnLandSelection.getSelectedItem().toString().trim());
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
                 psNeemPlantationPojo.setGeo_Coordinates(GeoCoodinate.getText().toString().trim());
