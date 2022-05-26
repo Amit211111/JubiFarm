@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.AddTranner">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Training_Name"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/tv_training"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:background="@drawable/textviewboader"
+                android:textSize="@dimen/text_12"
+                android:singleLine="true"
+                android:paddingLeft="@dimen/_5dp"
+                android:maxLength="50"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Training_Date"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/tv_todate"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/textviewboader"
+                    android:drawableRight="@drawable/ic_baseline_date_range_24"
+                    android:hint="@string/From_Date"
+                    android:editable="false"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_18" />
+                <EditText
+                    android:id="@+id/et_fromdate"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:background="@drawable/textviewboader"
+                    android:drawableRight="@drawable/ic_baseline_date_range_24"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:hint="@string/To_Date"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_18" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Training_Time"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/et_fromtime"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/textviewboader"
+                    android:hint="@string/From_Time"
+                    android:editable="false"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_18" />
+                <EditText
+                    android:id="@+id/et_totime"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:background="@drawable/textviewboader"
+                    android:layout_marginLeft="@dimen/_5dp"
+                    android:hint="@string/To_Time"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_18" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_14"
+                    android:text="@string/Location"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+
+
+            <EditText
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:textSize="@dimen/text_12"
+                android:background="@drawable/textviewboader"
+                android:paddingLeft="@dimen/_5dp"
+                android:singleLine="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_14"
+                    android:text="@string/Village"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_multi_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:padding="@dimen/margin3"
+                android:layout_marginTop="@dimen/_5dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/tv_village"
+                >
+            <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                android:id="@+id/spn_village"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintText="@string/please_select_village"
+                />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_14"
+                    android:text="@string/Trainer_Name"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/tv_trainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:textSize="@dimen/text_12"
+                android:background="@drawable/textviewboader"
+                android:inputType="text"
+                android:paddingLeft="@dimen/_5dp"
+                android:maxLength="50"
+                android:singleLine="true"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Mobile_Number"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/tv_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:textSize="@dimen/text_12"
+                android:background="@drawable/textviewboader"
+                android:inputType="number"
+                android:paddingLeft="@dimen/_5dp"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Trainer_Destination"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/tv_TrainerDestination"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="@dimen/_5dp"
+                android:textSize="@dimen/text_12"
+                android:background="@drawable/textviewboader"
+                android:paddingLeft="@dimen/_5dp"
+                android:maxLength="50"
+                android:singleLine="true"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brief_description"
+                    android:textSize="@dimen/text_14"
+                    android:textColor="#000000"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="#C2185B"/>
+
+            </LinearLayout>
+
+
+
+
+            <EditText
+                android:id="@+id/ed_brief_description"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin80"
+                android:layout_marginTop="@dimen/_5dp"
+                android:background="@drawable/textviewboader"
+                android:textSize="@dimen/text_12"
+                android:paddingLeft="@dimen/_5dp"
+                android:maxLength="50"
+                android:inputType="text" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_submittrainner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btnround"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="5dp"
+                android:text="@string/Submit"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

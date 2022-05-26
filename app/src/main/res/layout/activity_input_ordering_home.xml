@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin10"
+    tools:context=".Activity.InputOrderingHome">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+            <LinearLayout
+                android:id="@+id/ll_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_new_input_ordering"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10"
+                    android:background="@drawable/round_corner_background"
+                    android:text="@string/New_Input_Ordering"
+                    android:paddingTop="@dimen/margin60"
+                    android:paddingBottom="@dimen/margin60"
+                    android:paddingStart="@dimen/margin5"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/text_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_three"
+                android:layout_marginTop="@dimen/_10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_approved"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_corner_background"
+                    android:text="@string/Approved"
+                    android:paddingTop="@dimen/margin55"
+                    android:paddingBottom="@dimen/margin55"
+                    android:paddingStart="@dimen/margin5"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/text_18" />
+
+                <TextView
+                    android:id="@+id/tv_pending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin10"
+                    android:layout_weight="1"
+                    android:background="@drawable/pending_corner_background"
+                    android:text="@string/pending"
+                    android:paddingTop="@dimen/margin55"
+                    android:paddingBottom="@dimen/margin55"
+                    android:paddingStart="@dimen/margin5"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/text_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_first"
+                android:layout_marginTop="@dimen/margin10"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_rejected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/reject_corner_background"
+                    android:text="@string/Rejected"
+                    android:paddingTop="@dimen/margin55"
+                    android:paddingBottom="@dimen/margin55"
+                    android:paddingStart="@dimen/margin5"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/text_18" />
+
+                <TextView
+                    android:id="@+id/tv_vendor_referred"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin10"
+                    android:layout_weight="1"
+                    android:background="@drawable/vendor_corner_background"
+                    android:text="@string/Vendor_Referred"
+                    android:paddingTop="@dimen/margin55"
+                    android:paddingBottom="@dimen/margin55"
+                    android:paddingStart="@dimen/margin5"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/text_18" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

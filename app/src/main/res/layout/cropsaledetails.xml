@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEDED"
+        android:padding="4dp"
+        android:id="@+id/ll_cropsale"
+        tools:ignore="MissingConstraints">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cropsale_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#ECECEC"
+            android:layout_marginBottom="2dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:id="@+id/ll_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    app:cardCornerRadius="8dp"
+                    android:layout_margin="5dp"
+                    android:elevation="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/saledtl_img_crop"
+                        android:layout_width="70dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center|left"
+                        android:elevation="5dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/mango"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp">
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="#d3d3d3" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/margin3"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp"
+                            android:text="@string/Crop"/>
+                        <TextView
+                            android:id="@+id/tv_saledtl_crop"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:textColor="#0EC115"
+                            android:text=""
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp"
+                            android:text="@string/Years"/>
+                        <TextView
+                            android:id="@+id/tv_saledtl_years"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:textColor="#01579b"
+                            android:text=""
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp"
+                            android:text="@string/Price"/>
+                        <TextView
+                            android:id="@+id/tv_saledtl_price"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="11sp"
+                            android:textColor="#01579b"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:text="@string/Season"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tv_saledtl_seassion"
+                            android:layout_width="0dip"
+                            android:layout_weight="0.5"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="11sp"
+                            android:textColor="#01579b"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/Quantity_Units"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_saledtl_quantity"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:text=""
+                            android:textColor="#01579b"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/planted_date"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_planted_date"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:text=""
+                            android:textColor="#01579b"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="148dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/fruited_date"
+                            android:textColor="@android:color/darker_gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_fruited_date"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:text=""
+                            android:textColor="#01579b"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:weightSum="3"
+                        android:visibility="gone"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_CSaddplant"
+                            android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:layout_height="20dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:textColor="#ffffff"
+                            android:background="@drawable/btnround"
+                            android:gravity="center"
+                            android:textSize="11sp"
+                            android:text="@string/Add_Plant"/>
+                        <TextView
+                            android:id="@+id/tv_CSviewdetails"
+                            android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_height="20dp"
+                            android:layout_marginHorizontal="15dp"
+
+                            android:background="@drawable/blackeditbutton"
+                            android:text="@string/View_Details"
+                            android:textSize="11sp"
+
+                            android:layout_marginLeft="5dp"
+                            android:textColor="#ffffff"/>
+                        <TextView
+                            android:id="@+id/tv_CSEditLand"
+                            android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:layout_height="20dp"
+                            android:textColor="#ffffff"
+                            android:background="@drawable/btnround"
+                            android:gravity="center"
+                            android:textSize="11sp"
+                            android:text="@string/Edit_Land"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="10dp">
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="fill_parent"
+                        android:background="#d3d3d3" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_crop_dele"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center|left"
+                    android:elevation="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_baseline_delete_24"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

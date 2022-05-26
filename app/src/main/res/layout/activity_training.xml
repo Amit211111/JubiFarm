@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="5dp"
+    android:padding="2dp"
+
+    tools:context=".Activity.TrainingActivity">
+    <LinearLayout
+        android:id="@+id/layout_know"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tra_tab_knowledge"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/Knowledge"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:background="@color/colornotselected"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/tra_tab_Tranning"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/Tranning"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:background="@color/colorselected"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin50"
+        android:background="#292929"
+        android:layout_below="@+id/layout_know"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/ChildCoun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/Total_"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/_2dp"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/traiCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Tranning_"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:paddingLeft="@dimen/_5dp"
+            android:textColor="#FFF" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/_2dp"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/search_farmer"
+                android:layout_width="30dp"
+                android:layout_height="@dimen/_30dp"
+                android:gravity="right"
+                android:padding="@dimen/_5dp"
+
+                android:layout_marginRight="@dimen/_5dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8dp"
+        android:layout_marginTop="@dimen/margin80"
+        android:fontFamily="@font/itcavantagradestdbk"
+        android:textSize="@dimen/text_18"
+        android:textColor="#000000"
+        android:text="@string/Upcoming_Training_2020"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/_5dp">
+        <TextView
+            android:id="@+id/et_todate"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textviewboader"
+            android:drawableRight="@drawable/ic_baseline_date_range_24"
+            android:editable="false"
+            android:hint="@string/From_Date"
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_18" />
+        <TextView
+            android:id="@+id/et_fromdates"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/textviewboader"
+            android:drawableRight="@drawable/ic_baseline_date_range_24"
+            android:layout_marginLeft="@dimen/_5dp"
+            android:editable="false"
+            android:hint="@string/To_Date"
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_18" />
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="0.2"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:drawableLeft="@drawable/ic_baseline_search_24"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_training"
+        android:layout_width="match_parent"
+        android:layout_marginTop="143dp"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/margin60"
+        android:layout_height="@dimen/_60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/margin20"
+        android:background="@android:drawable/ic_menu_add"
+        android:src="@drawable/add"
+        tools:ignore="RtlCompat" />
+</RelativeLayout>

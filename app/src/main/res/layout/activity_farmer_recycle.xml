@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="5dp"
+    tools:context=".Livelihood.FarmerRecycle">
+
+    <RelativeLayout
+        android:id="@+id/rl_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:layout_marginHorizontal="3dp"
+        android:layout_marginTop="@dimen/margin8"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/editplant">
+
+
+        <EditText
+            android:id="@+id/etSearchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="@string/Search_"
+            android:padding="@dimen/margin10"
+            android:drawableRight="@drawable/ic_baseline_search_24"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
+        android:padding="5dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/fab1"
+        android:layout_width="@dimen/margin60"
+        android:layout_height="@dimen/_60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/margin20"
+        android:background="@android:drawable/ic_menu_add"
+        android:src="@drawable/add"
+        tools:ignore="RtlCompat" />
+
+</RelativeLayout>

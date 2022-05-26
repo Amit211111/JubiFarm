@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#DADCDD"
+        android:padding="@dimen/_10dp"
+        android:layout_margin="@dimen/_3dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#DADCDD"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/Farmer"
+                android:textSize="@dimen/text_15"
+                android:textColor="@android:color/black" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/btn_cropfilter"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:hint="  "
+                android:textSize="@dimen/text_14"
+                android:layout_margin="@dimen/_5dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/_10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_30dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="@drawable/btnround"
+                android:visibility="invisible"
+                android:text="Cancel">
+
+            </TextView>
+            <TextView
+                android:layout_width="0dip"
+                android:layout_weight="0.4"
+                android:layout_height="@dimen/_30dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:background="@drawable/btnround"
+                android:text="@string/Search">
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+    </LinearLayout>
+

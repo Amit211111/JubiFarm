@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Livelihood.PS_LandHoldingList">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin50"
+        android:background="#292929"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ChildCoun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:paddingLeft="@dimen/_2dp"
+            android:text="@string/total"
+            android:textColor="#FFF"
+            android:textStyle="bold" />
+
+        <TextView
+
+            android:id="@+id/landCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="Land: "
+            android:textColor="#FFF"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/ll_filter_LHtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="right"
+            android:padding="@dimen/_2dp">
+
+            <ImageView
+                android:id="@+id/Landholding_filter"
+                android:layout_width="30dp"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginRight="@dimen/_5dp"
+                android:gravity="right"
+                android:padding="@dimen/_5dp"
+                android:src="@drawable/filter" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLandHoldning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:padding="5dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/margin60"
+        android:layout_height="@dimen/_60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="@dimen/margin20"
+        android:background="@android:drawable/ic_menu_add"
+        android:src="@drawable/add"
+        tools:ignore="RtlCompat" />
+
+</RelativeLayout>

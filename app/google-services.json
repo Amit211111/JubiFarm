@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "347618422275",
+    "firebase_url": "https://jubifarm-ad1a9.firebaseio.com",
+    "project_id": "jubifarm-ad1a9",
+    "storage_bucket": "jubifarm-ad1a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347618422275:android:eee94ce00eef1130642836",
+        "android_client_info": {
+          "package_name": "com.sanket.jubifarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347618422275-0d7mk333gghj3g529429lg8kh0s8fpsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcwYVN6IcCRRPgR-MMwn7A6a9BhX7pppc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347618422275-0d7mk333gghj3g529429lg8kh0s8fpsc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

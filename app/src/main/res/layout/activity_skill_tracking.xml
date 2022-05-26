@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Livelihood.SkillTracking">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin4"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="Skill Center Name"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/skill"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/tv_householdNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="Address"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:editable="true"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:padding="4dp"
+                    android:text="Contact Person"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="4dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:text="@string/Other_National_Id_Card"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:text="*"
+                        android:textColor="#DD1212" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_other"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:padding="4dp"
+                android:visibility="gone">
+
+                <Spinner
+                    android:id="@+id/IdCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_aadhar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/AadharNo"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="8dp"
+
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:maxLength="12"
+                    android:singleLine="true"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="Mobile No"
+                    android:textColor="#000000" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+                <EditText
+                    android:id="@+id/mobileno"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+
+                    android:text="Latitude"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+
+                    android:text="@string/What_did_you_know"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/FarmerAge"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/Farmerdob"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_weight="1"
+                    android:editable="false"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:drawableRight="@drawable/ic_baseline_date_range_24"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="Longitude"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+                <EditText
+                    android:id="@+id/longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin4"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/State"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/state"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin8"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/District"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/district"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin8"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Village"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:padding="4dp">
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/village"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin4"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+
+                    android:text="@string/Pincode"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/pincode"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textviewboader"
+
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_12" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/btnround"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="5dp"
+                android:text="@string/Submit"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

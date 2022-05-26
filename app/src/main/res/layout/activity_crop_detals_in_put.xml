@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.CropDetalsInPut">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_14"
+                android:text="@string/Years" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:padding="@dimen/padding_4sp"
+            android:layout_marginRight="@dimen/margin4"
+            android:layout_marginLeft="@dimen/margin4"
+            android:background="@drawable/textviewboader"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_year"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:maxLength="4"
+                android:inputType="number"
+                android:textSize="@dimen/text_10">
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_14"
+                android:text="@string/Season" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spin_season"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_10">
+
+
+            </Spinner>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_farmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Farmer"
+                android:textSize="@dimen/text_14"/>
+
+            <TextView
+                android:layout_width="15dp"
+                android:layout_height="26dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"
+                android:textColor="#DD1212" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spin_farmer"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_10">
+
+
+            </Spinner>
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Crop_Category"
+                android:textSize="@dimen/text_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spin_crop_category"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_10">
+
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Sub_Crop_Category"
+                android:textSize="@dimen/text_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spin_crop"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_10">
+
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Quantity"
+                android:textSize="@dimen/text_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:padding="@dimen/padding_4sp"
+            android:layout_marginRight="@dimen/margin4"
+            android:layout_marginLeft="@dimen/margin4"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:singleLine="true"
+                android:maxLength="10"
+                android:inputType="text"
+                android:textSize="@dimen/text_10"
+                android:padding="8dp">
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_quantity_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Quantity_Unit"
+                android:textSize="@dimen/text_14"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spin_quantity_unit"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_10">
+
+
+            </Spinner>
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:padding="@dimen/padding_4sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Price"
+                android:textSize="@dimen/text_14"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#DD1212"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40dp"
+            android:background="@drawable/textviewboader"
+            android:layout_marginLeft="@dimen/margin4"
+            android:layout_marginRight="@dimen/margin4"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_price"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:singleLine="true"
+                android:textSize="@dimen/text_10"
+                android:maxLength="10"
+                android:inputType="number">
+            </EditText>
+
+        </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginHorizontal="40dp"
+            android:background="@drawable/buttanshape"
+            android:gravity="center"
+            android:text="@string/Submit"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

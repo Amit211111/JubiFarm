@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.VendorRegistration">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Company_Name"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+                <EditText
+                    android:id="@+id/et_companyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:maxLength="50"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Contact_Number"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_contactNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12">
+                </EditText>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Proprietor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_propiretor"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:maxLength="50"
+                    android:textSize="@dimen/text_12">
+                </EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Address"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12">
+                </EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Email"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_12">
+                </EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aadhar "
+                    android:textColor="#000000"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:textSize="@dimen/text_15"
+                    android:background="@drawable/textviewboader"
+                    android:singleLine="true"/>
+
+            </LinearLayout>
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:textColorHint="@color/colorPrimaryDark">
+
+                <com.yash.tongaonkar.multiselectspinner.MultiSelectSpinner
+                    android:id="@+id/spn_sectors_interested_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintText="Vendor Category">
+
+                </com.yash.tongaonkar.multiselectspinner.MultiSelectSpinner>
+
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin4"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/State"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:orientation="vertical"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/spn_State"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin8"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/District"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"
+                    android:textColor="#DD1212" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textviewboader"
+                android:layout_marginRight="4dp"
+                android:layout_marginLeft="4dp"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <Spinner
+                    android:id="@+id/spn_District"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35dp"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+           <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="4dp"
+                   android:orientation="horizontal">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="#000000"
+                       android:fontFamily="@font/itcavantagradestdbk"
+                       android:text="@string/Vendor_Category"/>
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:textColor="#DD1212"
+                       android:fontFamily="@font/itcavantagradestdbk"
+                       android:text="*"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/textviewboader"
+                   android:orientation="vertical"
+                   >
+
+               <com.androidbuts.multispinnerfilter.MultiSpinnerSearch
+                   android:id="@+id/spn_vendor"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   app:hintText="Select Vendor Category">
+               </com.androidbuts.multispinnerfilter.MultiSpinnerSearch>
+           </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/GSTN"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_gstn"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textviewboader"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:maxLength="20"
+                    android:textSize="@dimen/text_12">
+
+                </EditText>
+
+                <ImageView
+                    android:id="@+id/img_gst"
+                    android:layout_width="17dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_60dp"
+                    android:src="@drawable/gstn"
+                   />
+
+
+                <TextView
+                    android:id="@+id/gstn_upload_img"
+                    android:layout_width="0dip"
+                    android:layout_height="@dimen/_30dp"
+                    android:layout_marginLeft="@dimen/margin4"
+                    android:layout_weight="1"
+                    android:background="#CCC3BEC3"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:gravity="center"
+                    android:text="@string/Upload"
+                    android:textColor="#000000" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/PAN_Card_No"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/et_pancard"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_60dp"
+                    android:textSize="@dimen/text_12"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:background="@drawable/textviewboader"
+                    android:singleLine="true"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:maxLength="10"
+                    android:inputType="text"
+                    android:textColor="#000000">
+                </EditText>
+                <ImageView
+                    android:id="@+id/img_pan"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:padding="@dimen/_3dp"
+                    android:layout_height="@dimen/_60dp"
+                    android:src="@drawable/pan"
+                    />
+
+                <TextView
+                    android:id="@+id/pan_upload_img"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30dp"
+                    android:gravity="center"
+                    android:background="#CCC3BEC3"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:layout_marginLeft="@dimen/margin4"
+                    android:text="@string/Upload"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="@string/Aadhar_No."/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#DD1212"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:text="*"/>
+            </LinearLayout>
+
+           <!-- <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:orientation="vertical">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30dp"
+                    android:textSize="@dimen/text_12"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:background="@drawable/textviewboader"
+                    android:singleLine="true"
+                    android:textColor="#000000">
+                </EditText>
+            </LinearLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5dp"
+                android:weightSum="3"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/adharNo"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_60dp"
+                    android:textSize="@dimen/text_12"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:background="@drawable/textviewboader"
+                    android:singleLine="true"
+                    android:maxLength="12"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/_5dp"
+                    android:textColor="#000000">
+                </EditText>
+                <ImageView
+                    android:id="@+id/img_aadhar"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_60dp"
+                    android:src="@drawable/aadhar"
+                   />
+
+                <TextView
+                    android:id="@+id/aadhar_upload_img"
+                    android:layout_width="0dip"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/_30dp"
+                    android:gravity="center"
+                    android:background="#CCC3BEC3"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:layout_marginLeft="@dimen/margin4"
+                    android:text="@string/Upload"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin150"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:textSize="@dimen/text_15"
+                    android:src="@drawable/imageholder"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:singleLine="true"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8dp"
+                        android:background="@drawable/buttanshape">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/upload"
+                            android:singleLine="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text=" GSTN "
+                            android:textColor="#000000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin150"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:textSize="@dimen/text_15"
+                    android:src="@drawable/imageholder"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:singleLine="true"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8dp"
+                        android:background="@drawable/buttanshape">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/upload"
+                            android:singleLine="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text=" PAN  "
+                            android:textColor="#000000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_8dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin150"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:textSize="@dimen/text_15"
+                    android:src="@drawable/imageholder"
+                    android:layout_marginRight="@dimen/_10dp"
+                    android:singleLine="true"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|center_vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_8dp"
+                        android:background="@drawable/buttanshape">
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/upload"
+                            android:singleLine="true"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text=" Aadhar "
+                            android:textColor="#000000" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/itcavantagradestdbk"
+                    android:background="@drawable/buttanshape"
+                    android:textAllCaps="false"
+                    android:text="@string/Submit"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

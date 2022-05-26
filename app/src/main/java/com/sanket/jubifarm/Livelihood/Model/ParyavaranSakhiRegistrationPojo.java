@@ -1,0 +1,301 @@
+package com.sanket.jubifarm.Livelihood.Model;
+
+import com.sanket.jubifarm.Modal.CropVegitableDetails;
+import com.sanket.jubifarm.Modal.FarmerFamilyPojo;
+
+import java.util.ArrayList;
+
+public class ParyavaranSakhiRegistrationPojo
+{
+    private String local_id;
+    private String id;
+    private String mobile;
+    private String farmer_name;
+    private String father_husband_name;
+    private String category_id;
+    private String bpl;
+    private String address;
+    private String age;
+    private String physical_challenges;
+    private String alternative_livelihood_id;
+    private String no_of_member_migrated;
+    private String religion_id;
+    private String caste;
+    private String total_land_holding;
+    private String agro_climat_zone_id;
+    private String education_id;
+    private String state_id;
+    private String district_id;
+    private String block_id;
+    private String village_id;
+    private String pincode;
+    private String annual_income;
+    private String martial_category;
+
+    public String getLocal_id() {
+        return local_id;
+    }
+
+    public void setLocal_id(String local_id) {
+        this.local_id = local_id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getFarmer_name() {
+        return farmer_name;
+    }
+
+    public void setFarmer_name(String farmer_name) {
+        this.farmer_name = farmer_name;
+    }
+
+    public String getFather_husband_name() {
+        return father_husband_name;
+    }
+
+    public void setFather_husband_name(String father_husband_name) {
+        this.father_husband_name = father_husband_name;
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
+    }
+
+    public String getBpl() {
+        return bpl;
+    }
+
+    public void setBpl(String bpl) {
+        this.bpl = bpl;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getPhysical_challenges() {
+        return physical_challenges;
+    }
+
+    public void setPhysical_challenges(String physical_challenges) {
+        this.physical_challenges = physical_challenges;
+    }
+
+    public String getAlternative_livelihood_id() {
+        return alternative_livelihood_id;
+    }
+
+    public void setAlternative_livelihood_id(String alternative_livelihood_id) {
+        this.alternative_livelihood_id = alternative_livelihood_id;
+    }
+
+    public String getNo_of_member_migrated() {
+        return no_of_member_migrated;
+    }
+
+    public void setNo_of_member_migrated(String no_of_member_migrated) {
+        this.no_of_member_migrated = no_of_member_migrated;
+    }
+
+    public String getReligion_id() {
+        return religion_id;
+    }
+
+    public void setReligion_id(String religion_id) {
+        this.religion_id = religion_id;
+    }
+
+    public String getCaste() {
+        return caste;
+    }
+
+    public void setCaste(String caste) {
+        this.caste = caste;
+    }
+
+    public String getTotal_land_holding() {
+        return total_land_holding;
+    }
+
+    public void setTotal_land_holding(String total_land_holding) {
+        this.total_land_holding = total_land_holding;
+    }
+
+    public String getAgro_climat_zone_id() {
+        return agro_climat_zone_id;
+    }
+
+    public void setAgro_climat_zone_id(String agro_climat_zone_id) {
+        this.agro_climat_zone_id = agro_climat_zone_id;
+    }
+
+    public String getEducation_id() {
+        return education_id;
+    }
+
+    public void setEducation_id(String education_id) {
+        this.education_id = education_id;
+    }
+
+    public String getState_id() {
+        return state_id;
+    }
+
+    public void setState_id(String state_id) {
+        this.state_id = state_id;
+    }
+
+    public String getDistrict_id() {
+        return district_id;
+    }
+
+    public void setDistrict_id(String district_id) {
+        this.district_id = district_id;
+    }
+
+    public String getBlock_id() {
+        return block_id;
+    }
+
+    public void setBlock_id(String block_id) {
+        this.block_id = block_id;
+    }
+
+    public String getVillage_id() {
+        return village_id;
+    }
+
+    public void setVillage_id(String village_id) {
+        this.village_id = village_id;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public void setPincode(String pincode) {
+        this.pincode = pincode;
+    }
+
+    public String getAnnual_income() {
+        return annual_income;
+    }
+
+    public void setAnnual_income(String annual_income) {
+        this.annual_income = annual_income;
+    }
+
+    public String getMartial_category() {
+        return martial_category;
+    }
+
+    public void setMartial_category(String martial_category) {
+        this.martial_category = martial_category;
+    }
+
+    public static final String TABLE_NAME = "ps_farmer_registration";
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_LOCAL_ID = "local_id";
+//    public static final String COLUMN_FARMER_IMAGE = "farmer_image";
+
+//    public static final String COLUMN_HOUSEHOLD_NO = "household_no";
+//    public static final String COLUMN_AADHAR_NO = "aadhar_no";
+//    public static final String COLUMN_ID_OTHER_NAME = "id_other_name";
+    public static final String COLUMN_FARMER_NAME = "farmer_name";
+    public static final String COLUMN_FATHER_HUSBAND_NAME = "father_husband_name";
+    public static final String COLUMN_AGE = "age";
+//    public static final String COLUMN_DATE_OF_BIRTH = "date_of_birth";
+    public static final String COLUMN_BPL = "bpl";
+    public static final String COLUMN_ADDRESS = "address";
+    public static final String COLUMN_MOBILE = "mobile";
+    public static final String COLUMN_PHYSICAL_CHALLENGES = "physical_challenges";
+    public static final String COLUMN_ANNUAL_INCOME = "annual_income";
+    public static final String COLUMN_ALTERNATIVE_LIVELIHOOD_ID = "alternative_livelihood_id";
+    public static final String COLUMN_RELIGION_ID = "religion_id";
+    public static final String COLUMN_CATEGORY_ID = "category_id";
+    public static final String COLUMN_STATE_ID = "state_id";
+    public static final String COLUMN_DISTRICT_ID = "district_id";
+    public static final String COLUMN_VILLAGE_ID = "village_id";
+    public static final String COLUMN_BLOCK_ID = "block_id";
+    public static final String COLUMN_EDUCATION_ID = "education_id";
+    public static final String COLUMN_PINCODE = "pincode";
+    public static final String COLUMN_CASTE = "caste";
+    public static final String COLUMN_MARTIAL_CATEGORY = "martial_category";
+//    public static final String COLUMN_EDUCATION_QUALIFICATION = "education_qualification";
+    public static final String COLUMN_TOTAL_LANDHOLDING = "total_land_holding";
+    public static final String COLUMN_AGRO_CLIMAT_ZONE_ID = "agro_climat_zone_id";
+    public static final String COLUMN_NO_OF_MEMBER_MIGRATED= "no_of_member_migrated";
+
+
+
+    public static final String CREATE_TABLE =
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_ID + " INTEGER,"
+                    + COLUMN_MOBILE + " INTEGER ,"
+//                    + COLUMN_AADHAR_NO + " INTEGER ,"
+//                    + COLUMN_HOUSEHOLD_NO + " INTEGER ,"
+                    + COLUMN_FARMER_NAME + " TEXT ,"
+   //                 + COLUMN_ID_TYPE_ID + " INTEGER ,"
+                    + COLUMN_AGE + " INTEGER ,"
+                //    + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
+//                    + COLUMN_DATE_OF_BIRTH + " TEXT ,"
+                    + COLUMN_RELIGION_ID + " INTEGER ,"
+                    + COLUMN_ALTERNATIVE_LIVELIHOOD_ID + " INTEGER ,"
+ //                   + COLUMN_ID_TYPE_NAME + " TEXT ,"
+                    + COLUMN_ADDRESS + " TEXT ,"
+                    + COLUMN_CASTE + " TEXT ,"
+//                    + COLUMN_ID_OTHER_NAME + " TEXT ,"
+                    + COLUMN_CATEGORY_ID + " TEXT ,"
+                    + COLUMN_STATE_ID + " INTEGER ,"
+                    + COLUMN_DISTRICT_ID + " INTEGER ,"
+                    + COLUMN_BLOCK_ID + " INTEGER ,"
+                    + COLUMN_VILLAGE_ID + " INTEGER ,"
+                    + COLUMN_PINCODE + " INTEGER ,"
+                    + COLUMN_EDUCATION_ID + " TEXT ,"
+                    + COLUMN_ANNUAL_INCOME + " TEXT ,"
+                    + COLUMN_FATHER_HUSBAND_NAME + " TEXT ,"
+                    + COLUMN_PHYSICAL_CHALLENGES + " TEXT ,"
+                    + COLUMN_BPL + " TEXT ,"
+//                    + COLUMN_EDUCATION_QUALIFICATION + " TEXT ,"
+                    + COLUMN_TOTAL_LANDHOLDING + " TEXT ,"
+                  //  + COLUMN_GENDER + " TEXT ,"
+ //                   + COLUMN_FARMER_IMAGE + " TEXT ,"
+                    + COLUMN_AGRO_CLIMAT_ZONE_ID + " TEXT ,"
+                    + COLUMN_MARTIAL_CATEGORY + " TEXT ,"
+                    +COLUMN_NO_OF_MEMBER_MIGRATED + " TEXT "
+                    + ")";
+
+
+}

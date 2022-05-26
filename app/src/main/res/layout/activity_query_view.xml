@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_5dp"
+    android:layout_gravity="center"
+    tools:context=".Activity.QueryViewActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_tree"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/usertwo"
+            app:civ_border_color="@color/colorPrimary" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            android:id="@+id/tv_nameByQuery"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:editable="false"
+            android:gravity="center"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:hint="Ram Ji Tiwari"
+            android:paddingLeft="@dimen/_2dp"
+            android:textColor="@android:color/black"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:drawableRight="@drawable/ic_baseline_date_range_24"
+            android:editable="false"
+            android:gravity="center"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:hint="12/09/2020 3:00 PM"
+            android:paddingLeft="@dimen/_2dp"
+            android:textColor="@android:color/black"
+            android:textSize="11sp" />
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="@dimen/_35dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/_10dp"
+        android:src="@drawable/queryy"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_query"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin130"
+            android:background="@drawable/datebadder"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:paddingLeft="13sp"
+            android:paddingTop="4sp"
+            android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRecordedAudio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/audio"
+        android:textSize="@dimen/_15dp"
+        android:layout_marginLeft="@dimen/margin10"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/buttonPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/button2"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:tint="@color/green_color"
+                android:layout_marginLeft="4dp"
+                android:textColor="@color/white"
+                android:background="@drawable/viewdetailfarmer"
+                android:text="@string/Play" />
+
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/Response"
+        android:textSize="@dimen/_15dp"
+        android:layout_marginLeft="@dimen/margin10"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/tv_responseon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin130"
+            android:background="@drawable/datebadder"
+            android:paddingTop="7dp"
+            android:paddingLeft="14dp"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/response"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin50"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/editplant"
+        android:textColor="@color/black"
+        android:text="@string/Submit"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin4"
+        android:layout_marginTop="@dimen/_20dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2dp"
+            android:background="#00008B"/>
+    </LinearLayout>
+</LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

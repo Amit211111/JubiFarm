@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_dialog_background"
+    android:gravity="center"
+    android:paddingTop="@dimen/margin25"
+    android:paddingBottom="@dimen/margin25"
+    android:paddingStart="@dimen/margin25"
+    android:paddingEnd="@dimen/margin25"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Item"
+            android:layout_marginBottom="@dimen/margin5"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_15" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Date"
+            android:layout_marginBottom="@dimen/margin5"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_15" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Quantity"
+            android:layout_marginBottom="@dimen/margin5"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_15" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Status"
+            android:layout_marginBottom="@dimen/margin5"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/text_15" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_referred_to_vendor"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:padding="@dimen/margin2"
+            android:layout_margin="@dimen/margin5"
+            android:background="@drawable/buttanshape"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/referred_to_vendor"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/margin12" />
+
+        <Button
+            android:id="@+id/btn_view_vendor_list"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:padding="@dimen/margin2"
+            android:layout_margin="@dimen/margin5"
+            android:background="@drawable/buttanshape"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/view_vendor_list"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:visibility="gone"
+            android:textSize="@dimen/margin12" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:padding="@dimen/margin2"
+            android:layout_margin="@dimen/margin5"
+            android:background="@drawable/btn_cancel_shape"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/Cancel"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/margin12" />
+
+    </LinearLayout>
+
+</LinearLayout>

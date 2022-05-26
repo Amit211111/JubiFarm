@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.AddPlantAcivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_8dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/img_setimage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/prev" />
+            <!--<de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_setimage"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:src="@drawable/prev" />-->
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttanshape"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/_10dp"
+                                android:src="@drawable/upload" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:text="UPLOAD IMAGE"
+                                android:textColor="@color/white"
+                                android:textSize="8sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+
+
+
+                            <TextView
+                                android:id="@+id/CLICKIMAGE"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/margin50"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:text="@string/TAKE_PICTURE_OF_CROP"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:background="@drawable/editplant"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+ <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_10dp">
+
+
+
+    <LinearLayout
+        android:id="@+id/categery_crop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Crop_Category"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/spnCropselection"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sub_cropcategery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Sub_Crop_Category"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/spnsub_Cropselection"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fruited Date"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_14"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="@android:color/darker_gray"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:padding="@dimen/_5dp">
+            <TextView
+                android:id="@+id/et_fruit_fromdate"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/textviewboader"
+                android:drawableRight="@drawable/ic_baseline_date_range_24"
+                android:editable="false"
+                android:hint="@string/From_Date"
+                android:paddingLeft="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_18" />
+            <TextView
+                android:id="@+id/et_fruit_todate"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/textviewboader"
+                android:drawableRight="@drawable/ic_baseline_date_range_24"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:editable="false"
+                android:hint="@string/To_Date"
+                android:paddingLeft="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_18" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_spn_farmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Farmer"
+                android:singleLine="true"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/spnfarmerselection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true" />
+
+            <TextView
+                android:id="@+id/tv_Farmer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Farmer Name"
+                android:visibility="gone"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Land"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:background="@drawable/textviewboader"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:hint="23"
+                android:inputType="number"
+                android:paddingLeft="7dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/spnLandSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true" />
+
+            <TextView
+                android:id="@+id/tv_land_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="land Name"
+                android:visibility="gone"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_areaRequirement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Area"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+ <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/et_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:hint=""
+                android:inputType="number"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.2"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:background="@drawable/textviewboader"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:hint="23"
+                android:inputType="number"
+                android:paddingLeft="7dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Spinner
+                android:id="@+id/spnUnitSelection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="land Name"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+     <LinearLayout
+         android:id="@+id/ll_total_tree"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginHorizontal="10dp"
+         android:layout_marginTop="10dp"
+         android:weightSum="2"
+         android:visibility="gone"
+         android:orientation="horizontal">
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:orientation="vertical">
+
+
+             <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:fontFamily="@font/itcavantagradestdbk"
+                 android:text="@string/total_tree"
+                 android:textColor="@android:color/darker_gray"
+                 android:textSize="@dimen/text_15" />
+
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:visibility="visible">
+
+
+             <EditText
+                 android:id="@+id/et_total_tree"
+                 android:layout_width="match_parent"
+                 android:layout_height="27dp"
+                 android:background="@drawable/textviewboader"
+                 android:fontFamily="@font/itcavantagradestdbk"
+                 android:hint=""
+                 android:maxLength="3"
+                 android:inputType="number"
+                 android:paddingLeft="7dp"
+                 android:singleLine="true"
+                 android:textColor="@android:color/black"
+                 android:textSize="13sp"
+                 android:visibility="visible" />
+
+
+         </LinearLayout>
+
+
+
+
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:layout_gravity="center"
+         android:layout_marginHorizontal="10dp"
+         android:layout_marginTop="10dp"
+         android:background="@drawable/textviewboader"
+         android:orientation="vertical">
+
+         <Spinner
+             android:id="@+id/spn_seasons"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/_35dp" />
+
+     </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:text="@string/planted_date"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="@dimen/text_15" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.2"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/textviewboader"
+
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:hint="23"
+                        android:inputType="number"
+                        android:paddingLeft="7dp"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_plant_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewboader"
+                        android:drawableRight="@drawable/ic_baseline_date_range_24"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fruitationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:text="@string/fruited_date"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="@dimen/text_15" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1.2"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:background="@drawable/textviewboader"
+
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:hint="23"
+                        android:inputType="number"
+                        android:paddingLeft="7dp"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_fruit_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/textviewboader"
+                        android:drawableRight="@drawable/ic_baseline_date_range_24"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Geo_Cordinates"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/text_15" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/GeoCoodinate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="27dp"
+                        android:gravity="center"
+                        android:hint="15.345243, 12.55.3452"
+                        android:paddingLeft="3dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_weight="1"-->
+                <!--                    android:background="#5BC236"-->
+                <!--                    android:orientation="vertical">-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="27dp"-->
+
+
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="Geo Cordinates"-->
+                <!--                        android:textColor="@android:color/white"-->
+                <!--                        android:textSize="10sp"/>-->
+
+                <!--                </LinearLayout>-->
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="@dimen/margin70"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_submitDetls"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+
+            android:layout_marginHorizontal="@dimen/_20dp"
+            android:background="@drawable/buttanshape"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text="@string/Submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_15" />
+
+
+    </LinearLayout>
+ </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/badderline"
+            android:text="@string/Close"
+            android:textColor="#FFFFFF"
+            android:textSize="13dp" />
+
+
+    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+
+
+
+
+
+
+
+

@@ -1,0 +1,551 @@
+<resources>
+
+
+    <string name="select_picture">चित्र का चयन करें</string>
+    <string name="internal_storage">आंतरिक स्टोरेज</string>
+    <string name="profile_photo_msg">प्रोफाइल फोटो के लिए आइकन पर क्लिक करें</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="otp_verify">OTP सत्यापित करें</string>
+    <string name="plant_visit">पौधे का दौरा</string>
+
+
+    <string name="Welcome_to_JUBIFARM">जुबीफार्म में आपका स्वागत है</string>
+    <string name="Mobile_No_Email">मोबाइल नंबर / ईमेल</string>
+
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="first_fragment_label">पहला टुकड़ा</string>
+    <string name="second_fragment_label">दूसरा टुकड़ा</string>
+    <string name="next">आगे</string>
+    <string name="previous">पिछला</string>
+    <string name="are_you_sure_to_want_to_exit_application">क्या आप निश्चित रूप से आवेदन से बाहर निकलना चाहते हैं?</string>
+    <string name="exit">बाहर जाएं!</string>
+    <string name="really_exit">क्या आप वास्तव में आवेदन से बाहर निकलना चाहते हैं?</string>
+
+    <string name="select_state">राज्य चुनें</string>
+    <string name="select_district">जिले का चयन करें</string>
+    <string name="select_bloodgroup">रक्त समूह का चयन करें</string>
+    <string name="select_block">ब्लॉक का चयन करें</string>
+    <string name="select_village">गांव का चयन करें</string>
+    <string name="hello_first_fragment">हैलो पहला टुकड़ा</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="app_name">जबी फार्म</string>
+    <string name="enteremail">ईमेल आईडी दर्ज करें</string>
+    <string name="Open">खुला हुआ</string>
+    <string name="Close">बंद करे</string>
+    <string name="enterpsswrd">पास वर्ड दर्ज करें </string>
+    <string name="login">लॉग इन करें</string>
+    <string name="createnewaccount">नया खाता बनाएँ </string>
+    <string name="title_activity_crop_planning">फसल योजना</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_vendors">कुल विक्रेता:</string>
+    <string name="vendor">विक्रेता</string>
+    <string name="Vendor_Name">विक्रेता का नाम</string>
+    <string name="no_data_found">कोई डेटा नहीं हैं</string>
+    <string name="please_chekc_network">कृपया आप नेटवर्क कनेक्शन की जाँच करें।</string>
+    <string name="check_all">सभी चुने</string>
+    <string name="age_age">आयु</string>
+    <string name="DateofBirth">जन्म की तारीख</string>
+    <string name="expected_price_per_unit">प्रति यूनिट अपेक्षित मूल्य</string>
+    <string name="accept">स्वीकार</string>
+    <string name="reject">अस्वीकार</string>
+    <string name="view_vendor_list">देखें विक्रेता सूची</string>
+    <string name="select_crop">क्रॉप का चयन करें</string>
+    <string name="select_plant">पौधे का चयन करें</string>
+    <string name="accept_by_vendor">विक्रेता द्वारा स्वीकार करें</string>
+    <string name="default_notification_channel_id">Channel ID</string>
+    <!--Language Type-->
+    <string name="Eng">English</string>strings.xml
+    <string name="Hindi">हिन्दी</string>
+    <string name="Gugrati">गुजराती</string>
+    <string name="kannada">कन्नड़</string>
+    <!-- Language for Hindi-->
+    <string name="hone_screen">मुख्य स्थान</string>
+    <string name="Farmer_detals">किसान विवरण</string>
+    <string name="farmer_reg">किसान पंजीकरण</string>
+    <string name="crop_planning">फसल योजना</string>
+    <string name="crop_monetring">फसल रखरखाव</string>
+    <string name="input_ording">कृषि बाज़ार</string>
+    <string name="crop_sale">फसल बिक्री</string>
+    <string name="land_holding">कृषिभूमि</string>
+    <string name="help_line">किसान कॉल सेण्टर</string>
+    <string name="synchronize">इंटरनेट पर अपलोड करें</string>
+    <string name="knowledge_tranning">ज्ञान और प्रशिक्षण</string>
+    <string name="Change_Farmer">किसान बदलो</string>
+    <string name="Remove">हटाएं </string>
+    <string name="INPUT_ORDERING">कृषि सामग्री </string>
+    <string name="INPUT_ORDERING_HOME">कृषि सामग्री </string>
+
+
+
+
+    <!-- Language for English-->
+
+    <string name="total">कुल</string>
+    <string name="Crop">फसल</string>
+
+    <string name="Production_Details">उत्पादन विवरण</string>
+    <string name="Sale_Details">बिक्री विवरण</string>
+
+    //Add trainer
+    <string name="Training_Name">प्रशिक्षण का नाम </string>
+    <string name="Training_Name_">्रशिक्षण का नाम :</string>
+    <string name="Training_Date">प्रशिक्षण तिथि </string>
+    <string name="Training_Date_">पप्रशिक्षण तिथि :</string>
+    <string name="Location">स्थान </string>
+    <string name="Trainer_Name">ट्रेनर का नाम </string>
+    <string name="Trainer_Destination">ट्रेनर का पद</string>
+
+    <string name="land_visit">भूमि देखी गई</string>
+
+    //Change Password
+    <string name="Password">पासवर्ड</string>
+
+
+    <string name="Crop_Name">फसल का नाम </string>
+    <string name="Total_Number_Of_Plant">पौधे की कुल संख्या</string>
+
+
+    <string name="Please_take_image_of_plant">कृपया पौधे की छवि लें</string>
+    <string name="Please_select_sub_crop">Please select sub crop</string>
+    <string name="Please_select_crop">कृपया फसल का चयन करें</string>
+    <string name="Please_take_another_image">कृपया दूसरी छवि लें</string>
+    <string name="ImageCropper1">अपनी प्रोफ़ाइल तस्वीर को संग्रहीत करने के लिए इमेजक्रॉपर को संग्रहण की आवश्यकता है।</string>
+    <string name="ImageCropper2">प्रोफ़ाइल चित्र लेने के लिए इमेजक्रॉपर को कैमरा एक्सेस की आवश्यकता है।</string>
+    <string name="ImageCropper3">प्रोफाइल पिक्चर लेने के लिए इमेजक्रॉपर को कैमरा और स्टोरेज एक्सेस की जरूरत होती है।</string>
+    <string name="Select_Picture">चित्र का चयन करें</string>
+    <string name="Please_select_another_image">कृपया दूसरी छवि चुनें</string>
+    <string name="profile_picture">कृपया अलग प्रोफ़ाइल चित्र चुनें।</string>
+
+    // Add plant
+    <string name="Crop_Category">फसल श्रेणी </string>
+    <string name="Sub_Crop_Category">उप फसल श्रेणी</string>
+    <string name="Land">कृषिभूमि</string>
+    <string name="Geo_Cordinates">भू निर्देशांक</string>
+    <string name="Price">कीमत</string>
+    <string name="Submit">प्रस्तुत</string>
+    <string name="TAKE_PICTURE_OF_CROP">फसल की तस्वीर लेना</string>
+    <string name="Add_Plant">नया पौधा जोड़े</string>
+    <string name="visit_plant">पौधा देखे</string>
+
+
+
+
+
+    //
+    <string name="CROP_LIST">03 फसल सूची</string>
+    <string name="SUB_CROP_LIST">उप फसल सूची</string>
+    <string name="Select_Crop_Category">फसल श्रेणी का चयन करें</string>
+    <string name="Select_Land">भूमि का चयन करें</string>
+    <string name="Select_Subcategory">उपश्रेणी का चयन करें</string>
+    <string name="Search">खोज करें</string>
+    <string name="Search_">खोज करें... </string>
+
+    <string name="No_data_available_for_current_search">वर्तमान खोज के लिए कोई डेटा उपलब्ध नहीं है</string>
+    <string name="Plant_ID">फसल पहचान</string>
+    <string name="Plant_Name">पौधे का नाम</string>
+    <string name="Farmer_Name">किसान का नाम</string>
+    <string name="Land_ID">भूमि पहचान संख्या</string>
+    <string name="Geo_Coordinates">भू निर्देशांक</string>
+
+
+    <string name="VIEW_PLANT">पौधे का निरक्षण करे</string>
+    <string name="Not_Available">उपलब्ध नहीं है</string>
+    <string name="Sub_Plantation">उप वृक्षारोपण</string>
+    <string name="Post_Plantation">वृक्षारोपण के बाद कार्य </string>
+    <string name="View_Plant_Growth">पौधे की वृद्धि देखें</string>
+    <string name="UPLOAD_IMAGE">फोटो अपलोड करे</string>
+
+    <string name="Crop_Monitoring">फसल की निगरानी</string>
+    <string name="Sub_Monitoring_List">उप निगरानी सूची</string>
+
+    <string name="LAND_HOLDING">कृषिभूमि</string>
+    <string name="select">चुनते हैं</string>
+    <string name="Land_Area">भूमि क्षेत्रफल</string>
+    <string name="View_Land">भूमि देखें</string>
+    <string name="Edit_Land">भूमि मैं परिवर्तन करे</string>
+
+    // Add land
+    <string name="land_details">भूमि विस्तार</string>
+    <string name="Total_Plant">कुल पौधा</string>
+    <string name="Total">कुल</string>
+    <string name="Total_">कुल :</string>
+    <string name="View_In_Map">मानचित्र में देखें</string>
+    <string name="Please_enter_land_quantity">कृपया भूमि की मात्रा दर्ज करें</string>
+    <string name="Please_select_unit">कृपया इकाई चुनें</string>
+    <string name="Please_take_image_of_land">कृपया भूमि की छवि लें</string>
+    <string name="Farmer_Selection">किसान चयन</string>
+    <string name="ADD_LAND">अन्य भूमि जोड़ें</string>
+    <string name="Land_Name">भूमि नाम</string>
+    <string name="Land_Soil_Info">भूमि मिट्टी की जानकारी</string>
+    <string name="select_soil_chemical_composition">मिट्टी रासायनिक विशेषताओं का चयन करें</string>
+    <string name="Select_Soil_Characteristics">मिट्टी विशेषताओं का चयन करें</string>
+    <string name="Soil_Color">मिट्टी का रंग</string>
+    <string name="Soil_Type">मिट्टी के प्रकार</string>
+    <string name="Filtration_rate">पानी छानने की दर</string>
+    <string name="Soil_Texture">मिट्टी बनावट</string>
+    <string name="pH">पीएच</string>
+    <string name="Bulk_Density">थोक घनत्व</string>
+    <string name="Cation_exchange_capacity">कटियन एक्सचेंज क्षमता</string>
+    <string name="EC">बिजली चालकता</string>
+    <string name="P">फास्फोरस</string>
+    <string name="S">सल्फर</string>
+    <string name="Mg">मैग्नीशियम</string>
+    <string name="K">पोटैशियम</string>
+    <string name="N">नाइट्रोजन</string>
+    <string name="Ca">कैल्शियम</string>
+    <string name="Land_Selection">भूमि का चयन</string>
+
+
+    //Add Query
+
+
+
+    <string name="SYNC_DATA">इंटरनेट पे अपलोड करे </string>
+    <string name="Sync_Databtn">इंटरनेट पे अपलोड करे</string>
+    <string name="Pending">विचाराधीन</string>
+    <string name="Farmer_Registration">किसान पंजीकरण</string>
+    <string name="Crop_Sale">फसल बिक्री</string>
+    <string name="services">सेवाएं</string>
+
+    <string name="INPUT_ORDERING_LIST">मँगाया गई कृषि वस्तु</string>
+    <string name="Years">वर्षों</string>
+    <string name="Input_Type">निवेष का प्रकार</string>
+    <string name="Request_Raised_by_Farmer">किसान से अनुरोध</string>
+    <string name="add_input_ordering">प्लस आइकन पर क्लिक करके अधिक इनपुट ऑर्डरिंग जोड़ें।</string>
+    <string name="Select_Date">तारीख़ चुनें</string>
+    <string name="To_Date">तारीख तक</string>
+    <string name="From_Date">तारीख से</string>
+    <string name="Select_Item">वस्तु चुनें</string>
+
+    <string name="Quantity">मात्रा</string>
+    <string name="Select_Unit">इकाई का चयन करें</string>
+    <string name="Status">स्थिति</string>
+    <string name="Items">आइटम</string>
+    <string name="Item">आइटम</string>
+    <string name="Date">दिनांक</string>
+    <string name="referred_to_vendor">वेंडर को रैफर किया</string>
+    <string name="Cancel">रद्द करना</string>
+    <string name="helplineMenu">किसान कॉल सेण्टर</string>
+
+
+
+    <string name="Season">कृषि मौसम</string>
+    <string name="select_season">कृषि मौसम का चयन करे</string>
+
+    <string name="Please_wait">कृपया प्रतीक्षा कीजिये...</string>
+    <string name="HELPLINE">किसान कॉल सेण्टर</string>
+    <string name="If_You_have_any_query_please">खेती सम्बंदित समस्या</string>
+    <string name="For_Click_Here">यहाँ क्लिक करें</string>
+    <string name="HELPLINEs">किसान सहायता</string>
+    <string name="Always_there_to_Help_you">हमेशा आपकी मदद करने के लिए तत्पर</string>
+    <string name="Call_Now">कॉल करें</string>
+    <string name="LIST_OF_QUERIES">समस्याओ की सूचि</string>
+    <string name="Farmer">किसान</string>
+    <string name="Responsed">जवाब दिया</string>
+    <string name="Query">समस्या</string>
+    <string name="Add_Query">समस्या दर्ज करे</string>
+    <string name="Please_Write_Your_Query">अपना सवाल लिखे</string>
+    <string name="Browse">कृपया छवि लें</string>
+    <string name="Please_take_image">कृपया छवि लें</string>
+    <string name="Submit_Query">समस्या प्रस्तुत करे </string>
+
+
+    <!--   Farmer Registration -->
+    <string name="FARMER_LIST">किसान सूची</string>
+    <string name="FARMER_DETAILS">किसान का विवरण</string>
+    <string name="select_farmer">किसान का चयन करें</string>
+    <string name="select_unit">इकाई</string>
+    <string name="click">क्लिक</string>
+    <string name="quantity">मात्रा</string>
+    <string name="select_items">वस्तुएं चुनें</string>
+    <string name="farmer_registration">किसान पंजीकरण</string>
+    <string name="edit_profile">प्रोफ़ाइल संपादित करें</string>
+    <string name="select_religion">धर्म का चयन करें</string>
+    <string name="select_cast">कास्ट सेलेक्ट करें</string>
+    <string name="select_education">शिक्षा का चयन करें</string>
+    <string name="select_category">श्रेणी का चयन करें</string>
+    <string name="select_crop_category">फसल श्रेणी का चयन करे</string>
+    <string name="select_annual_income">वार्षिक आय का चयन करें</string>
+    <string name="select_zone">कृषि जलवायु क्षेत्र का चयन करें</string>
+    <string name="select_alternative_livelihood">वैकल्पिक आजीविका का चयन करें</string>
+    <string name="select_other_ids">अन्य Ids का चयन करें</string>
+    <string name="otp_number">कृपया भेजा गया सत्यापन कोड टाइप करें</string>
+    <string name="FRAMER_DETAILS">किसान का विवरण</string>
+    <string name="select_sub_crop_category">उप फसल श्रेणी का चयन करें</string>
+    <string name="submit">प्रस्तुत</string>
+    <string name="Edit_Profile">प्रोफाइल में बदलाव करे</string>
+    <string name="crop_details">फसल विवरण</string>
+    <string name="Add_Crop_Details">फसल विवरण जोड़ें</string>
+    <string name="Set_As_Default">डिफाल्ट के रूप में सेट करे</string>
+    <string name="cropdetails">फसल विवरण</string>
+
+
+
+    <string name="Please_Enter_Farmer_Name">कृपया नाम दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Contact_Number">कृपया मान्य संपर्क नंबर दर्ज करें!</string>
+    <string name="Please_Enter_Fatherhusband_Name">कृपया पिता / पति का नाम दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Number">कृपया मान्य नंबर दर्ज करें!</string>
+    <string name="Please_Enter_ValidAge">कृपया मान्य आयु दर्ज करें!</string>
+    <string name="Please_select_BPL">कृपया BPL का चयन करें</string>
+    <string name="Please_select_Physical_Challenges">कृपया भौतिक चुनौतियां चुनें</string>
+    <string name="Please_select_Multicropping">कृपया मल्टीक्रॉपिंग का चयन करें</string>
+    <string name="Please_select_Fertilizer">कृपया फ़र्टिलाइज़र चुनें</string>
+    <string name="Please_select_IrrigationFacility">कृपया सिंचाई सुविधा का चयन करें</string>
+    <string name="Please_select_Id_Number">कृपया आईडी नंबर चुनें</string>
+    <string name="Aadhar_Card">आधार कार्ड</string>
+    <string name="Other_National_Id_Card">अन्य राष्ट्रीय आईडी कार्ड</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="Scan_Cancelled">स्कैन रद्द किया गया</string>
+    <string name="Noscan_data_received">कोई स्कैन डेटा प्राप्त नहीं हुआ!</string>
+    <string name="Scan">स्कैन करें</string>
+    <string name="Household_No">घरेलू नं</string>
+    <string name="Name">नाम</string>
+    <string name="Husband_Father_Name">पति / पिता का नाम</string>
+
+    <string name="Mobile_Number">मो.</string>
+    <string name="What_did_you_know">तुम्हें क्या पता है ?</string>
+    <string name="Address">पता</string>
+    <string name="State">राज्य</string>
+    <string name="District">जिला</string>
+    <string name="Block">खण्ड</string>
+    <string name="Village">गाँव</string>
+    <string name="Pincode">पिन कोड</string>
+    <string name="BPL">गरीबी रेखा से नीचे</string>
+    <string name="Religion">धर्म</string>
+    <string name="Caste">जाति</string>
+    <string name="Education_Qualification">शैक्षणिक योग्यता</string>
+    <string name="Education_Details">शिक्षा विवरण</string>
+    <string name="Physically_Challenged">दिव्यांग</string>
+    <string name="Category">वैवाहिक स्थिति</string>
+    <string name="Category_">वैवाहिक स्थिति</string>
+    <string name="Total_Landholding">कुल भूमि (एकड़ में)</string>
+    <string name="Annual_Income">वार्षिक आय</string>
+    <string name="Agro_climaticzone">कृषि-जलवायु क्षेत्र</string>
+    <string name="Alternative_Livelihood">वैकल्पिक आजीविका</string>
+    <string name="No_of_members_migrated_to_city_for_work">काम के लिए शहर में प्रवासित सदस्यों की संख्या</string>
+    <string name="Crop_Vegetable_Details">फसल / सब्जी का विवरण</string>
+    <string name="Multi_cropping">क्या एक भूमि मे एक से अधिक फसल लगते हैं</string>
+    <string name="Fertilizer">क्या आप खाद इस्तेमाल करते हैं</string>
+    <string name="Irrigation_Facility">क्या सिंचाई सुविधा हैं</string>
+    <string name="Family_Details">पारिवारिक विवरण</string>
+    <string name="Add_More_Family_Member">अन्य परिवार सदस्य जोड़े</string>
+    <string name="Female">महिला</string>
+    <string name="Household_No.">घर नं</string>
+
+    <string name="Head_of_the_Household">घर का मुखिया</string>
+    <string name="Total_Income">कुल आय</string>
+    <string name="Crop_Detailes">फसल / विवरण</string>
+
+    <string name="It_Okay_Reset_your_password">ठीक है! अपना पासवर्ड रीसेट करें</string>
+    <string name="Enter_User_Mobile_No.">
+उपयोगकर्ता मोबाइल नंबर दर्ज करें</string>
+    <string name="Reset_Password">पासवर्ड रीसेट करें</string>
+
+    <string name="pending"> अपूर्ण </string>
+
+    <string name="Knowledge">कृषि ज्ञान</string>
+    <string name="Tranning">प्रशिक्षण</string>
+    <string name="Tranning_">03 प्रशिक्षण</string>
+    <string name="Register_as_a">रजिस्टर करें</string>
+    <string name="Response">जवाब</string>
+    <string name="I_will_attend">मैं भाग लूँगा</string>
+    <string name="View_Attendance">उपस्थिति देखें</string>
+
+    <string name="Company_Name">कंपनी का नाम</string>
+    <string name="Contact_Number">संपर्क संख्या</string>
+    <string name="Contact_Number_">संपर्क संख्या</string>
+    <string name="Proprietor">मालिक</string>
+    <string name="Email">ईमेल</string>
+    <string name="Vendor_Category">विक्रेता श्रेणी</string>
+    <string name="GSTN">GSTN</string>
+    <string name="PAN_Card_No">पैन कार्ड नं</string>
+    <string name="Upload">अपलोड करें</string>
+    <string name="Aadhar_No.">आधार कार्ड नं</string>
+
+
+    <string name="Area">क्षेत्रफल</string>
+
+    <string name="Education">शिक्षा विवरण</string>
+    <string name="Income">आय</string>
+
+    <string name="Crop_Status">फसल की स्थिति</string>
+    <string name="Somthing_Write_here">कुछ लिखो यहाँ</string>
+    <string name="SUBMIT_PLANT_GROWTH">प्रस्तुत करे</string>
+    <string name="Back">पीछे जाए</string>
+
+    <string name="Record_Audio">आवाज़ द्वारा भेजे</string>
+    <string name="Record">रिकॉर्ड करें</string>
+    <string name="Stop">रुकें</string>
+    <string name="Play">चालू करे</string>
+    <string name="STOP_PLAYING_RECORDING">रिकॉर्ड करना रोके</string>
+
+    <string name="Confirm_Password">पासवर्ड की पुष्टि कीजिये</string>
+    <string name="Quantity_Unit">Quantity Unit</string>
+
+    <string name="Answered">उत्तर प्राप्त</string>
+    <string name="Not_Answered">जवाब नहीं दिया</string>
+
+    <string name="Approved">स्वीकृत</string>
+    <string name="Rejected">रद्द</string>
+    <string name="Vendor_Referred">विक्रेता रेफेर किया गया</string>
+    <string name="New_Input_Ordering">नया कृषि सामग्री</string>
+
+    <string name="Training_And_Puring_of_fruits_Plants">प्रशिक्षण और फलों की खेती</string>
+    <string name="Trending_Knowledge_Products">ज्ञान उत्पाद</string>
+
+    <string name="Show_Password">पासवर्ड देखे</string>
+    <string name="Forgot_Password">पासवर्ड भूल गए</string>
+
+    <string name="Enter_OTP">OTP डाले</string>
+    <string name="Verify_OTP">OTP सत्यापित करें</string>
+
+    <string name="Upcoming_Training_2020">आना वाले प्रशिक्षण</string>
+    <string name="Training_and_pruning_of_fruit_plants">फलों के पौधों का प्रशिक्षण और प्रूनिंग</string>
+
+    <string name="Plant_Status">पौधों की स्थिति</string>
+    <string name="View_Plant">पौधे का निरक्षण करे</string>
+    <string name="Category_Name">श्रेणी नाम</string>
+    <string name="Sub_Category_Name">उप श्रेणी नाम</string>
+
+    <string name="Save_Data">डेटा सेव करे</string>
+    <string name="Quantity_Units">मात्रा (यूनिट)</string>
+    <string name="View_Details">विवरण देखें</string>
+    <string name="Gender">लिंग</string>
+    <string name="Occupation">व्यवसाय</string>
+    <string name="CATTLE_MILLET">CATTLE (PEARL) MILLET</string>
+    <string name="Question">सवाल</string>
+    <string name="Actvity_Plant">गतिविधि/पौधा</string>
+    <string name="Camera">कैमरा द्वारा</string>
+    <string name="Gallery">फ़ोन गैलरी से</string>
+    <string name="Accept">स्वीकार करना</string>
+    <string name="Attend">भाग ले</string>
+    <string name="Reject">रद्द करे</string>
+    <string name="Enter_remarks">टिप्पणी दर्ज करें</string>
+    <string name="Remarks">टिपण्णी</string>
+    <string name="Total_Crop">कुल फ़सल: </string>
+    <string name="Terms_Condition">नियम व शर्त</string>
+    <string name="disclaimer">मैंने पढ़ा है और हमारे नियम और शर्तें लागू होते हैं और अस्वीकार करते हैं</string>
+    <string name="Please_select_Handicapped">
+कृपया विकलांगों का चयन करें</string>
+    <string name="handicapped">विकलांग</string>
+    <string name="From_Time">समय से</string>
+    <string name="To_Time">समय तक</string>
+    <string name="Training_Time">प्रशिक्षण का समय</string>
+    <string name="resend_otp">ओटीपी पुनः भेजें</string>
+    <string name="Total_Training">कुल ट्रेनिंग</string>
+    <string name="Total_Query">कुल समस्याए</string>
+    <string name="brief_description">संक्षिप्त विवरण</string>
+    <string name="planted_date">वृक्षारोपण की तारीख</string>
+    <string name="fruited_date">फसल पकने का समय</string>
+    <string name="select_Units">इकाई</string>
+    <string name="query_view">समस्या देखें</string>
+    <string name="add_training">प्रशिक्षण जोड़ें</string>
+    <string name="select_soil_type">मिट्टी के प्रकार का चयन करें</string>
+    <string name="plant_growth_list">पौधे की वृद्धि सूची</string>
+    <string name="plant_growth_details">पौधे की वृद्धि विवरण</string>
+    <string name="Add_Plant_growth">नया पौधा की वृद्धि जोड़े </string>
+    <string name="crop_sale_selected">फसल बिक्री चयनित</string>
+    <string name="crop_production_selected">फसल उत्पादन चयनित</string>
+    <string name="Do_you_want_to_logout">"क्या आप वास्तव में एप्लिकेशन से बाहर निकलना चाहते हैं?"</string>
+    <string name="Please_Enter_Training_Name">कृपया प्रशिक्षण नाम दर्ज करें!</string>
+    <string name="Please_Enter_Location">कृपया स्थान दर्ज करें!</string>
+    <string name="Please_Enter_Trainner_Name">कृपया ट्रेनर का नाम दर्ज करें!</string>
+    <string name="Please_Enter_Trainer_Destination">कृपया ट्रेनर गंतव्य दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Date_of_Birth">कृपया जन्म तिथि दर्ज करें!</string>
+    <string name="Please_Enter_Company_Name">कृपया कंपनी का नाम दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Proprietor">कृपया वैध प्रोप्राइटर दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Address_Number">कृपया मान्य पता नंबर दर्ज करें!</string>
+    <string name="Please_Enter_Valid_GSTN_Number">कृपया मान्य
+जीएसटीएन नंबर दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Pan_card_Number">कृपया मान्य पैन कार्ड नंबर दर्ज करें!</string>
+    <string name="Please_Enter_Valid_Aadhar_Number">कृपया मान्य आधार नंबर दर्ज करें!</string>
+    <string name="change_password">पासवर्ड बदलें</string>
+    <string name="Vendor_Registration">विक्रेता पंजीकरण</string>
+    <string name="add_query">समस्या दर्ज करे</string>
+    <string name="disclaimer_title">अस्वीकरण</string>
+    <string name="about_us">परिचय</string>
+    <string name="Male">
+नर</string>
+    <string name="Female_">
+महिला</string>
+    <string name="Others">
+अन्य</string>
+    <string name="Select_gender">
+लिंग चुनें</string>
+    <string name="training_details">प्रशिक्षण विवरण</string>
+    <string name="update_soil">अद्यतन मिट्टी </string>
+    <string name="update_soil_list">अद्यतन मिट्टी सूची</string>
+    <string name="update_soil_info">अद्यतन मिट्टी की जानकारी</string>
+    <string name="soil_information">मिट्टी की जानकारी</string>
+    <string name="Select_Soil_Chemical_Characteristics">मिट्टी रासायनिक विशेषताओं का चयन करें</string>
+    <string name="select_input_type">निवेष के प्रकार का चयन करें</string>
+    <string name="select_land">भूमि का चयन करें</string>
+    <string name="select_year">वर्ष का चयन करें</string>
+    <string name="Other">अन्य</string>
+    <string name="select_soil_color">मिट्टी का रंग चुनें</string>
+    <string name="select_soil_characteristics">मिट्टी की विशेषताओं का चयन करें</string>
+    <string name="soil_characteristics">मिट्टी के लक्षण</string>
+    <string name="soil_chemical_composition">मृदा रासायनिक संरचना</string>
+    <string name="no_internet_data_saved_locally">इंटरनेट उपलब्ध नहीं है .. !! आपका डेटा स्थानीय डेटाबेस में सफलतापूर्वक बचाया गया है।</string>
+    <string name="change_language">भाषा बदलो</string>
+    <string name="addCropdetails">अधिक फसल विवरण जोड़ें</string>
+    <string name="approved">"मंजूरी"</string>
+    <string name="rejected">"अस्वीकृत"</string>
+    <string name="vendor_referred">"विक्रेता ने निर्दिष्ट किया"</string>
+    <string name="new_input_ordering">नया निवेश आदेश</string>
+    <string name="Please_select_DOB_Or_Age">कृपया आयु या जन्म तिथि का चयन करें</string>
+    <string name="Scan_a_Aadharcard_QR_Code">आधार कार्ड क्यूआर कोड स्कैन करें</string>
+    <string name="no_audio_file_found">कोई ऑडियो फ़ाइल नहीं मिली</string>
+    <string name="select_Gender">लिंग</string>
+    <string name="select_from_date">तिथि से चयन करें</string>
+    <string name="select_to_date">आज तक का चयन करें</string>
+    <string name="enter_quantity">मात्रा दर्ज करें</string>
+    <string name="Resend_Otp">ओटीपी पुनः भेजें</string>
+    <string name="choose_language">भाषा चुनें</string>
+    <string name="please_select_village">गाँव का चयन करें</string>
+    <string name="my_account">मेरा खाता</string>
+    <string name="sync_data">सिंक डेटा</string>
+
+    <string name="logout">लॉग आउट</string>
+    <string name="select_all">सभी का चयन करे</string>
+    <string name="Please_enter_correct_password">कृपया सही पासवर्ड दर्ज करें</string>
+    <string name="Please_enter_correct_Confirm_password">कृपया सही पासवर्ड दर्ज करें</string>
+    <string name="Please_Check_Password">कृपया पासवर्ड की जाँच करें</string>
+    <string name="Please_Wait">कृपया प्रतीक्षा करें...</string>
+    <string name="Otp_Authentication">OTP ऑथेंटिकेशन</string>
+    <string name="total_tree">कुल पेड़</string>
+    <string name="healthy">
+स्वस्थ</string>
+    <string name="photo">कृपया छवि ले लो</string>
+    <string name="terms_and_conmdition"><![CDATA[Please select Terms & Condition]]></string>
+    <string name="agree_our_terms_and_conditions"><![CDATA[[मैंने हमारे नियम और शर्त लागू और अस्वीकरण को पढ़ा और सहमत है]]></string>
+    <string name="your_number_already_exist">आपका नंबर पहले से मौजूद है.</string>
+    <string name="select_relation">संबंध का चयन करें</string>
+    <string name="relationship">संबंध</string>
+    <string name="please_select_fruited_date">कृपया तारीख का चयन करें</string>
+    <string name="please_select_planted_date">कृपया तारीख का चयन करें</string>
+    <string name="Please_Enter_Trainer_Date">कृपया प्रशिक्षण तिथि दर्ज करें</string>
+    <string name="Please_Enter_Trainer_Time">कृपया प्रशिक्षण समय दर्ज करें</string>
+    <string name="Please_enter_description">कृपया विवरण दर्ज करें</string>
+    <string name="please_enter_email">कृपया मान्य ईमेल आईडी दर्ज करें</string>
+    <string name="please_enter_address">कृपया पता दर्ज करें</string>
+    <string name="audio">रिकॉर्ड किया गया ऑडियो</string>
+    <string name="Please_enter_valid_id">कृपया मान्य आईडी दर्ज करें</string>
+    <string name="crop_sale_production_details">फसल बिक्री (उत्पादन विवरण)</string>
+    <string name="crop_sale_sale_details">फसल बिक्री (बिक्री विवरण)</string>
+    <string name="close">CLOSE</string>
+    <string name="restart_app_message">बदलने के लिए ऐप को फिर से शुरू करना</string>
+    <string name="ok">ठीक</string>
+    <string name="alert">चेतावनी!</string>
+    <string name="pleae_enter_mobile_email">कृपया मोबाइल या ईमेल दर्ज करें।</string>
+    <string name="please_enter_password">ದಯವಿಟ್ಟು ಪಾಸ್‌ವರ್ಡ್ ನಮೂದಿಸಿ.</string>
+    <string name="plase">कृपया प्रतीक्षा करें...</string>
+    <string name="qty">मात्रा</string>
+
+
+</resources>

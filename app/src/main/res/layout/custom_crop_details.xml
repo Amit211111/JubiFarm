@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/textviewboader"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_8dp"
+    app:cardBackgroundColor="#ECECEC"
+    app:cardCornerRadius="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1.4"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="@string/Crop_Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text=""
+                android:textColor="#01579b"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="@string/Area"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_Area"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text=""
+                android:textColor="#01579b"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="@string/Quantity"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qty"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text=""
+                android:textColor="#01579b"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="0.6"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="@string/Season"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_season"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text=""
+                android:textColor="#01579b"
+                android:textSize="9sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
+

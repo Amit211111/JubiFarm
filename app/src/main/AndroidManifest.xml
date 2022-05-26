@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sanket.jubifarm"
+    android:targetSandboxVersion="1"
+    tools:ignore="UnusedAttribute">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera.front" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".Livelihood.TrainningSurveyForm"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.RecycleDetailsView"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.Skill_Tracking_List"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.PS_Neem_LandHolding_List"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.PS_Synchronize"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.PS_LandHoldingList"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.PS_NeemPlantationList"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.FarmerRecycle"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.FarmerRegistrationForm"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.PS_LandHolding"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.NeemMonitoring"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.NeemPlantation"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.SkillTracking"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.ParyavaranSakhiHome"
+            android:exported="false" />
+        <activity
+            android:name=".Livelihood.MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.UpdatedSoilInFo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SoilInFoListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropSaleSubActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AboutUs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.Disclaimer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ViewCropActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.HelplineMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.InputOrderingHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.VisitPlant"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SelectCropActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.View_Attendance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SubMonitoring"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Supplyer.Supplayer_otp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.VendorList"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".Activity.ChangePassword"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.OtpScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.sanket.jubifarm.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"
+                tools:replace="android:resource" />
+        </provider>
+
+        <activity
+            android:name=".Activity.VendorRegistration"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.QueryViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AddQueryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.QueryListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ViewGrowthActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.PlantViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropDetalsInPut"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropSaleDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.PlantGrowthListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SubCropPlaninigActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AddPlantGrowthActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.InputOrdiringListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.ViewLandActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.LandHoldingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.TranningDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.FarmerDeatilActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SyncDataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropMonitoring"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.InPutOrdiringActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.RegistrationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.TrainingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SubPlantationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.PostPlantationAcivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.KnowledgeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
+        <activity
+            android:name=".Activity.HelpLineActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.HomeAcivity"
+            android:parentActivityName=".Livelihood.MainMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AddPlantAcivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AddLandActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.LoginScreenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.FarmerRegistration"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.CropPlanning"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AddTranner"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- firebase -->
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:directBootAware="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service android:name=".service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.MyJobService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver android:name=".receiver.MyAlarmReceiver" /> <!-- firebase notification -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/app_icon" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+    </application>
+
+</manifest>

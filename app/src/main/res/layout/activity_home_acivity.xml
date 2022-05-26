@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="5dp"
+    tools:context=".Activity.HomeAcivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_select_farmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:weightSum="3"
+                    >
+                    <TextView
+                        android:id="@+id/tv_farmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="17dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/addplant"
+                        android:gravity="center"
+                        android:text="Ram Tiwari"
+                        android:textColor="#ffffff"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_change"
+                        android:layout_width="match_parent"
+                        android:layout_height="17dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/blackeditbutton"
+                        android:gravity="center"
+                        android:text="@string/Change_Farmer"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tv_remove"
+                        android:layout_width="match_parent"
+                        android:layout_height="17dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/removebutton"
+                        android:gravity="center"
+                        android:text="@string/Remove"
+                        android:textColor="#000"
+                        android:textSize="11sp" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:weightSum="4">
+
+                    <LinearLayout
+                        android:id="@+id/ll_row1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:id="@+id/ll_crop_farmeReg"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_farmer2" />
+
+                            <TextView
+                                android:id="@+id/tv_farmer_reg"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/Farmer_detals"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_LnadHolding"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_land_holding" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/land_holding"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_row3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:id="@+id/ll_crop_planning"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_crop_planning" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/crop_planning"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_Sync"
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:id="@+id/imgRegistration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_sync" />
+
+                            <TextView
+                                android:id="@+id/txtRegistration"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/synchronize"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_row4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:id="@+id/ll_crop_sale"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_sale" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/crop_sale"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_crop_monitoring"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_crop_monitoring" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/Crop_Monitoring"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+                        <!--<LinearLayout
+                            android:id="@+id/ll_Helpline"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_helpline" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="Helpline"
+                                android:textColor="@android:color/white"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:textSize="@dimen/text_10"  />
+
+                        </LinearLayout>-->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_row2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:id="@+id/ll_crop_inputOrd"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+                                android:id="@+id/input"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_services" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:gravity="center"
+                                android:text="@string/input_ording"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_Helpline"
+                            android:layout_width="0dip"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:weightSum="2">
+
+                            <ImageView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_helpline" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/help_line"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin5"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dip"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="2">
+
+                            <ImageView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_services" />
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="Services"
+                                android:textColor="@android:color/white"
+                                android:textSize="14dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_knowledge"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="5dp"
+                            android:orientation="vertical"
+                            android:weightSum="1">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:src="@drawable/ic_training" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/_10dp"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:layout_marginRight="@dimen/_10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/buttanshapbalck"
+                                android:fontFamily="@font/itcavantagradestdbk"
+                                android:gravity="center"
+                                android:text="@string/knowledge_tranning"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/text_10" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+

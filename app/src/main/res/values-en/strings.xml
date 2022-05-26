@@ -1,0 +1,509 @@
+<resources>
+
+    <string name="app_name">JubiFarm</string>
+    <string name="enteremail">Enter email Id </string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="enterpsswrd">Enter Password </string>
+    <string name="login">Login</string>
+    <string name="createnewaccount">CREATE NEW ACCOUNT </string>
+    <string name="title_activity_crop_planning">CropPlanning</string>
+
+    <string name="select_picture">Select Picture</string>
+    <string name="internal_storage">Internal Storage</string>
+    <string name="profile_photo_msg">Click on Icon for profile photo</string>
+    <string name="try_again">Try Again</string>
+    <string name="otp_verify">OTP Verify</string>
+
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="exit">Exit!</string>
+    <string name="really_exit">Do you really want to exit application?</string>
+    <string name="PleaseselectFarmer">Please select farmer</string>
+
+    <string name="select_state">Select State</string>
+    <string name="select_district">Select District</string>
+    <string name="select_bloodgroup">Select Blood Group</string>
+    <string name="select_block">Select Block</string>
+    <string name="select_village">Select Village</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="total_vendors">Total Vendors :</string>
+    <string name="no_data_found">No data found!</string>
+    <string name="please_chekc_network">Please check you network connection.</string>
+    <string name="check_all">Check all</string>
+    <string name="age_age">Age</string>
+    <string name="DateofBirth">Date of Birth</string>
+    <string name="expected_price_per_unit">Expected Price per Unit</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="view_vendor_list">View Vendor List</string>
+    <string name="select_crop">SELECT CROP</string>
+    <string name="select_plant">Select Plant</string>
+    <string name="accept_by_vendor">Accept by Vendor</string>
+    <string name="default_notification_channel_id">Channel ID</string>
+ <!--Language Type-->
+ <string name="Eng">English</string>strings.xml
+ <string name="Hindi">हिन्दी</string>
+ <string name="Gugrati">गुजराती</string>
+ <string name="kannada">कन्नड़</string>
+   <!-- Language for English-->
+    <string name="hone_screen">HOME</string>
+    <string name="Farmer_detals">Farmer Details</string>
+    <string name="farmer_reg">Farmer Registration</string>
+    <string name="crop_planning">Crop Planning</string>
+    <string name="crop_monetring">Crop Monitoring</string>
+    <string name="input_ording">Input Ordering</string>
+    <string name="crop_sale">Crop Sale</string>
+    <string name="land_holding">Land Holding</string>
+    <string name="help_line">Helpline</string>
+    <string name="synchronize">Synchronize</string>
+    <string name="are_you_sure_to_want_to_exit_application">Are you sure to want to exit application?</string>
+
+    <string name="knowledge_tranning">Knowledge &amp; Training</string>
+
+ <!-- Language for English-->
+
+ <string name="total">Total</string>
+ <string name="Crop"> Crop </string>
+
+    <string name="Crop_Name">Crop Name </string>
+    <string name="Total_Number_Of_Plant">Total Number Of Plant</string>
+    <string name="Add_Plant">Add Plant</string>
+    <string name="Please_take_image_of_plant">Please take image of plant</string>
+    <string name="Please_select_crop">Please select crop</string>
+    <string name="Please_take_another_image">Please take another image</string>
+    <string name="ImageCropper1">ImageCropper needs Storage access in order to store your profile picture.</string>
+    <string name="ImageCropper2">ImageCropper needs Camera access in order to take profile picture.</string>
+    <string name="ImageCropper3">ImageCropper needs Camera and Storage access in order to take profile picture.</string>
+    <string name="Select_Picture">Select Picture</string>
+    <string name="Please_select_another_image">Please select another image</string>
+    <string name="profile_picture">Please select different profile picture.</string>
+
+    <string name="Crop_Category">Crop Category </string>
+    <string name="Sub_Crop_Category">Sub Crop Category</string>
+    <string name="Land">Land</string>
+    <string name="Geo_Cordinates">Geo Coordinates</string>
+    <string name="Submit">Submit</string>
+    <string name="TAKE_PICTURE_OF_CROP">Take Picture of Crop</string>
+
+
+    <string name="CROP_LIST"> 03 Crop List</string>
+    <string name="SUB_CROP_LIST">SUB CROP LIST</string>
+    <string name="Select_Crop_Category">Select Crop Category</string>
+    <string name="Select_Subcategory">Select Subcategory</string>
+    <string name="Select_Land">Select Land</string>
+    <string name="Search">Search</string>
+   <string name="No_data_available_for_current_search">No data available for current search</string>
+   <string name="Plant_ID">Plant ID</string>
+   <string name="Plant_Name">Plant Name</string>
+   <string name="Farmer_Name">Farmer Name</string>
+   <string name="Land_ID">Land ID</string>
+   <string name="Geo_Coordinates">Geo Coordinates</string>
+
+    <string name="VIEW_PLANT">VIEW PLANT</string>
+    <string name="Not_Available">Not Available</string>
+    <string name="Sub_Plantation">Sub Plantation</string>
+    <string name="Post_Plantation">Post Plantation </string>
+    <string name="View_Plant_Growth">View Plant Growth</string>
+
+
+    <string name="Crop_Monitoring">Crop Monitoring</string>
+    <string name="Sub_Monitoring_List">Sub Monitoring List</string>
+
+    <string name="LAND_HOLDING">LAND HOLDING</string>
+    <string name="select">select</string>
+    <string name="Land_Area">Land Area</string>
+    <string name="View_Land">View Land</string>
+    <string name="Edit_Land">Edit Land</string>
+
+    <string name="land_details">Land Details</string>
+    <string name="Total_Plant">Total Plant</string>
+    <string name="Total">Total </string>
+    <string name="View_In_Map">View In Map</string>
+    <string name="Please_enter_land_quantity">Please enter land quantity</string>
+    <string name="Please_select_unit">Please select unit</string>
+    <string name="Please_take_image_of_land">Please take image of land</string>
+    <string name="Farmer_Selection">Farmer Selection</string>
+    <string name="ADD_LAND">ADD LAND</string>
+
+    <string name="SYNC_DATA">SYNC DATA</string>
+    <string name="Sync_Databtn">Sync Data</string>
+    <string name="Pending">Pending</string>
+    <string name="Farmer_Registration">Farmer Registration</string>
+    <string name="Crop_Sale">Crop Sale</string>
+    <string name="services">Services</string>
+
+    <string name="INPUT_ORDERING_LIST">INPUT ORDERING LIST</string>
+    <string name="Years">Years</string>
+    <string name="Input_Type">Input Type</string>
+    <string name="Request_Raised_by_Farmer">Request Raised by Farmer</string>
+    <string name="add_input_ordering">Add More Input Ordering click on plus icon.</string>
+    <string name="Select_Date">Select Date</string>
+    <string name="To_Date">To Date</string>
+    <string name="From_Date">From Date</string>
+    <string name="Select_Item">Select Item</string>
+    <string name="Quantity">Quantity</string>
+    <string name="Select_Unit">Select Unit</string>
+
+
+    <string name="select_crop_category">Select Crop Category</string>
+    <string name="Status">Status</string>
+    <string name="Items">Items</string>
+    <string name="Date">Date</string>
+    <string name="referred_to_vendor">Referred to Vendor</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Please_wait">Please wait...</string>
+
+    <string name="HELPLINE">HELPLINE</string>
+    <string name="If_You_have_any_query_please">If You have any query please</string>
+    <string name="For_Click_Here">For Click Here</string>
+    <string name="HELPLINEs">24*7 HELPLINE</string>
+    <string name="Always_there_to_Help_you">Always there to Help you</string>
+    <string name="Call_Now">Call Now</string>
+    <string name="LIST_OF_QUERIES">LIST OF QUERIES</string>
+    <string name="Farmer">Farmer</string>
+    <string name="Responsed">Responsed</string>
+    <string name="Add_Query">Add Query</string>
+    <string name="Please_Write_Your_Query">Please Write Your Query </string>
+    <string name="Browse">Browse</string>
+    <string name="Submit_Query">Submit Query</string>
+
+    <!--   Farmer Registration -->
+    <string name="FARMER_LIST">FARMER LIST</string>
+    <string name="FARMER_DETAILS">FARMER DETAILS</string>
+    <string name="select_farmer">Select Farmer</string>
+    <string name="select_unit">Select Unit</string>
+    <string name="click">click</string>
+    <string name="quantity">Quantity</string>
+    <string name="select_items">Select Items</string>
+    <string name="farmer_registration">Farmer Registration</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="select_religion">Select Religion</string>
+    <string name="select_cast">Select Caste</string>
+    <string name="select_education">Select Education</string>
+    <string name="select_category">Select Category</string>
+    <string name="select_annual_income">Select Annual Income</string>
+    <string name="select_zone">Select Agro-climatic Zone</string>
+    <string name="select_alternative_livelihood">Select Alternative Livelihood</string>
+    <string name="select_other_ids">Select Other ID</string>
+    <string name="otp_number">Please type the verification code sent to</string>
+    <string name="FRAMER_DETAILS">FARMER DETAILS</string>
+    <string name="submit">Submit</string>
+
+    <string name="Please_Enter_Farmer_Name">Please Enter Farmer  Name!</string>
+    <string name="Please_Enter_Valid_Contact_Number">Please Enter Valid Contact Number!</string>
+    <string name="Please_Enter_Fatherhusband_Name">Please Enter Father/husband  Name!</string>
+    <string name="Please_Enter_Valid_Number">Please Enter Valid  Number!</string>
+    <string name="Please_Enter_ValidAge">Please Enter Valid  Age!</string>
+    <string name="Please_select_BPL">Please select BPL</string>
+    <string name="Please_select_Physical_Challenges">Please select Physical Challenges</string>
+    <string name="Please_select_Multicropping">Please select Multicropping</string>
+    <string name="Please_select_Fertilizer">Please select Fertilizer</string>
+    <string name="Please_select_IrrigationFacility">Please select IrrigationFacility</string>
+    <string name="Please_select_Id_Number">Please select Id Number</string>
+    <string name="Aadhar_Card">Aadhar Card</string>
+    <string name="Other_National_Id_Card">Other National ID Card</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="Scan_Cancelled">Scan Cancelled</string>
+    <string name="Noscan_data_received">No scan data received!</string>
+    <string name="Scan_a_Aadharcard_QR_Code">Scan a Aadhar Card QR Code</string>
+    <string name="Household_No">Household No</string>
+    <string name="Name">Name</string>
+    <string name="cropdetails">Crop Details</string>
+    <string name="crop_details">Crop Detail(s)</string>
+    <string name="Husband_Father_Name">Husband/ Father’s Name</string>
+
+    <string name="Mobile_Number">Mobile Number</string>
+    <string name="What_did_you_know">What did you know ?</string>
+    <string name="Address">Address</string>
+    <string name="State">State</string>
+    <string name="District">District</string>
+    <string name="Block">Block</string>
+    <string name="Village">Village</string>
+    <string name="Pincode">Pincode</string>
+    <string name="BPL">BPL</string>
+    <string name="Religion">Religion</string>
+    <string name="Caste">Caste</string>
+    <string name="Education_Qualification">Education Qualification</string>
+    <string name="Education_Details">Education Details</string>
+    <string name="Physically_Challenged">Physically Challenged</string>
+    <string name="Category">Martial Category</string>
+    <string name="Category_">Martial Category</string>
+    <string name="Total_Landholding">Total Landholding (In Acres)</string>
+    <string name="Annual_Income">Annual Income (In Rupees)</string>
+    <string name="Agro_climaticzone">Agro-climatic Zone</string>
+    <string name="Alternative_Livelihood">Alternative Livelihood</string>
+    <string name="No_of_members_migrated_to_city_for_work">No. of members migrated to city for work</string>
+    <string name="Crop_Vegetable_Details">Crop/ Vegetable Details</string>
+    <string name="Multi_cropping">Multi-cropping</string>
+    <string name="Fertilizer">Fertilizer</string>
+    <string name="Irrigation_Facility">Irrigation Facility</string>
+    <string name="Family_Details">Family Details</string>
+    <string name="Add_More_Family_Member">Add More Family Member</string>
+    <string name="Female">Female</string>
+
+    <string name="Head_of_the_Household">Head of the Household</string>
+    <string name="Total_Income">Total Income</string>
+    <string name="Crop_Detailes">Crop/Detailes</string>
+    <string name="Total_Crop">Total Crop: </string>
+    <string name="Query"> Query</string>
+    <string name="land_visit">Land Visited</string>
+    <string name="Terms_Condition"><![CDATA[Terms & Condition]]></string>
+    <string name="disclaimer"><![CDATA[I have read and agree our Terms & Conditions apply and Disclaimer]]></string>
+    <string name="select_sub_crop_category">Select Sub Crop Category</string>
+    <string name="Please_select_Handicapped">Please Select Handicapped</string>
+    <string name="handicapped">Handicapped</string>
+    <string name="From_Time">From Time</string>
+    <string name="To_Time">To Time</string>
+    <string name="Training_Time">Training Time</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="Total_Training">Total Training</string>
+    <string name="Total_Query">Total Query</string>
+    <string name="brief_description">Brief Description</string>
+    <string name="select_Units">Select Unit</string>
+    <string name="query_view">Query View</string>
+    <string name="add_training">Add Training</string>
+    <string name="plant_growth_list">PLANT GROWTH LIST</string>
+    <string name="plant_growth_details">PLANT GROWTH DETAIL</string>
+    <string name="Add_Plant_growth">ADD PLANT GROWTH</string>
+    <string name="crop_sale_selected">Crop Sale Selected</string>
+    <string name="crop_production_selected">Crop Production Selected</string>
+    <string name="Do_you_want_to_logout">" Do you really want to logout?"</string>
+    <string name="Please_Enter_Training_Name">Please Enter Training Name!</string>
+    <string name="Please_Enter_Location">Please Enter Location!</string>
+    <string name="Please_Enter_Trainner_Name">Please Enter Trainner Name!</string>
+    <string name="Please_Enter_Trainer_Destination">Please Enter Trainer Designation!</string>
+    <string name="Please_Enter_Valid_Date_of_Birth">Please Enter Valid  Date of Birth!</string>
+    <string name="Please_Enter_Company_Name">Please Enter Company Name!</string>
+    <string name="Please_Enter_Valid_Proprietor">Please Enter Valid Proprietor!</string>
+    <string name="Please_Enter_Valid_Address_Number">Please Enter Valid Address Number!</string>
+    <string name="Please_Enter_Valid_GSTN_Number">Please Enter Valid GSTN Number!</string>
+    <string name="Please_Enter_Valid_Pan_card_Number">Please Enter Valid Pan card Number!</string>
+    <string name="Please_Enter_Valid_Aadhar_Number">Please Enter Valid Aadhar Number!</string>
+    <string name="change_password">Change Password</string>
+    <string name="Vendor_Registration">Vendor Registration</string>
+    <string name="add_query">Add Query</string>
+    <string name="disclaimer_title">Disclaimer</string>
+    <string name="about_us">About Us</string>
+    <string name="Male">Male</string>
+    <string name="Female_">Female</string>
+    <string name="Others">Other</string>
+    <string name="Select_gender">Select Gender</string>
+    <string name="training_details">Training Details</string>
+    <string name="update_soil_info">Update Soil InFo</string>
+    <string name="soil_information">Soil Information</string>
+    <string name="Welcome_to_JUBIFARM">Welcome to JUBIFARM</string>
+    <string name="Mobile_No_Email">Mobile No. / Email</string>
+    <string name="vendor">Vendor</string>
+    <string name="Vendor_Name">Vendor Name</string>
+    <string name="Change_Farmer">Change Farmer</string>
+    <string name="Remove">Remove</string>
+    <string name="Total_">Total :</string>
+    <string name="visit_plant">Visit Plant</string>
+    <string name="Training_Name">Training Name </string>
+    <string name="Training_Name_">Training Name :</string>
+    <string name="Training_Date">Training Date </string>
+    <string name="Training_Date_">Training Date :</string>
+    <string name="Location">Location</string>
+    <string name="Trainer_Name">Trainer Name</string>
+    <string name="Trainer_Destination">Trainer Designation</string>
+    <string name="Password">Password</string>
+    <string name="Price">Price</string>
+    <string name="Search_">Search...</string>
+    <string name="UPLOAD_IMAGE">UPLOAD IMAGE</string>
+    <string name="Production_Details">Production Details</string>
+    <string name="Sale_Details">Sale Details</string>
+    <string name="Land_Name">Land Name</string>
+    <string name="Land_Soil_Info">Land Soil Info</string>
+    <string name="Select_Soil_Characteristics">Select Soil Characteristics</string>
+    <string name="Filtration_rate">Filtration rate</string>
+    <string name="Soil_Texture">Soil Texture</string>
+    <string name="pH">pH</string>
+    <string name="Bulk_Density">Bulk Density</string>
+    <string name="Cation_exchange_capacity">Cation exchange capacity</string>
+    <string name="EC">EC (electricity conductivity)</string>
+    <string name="P">P</string>
+    <string name="S">S</string>
+    <string name="Mg">Mg</string>
+    <string name="K">K</string>
+    <string name="N">N</string>
+    <string name="Ca">Ca</string>
+    <string name="Land_Selection">Land Selection</string>
+    <string name="View_Plant">View Plant</string>
+    <string name="Item">Item</string>
+    <string name="Please_take_image">Please take image</string>
+    <string name="Edit_Profile">Edit Profile</string>
+    <string name="Add_Crop_Details">Add Crop Details</string>
+    <string name="Set_As_Default">Set As Default</string>
+    <string name="Scan">Scan</string>
+    <string name="Household_No.">Household No.</string>
+    <string name="INPUT_ORDERING">INPUT ORDERING</string>
+    <string name="INPUT_ORDERING_HOME">INPUT ORDERING HOME</string>
+    <string name="select_input_type">Select Input Type</string>
+    <string name="select_land">Select Land</string>
+    <string name="Show_Password">Show Password</string>
+    <string name="Forgot_Password">Forgot Password?</string>
+    <string name="Season">Season</string>
+    <string name="select_season">Select Season</string>
+    <string name="select_year">Select Year</string>
+    <string name="Other">Other</string>
+    <string name="Category_Name">Category Name</string>
+    <string name="Sub_Category_Name">Sub Category Name</string>
+    <string name="select_soil_type">Select Soil Type</string>
+    <string name="select_soil_color">Select Soil Color</string>
+    <string name="select_soil_characteristics">Select Soil Characteristics</string>
+    <string name="select_soil_chemical_composition">Select Soil Chemical Composition</string>
+    <string name="Soil_Type">Soil Type</string>
+    <string name="Soil_Color">Soil Color</string>
+    <string name="soil_characteristics">Soil Characteristics</string>
+    <string name="soil_chemical_composition">Soil Chemical Composition</string>
+    <string name="no_internet_data_saved_locally">Internet is not available..!! Your data saved successfully in local database.</string>
+    <string name="change_language">Change Language</string>
+    <string name="addCropdetails">Add More Crop Details</string>
+    <string name="approved">"Approved"</string>
+    <string name="pending">"Pending"</string>
+    <string name="rejected">"Rejected"</string>
+    <string name="vendor_referred">"Vendor Referred"</string>
+    <string name="new_input_ordering">New Input Ordering</string>
+    <string name="helplineMenu">Helpline Menu</string>
+    <string name="Please_select_DOB_Or_Age">please select Age or Dob</string>
+    <string name="It_Okay_Reset_your_password">It is Okay! Reset your password</string>
+    <string name="Enter_User_Mobile_No.">Enter User Mobile No.</string>
+    <string name="Reset_Password">Reset Password</string>
+
+
+    <string name="Knowledge">Knowledge</string>
+    <string name="Tranning_">03 Tranning</string>
+    <string name="Tranning">Training</string>
+    <string name="Register_as_a">Register as a</string>
+    <string name="Response">Response</string>
+    <string name="I_will_attend">I will attend</string>
+    <string name="View_Attendance">View Attendance</string>
+
+    <string name="Company_Name">Company Name</string>
+    <string name="Contact_Number">Contact Number</string>
+    <string name="Contact_Number_">Contact Number</string>
+    <string name="Proprietor">Proprietor</string>
+    <string name="Email">Email</string>
+    <string name="Vendor_Category">Vendor Category</string>
+    <string name="GSTN">GSTN</string>
+    <string name="PAN_Card_No">PAN Card No.</string>
+    <string name="Upload">Upload</string>
+    <string name="Aadhar_No.">Aadhar No.</string>
+    <string name="Area">Area</string>
+
+    <string name="Education">Education</string>
+    <string name="Income">Income</string>
+    <string name="Play">Play</string>
+    <string name="no_audio_file_found">No audio file found</string>
+    <string name="Crop_Status">Crop Status</string>
+    <string name="Somthing_Write_here">Somthing Write here</string>
+    <string name="SUBMIT_PLANT_GROWTH">SUBMIT PLANT GROWTH</string>
+    <string name="Back">Back</string>
+
+
+    <string name="Record_Audio">Record Audio</string>
+    <string name="Record">Record</string>
+    <string name="Stop">Stop</string>
+    <string name="STOP_PLAYING_RECORDING">STOP PLAYING RECORDING</string>
+
+    <string name="Confirm_Password">Confirm Password</string>
+    <string name="Quantity_Unit">Quantity Unit</string>
+
+    <string name="Answered">Answered</string>
+    <string name="Not_Answered">Not Answered</string>
+
+    <string name="Approved">Approved</string>
+    <string name="Rejected">Rejected</string>
+    <string name="Vendor_Referred">Vendor Referred</string>
+    <string name="New_Input_Ordering">New Input Ordering</string>
+
+    <string name="Training_And_Puring_of_fruits_Plants">Training And Puring of fruits Plants</string>
+    <string name="Trending_Knowledge_Products">Trending Knowledge Products</string>
+
+
+    <string name="Enter_OTP">Enter OTP</string>
+    <string name="Verify_OTP">Verify OTP</string>
+
+    <string name="Upcoming_Training_2020">Upcoming Training 2021</string>
+    <string name="Training_and_pruning_of_fruit_plants">Training and pruning of fruit plants</string>
+    <string name="crop_sale_production_details">Crop sale (Production Details)</string>
+    <string name="crop_sale_sale_details">Crop sale (Sale Details)</string>
+
+    <string name="Plant_Status">Plant Status</string>
+    <string name="Save_Data">Save Data</string>
+    <string name="Quantity_Units">Quantity(Units)</string>
+    <string name="View_Details">View Details</string>
+    <string name="Gender">Gender</string>
+    <string name="select_Gender">Gender</string>
+    <string name="Occupation">Occupation</string>
+    <string name="CATTLE_MILLET">CATTLE (PEARL) MILLET</string>
+    <string name="Question">Question</string>
+    <string name="Actvity_Plant">Actvity/Plant</string>
+    <string name="Camera">Camera</string>
+    <string name="Gallery">Gallery</string>
+    <string name="Accept">Accept</string>
+    <string name="Attend">Attend</string>
+    <string name="Reject">Reject</string>
+    <string name="Enter_remarks">Enter remarks</string>
+    <string name="Remarks">Remarks</string>
+    <string name="select_from_date">Select from date</string>
+    <string name="select_to_date">Select to date</string>
+    <string name="enter_quantity">Enter Quantity</string>
+    <string name="planted_date">Plantation Date</string>
+    <string name="fruited_date">Fruition Date</string>
+    <string name="plant_visit">Plant Visited</string>
+    <string name="Resend_Otp">Resend Otp</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="please_select_village">select village</string>
+    <string name="update_soil">UPDATED SOIL</string>
+    <string name="update_soil_list">UPDATED SOIL LIST</string>
+    <string name="my_account">My Account</string>
+
+    <string name="sync_data">Sync Data</string>
+
+
+ <string name="logout">Logout</string>
+    <string name="select_all">Select All</string>
+    <string name="Please_enter_correct_password">Please enter correct password</string>
+ <string name="Please_enter_correct_Confirm_password">Please enter correct Confirm password</string>
+ <string name="Please_Check_Password">Please Check Password</string>
+ <string name="Please_Wait">Please Wait...</string>
+    <string name="Otp_Authentication">OTP ऑथेंटिकेशन</string>
+    <string name="total_tree">Total Trees</string>
+    <string name="healthy">Healthy</string>
+    <string name="photo">Please Take image</string>
+    <string name="terms_and_conmdition"><![CDATA[Please select Terms & Condition]]></string>
+    <string name="agree_our_terms_and_condition"><![CDATA[I have read and agree our Terms & Condition apply and Disclaimer]]></string>
+    <string name="your_number_already_exist">Your number already exist..</string>
+    <string name="select_relation">Select Relation</string>
+    <string name="relationship">Relationship</string>
+    <string name="please_select_fruited_date">Please select fruited date</string>
+    <string name="please_select_planted_date">Please select planted date</string>
+    <string name="Please_Enter_Trainer_Date">Please enter training date</string>
+    <string name="Please_Enter_Trainer_Time">Please enter training time</string>
+    <string name="Please_enter_description">Please enter description</string>
+    <string name="please_enter_email">Please enter valid email id</string>
+    <string name="please_enter_address">Please enter address</string>
+    <string name="audio">Recorded Audio</string>
+    <string name="Please_enter_valid_id">Please enter the valid Id</string>
+    <string name="close">CLOSE</string>
+    <string name="Select_Soil_Chemical_Characteristics">Select Soil Chemical Characteristics</string>
+    <string name="restart_app_message">Restarting app to change the language</string>
+    <string name="ok">Ok</string>
+    <string name="alert">Alert!</string>
+    <string name="pleae_enter_mobile_email">Please enter mobile or email.</string>
+    <string name="please_enter_password">Please enter password.</string>
+    <string name="plase">Please Wait...</string>
+    <string name="qty">Qty</string>
+
+</resources>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="2dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="#ECECEC"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutChild"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:cardCornerRadius="8dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_tree"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center|left"
+                android:elevation="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mango"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/ll_inputording_holder"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="@dimen/margin5"
+            android:layout_gravity="start"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="3dp"
+            android:weightSum="4">
+
+
+            <TextView
+                android:id="@+id/inputOrd_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="#01579b"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/_5dp"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/inputOrd_reqitem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price Per Item : 100"
+                android:visibility="gone"
+                android:textColor="@android:color/darker_gray"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="@dimen/text_12" />
+
+            <TextView
+                android:id="@+id/farmer_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Farmer"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#778899"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/inputOrd_ToFromdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Date"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#778899"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/inputOrd_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Quantity"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#778899"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Status"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#778899"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
