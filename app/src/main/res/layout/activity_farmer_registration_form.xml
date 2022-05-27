@@ -8,6 +8,7 @@
     android:focusable="true"
     tools:context=".Livelihood.FarmerRegistrationForm">
 
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -45,8 +46,8 @@
                             android:id="@+id/img_selection_pencil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/ic_image_update" />
                     </RelativeLayout>
 

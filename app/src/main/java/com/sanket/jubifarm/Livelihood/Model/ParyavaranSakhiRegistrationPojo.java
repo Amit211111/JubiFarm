@@ -33,7 +33,7 @@ public class ParyavaranSakhiRegistrationPojo
     private String martial_category;
     private String household_no;
     private String what_you_know;
-        private String id_other_name;
+    private String id_other_name;
     private String date_of_birth;
     private String farmer_image;
     private String aadhar_no;
@@ -324,13 +324,13 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_AADHAR_NO + " INTEGER ,"
                     + COLUMN_HOUSEHOLD_NO + " INTEGER ,"
                     + COLUMN_FARMER_NAME + " TEXT ,"
-                    //                 + COLUMN_ID_TYPE_ID + " INTEGER ,"
+                    // + COLUMN_ID_TYPE_ID + " INTEGER ,"
                     + COLUMN_AGE + " INTEGER ,"
                     + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
                     + COLUMN_DATE_OF_BIRTH + " TEXT ,"
                     + COLUMN_RELIGION_ID + " INTEGER ,"
                     + COLUMN_ALTERNATIVE_LIVELIHOOD_ID + " INTEGER ,"
-                    //                   + COLUMN_ID_TYPE_NAME + " TEXT ,"
+                    //  + COLUMN_ID_TYPE_NAME + " TEXT ,"
                     + COLUMN_ADDRESS + " TEXT ,"
                     + COLUMN_CASTE + " TEXT ,"
                     + COLUMN_ID_OTHER_NAME + " TEXT ,"
@@ -345,7 +345,7 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_FATHER_HUSBAND_NAME + " TEXT ,"
                     + COLUMN_PHYSICAL_CHALLENGES + " TEXT ,"
                     + COLUMN_BPL + " TEXT ,"
-//                    + COLUMN_EDUCATION_QUALIFICATION + " TEXT ,"
+//                  + COLUMN_EDUCATION_QUALIFICATION + " TEXT ,"
                     + COLUMN_TOTAL_LANDHOLDING + " TEXT ,"
                     //  + COLUMN_GENDER + " TEXT ,"
                     + COLUMN_FARMER_IMAGE + " TEXT ,"

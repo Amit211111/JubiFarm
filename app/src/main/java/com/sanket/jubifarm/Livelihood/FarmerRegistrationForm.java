@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,35 +23,20 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.android.material.button.MaterialButton;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
-import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
-import com.sanket.jubifarm.restAPI.APIClient;
-import com.sanket.jubifarm.restAPI.JubiForm_API;
-import com.sanket.jubifarm.utils.CommonClass;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class FarmerRegistrationForm extends AppCompatActivity {
 
-    Spinner IdCard,State, District, Village, Block, religion, cast, Category, annualIncome,
+    Spinner spnIdCard,State, District, Village, Block, religion, cast, Category, annualIncome,
             Agrozone, alternetLivehood,education;
 
 
@@ -225,33 +209,36 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             public void onClick(View view) {
                 paryavaranSakhiRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
 
-//                paryavaranSakhiRegistrationPojo.setHousehold_no(householdNo.getText().toString().trim());
-//                paryavaranSakhiRegistrationPojo.setFarmer_image(base64);
+                paryavaranSakhiRegistrationPojo.setHousehold_no(householdNo.getText().toString().trim());
+                paryavaranSakhiRegistrationPojo.setFarmer_image(base64);
                 paryavaranSakhiRegistrationPojo.setFarmer_name(FarmerName.getText().toString().trim());
+                paryavaranSakhiRegistrationPojo.setMobile(mobileNumber.getText().toString().trim());
+
                 paryavaranSakhiRegistrationPojo.setFather_husband_name(husbandFatherName.getText().toString().trim());
                 paryavaranSakhiRegistrationPojo.setAddress(Address.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setState_id(State.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setDistrict_id(District.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setBlock_id(Block.getSelectedItem().toString().trim());
+                paryavaranSakhiRegistrationPojo.setState_id(String.valueOf(state_id));
+                paryavaranSakhiRegistrationPojo.setDistrict_id(String.valueOf(district_id));
+                paryavaranSakhiRegistrationPojo.setBlock_id(String.valueOf(block_id));
                 paryavaranSakhiRegistrationPojo.setPincode(pincode.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setVillage_id(Village.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setReligion_id(religion.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setCaste(cast.getSelectedItem().toString().trim());
-//                paryavaranSakhiRegistrationPojo.setEducation_id(education.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setCategory_id(Category.getSelectedItem().toString().trim());
+                paryavaranSakhiRegistrationPojo.setVillage_id(String.valueOf(village_id));
+                paryavaranSakhiRegistrationPojo.setReligion_id(String.valueOf(religion));
+                paryavaranSakhiRegistrationPojo.setCaste(String.valueOf(cast));
+                paryavaranSakhiRegistrationPojo.setEducation_id(String.valueOf(education));
+                paryavaranSakhiRegistrationPojo.setCategory_id(String.valueOf(Category));
                 //paryavaranSakhiRegistrationPojo.setId_other_name(IdCard.getSelectedItem().toString().trim());
-                //paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim());
+                paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim());
                 paryavaranSakhiRegistrationPojo.setAge(FarmerAge.getText().toString().trim());
-                //paryavaranSakhiRegistrationPojo.setDate_of_birth(Farmerdob.getText().toString().trim());
+                paryavaranSakhiRegistrationPojo.setDate_of_birth(Farmerdob.getText().toString().trim());
 
                 paryavaranSakhiRegistrationPojo.setPhysical_challenges(str_PhysicalChallenges);
                 paryavaranSakhiRegistrationPojo.setBpl(str_bpl);
 
                 paryavaranSakhiRegistrationPojo.setTotal_land_holding(TotalLandHoldingArea.getText().toString().trim());
-                //    paryavaranSakhiRegistrationPojo.setAnnual_income(annualIncome.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setAgro_climat_zone_id(Agrozone.getSelectedItem().toString().trim());
-                paryavaranSakhiRegistrationPojo.setAlternative_livelihood_id(alternetLivehood.getSelectedItem().toString().trim());
+                paryavaranSakhiRegistrationPojo.setAnnual_income(String.valueOf(annualIncome));
+                paryavaranSakhiRegistrationPojo.setAgro_climat_zone_id(String.valueOf(Agro_climaticZoneNameHM));
+                paryavaranSakhiRegistrationPojo.setAlternative_livelihood_id(String.valueOf(alternativeLivelihood));
                 paryavaranSakhiRegistrationPojo.setNo_of_member_migrated(NoOfMembers.getText().toString().trim());
+                //paryavaranSakhiRegistrationPojo.setMartial_category(Category.getText().toString().trim());
 
                 sqliteHelper.getPSFarmerRegistrationData(paryavaranSakhiRegistrationPojo);
 
@@ -341,7 +328,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         TotalLandHoldingArea =findViewById(R.id.TotalLandHoldingArea);
         NoOfMembers =findViewById(R.id.NoOfMembers);
         //All Spinner Find
-        IdCard=findViewById(R.id.IdCard);
+        spnIdCard =findViewById(R.id.IdCard);
         State =findViewById(R.id.State);
         District =findViewById(R.id.District);
         Block =findViewById(R.id.Block);
@@ -381,6 +368,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         Agro_climaticZoneArrayList=new ArrayList<>();
         alternetLivehoodArrayList=new ArrayList<>();
         EducationArrayList=new ArrayList<>();
+        ReligionArrayList=new ArrayList<>();
     }
 
     @Override
@@ -423,16 +411,16 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         //state spinner choose
         ArrayAdapter panchayat_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, IdCardArrayList);
         panchayat_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        IdCard.setAdapter(panchayat_adapter);
+        spnIdCard.setAdapter(panchayat_adapter);
 
 
-        IdCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spnIdCard.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ID_Card = 0;
-                if (!IdCard.getSelectedItem().toString().trim().equalsIgnoreCase("Select Id Card")) {
-                    if (IdCard.getSelectedItem().toString().trim() != null) {
-                        ID_Card = Integer.parseInt(String.valueOf(IdCardNameHM.get(IdCard.getSelectedItem().toString().trim())));
+                if (!spnIdCard.getSelectedItem().toString().trim().equalsIgnoreCase("Select Id Card")) {
+                    if (spnIdCard.getSelectedItem().toString().trim() != null) {
+                        ID_Card = Integer.parseInt(String.valueOf(IdCardNameHM.get(spnIdCard.getSelectedItem().toString().trim())));
                     }
                 }
 
@@ -563,12 +551,11 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         Block.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                block_id = 0;
                 if (!Block.getSelectedItem().toString().trim().equalsIgnoreCase("Select Block")) {
                     if (Block.getSelectedItem().toString().trim() != null) {
-                        block_id = Integer.parseInt(String.valueOf(blockNameHM.get(Block.getSelectedItem().toString().trim())));
+                        block_id = blockNameHM.get(Block.getSelectedItem().toString().trim());
                     }
-                    getDistrictSpinner();
+                    getVillageSpinner();
                 }
 
             }
@@ -603,7 +590,6 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                         village_id = Integer.parseInt(String.valueOf(villageNameHM.get(Village.getSelectedItem().toString().trim())));
                     }
                 }
-                getBlockSpinner();
 
             }
             @Override
@@ -633,7 +619,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                 hmReligion = 0;
                 if (!religion.getSelectedItem().toString().trim().equalsIgnoreCase("Select Religion")) {
                     if (religion.getSelectedItem().toString().trim() != null) {
-                        hmReligion = Integer.parseInt(String.valueOf(ReligionNameHM.get(Village.getSelectedItem().toString().trim())));
+                        hmReligion = Integer.parseInt(String.valueOf(ReligionNameHM.get(religion.getSelectedItem().toString().trim())));
                     }
                 }
 

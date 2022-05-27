@@ -23,6 +23,7 @@ import com.sanket.jubifarm.Adapter.AddCropSalesAdapter;
 import com.sanket.jubifarm.Adapter.RegistrationListAdapter;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
+import com.sanket.jubifarm.Livelihood.PS_Farmer_details;
 import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
@@ -65,7 +66,17 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
 
         holder.txt_farmer_name.setText(arrayList.get(position).getFarmer_name());
         holder.txt_farmer_location.setText(arrayList.get(position).getAddress());
-        holder.txt_farmer_mobile_no.setText(arrayList.get(position).getMobile());
+        //holder.text_mobile.setText(arrayList.get(position).getMobile());
+        holder.txt_mobilenoo.setText(arrayList.get(position).getMobile());
+
+        holder.ll_holder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PS_Farmer_details.class);
+                intent.putExtra("farmerId",arrayList.get(position).getLocal_id());
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -77,21 +88,21 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-         TextView txt_farmer_name, txt_farmer_location, txt_farmer_mobile_no, txt_mobileno, txt_set_default;
-        LinearLayout linearLayoutfarmer;
+        TextView txt_farmer_name, txt_farmer_location, txt_set_default,txt_mobilenoo;
+        LinearLayout linearLayoutfarmer,ll_holder;
         ImageView img_farmer;
         TextView tv_EditDetail;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            this.txt_mobilenoo=(TextView) itemView.findViewById(R.id.txt_mobilenoo);
             this.txt_farmer_name = (TextView) itemView.findViewById(R.id.txt_farmer_name);
             this.txt_farmer_location = (TextView) itemView.findViewById(R.id.txt_farmer_location);
-            this.txt_mobileno = (TextView) itemView.findViewById(R.id.txt_mobileno);
             this.txt_set_default = (TextView) itemView.findViewById(R.id.txt_set_default);
-            this.txt_farmer_mobile_no = (TextView) itemView.findViewById(R.id.txt_farmer_mobile_no);
             this.linearLayoutfarmer = (LinearLayout) itemView.findViewById(R.id.linearLayoutfarmer);
-
+            this.ll_holder = (LinearLayout) itemView.findViewById(R.id.ll_holder);
             this.img_farmer = (ImageView) itemView.findViewById(R.id.img_farmer);
+
         }
     }
 }
