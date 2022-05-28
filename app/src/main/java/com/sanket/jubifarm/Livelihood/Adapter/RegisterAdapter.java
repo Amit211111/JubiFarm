@@ -23,6 +23,7 @@ import com.sanket.jubifarm.Adapter.AddCropSalesAdapter;
 import com.sanket.jubifarm.Adapter.RegistrationListAdapter;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
+import com.sanket.jubifarm.Livelihood.PS_FarmerDetailsActivity;
 import com.sanket.jubifarm.Livelihood.PS_Farmer_details;
 import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
@@ -72,7 +73,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         holder.ll_holder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PS_Farmer_details.class);
+                Intent intent = new Intent(context, PS_FarmerDetailsActivity.class);
                 intent.putExtra("farmerId",arrayList.get(position).getLocal_id());
                 context.startActivity(intent);
             }
