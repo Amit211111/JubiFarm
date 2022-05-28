@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
+
 
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
@@ -50,6 +50,8 @@ import com.sanket.jubifarm.Modal.UsersPojo;
 import com.sanket.jubifarm.Modal.VendorRegModal;
 import com.sanket.jubifarm.Modal.VillagePojo;
 import com.sanket.jubifarm.Modal.VisitPlantModel;
+
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -4776,16 +4778,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
             {
                 ContentValues values =new ContentValues();
                 values.put("id",householdMasterModel.getId());
-                values.put("NeemPlantation_Image",householdMasterModel.getNeemPlantation_Image());
-                values.put("Neem_Plantation",householdMasterModel.getNeem_Plantation());
-                //               values.put("Sub_Neem_Category",householdMasterModel.getSub_Neem_Category());
-                values.put("Land",householdMasterModel.getLand());
-
-                values.put("Plantation_Date",householdMasterModel.getPlantation_Date());
-                values.put("Geo_Coordinates",householdMasterModel.getGeo_Coordinates());
+                values.put("neem_plantation_Image",householdMasterModel.getNeem_plantation_image());
+                values.put("land_id",householdMasterModel.getLand_id());
+                values.put("plantation_date",householdMasterModel.getPlantation_Date());
+                values.put("geo_coordinates",householdMasterModel.getGeo_coordinates());
 
 
-                ids =DB1.insert("Ps_Neem_Plantation",null, values);
+                ids =DB1.insert("ps_neem_plantation",null, values);
                 DB1.close();
             }
         }
@@ -4797,45 +4796,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return ids;
     }
 
-    public ArrayList<PSNeemPlantationPojo> getRegistrationData()
-    {
-        ArrayList<PSNeemPlantationPojo> psNeemPlantationPojoArrayList = new ArrayList<>();
-        SQLiteDatabase db = this.getWritableDatabase();
-        try
-        {
-            if (db != null && db.isOpen() && !db.isReadOnly())
-            {
-                String query = "select * from Ps_Neem_Plantation ";
-
-                @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
-                if (cursor != null && cursor.getCount() > 0)
-                {
-                    cursor.moveToFirst();
-                    while (!cursor.isAfterLast())
-                    {
-
-                        PSNeemPlantationPojo psNeemPlantationPojo = new PSNeemPlantationPojo();
-                        psNeemPlantationPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
-                        psNeemPlantationPojo.setNeemPlantation_Image(cursor.getString(cursor.getColumnIndex("NeemPlantation_Image")));
-                        psNeemPlantationPojo.setNeem_Plantation(cursor.getString(cursor.getColumnIndex("Neem_Plantation")));
-//                        psNeemPlantationPojo.setSub_Neem_Category(cursor.getString(cursor.getColumnIndex("Sub_Neem_Category")));
-                        psNeemPlantationPojo.setLand(cursor.getString(cursor.getColumnIndex("Land")));
-                        psNeemPlantationPojo.setPlantation_Date(cursor.getString(cursor.getColumnIndex("Plantation_Date")));
-                        psNeemPlantationPojo.setGeo_Coordinates(cursor.getString(cursor.getColumnIndex("Geo_Coordinates")));
-
-                        psNeemPlantationPojoArrayList.add(psNeemPlantationPojo);
-                        cursor.moveToNext();
-                    }
-                }
-                db.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            db.close();
-        }
-        return psNeemPlantationPojoArrayList;
-
-    }
 
     public long pslandholding1(PSLandHoldingPojo householdMasterModel)
     {
@@ -5036,4 +4996,64 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<PSNeemPlantationPojo> getneemplantation() {
+        ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        try
+        {
+            if(db != null && !db.isReadOnly())
+            {
+                String query = "select * from ps_neem_plantation";
+                Cursor cursor = db.rawQuery(query, null);
+                if(cursor != null && cursor.getCount() > 0)
+                {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast())
+                    {
+                        PSNeemPlantationPojo ps_neem_plantation = new PSNeemPlantationPojo();
+                        ps_neem_plantation.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        ps_neem_plantation.setGeo_coordinates(cursor.getString(cursor.getColumnIndex("geo_coordinates")));
+                        ps_neem_plantation.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
+                        cursor.moveToNext();
+                        psNeemPlantationPojos.add(ps_neem_plantation);
+                    }
+                }
+                db.close();
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            db.close();
+        }
+        return psNeemPlantationPojos;
+    }
+
+    public HashMap<String, Integer> getAllPSLAND() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        PSLandHoldingPojo psLandHoldingPojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "select * from ps_land_holding";
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        psLandHoldingPojo = new PSLandHoldingPojo();
+                        psLandHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        psLandHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+
+                        cursor.moveToNext();
+                        hashMap.put(psLandHoldingPojo.getLand_id(), Integer.parseInt(psLandHoldingPojo.getLocal_id()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+        return hashMap;
+    }
 }

@@ -3,30 +3,49 @@ package com.sanket.jubifarm.Livelihood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class NeemPlantation extends AppCompatActivity {
-//    String [] sp_neemPlantation ={"Select Neem Plantation","Neem"};
-    //  String [] sp_NeemCategory={"Select Neem Category"};
-    String [] sp_land={"Select Land"};
+
     Button btn_submitDetls;
-    TextView CLICKIMAGE,GeoCoodinate;
-    Spinner spnNeemPlantation,spnLandSelection;
+    TextView CLICKIMAGE,GeoCoodinate, Neem_Id;
+    boolean isEditable = false;
+    private Context context = this;
+    private SharedPrefHelper sharedPrefHelper;
+    Spinner spnLandSelection;
+    private int land_id = 0;
+    ArrayList<String> landArrayList;
+    HashMap<String, Integer> landName;
     EditText et_plant_date;
+    String base64;
+
+    ImageView img_setimage;
+    private static final int CAMERA_REQUEST = 1888;
     SqliteHelper sqliteHelper;
     PSNeemPlantationPojo psNeemPlantationPojo;
     int mYear,mMonth,mDay,year,month,day;
@@ -36,34 +55,29 @@ public class NeemPlantation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_plantation);
         getSupportActionBar().setTitle("Neem Plantation");
+
+
         //Button
-        btn_submitDetls=findViewById(R.id.btn_submitDetls);
+        btn_submitDetls = findViewById(R.id.btn_submitDetls);
         //All Text View
-        CLICKIMAGE=findViewById(R.id.CLICKIMAGE);
-        GeoCoodinate=findViewById(R.id.GeoCoodinate);
+        CLICKIMAGE = findViewById(R.id.CLICKIMAGE);
+        landArrayList = new ArrayList<>();
+        img_setimage = findViewById(R.id.img_setimage);
+        GeoCoodinate = findViewById(R.id.GeoCoodinate);
+
+
         //All Spinner
- //       spnNeemPlantation=findViewById(R.id.spnNeemPlantation);
+        //       spnNeemPlantation=findViewById(R.id.spnNeemPlantation);
 //        spnsub_NeemCategory=findViewById(R.id.spnsub_NeemCategory);
-        spnLandSelection=findViewById(R.id.spnLandSelection);
+        spnLandSelection = findViewById(R.id.spnLandSelection);
         //All Edit Text
-        et_plant_date=findViewById(R.id.et_plant_date);
+        et_plant_date = findViewById(R.id.et_plant_date);
 
         sqliteHelper = new SqliteHelper(getApplicationContext());
 
+        setLandSpinner();
 
-        //All Spinner
 
-//        ArrayAdapter Neem_adapter=new ArrayAdapter(NeemPlantation.this, R.layout.spinner_list,sp_neemPlantation);
-//        Neem_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spnNeemPlantation.setAdapter(Neem_adapter);
-
-//        ArrayAdapter Category_adapter=new ArrayAdapter(NeemPlantation.this,R.layout.spinner_list,sp_NeemCategory);
-//        Category_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spnsub_NeemCategory.setAdapter(Category_adapter);
-
-        ArrayAdapter land_adapter=new ArrayAdapter(NeemPlantation.this, R.layout.spinner_list,sp_land);
-        land_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnLandSelection.setAdapter(land_adapter);
         //Date Picker
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +85,9 @@ public class NeemPlantation extends AppCompatActivity {
 
                 et_plant_date.setError(null);
                 et_plant_date.clearFocus();
-                mYear=year;
-                mMonth=month;
-                mDay=day;
+                mYear = year;
+                mMonth = month;
+                mDay = day;
 
                 final Calendar c = Calendar.getInstance();
                 mYear = c.get(Calendar.YEAR); // current year
@@ -95,25 +109,103 @@ public class NeemPlantation extends AppCompatActivity {
 
         });
 
+        CLICKIMAGE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, CAMERA_REQUEST);
+            }
+        });
+
         btn_submitDetls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                psNeemPlantationPojo=new PSNeemPlantationPojo();
-                psNeemPlantationPojo.setNeemPlantation_Image(CLICKIMAGE.getText().toString().trim());
-                psNeemPlantationPojo.setNeem_Plantation(spnNeemPlantation.getSelectedItem().toString().trim());
-//                psNeemPlantationPojo.setSub_Neem_Category(spnsub_NeemCategory.getSelectedItem().toString().trim());
-                psNeemPlantationPojo.setLand(spnLandSelection.getSelectedItem().toString().trim());
+                psNeemPlantationPojo = new PSNeemPlantationPojo();
+                psNeemPlantationPojo.setNeem_plantation_image(base64);
+                psNeemPlantationPojo.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
-                psNeemPlantationPojo.setGeo_Coordinates(GeoCoodinate.getText().toString().trim());
+                psNeemPlantationPojo.setGeo_coordinates(GeoCoodinate.getText().toString().trim());
                 sqliteHelper.PSsaveHousehold(psNeemPlantationPojo);
+
+                Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
+                startActivity(intent);
 
             }
         });
+    }
 
+    private void setLandSpinner() {
+        landArrayList.clear();
+        landName = sqliteHelper.getAllPSLAND();
 
+        for (int i = 0; i < landName.size(); i++) {
+            landArrayList.add(landName.keySet().toArray()[i].toString().trim());
+        }
+        if (isEditable) {
+            //farmarArrayList.add(0, farmer_name);
+        } else {
+            landArrayList.add(0, getString(R.string.select_farmer));
+        }
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, landArrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnLandSelection.setAdapter(arrayAdapter);
+        if (isEditable) {
+            int spinnerPosition = 0;
+            Integer strpos1 = land_id;
+            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
+                strpos1 = land_id;
+                spinnerPosition = arrayAdapter.getPosition(strpos1);
+                spnLandSelection.setSelection(spinnerPosition);
+                spinnerPosition = 0;
+            }
+        }
 
+        spnLandSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!spnLandSelection.getSelectedItem().toString().trim().equalsIgnoreCase(getString(R.string.select_farmer))) {
+                    if (spnLandSelection.getSelectedItem().toString().trim() != null) {
+                        land_id = landName.get(spnLandSelection.getSelectedItem().toString().trim());
+                    }
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bytes = stream.toByteArray();
+//
+            base64 = encodeTobase64(photo);
+            img_setimage.setImageBitmap(photo);
+        }
 
     }
+
+    private String encodeTobase64(Bitmap image) {
+        ByteArrayOutputStream byteArrayOS = null;
+        try {
+            System.gc();
+            byteArrayOS = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOS);
+        } catch (OutOfMemoryError e) {
+            e.printStackTrace();
+            image.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOS);
+        }
+        return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
+    }
 }
+
+
+
+

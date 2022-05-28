@@ -4,13 +4,11 @@ public class PSNeemPlantationPojo
 {
     private String Local_id;
     private String id;
-    private String NeemPlantation_Image;
-    private String Neem_Plantation;
-    //   private String Sub_Neem_Category;
-    private String Land;
-
-    private String Plantation_Date;
-    private String Geo_Coordinates;
+    private String neem_plantation_image;
+    private String land_id;
+    private String neem_id;
+    private String plantation_Date;
+    private String geo_coordinates;
 
     public String getLocal_id() {
         return Local_id;
@@ -28,75 +26,64 @@ public class PSNeemPlantationPojo
         this.id = id;
     }
 
-    public String getNeemPlantation_Image() {
-        return NeemPlantation_Image;
+    public String getNeem_plantation_image() {
+        return neem_plantation_image;
     }
 
-    public void setNeemPlantation_Image(String neemPlantation_Image) {
-        NeemPlantation_Image = neemPlantation_Image;
-    }
-
-    public String getNeem_Plantation() {
-        return Neem_Plantation;
-    }
-
-    public void setNeem_Plantation(String neem_Plantation) {
-        Neem_Plantation = neem_Plantation;
-    }
-//
-//    public String getSub_Neem_Category() {
-//        return Sub_Neem_Category;
-//    }
-//
-//    public void setSub_Neem_Category(String sub_Neem_Category) {
-//        Sub_Neem_Category = sub_Neem_Category;
-//    }
-
-    public String getLand() {
-        return Land;
-    }
-
-    public void setLand(String land) {
-        Land = land;
+    public void setNeem_plantation_image(String neem_plantation_image) {
+        this.neem_plantation_image = neem_plantation_image;
     }
 
 
+    public String getLand_id() {
+        return land_id;
+    }
+
+    public void setLand_id(String land_id) {
+        this.land_id = land_id;
+    }
+
+    public String getNeem_id() {
+        return neem_id;
+    }
+
+    public void setNeem_id(String neem_id) {
+        this.neem_id = neem_id;
+    }
 
     public String getPlantation_Date() {
-        return Plantation_Date;
+        return plantation_Date;
     }
 
     public void setPlantation_Date(String plantation_Date) {
-        Plantation_Date = plantation_Date;
+        this.plantation_Date = plantation_Date;
     }
 
-    public String getGeo_Coordinates() {
-        return Geo_Coordinates;
+    public String getGeo_coordinates() {
+        return geo_coordinates;
     }
 
-    public void setGeo_Coordinates(String geo_Coordinates) {
-        Geo_Coordinates = geo_Coordinates;
+    public void setGeo_coordinates(String geo_coordinates) {
+        this.geo_coordinates = geo_coordinates;
     }
 
-    private static final String TABLE_NAME = "Ps_Neem_Plantation";
-    private static final String COLUMN_LOCALID="localid";
+    private static final String TABLE_NAME = "ps_neem_plantation";
+    private static final String COLUMN_LOCAL_ID="local_id";
     private static final String COLUMN_ID="id";
-    private static final String COLUMN_NEEMPLANTATION_IMAGE= "NeemPlantation_Image";
-    private static final String COLUMN_NEEM_PLANTATION = "Neem_Plantation";
-    //    private static final String COLUMN_SUB_NEEM_CATEGORY = "Sub_Neem_Category";
-    private static final String COLUMN_LAND = "Land";
-    private static final String COLUMN_PLANTATION_DATE = "Plantation_Date";
-    private static final String COLUMN_GEO_COORDINATES = "Geo_Coordinates";
+    private static final String COLUMN_NEEM_PLANTATION_IMAGE= "neem_plantation_image";
+    private static final String COLUMN_LAND_ID = "land_id";
+    private static final String COLUMN_NEEM_ID = "neem_id";
+    private static final String COLUMN_PLANTATION_DATE = "plantation_date";
+    private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
 
 
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
-            + COLUMN_LOCALID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMN_ID + " INTEGER, "
-            + COLUMN_NEEMPLANTATION_IMAGE + " TEXT, "
-            + COLUMN_NEEM_PLANTATION+ " TEXT, "
-//            + COLUMN_SUB_NEEM_CATEGORY + " TEXT, "
-            + COLUMN_LAND + " TEXT, "
+            + COLUMN_NEEM_PLANTATION_IMAGE + " TEXT, "
+            + COLUMN_LAND_ID + " TEXT, "
+            + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_GEO_COORDINATES + " TEXT "
             + ")";
