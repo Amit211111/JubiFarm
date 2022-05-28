@@ -24,7 +24,7 @@ import com.sanket.jubifarm.Adapter.RegistrationListAdapter;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
 import com.sanket.jubifarm.Livelihood.PS_FarmerDetailsActivity;
-import com.sanket.jubifarm.Livelihood.PS_Farmer_details;
+//import com.sanket.jubifarm.Livelihood.PS_Farmer_details;
 import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
@@ -50,6 +50,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
     @Override
     public RegisterAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.farmer_registration_custom, parent, false);
+
         return new ViewHolder(view);
     }
 

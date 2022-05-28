@@ -46,7 +46,7 @@
             android:name=".Livelihood.TrainningSurveyForm"
             android:exported="false" />
         <activity
-            android:name=".Livelihood.RecycleDetailsView"
+            android:name=".Livelihood.LandHoldingDetailsView"
             android:exported="false" />
         <activity
             android:name=".Livelihood.Skill_Tracking_List"

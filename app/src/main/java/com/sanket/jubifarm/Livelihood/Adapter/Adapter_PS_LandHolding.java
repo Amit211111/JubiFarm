@@ -1,5 +1,6 @@
 package com.sanket.jubifarm.Livelihood.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,9 +17,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
-import com.sanket.jubifarm.Livelihood.RecycleDetailsView;
-import com.sanket.jubifarm.Livelihood.TrainningSurveyForm;
+import com.sanket.jubifarm.Livelihood.LandHoldingDetailsView;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -29,10 +30,13 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
 
     Context context;
     ArrayList<PSLandHoldingPojo> arrayList;
+    private SqliteHelper sqliteHelper;
 
     public Adapter_PS_LandHolding(Context context, ArrayList<PSLandHoldingPojo> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+        sqliteHelper=new SqliteHelper(context);
+
     }
 
     @NonNull
@@ -44,31 +48,35 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Adapter_PS_LandHolding.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Adapter_PS_LandHolding.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
 //
-        if (arrayList.get(position).getBtn_upload_land() != null && arrayList.get(position).getBtn_upload_land().length() > 200) {
-            byte[] decodedString = Base64.decode(arrayList.get(position).getBtn_upload_land(), Base64.NO_WRAP);
+        if (arrayList.get(position).getLand_image() != null && arrayList.get(position).getLand_image().length() > 200) {
+            byte[] decodedString = Base64.decode(arrayList.get(position).getLand_image(), Base64.NO_WRAP);
             InputStream inputStream = new ByteArrayInputStream(decodedString);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             holder.img_land.setImageBitmap(bitmap);
         } else {
-            holder.img_land.setImageResource(R.drawable.ic_baseline_add_24);
+            holder.img_land.setImageResource(R.drawable.apple);
         }
+        holder.Land_id.setText(arrayList.get(position).getLand_id());
+       // holder.farmer_selection.setText(arrayList.get(position).getFarmer_Selection());
+      //holder.land_area.setText(arrayList.get(position).getLand_Area());
+       // holder.land_area.setText(arrayList.get(position).getLand_Area()+" ("+sqliteHelper.getNameById("master", "master_name", "caption_id", Integer.parseInt(arrayList.get(position).getLand_unit()))+")");
+        holder.land_area.setText(arrayList.get(position).getLand_area()+" ("+sqliteHelper.getNameById("master", "master_name", "caption_id", Integer.parseInt(arrayList.get(position).getLand_unit()))+")");
+        holder.farmer_name.setText(sqliteHelper.getNameById("ps_farmer_registration", "farmer_name", "local_id", Integer.parseInt(arrayList.get(position).getFarmer_id())));
+        holder.land_name.setText(arrayList.get(position).getLand_name());
 
-        holder.farmer_selection.setText(arrayList.get(position).getFarmer_Selection());
-        holder.land_area.setText(arrayList.get(position).getLand_Area());
-        holder.land_name.setText(arrayList.get(position).getLand_Name());
-
-        holder.ll_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, RecycleDetailsView.class);
-                context.startActivity(intent);
-            }
-        });
-
+      holder.ll_land.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              Intent intent = new Intent(context,LandHoldingDetailsView.class);
+              intent.putExtra("land_Id",arrayList.get(position).getLocal_id());
+              intent.putExtra("farmerId",arrayList.get(position).getFarmer_id());
+              context.startActivity(intent);
+          }
+      });
 
     }
 
@@ -80,19 +88,21 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView Land_id,land_name,land_area,farmer_selection,total_plant;
+        TextView Land_id,land_name,land_area,farmer_name,total_plant;
         ImageView img_land;
-        LinearLayout ll_main;
+        LinearLayout ll_main,ll_land;
 
 
         public ViewHolder(View view) {
             super(view);
+
             land_name= itemView.findViewById(R.id.land_name);
             Land_id= itemView.findViewById(R.id.Land_id);
             land_area= itemView.findViewById(R.id.land_area);
-            farmer_selection= itemView.findViewById(R.id.farmer_selection);
+            farmer_name= itemView.findViewById(R.id.farmer_name);
             total_plant= itemView.findViewById(R.id.total_plant);
             img_land= itemView.findViewById(R.id.img_land);
+            ll_land= itemView.findViewById(R.id.ll_land);
             ll_main= itemView.findViewById(R.id.ll_main);
 
         }

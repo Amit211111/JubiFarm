@@ -47,6 +47,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_land"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -159,13 +160,13 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/itcavantagradestdbk"
                     android:padding="@dimen/_1dp"
-                    android:text="Farmer Selection"
+                    android:text="Farmer Name"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/farmer_selection"
+                    android:id="@+id/farmer_name"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

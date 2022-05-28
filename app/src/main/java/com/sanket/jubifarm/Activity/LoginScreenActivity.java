@@ -113,7 +113,7 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
         tvSign = findViewById(R.id.tvSign);
         tv_sapyler = findViewById(R.id.tv_sapyler);
         cb_showPassword=findViewById(R.id.cb_showPassword);
-        
+
         showPassword();
 
         btnLogIn.setOnClickListener(new View.OnClickListener() {
@@ -627,7 +627,7 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
                 .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
                 .addApi(LocationServices.API)
                 .build();
-        //mGoogleApiClient.connect();
+        mGoogleApiClient.connect();
 
     }
 
@@ -719,7 +719,7 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // mGoogleApiClient.disconnect();
+         mGoogleApiClient.disconnect();
     }
 
     @Override
