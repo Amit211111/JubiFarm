@@ -57,14 +57,14 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RegisterAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-//        if (arrayList.get(position).get() != null && arrayList.get(position).getFarmer_image().length() > 200) {
-//            byte[] decodedString = Base64.decode(arrayList.get(position).getFarmer_image(), Base64.NO_WRAP);
-//            InputStream inputStream = new ByteArrayInputStream(decodedString);
-//            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//            holder.img_farmer.setImageBitmap(bitmap);
-//        } else {
-//            holder.img_farmer.setImageResource(R.drawable.ic_baseline_add_24);
-//        }
+        if (arrayList.get(position).getFarmer_image() != null && arrayList.get(position).getFarmer_image().length() > 200) {
+            byte[] decodedString = Base64.decode(arrayList.get(position).getFarmer_image(), Base64.NO_WRAP);
+            InputStream inputStream = new ByteArrayInputStream(decodedString);
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            holder.img_farmer.setImageBitmap(bitmap);
+        } else {
+            holder.img_farmer.setImageResource(R.drawable.farmer_female);
+        }
 
         holder.txt_farmer_name.setText(arrayList.get(position).getFarmer_name());
         holder.txt_farmer_location.setText(arrayList.get(position).getAddress());
@@ -92,7 +92,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txt_farmer_name, txt_farmer_location, txt_set_default,txt_mobilenoo;
         LinearLayout linearLayoutfarmer,ll_holder;
-        ImageView img_farmer;
+        ImageView img_farmer,IV_profile;
         TextView tv_EditDetail;
 
         public ViewHolder(View itemView) {
@@ -103,6 +103,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
             this.txt_set_default = (TextView) itemView.findViewById(R.id.txt_set_default);
             this.linearLayoutfarmer = (LinearLayout) itemView.findViewById(R.id.linearLayoutfarmer);
             this.ll_holder = (LinearLayout) itemView.findViewById(R.id.ll_holder);
+            //this.IV_profile = (ImageView) itemView.findViewById(R.id.IV_profile);
             this.img_farmer = (ImageView) itemView.findViewById(R.id.img_farmer);
 
         }

@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
@@ -42,7 +43,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 
     private static final int CAMERA_REQUEST=1888;
     String base64;
-    ImageView img_selection_pencil;
+    ImageView img_selection_pencil, IV_profile;
     CardView imageView_profile;
     Button alldataSubmit;
     CheckBox term_condition;
@@ -343,6 +344,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         cast =findViewById(R.id.cast);
         //       education =findViewById(R.id.education);
         Category =findViewById(R.id.Category);
+        imageView_profile=findViewById(R.id.imageView_profile);
         annualIncome =findViewById(R.id.annualIncome);
         Agrozone =findViewById(R.id.Agrozone);
         alternetLivehood =findViewById(R.id.alternetLivehood);
@@ -366,6 +368,8 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         term_condition=findViewById(R.id.term_condition);
         //IMage view
         img_selection_pencil=findViewById(R.id.img_selection_pencil);
+        IV_profile=findViewById(R.id.imageView_profile);
+//        imageView_profile=findViewById(R.id.imageView_profile);
         stateArrayList=new ArrayList<>();
         blockArrayList=new ArrayList<>();
         distrcitArrayList=new ArrayList<>();
@@ -386,7 +390,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             byte[] bytes = stream.toByteArray();
 //
             base64 = encodeTobase64(photo);
-            img_selection_pencil.setImageBitmap(photo);
+            IV_profile.setImageBitmap(photo);
         }
 
     }
@@ -797,6 +801,15 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             }
         });
     }
+//    private boolean checkValidation() {
+//        boolean ret = true;
+//        if (householdNo.getText().toString().equals("")) {
+//            householdNo.setError(getString(R.string"Please enter householdNo"));
+//            return false;
+//        }
+//
+//        return ret;
+//    }
 
 
 
