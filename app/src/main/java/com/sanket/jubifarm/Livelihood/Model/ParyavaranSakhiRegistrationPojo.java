@@ -34,9 +34,18 @@ public class ParyavaranSakhiRegistrationPojo
     private String household_no;
     private String what_you_know;
     private String id_other_name;
+    private String id_type_id;
     private String date_of_birth;
     private String farmer_image;
     private String aadhar_no;
+
+    public String getId_type_id() {
+        return id_type_id;
+    }
+
+    public void setId_type_id(String id_type_id) {
+        this.id_type_id = id_type_id;
+    }
 
     public String getHousehold_no() {
         return household_no;
@@ -307,6 +316,7 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_EDUCATION_ID = "education_id";
     public static final String COLUMN_PINCODE = "pincode";
     public static final String COLUMN_CASTE = "caste";
+    public static final String COLUMN_ID_TYPE_ID= "id_type_id";
     public static final String COLUMN_MARTIAL_CATEGORY = "martial_category";
     //    public static final String COLUMN_EDUCATION_QUALIFICATION = "education_qualification";
     public static final String COLUMN_TOTAL_LANDHOLDING = "total_land_holding";
@@ -324,7 +334,7 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_AADHAR_NO + " INTEGER ,"
                     + COLUMN_HOUSEHOLD_NO + " INTEGER ,"
                     + COLUMN_FARMER_NAME + " TEXT ,"
-                    // + COLUMN_ID_TYPE_ID + " INTEGER ,"
+                     + COLUMN_ID_TYPE_ID + " INTEGER ,"
                     + COLUMN_AGE + " INTEGER ,"
                     + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
                     + COLUMN_DATE_OF_BIRTH + " TEXT ,"

@@ -3965,6 +3965,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setId_no(cursor.getString(cursor.getColumnIndex("id_no")));
                     registrationPojo.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
                     registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
+                    //registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
                     registrationPojo.setWhat_you_know(cursor.getString(cursor.getColumnIndex("what_you_know")));
                     registrationPojo.setAge(cursor.getString(cursor.getColumnIndex("age")));
                     registrationPojo.setDate_of_birth(cursor.getString(cursor.getColumnIndex("date_of_birth")));
@@ -3987,10 +3988,10 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setAnnual_income(cursor.getInt(cursor.getColumnIndex("annual_income")));
                     registrationPojo.setFather_husband_name(cursor.getString(cursor.getColumnIndex("father_husband_name")));
                     registrationPojo.setPhysical_challenges(cursor.getString(cursor.getColumnIndex("physical_challenges")));
-                    registrationPojo.setHandicapped(cursor.getString(cursor.getColumnIndex("handicapped")));
-                    registrationPojo.setMulti_cropping(cursor.getString(cursor.getColumnIndex("multi_cropping")));
+                    //registrationPojo.setHandicapped(cursor.getString(cursor.getColumnIndex("handicapped")));
+                    //registrationPojo.setMulti_cropping(cursor.getString(cursor.getColumnIndex("multi_cropping")));
                     registrationPojo.setBpl(cursor.getString(cursor.getColumnIndex("bpl")));
-                    registrationPojo.setIrrigation_facility(cursor.getString(cursor.getColumnIndex("irrigation_facility")));
+                    //registrationPojo.setIrrigation_facility(cursor.getString(cursor.getColumnIndex("irrigation_facility")));
                     //registrationPojo.setEducation_qualification(cursor.getString(cursor.getColumnIndex("education_qualification")));
                     registrationPojo.setEducation_name_other(cursor.getString(cursor.getColumnIndex("education_name_other")));
                     registrationPojo.setTotal_land_holding(cursor.getString(cursor.getColumnIndex("total_land_holding")));
@@ -4025,7 +4026,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
                     //registrationPojo.setId_no(cursor.getString(cursor.getColumnIndex("id_no")));
                     registrationPojo.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
-                   // registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
+                    registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
+                    //registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
                     registrationPojo.setWhat_you_know(cursor.getString(cursor.getColumnIndex("what_you_know")));
                     registrationPojo.setAge(cursor.getString(cursor.getColumnIndex("age")));
                     registrationPojo.setDate_of_birth(cursor.getString(cursor.getColumnIndex("date_of_birth")));
@@ -4054,11 +4056,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
 //                    registrationPojo.setIrrigation_facility(cursor.getString(cursor.getColumnIndex("irrigation_facility")));
                     //registrationPojo.setEducation_qualification(cursor.getString(cursor.getColumnIndex("education_qualification")));
 //                    registrationPojo.setEducation_name_other(cursor.getString(cursor.getColumnIndex("education_name_other")));
-//                    registrationPojo.setTotal_land_holding(cursor.getString(cursor.getColumnIndex("total_land_holding")));
+                    registrationPojo.setTotal_land_holding(cursor.getString(cursor.getColumnIndex("total_land_holding")));
 //                    registrationPojo.setFertilizer(cursor.getString(cursor.getColumnIndex("fertilizer")));
                   //  registrationPojo.setGender(cursor.getString(cursor.getColumnIndex("gender")));
                     registrationPojo.setAgro_climat_zone_id(cursor.getString(cursor.getColumnIndex("agro_climat_zone_id")));
                     registrationPojo.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
+                    registrationPojo.setMartial_category(cursor.getString(cursor.getColumnIndex("martial_category")));
                  //   registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
 
                     cursor.moveToNext();
@@ -4646,6 +4649,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("village_id", user.getVillage_id());
                 values.put("pincode", user.getPincode());
                 values.put("id_other_name", user.getId_other_name());
+                values.put("id_type_id", user.getId_type_id());
                 values.put("alternative_livelihood_id", user.getAlternative_livelihood_id());
                 values.put("address", user.getAddress());
                 values.put("martial_category", user.getMartial_category());

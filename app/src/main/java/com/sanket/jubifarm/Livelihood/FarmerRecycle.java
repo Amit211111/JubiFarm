@@ -59,7 +59,7 @@ public class FarmerRecycle extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_recycle);
         getSupportActionBar().setTitle("Farmer List");
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fab1=findViewById(R.id.fab1);
 
