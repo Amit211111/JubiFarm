@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,17 +24,34 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.sanket.jubifarm.Activity.FarmerRegistration;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
+import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
+import com.sanket.jubifarm.restAPI.APIClient;
+import com.sanket.jubifarm.restAPI.JubiForm_API;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FarmerRegistrationForm extends AppCompatActivity {
 
@@ -47,6 +65,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     CardView imageView_profile;
     Button alldataSubmit;
     CheckBox term_condition;
+    ArrayList<ParyavaranSakhiRegistrationPojo> paryavaranSakhiRegistrationPojoArrayList = new ArrayList<>();
     LinearLayout ll_aadhar,ll_other,ll_age,ll_dob,rl_profile_image;
     EditText householdNo,FarmerAge,Farmerdob,FarmerName,AadharNo,husbandFatherName,mobileNumber,Address,pincode,TotalLandHoldingArea,NoOfMembers;
     RadioGroup rg_IdCard,rg_age,rg_bpls,rg_PhysicalChallenges;
@@ -104,7 +123,6 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         //  getStateSpinner()
 
 
-
         //Image View
         rl_profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,13 +169,13 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                     case R.id.rb_AadharCard:
                         ll_aadhar.setVisibility(View.VISIBLE);
                         ll_other.setVisibility(View.GONE);
-                        ID_Card="Aadhar Card";
+                        ID_Card = "Aadhar Card";
 
                         break;
                     case R.id.rb_otherNationalIdCard:
                         ll_aadhar.setVisibility(View.VISIBLE);
                         ll_other.setVisibility(View.VISIBLE);
-                        ID_Card="Other";
+                        ID_Card = "Other";
                         break;
                 }
             }
@@ -212,53 +230,57 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         alldataSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                paryavaranSakhiRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
+                if (checkValidation()) {
+                    Random random = new Random();
+                    int value = random.nextInt(1000);
 
-                paryavaranSakhiRegistrationPojo.setHousehold_no(householdNo.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setFarmer_image(base64);
-                paryavaranSakhiRegistrationPojo.setFarmer_name(FarmerName.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setMobile(mobileNumber.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
 
-                paryavaranSakhiRegistrationPojo.setFather_husband_name(husbandFatherName.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setAddress(Address.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setState_id(String.valueOf(state_id));
-                paryavaranSakhiRegistrationPojo.setDistrict_id(String.valueOf(district_id));
-                paryavaranSakhiRegistrationPojo.setBlock_id(String.valueOf(block_id));
-                paryavaranSakhiRegistrationPojo.setPincode(pincode.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setVillage_id(String.valueOf(village_id));
-                paryavaranSakhiRegistrationPojo.setReligion_id(String.valueOf(hmReligion));
-                paryavaranSakhiRegistrationPojo.setCaste(String.valueOf(hmcaste));
-                paryavaranSakhiRegistrationPojo.setEducation_id(String.valueOf(hmEducation));
-                paryavaranSakhiRegistrationPojo.setMartial_category(String.valueOf(hmCategory));
-                paryavaranSakhiRegistrationPojo.setId_other_name(ID_Card);
-                paryavaranSakhiRegistrationPojo.setId_type_id(String.valueOf(IDCard));
-                paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setAge(FarmerAge.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setDate_of_birth(Farmerdob.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setHousehold_no(householdNo.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setFarmer_image(base64);
+                    paryavaranSakhiRegistrationPojo.setFarmer_name(FarmerName.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setMobile(mobileNumber.getText().toString().trim());
 
-                paryavaranSakhiRegistrationPojo.setPhysical_challenges(str_PhysicalChallenges);
-                paryavaranSakhiRegistrationPojo.setBpl(str_bpl);
+                    paryavaranSakhiRegistrationPojo.setFather_husband_name(husbandFatherName.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setAddress(Address.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setState_id(String.valueOf(state_id));
+                    paryavaranSakhiRegistrationPojo.setDistrict_id(String.valueOf(district_id));
+                    paryavaranSakhiRegistrationPojo.setBlock_id(String.valueOf(block_id));
+                    paryavaranSakhiRegistrationPojo.setPincode(pincode.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setVillage_id(String.valueOf(village_id));
+                    paryavaranSakhiRegistrationPojo.setReligion_id(String.valueOf(hmReligion));
+                    paryavaranSakhiRegistrationPojo.setCaste(String.valueOf(hmcaste));
+                    paryavaranSakhiRegistrationPojo.setEducation_id(String.valueOf(hmEducation));
+                    paryavaranSakhiRegistrationPojo.setMartial_category(String.valueOf(hmCategory));
+                    paryavaranSakhiRegistrationPojo.setId_other_name(ID_Card);
+                    paryavaranSakhiRegistrationPojo.setId_type_id(String.valueOf(IDCard));
+                    paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setAge(FarmerAge.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setDate_of_birth(Farmerdob.getText().toString().trim());
 
-                paryavaranSakhiRegistrationPojo.setTotal_land_holding(TotalLandHoldingArea.getText().toString().trim());
-                paryavaranSakhiRegistrationPojo.setAnnual_income(String.valueOf(annualicme));
-                paryavaranSakhiRegistrationPojo.setAgro_climat_zone_id(String.valueOf(AgroZone));
-                paryavaranSakhiRegistrationPojo.setAlternative_livelihood_id(String.valueOf(alternativeLivelihood));
-                paryavaranSakhiRegistrationPojo.setNo_of_member_migrated(NoOfMembers.getText().toString().trim());
-              //  paryavaranSakhiRegistrationPojo.setMartial_category(Category.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setPhysical_challenges(str_PhysicalChallenges);
+                    paryavaranSakhiRegistrationPojo.setBpl(str_bpl);
 
-                sqliteHelper.getPSFarmerRegistrationData(paryavaranSakhiRegistrationPojo);
+                    paryavaranSakhiRegistrationPojo.setTotal_land_holding(TotalLandHoldingArea.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setAnnual_income(String.valueOf(annualicme));
+                    paryavaranSakhiRegistrationPojo.setAgro_climat_zone_id(String.valueOf(AgroZone));
+                    paryavaranSakhiRegistrationPojo.setAlternative_livelihood_id(String.valueOf(alternativeLivelihood));
+                    paryavaranSakhiRegistrationPojo.setNo_of_member_migrated(NoOfMembers.getText().toString().trim());
+                    //  paryavaranSakhiRegistrationPojo.setMartial_category(Category.getText().toString().trim());
 
-                Intent intent = new Intent(FarmerRegistrationForm.this, FarmerRecycle.class);
-                intent .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                    long id = sqliteHelper.getPSFarmerRegistrationData(paryavaranSakhiRegistrationPojo);
 
-//                Gson gson = new Gson();
-//                String data = gson.toJson(FarmerRecycle);
-//                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                RequestBody body = RequestBody.create(JSON, data);
-//                callFarmerRegistrationAPI(body);
-//                Log.e("FarmerRegistration", "registration: " + data);
+                    Intent intent = new Intent(FarmerRegistrationForm.this, FarmerRecycle.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+
+//                    Gson gson = new Gson();
+//                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);
+//                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//                    RequestBody body = RequestBody.create(JSON, data);
+//                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
+                }
 
 
             }
@@ -267,9 +289,9 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     }
 
 
-//    private void callFarmerRegistrationAPI(RequestBody body){
-//            dialog = ProgressDialog.show(this, "", "Please wait...", true);
-//            APIClient.getPsClient().create(JubiForm_API.class).getPsClient(body).enqueue(new Callback<JsonObject>() {
+//        private void sendPS_FarmerRegistrationdata(RequestBody body, String localId) {
+//            ProgressDialog dialog = ProgressDialog.show(FarmerRegistrationForm.this, "", getString(R.string.Please_wait), true);
+//            APIClient.getClient().create(JubiForm_API.class).sendPSFarmerRegistrationdata(body).enqueue(new Callback<JsonObject>() {
 //
 //                @Override
 //                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -279,8 +301,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                        String success = jsonObject.optString("status");
 //                        String message = jsonObject.optString("message");
 //                        String lat_insert_id = jsonObject.optString("let_inssert_id");
-//                        if (Integer.valueOf(success) == 1)
-//                        {
+//                        if (Integer.valueOf(success) == 1) {
 //
 //                            Intent intent = new Intent(FarmerRegistrationForm.this, FarmerRecycle.class);
 //                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -288,7 +309,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                            startActivity(intent);
 //
 //                            Toast.makeText(getApplicationContext(), "Registration Success" + message, Toast.LENGTH_SHORT).show();
-//      //                      sqliteHelper.update("school_list", "id='" + id + "'", lat_insert_id, "id");
+//                            //                      sqliteHelper.update("school_list", "id='" + id + "'", lat_insert_id, "id");
 //
 //                        } else {
 //                            Toast.makeText(FarmerRegistrationForm.this, "Farmer Registration Not Register", Toast.LENGTH_SHORT).show();
@@ -307,7 +328,8 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                    dialog.dismiss();
 //                }
 //            });
-    // }
+//        }
+
 
     private void intializeAll()
     {
@@ -344,7 +366,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         cast =findViewById(R.id.cast);
         //       education =findViewById(R.id.education);
         Category =findViewById(R.id.Category);
-        imageView_profile=findViewById(R.id.imageView_profile);
+        //imageView_profile=findViewById(R.id.imageView_profile);
         annualIncome =findViewById(R.id.annualIncome);
         Agrozone =findViewById(R.id.Agrozone);
         alternetLivehood =findViewById(R.id.alternetLivehood);
@@ -801,16 +823,235 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             }
         });
     }
-//    private boolean checkValidation() {
-//        boolean ret = true;
-//        if (householdNo.getText().toString().equals("")) {
-//            householdNo.setError(getString(R.string"Please enter householdNo"));
+
+
+    private boolean checkValidation() {
+        boolean ret = true;
+        if (!FarmerName.getText().toString().trim().matches("[a-zA-Z ]+")) {
+            EditText flagEditfield = FarmerName;
+            String msg = getString(R.string.Please_Enter_Farmer_Name);
+            FarmerName.setError(msg);
+            FarmerName.requestFocus();
+            return false;
+        }
+        if (rb_AadharCard.isChecked() || rb_otherNationalIdCard.isChecked()) {
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.Please_select_Id_Number), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (AadharNo.getText().toString().trim().length() < 12 ) {
+            EditText flagEditfield = husbandFatherName;
+            String msg = getString(R.string.Please_enter_valid_id);
+            AadharNo.setError(msg);
+            AadharNo.requestFocus();
+            return false;
+        }
+
+        if (!husbandFatherName.getText().toString().trim().matches("[a-zA-Z ]+")){
+            EditText flagEditfield = husbandFatherName;
+            String msg = getString(R.string.Please_Enter_Fatherhusband_Name);
+            husbandFatherName.setError(msg);
+            husbandFatherName.requestFocus();
+            return false;
+        }
+
+        if (householdNo.getText().toString().trim().length() == 0) {
+            EditText flagEditfield = householdNo;
+            String msg = getString(R.string.Please_Enter_HouseholdNo);
+            householdNo.setError(msg);
+            householdNo.requestFocus();
+            return false;
+        }
+        if (mobileNumber.getText().toString().trim().length() < 10) {
+            EditText flagEditfield = mobileNumber;
+            String msg = getString(R.string.Please_Enter_Valid_Contact_Number);
+            mobileNumber.setError(msg);
+            mobileNumber.requestFocus();
+            return false;
+        }
+        if (rb_age.isChecked() || rb_dob.isChecked()) {
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.Please_select_DOB_Or_Age), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!FarmerAge.getText().toString().equalsIgnoreCase("") && Double.parseDouble(FarmerAge.getText().toString().trim()) > 120) {
+            FarmerAge.setError(" Age Should be between 18  to 120 ");
+            FarmerAge.requestFocus();
+            ret = false;
+        } else if (!FarmerAge.getText().toString().equalsIgnoreCase("") && Double.parseDouble(FarmerAge.getText().toString().trim()) < 18) {
+            FarmerAge.setError(" Age Should be between 18  to 120 ");
+            FarmerAge.requestFocus();
+            ret = false;
+        }
+        if (rb_age.isChecked()) {
+            if (FarmerAge.getText().toString().trim().length() < 0) {
+                EditText flagEditfield = FarmerAge;
+                String msg = getString(R.string.Please_Enter_ValidAge);
+                FarmerAge.setError(msg);
+                FarmerAge.requestFocus();
+                return false;
+            }
+        } else {
+            if (Farmerdob.getText().toString().trim().length() < 0) {
+                EditText flagEditfield = Farmerdob;
+                String msg = getString(R.string.Please_Enter_Valid_Date_of_Birth);
+                Farmerdob.setError(msg);
+                Farmerdob.requestFocus();
+                return false;
+            }
+        }
+        if (Address.getText().toString().trim().equalsIgnoreCase("")) {
+            EditText flagEditfield = Address;
+            String msg = getString(R.string.please_enter_address);
+            Address.setError(msg);
+            Address.requestFocus();
+            return false;
+        }
+//        if (!et_FarmerName.getText().toString().trim().matches("[a-zA-Z ]+")) {
+//            EditText flagEditfield = et_FarmerName;
+//            String msg = getString(R.string.Please_Enter_Farmer_Name);
+//            et_FarmerName.setError(msg);
+//            et_FarmerName.requestFocus();
 //            return false;
 //        }
-//
-//        return ret;
-//    }
 
+
+
+        if (State.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(State.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) State.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+        if (District.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(District.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) District.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+
+        if (Block.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(Block.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) Block.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+        if (Village.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(Village.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) Village.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+        if (pincode.getText().toString().trim().length() < 6) {
+            EditText flagEditfield = pincode;
+            String msg = getString(R.string.Please_Enter_Valid_Number);
+            pincode.setError(msg);
+            pincode.requestFocus();
+            return false;
+        }
+        if (rb_BPLYes.isChecked() || rb_BPLNo.isChecked()) {
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.Please_select_BPL), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (religion.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(religion.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) religion.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+        if (cast.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(cast.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) cast.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+
+        if (education.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(education.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) education.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+        if (rb_PhysicalChallengesYes.isChecked() || rb_PhysicalChallengesNo.isChecked()) {
+        } else {
+            Toast.makeText(getApplicationContext(), getString(R.string.Please_select_Physical_Challenges), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (Category.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(Category.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) Category.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+        if (TotalLandHoldingArea.getText().toString().trim().length() < 1) {
+            EditText flagEditfield = TotalLandHoldingArea;
+            String msg = getString(R.string.Please_Enter_Valid_Number);
+            TotalLandHoldingArea.setError(msg);
+            TotalLandHoldingArea.requestFocus();
+            return false;
+        }
+        if (annualIncome.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(annualIncome.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) annualIncome.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+
+        if (alternetLivehood.getSelectedItemPosition() > 0) {
+            String itemvalue = String.valueOf(alternetLivehood.getSelectedItem());
+        } else {
+            TextView errorTextview = (TextView) alternetLivehood.getSelectedView();
+            errorTextview.setError("Error");
+            errorTextview.requestFocus();
+            return false;
+        }
+
+
+        if (NoOfMembers.getText().toString().trim().length() < 1) {
+            EditText flagEditfield = NoOfMembers;
+            String msg = getString(R.string.Please_Enter_Valid_Number);
+            NoOfMembers.setError(msg);
+            NoOfMembers.requestFocus();
+            return false;
+        }
+        if(term_condition.isChecked()){
+            ret=true;
+        } else{
+            ret=false;
+            Toast.makeText(FarmerRegistrationForm.this, R.string.terms_and_conmdition, Toast.LENGTH_SHORT).show();
+        }
+
+
+        return ret;
+    }
 
 
 }

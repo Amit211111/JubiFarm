@@ -38,6 +38,16 @@ public class ParyavaranSakhiRegistrationPojo
     private String date_of_birth;
     private String farmer_image;
     private String aadhar_no;
+    private String flag;
+
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public String getId_type_id() {
         return id_type_id;
@@ -322,6 +332,7 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_TOTAL_LANDHOLDING = "total_land_holding";
     public static final String COLUMN_AGRO_CLIMAT_ZONE_ID = "agro_climat_zone_id";
     public static final String COLUMN_NO_OF_MEMBER_MIGRATED= "no_of_member_migrated";
+    public static final String COLUMN_Flag= "flag";
 //    public static final String COLUMN_HOUSEHOLD_NUMBER= "household_number";
 
 
@@ -361,6 +372,7 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_FARMER_IMAGE + " TEXT ,"
                     + COLUMN_AGRO_CLIMAT_ZONE_ID + " TEXT ,"
                     + COLUMN_MARTIAL_CATEGORY + " TEXT ,"
+                    + COLUMN_Flag + " TEXT ,"
 //                    + COLUMN_HOUSEHOLD_NUMBER + " TEXT ,"
                     +COLUMN_NO_OF_MEMBER_MIGRATED + " TEXT "
                     + ")";

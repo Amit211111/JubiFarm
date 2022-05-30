@@ -110,5 +110,8 @@ public interface JubiForm_API {
     @POST("delete_data.php")
     Call<JsonObject>deletecrop(@Body RequestBody body);
 
+    @POST("farmer_registration.php")
+    Call<JsonObject> sendPSFarmerRegistrationdata(@Body RequestBody body);
+
 }
 

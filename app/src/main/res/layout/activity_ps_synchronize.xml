@@ -16,7 +16,7 @@
         android:weightSum="2">
 
         <TextView
-            android:id="@+id/txtSno"
+            android:id="@+id/txtSyn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="5dp"
@@ -99,7 +99,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/btnCropPlanning"
+                        android:id="@+id/btnNeemPlantation"
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:layout_gravity="top"
@@ -130,7 +130,7 @@
                         android:visibility="gone"/>
 
                     <TextView
-                        android:id="@+id/btnCropMonitoring"
+                        android:id="@+id/btnNeemMonitoring"
                         android:layout_width="match_parent"
                         android:layout_height="36dp"
                         android:layout_gravity="top"
@@ -216,7 +216,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/llCropPlanning"
+                        android:id="@+id/llNeemPlanning"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -224,7 +224,7 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/tvCropPlanningCount"
+                            android:id="@+id/tvNeemPlanningCount"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:layout_gravity="center"
@@ -270,7 +270,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/llCropMonitoring"
+                        android:id="@+id/llNeemMonitoring"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -278,7 +278,7 @@
                         android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/tvCropMonitoringCount"
+                            android:id="@+id/tvNeemMonitoringCount"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:layout_gravity="center"

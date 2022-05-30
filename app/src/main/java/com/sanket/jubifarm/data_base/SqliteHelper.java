@@ -3134,6 +3134,62 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+//////////////////////
+    public ArrayList<ParyavaranSakhiRegistrationPojo> getPSFarmerForSyn() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<ParyavaranSakhiRegistrationPojo> arrayList = new ArrayList<ParyavaranSakhiRegistrationPojo>();
+        ParyavaranSakhiRegistrationPojo registrationPojo;
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from ps_farmer_registration WHERE flag=0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        registrationPojo = new ParyavaranSakhiRegistrationPojo();
+                        registrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                        registrationPojo.setHousehold_no(cursor.getString(cursor.getColumnIndex("household_no")));
+                        registrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
+                        registrationPojo.setFather_husband_name(cursor.getString(cursor.getColumnIndex("father_husband_name")));
+                        registrationPojo.setCategory_id(cursor.getString(cursor.getColumnIndex("category_id")));
+                        registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
+                        registrationPojo.setId_other_name(cursor.getString(cursor.getColumnIndex("id_other_name")));
+                        registrationPojo.setBpl(cursor.getString(cursor.getColumnIndex("bpl")));
+                        registrationPojo.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+                        registrationPojo.setAge(cursor.getString(cursor.getColumnIndex("age")));
+                        registrationPojo.setDate_of_birth(cursor.getString(cursor.getColumnIndex("date_of_birth")));
+                        registrationPojo.setWhat_you_know(cursor.getString(cursor.getColumnIndex("what_you_know")));
+                        registrationPojo.setPhysical_challenges(cursor.getString(cursor.getColumnIndex("physical_challenges")));
+                        registrationPojo.setAlternative_livelihood_id(cursor.getString(cursor.getColumnIndex("alternative_livelihood_id")));
+                        registrationPojo.setNo_of_member_migrated(cursor.getString(cursor.getColumnIndex("no_of_member_migrated")));
+                        registrationPojo.setReligion_id(cursor.getString(cursor.getColumnIndex("religion_id")));
+                        registrationPojo.setCaste(cursor.getString(cursor.getColumnIndex("caste")));
+                        registrationPojo.setTotal_land_holding(cursor.getString(cursor.getColumnIndex("total_land_holding")));
+                        registrationPojo.setAgro_climat_zone_id(cursor.getString(cursor.getColumnIndex("agro_climat_zone_id")));
+                        registrationPojo.setEducation_id(cursor.getString(cursor.getColumnIndex("education_id")));
+                        registrationPojo.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
+                        registrationPojo.setState_id(cursor.getString(cursor.getColumnIndex("state_id")));
+                        registrationPojo.setDistrict_id(cursor.getString(cursor.getColumnIndex("district_id")));
+                        registrationPojo.setBlock_id(cursor.getString(cursor.getColumnIndex("block_id")));
+                        registrationPojo.setVillage_id(cursor.getString(cursor.getColumnIndex("village_id")));
+                        registrationPojo.setPincode(cursor.getString(cursor.getColumnIndex("pincode")));
+                        registrationPojo.setAnnual_income(cursor.getString(cursor.getColumnIndex("annual_income")));
+                        registrationPojo.setMartial_category(cursor.getString(cursor.getColumnIndex("martial_category")));
+                         //registrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("f_user_id")));//(farmer registration table)
+                        registrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));//(users table)
+                        registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
+
+                        cursor.moveToNext();
+                        arrayList.add(registrationPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
 
     public ArrayList<FarmerFamilyPojo> getFarmerFamilyTableDataToBeSync() {
         ArrayList<FarmerFamilyPojo> arrayList = new ArrayList<FarmerFamilyPojo>();
@@ -3690,6 +3746,62 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+//    public ArrayList<PSLandHoldingPojo> getPSLandSyn() {
+//        ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<PSLandHoldingPojo>();
+//        PSLandHoldingPojo landHoldingPojo;
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        try {
+//            if (db != null && db.isOpen() && !db.isReadOnly()) {
+//                String query = "select * from ps_land_holding where flag = 0";
+//                Cursor cursor = db.rawQuery(query, null);
+//                if (cursor != null && cursor.getCount() > 0) {
+//                    cursor.moveToFirst();
+//                    while (!cursor.isAfterLast()) {
+//                        landHoldingPojo = new PSLandHoldingPojo();
+//                        landHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+//                        landHoldingPojo.setArea(cursor.getString(cursor.getColumnIndex("area")));
+//                        landHoldingPojo.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+//                        landHoldingPojo.setTotal_plant(cursor.getString(cursor.getColumnIndex("total_plant")));
+//                        landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+//                        landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+//                        landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+//                        landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+//                        landHoldingPojo.setImage(cursor.getString(cursor.getColumnIndex("image")));
+//                        landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+//                        landHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+//                        landHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+//                        //landHoldingPojo.setSoil_type_id(cursor.getString(cursor.getColumnIndex("soil_type_id")));
+//                       // landHoldingPojo.setSoil_color_id(cursor.getString(cursor.getColumnIndex("soil_color_id")));
+//                        //      landHoldingPojo.setSoil_characteristics_id(cursor.getString(cursor.getColumnIndex("soil_characteristics_id")));
+//                        //      landHoldingPojo.setSoil_chemical_composition_id(cursor.getString(cursor.getColumnIndex("soil_chemical_composition_id")));
+////                        landHoldingPojo.setFiltration_rate(cursor.getString(cursor.getColumnIndex("filtration_rate")));
+////                        landHoldingPojo.setSoil_texture(cursor.getString(cursor.getColumnIndex("soil_texture")));
+////                        landHoldingPojo.setPh(cursor.getString(cursor.getColumnIndex("ph")));
+////                        landHoldingPojo.setBulk_density(cursor.getString(cursor.getColumnIndex("bulk_density")));
+////                        landHoldingPojo.setCation_exchange_capacity(cursor.getString(cursor.getColumnIndex("cation_exchange_capacity")));
+////                        landHoldingPojo.setEc(cursor.getString(cursor.getColumnIndex("ec")));
+////                        landHoldingPojo.setP(cursor.getString(cursor.getColumnIndex("p")));
+////                        landHoldingPojo.setS(cursor.getString(cursor.getColumnIndex("s")));
+////                        landHoldingPojo.setMg(cursor.getString(cursor.getColumnIndex("mg")));
+////                        landHoldingPojo.setK(cursor.getString(cursor.getColumnIndex("k")));
+////                        landHoldingPojo.setN(cursor.getString(cursor.getColumnIndex("n")));
+////                        landHoldingPojo.setCa(cursor.getString(cursor.getColumnIndex("ca")));
+//                        landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
+//                      //  landHoldingPojo.setOffline_sync(cursor.getInt(cursor.getColumnIndex("offline_sync")));
+//
+//                        cursor.moveToNext();
+//                        arrayList.add(landHoldingPojo);
+//                    }
+//                    db.close();
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return arrayList;
+//    }
+
+
     public ArrayList<CropPlaningPojo> getAddPlantDataToBeSync() {
         ArrayList<CropPlaningPojo> arrayList = new ArrayList<CropPlaningPojo>();
         CropPlaningPojo landHoldingPojo;
@@ -4058,6 +4170,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     //registrationPojo.setId_no(cursor.getString(cursor.getColumnIndex("id_no")));
                     registrationPojo.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
                     registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
+                    registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                     //registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
                     registrationPojo.setWhat_you_know(cursor.getString(cursor.getColumnIndex("what_you_know")));
                     registrationPojo.setAge(cursor.getString(cursor.getColumnIndex("age")));
@@ -4681,6 +4794,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("pincode", user.getPincode());
                 values.put("id_other_name", user.getId_other_name());
                 values.put("id_type_id", user.getId_type_id());
+                values.put("flag", "0");
                 values.put("alternative_livelihood_id", user.getAlternative_livelihood_id());
                 values.put("address", user.getAddress());
                 values.put("martial_category", user.getMartial_category());
