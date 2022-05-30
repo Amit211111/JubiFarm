@@ -67,39 +67,6 @@ public class LandHoldingDetailsView extends AppCompatActivity {
             AllIntilize();
 
 //
-//        Bundle bundle = getIntent().getExtras();
-//        if (bundle != null) {
-//            land_id = bundle.getString("land_id", "");
-//        }
-
-//        psLandHoldingPojo= new PSLandHoldingPojo();
-//        arrayList = sqliteHelper.PSgetRegistrationData();
-//        if (arrayList.size()>0) {
-//
-//            farmer_selection.setText(arrayList.get(0).getFarmer_id());
-//            land_name.setText(arrayList.get(0).getLand_name());
-//            tv_total_neem_plat.setText(arrayList.get(0).getLand_area());
-//            tv_landid.setText(arrayList.get(0).getLand_id());
-//        }else {
-//            Toast.makeText(getApplicationContext(),"No data found", Toast.LENGTH_LONG).show();
-//        }
-//
-//
-//        tvlandedit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(LandHoldingDetailsView.this, PS_LandHolding.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("type", "edit");
-//                intent.putExtra("id",arrayList.get(0).getLocal_id());
-//                intent.putExtra("id", id);
-//                startActivity(intent);
-//
-//
-//            }
-//        });
         /*get intent values here*/
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -113,8 +80,8 @@ public class LandHoldingDetailsView extends AppCompatActivity {
             land_areaa = psLandHoldingPojo.getLand_area();
             land_namee= psLandHoldingPojo.getLand_name();
 
-            farmer_name = sqliteHelper.getFarmerName(farmer_id);
-            farmer_name=psLandHoldingPojo.getFarmer_id();
+            farmer_name = sqliteHelper.getPSFarmerName(psLandHoldingPojo.getFarmer_id());
+//            farmer_name=psLandHoldingPojo.getFarmer_id();
 //            total_plant = sqliteHelper.getTotalPlantbyid(psLandHoldingPojo.getFarmer_id());
             unit = sqliteHelper.getNameById("master", "master_name", "caption_id", Integer.parseInt(psLandHoldingPojo.getLand_unit()));
             land_image = psLandHoldingPojo.getLand_image();
@@ -132,7 +99,7 @@ public class LandHoldingDetailsView extends AppCompatActivity {
                 addLandIntent.putExtra("screen_type", "edit_land");
                 addLandIntent.putExtra("land_area", land_areaa);
                 addLandIntent.putExtra("farmer_id",farmer_id);
-                addLandIntent.putExtra("farmer_name", sqliteHelper.getNameById("ps_land_holding", "farmer_name", "id", Integer.parseInt(farmer_id)));
+                addLandIntent.putExtra("farmer_name", sqliteHelper.getNameById("ps_land_holding", "farmer_name", "local_id", Integer.parseInt(farmer_id)));
                 addLandIntent.putExtra("unit", sqliteHelper.getNameById("master", "master_name", "caption_id", unitId));
                 addLandIntent.putExtra("unit_id", unitId);
                 addLandIntent.putExtra("land_image", base64);

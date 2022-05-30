@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
@@ -33,11 +35,15 @@ import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.cropImage.utils.UiHelper;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
+import com.sanket.jubifarm.restAPI.APIClient;
 import com.sanket.jubifarm.utils.CommonClass;
+import com.squareup.picasso.Picasso;
 import com.yalantis.ucrop.UCrop;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -53,14 +59,15 @@ public class PS_LandHolding extends AppCompatActivity {
     EditText et_landto_be_added,et_land_name;
     SqliteHelper sqliteHelper;
     PSLandHoldingPojo psLandHoldingPojo;
+    PSLandHoldingPojo psLHPojo;
     ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
     public static android.app.Dialog submit_alert;
 
     ImageView img_addland;
     private SharedPrefHelper sharedPrefHelper;
     private String land_area = "", farmer_name = "", unit = "", land_id = "", p = "", ca = "", ec = "", bulk_density = "", land_name,
-            filtration_rate = "", soil_texture = "", ph = "";
-
+            filtrationr_rate = "", soil_texture = "", ph = "",image="";
+    private String land_unit="";
     private String local_id;
     private String type="";
     ArrayList<String> farmarArrayList;
@@ -92,13 +99,13 @@ public class PS_LandHolding extends AppCompatActivity {
         IntilizeAll();
         setFarmerSpinner();
         setUnitSpinner();
-
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
-            local_id = bundle.getString("local_id", "0");
+            local_id = bundle.getString("local_id", "");
             land_area = bundle.getString("land_area", "");
             farmer_name = bundle.getString("farmer_name", "");
-            unit = bundle.getString("unit", "");
+           unit = bundle.getString("land_unit", "");
+
             base64 = bundle.getString("land_image", "");
             land_id = bundle.getString("land_id", "");
             type = bundle.getString("type", "");
@@ -106,13 +113,44 @@ public class PS_LandHolding extends AppCompatActivity {
 
         }
 
+        
             if (type.equals("edit")) {
+
+                isEditable=true;
                 getSupportActionBar().setTitle("Update Land Holding");
-                psLandHoldingPojo = new PSLandHoldingPojo();
-                arrayList = sqliteHelper.PSgetRegistrationData();
-                // spnfarmerSelection.setText(arrayList.get(0).getLand_id());
-                et_landto_be_added.setText(arrayList.get(0).getLand_area());
-                et_land_name.setText(arrayList.get(0).getLand_name());
+                psLHPojo=new PSLandHoldingPojo();
+
+                et_land_name.setText(psLHPojo.getLand_name());
+                et_landto_be_added.setText(psLHPojo.getLand_area());
+
+                //spn_Unit.setSelection(Integer.parseInt(psLHPojo.getLand_unit()));
+                psLHPojo= sqliteHelper.PSLandDetail("",land_id);
+                base64 = psLHPojo.getLand_image();
+                 spnfarmerSelection.setSelection(Integer.parseInt(psLHPojo.getFarmer_id()));
+
+                if (base64 != null && base64.length() > 200) {
+                    byte[] decodedString = Base64.decode(base64, Base64.NO_WRAP);
+                    InputStream inputStream = new ByteArrayInputStream(decodedString);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    img_addland.setImageBitmap(bitmap);
+                }
+//                else if (base64.length() <= 200) {
+//                    try {
+//                        String url = APIClient.LAND_IMAGE_URL + base64;
+//                        Picasso.with(context).load(url).placeholder(R.drawable.land).into(img_addland);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+                else {
+                    img_addland.setImageResource(R.drawable.land);
+                }
+
+                unit=psLHPojo.getLand_unit();
+                setFarmerSpinner();
+                setUnitSpinner();
+                et_landto_be_added.setText(psLHPojo.getLand_area());
+                et_land_name.setText(psLHPojo.getLand_name());
             }
 
 
@@ -139,14 +177,8 @@ public class PS_LandHolding extends AppCompatActivity {
                    psLandHoldingPojo.setLand_area(et_landto_be_added.getText().toString().trim());
                    psLandHoldingPojo.setLand_unit(String.valueOf(unit_id));
                    psLandHoldingPojo.setLand_name(et_land_name.getText().toString().trim());
-                   //psLandHoldingPojo.setLand_id();
 
-//              if(!spnfarmerSelection.getSelectedItem().toString().isEmpty() && !et_landto_be_added.getText().toString().isEmpty() && !spn_Unit.getSelectedItem().toString().isEmpty() && et_land_name.getText().toString().isEmpty()) {
-//
-//                  Toast.makeText(PS_LandHolding.this,"Please Fill All The Fields",Toast.LENGTH_SHORT).show();
-//              }else
-//              {
-                   if (screen_type.equals("edit_land")) {
+                   if (type.equals("edit")) {
                        psLandHoldingPojo.setLand_id(land_id);
                        sqliteHelper.updatePsLandData(psLandHoldingPojo, land_id);
                    } else {
@@ -209,9 +241,19 @@ public class PS_LandHolding extends AppCompatActivity {
         } else {
             farmarArrayList.add(0, getString(R.string.select_farmer));
         }
+
+
+
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, farmarArrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnfarmerSelection.setAdapter(arrayAdapter);
+
+        if (type.equals("edit")) {
+            farmer_name = sqliteHelper.getPSFarmerName(psLHPojo.getFarmer_id());
+            int pos = arrayAdapter.getPosition(farmer_name);
+            spnfarmerSelection.setSelection(pos);
+        }
+
         if (isEditable) {
             int spinnerPosition = 0;
             String strpos1 = farmer_name;
@@ -274,18 +316,26 @@ public class PS_LandHolding extends AppCompatActivity {
         final ArrayAdapter Adapter = new ArrayAdapter(this, R.layout.spinner_list, UnitArrayList);
         Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn_Unit.setAdapter(Adapter);
-        if (isEditable) {
-            int spinnerPosition = 0;
-            String strpos1 = unit;
-            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
-                strpos1 = unit;
-                spinnerPosition = Adapter.getPosition(strpos1);
-                spn_Unit.setSelection(spinnerPosition);
-                spinnerPosition = 0;
-            }
-        }else{
-            spn_Unit.setSelection(3);
+
+        if (type.equals("edit")) {
+            land_unit = sqliteHelper.getPSLandUnit(psLHPojo.getLand_unit());
+            int pos = Adapter.getPosition(land_unit);
+            spn_Unit.setSelection(pos);
         }
+
+//        if (isEditable) {
+//            int spinnerPosition = 0;
+//            String strpos1 = unit;
+//            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
+//                strpos1 = unit;
+//                spinnerPosition = Adapter.getPosition(strpos1);
+//                spn_Unit.setSelection(spinnerPosition);
+//                spinnerPosition = 0;
+//            }
+//        }
+//        else{
+//            spn_Unit.setSelection(0);
+//        }
 
         spn_Unit.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -72,7 +72,7 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
           @Override
           public void onClick(View view) {
               Intent intent = new Intent(context,LandHoldingDetailsView.class);
-              intent.putExtra("land_Id",arrayList.get(position).getLocal_id());
+              intent.putExtra("land_Id",arrayList.get(position).getLand_id());
               intent.putExtra("farmerId",arrayList.get(position).getFarmer_id());
               context.startActivity(intent);
           }

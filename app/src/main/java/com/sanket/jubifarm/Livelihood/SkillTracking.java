@@ -2,12 +2,15 @@ package com.sanket.jubifarm.Livelihood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.security.keystore.SecureKeyImportUnavailableException;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -15,20 +18,20 @@ import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
+import java.util.Calendar;
+
 public class SkillTracking extends AppCompatActivity {
-    String [] sp_skill ={"Select Skill Center Name","Hyderabad","Delhi","Mumbai","Patna","Noida"};
 
-    String [] sp_state ={"Select State","Bihar","Delhi","Mumbai","Telangana","Noida"};
 
-    String [] sp_district={"Select District","Madhubani","Darbhanga","Saharsa","Patna","Muzaffarpur"};
-
-    String [] sp_village ={"Select Village","Hulasspatti","Mahdeva","Khaira","Sijoul","Inrwa","Phulpras"};
-
-    Spinner skill,state,district,village;
-    EditText address,contact,mobileno,latitude,longitude,pincode;
+      String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
+    String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
+    Spinner spn_training_stream,spn_skill_center;
+    EditText et_name,et_email,et_mobileno,et_qualification,et_date_completation;
     Button submit;
     SqliteHelper sqliteHelper;
     SkillTrackingPojo skillTrackingPojo;
+    int mYear,mMonth,mDay,year,month,day;
+    DatePickerDialog datePickerDialog;
 
 
     @Override
@@ -38,52 +41,62 @@ public class SkillTracking extends AppCompatActivity {
         getSupportActionBar().setTitle("Skill Center Registration");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        skill =findViewById(R.id.skill);
-        ArrayAdapter adapter3=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,sp_skill);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        skill.setAdapter(adapter3);
 
-        state =findViewById(R.id.state);
+     // IntilizeAll
+        IntilizeAll();
 
-        ArrayAdapter adapter=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,sp_state);
+        ArrayAdapter adapter=new ArrayAdapter(SkillTracking.this,R.layout.spinner_list,skill_center);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        state.setAdapter(adapter);
+        spn_skill_center.setAdapter(adapter);
 
-        district =findViewById(R.id.district);
-        ArrayAdapter adapter1=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,sp_district);
+
+        ArrayAdapter adapter1=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,training_stream);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        district.setAdapter(adapter1);
+        spn_training_stream.setAdapter(adapter1);
 
-        village =findViewById(R.id.village);
-        ArrayAdapter adapter2=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,sp_village);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        village.setAdapter(adapter2);
+        et_date_completation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                et_date_completation.setError(null);
+                et_date_completation.clearFocus();
+                mYear = year;
+                mMonth = month;
+                mDay = day;
+
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR); // current year
+                mMonth = c.get(Calendar.MONTH); // current month
+                mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                datePickerDialog = new DatePickerDialog(SkillTracking.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                et_date_completation.setText("" + dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.GRAY);
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#ff173e6d"));
+            }
+
+        });
 
 
-        address =findViewById(R.id.address);
-        contact =findViewById(R.id.contact);
-        mobileno =findViewById(R.id.mobileno);
-        latitude =findViewById(R.id.latitude);
-        longitude =findViewById(R.id.longitude);
-        pincode=findViewById(R.id.pincode);
-
-        submit =findViewById(R.id.submit);
         sqliteHelper = new SqliteHelper(getApplicationContext());
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 skillTrackingPojo = new SkillTrackingPojo();
-                skillTrackingPojo.setSkill(skill.getSelectedItem().toString().trim());
-                skillTrackingPojo.setAddress(address.getText().toString().trim());
-                skillTrackingPojo.setContact(contact.getText().toString().trim());
-                skillTrackingPojo.setMobileno(mobileno.getText().toString().trim());
-                skillTrackingPojo.setLatitude(latitude.getText().toString().trim());
-                skillTrackingPojo.setLongitude(longitude.getText().toString().trim());
-                skillTrackingPojo.setState(state.getSelectedItem().toString().trim());
-                skillTrackingPojo.setDistrict(district.getSelectedItem().toString().trim());
-                skillTrackingPojo.setVillage(village.getSelectedItem().toString().trim());
+                skillTrackingPojo.setName(et_name.getText().toString().trim());
+                skillTrackingPojo.setEmail(et_email.getText().toString().trim());
+                skillTrackingPojo.setQualification(et_qualification.getText().toString().trim());
+                skillTrackingPojo.setMobileno(et_mobileno.getText().toString().trim());
+                skillTrackingPojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
+                skillTrackingPojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
+                skillTrackingPojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
 
 
                 sqliteHelper.SkillTracking(skillTrackingPojo);
@@ -92,6 +105,18 @@ public class SkillTracking extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+    private void IntilizeAll()
+    {
+        spn_training_stream =findViewById(R.id.spn_training_stream);
+        spn_skill_center =findViewById(R.id.spn_skill_center);
+        et_name =findViewById(R.id.et_name);
+        et_email =findViewById(R.id.et_email);
+        et_mobileno =findViewById(R.id.et_mobileno);
+        et_qualification=findViewById(R.id.et_qualification);
+        et_date_completation=findViewById(R.id.et_date_completation);
+        submit =findViewById(R.id.submit);
 
     }
 }

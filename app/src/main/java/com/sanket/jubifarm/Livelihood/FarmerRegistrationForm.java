@@ -62,7 +62,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     private static final int CAMERA_REQUEST=1888;
     String base64;
     ImageView img_selection_pencil, IV_profile;
-    CardView imageView_profile;
+   // CardView imageView_profile;
     Button alldataSubmit;
     CheckBox term_condition;
     ArrayList<ParyavaranSakhiRegistrationPojo> paryavaranSakhiRegistrationPojoArrayList = new ArrayList<>();

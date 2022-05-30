@@ -2,17 +2,16 @@ package com.sanket.jubifarm.Livelihood.Model;
 
 public class SkillTrackingPojo
 {
-    private String Local_id;
+    private String local_id;
     private String id;
-    private String skill;
-    private String address;
-    private String contact;
+    private String name;
+    private String email;
     private String mobileno;
-    private String latitude;
-    private String  longitude;
-    private String state;
-    private String district;
-    private String village;
+    private String qualification;
+    private String  training_stream;
+    private String skill_center;
+    private String date_of_completion_of_training;
+
 
     public String getId() {
         return id;
@@ -23,35 +22,11 @@ public class SkillTrackingPojo
     }
 
     public String getLocal_id() {
-        return Local_id;
+        return local_id;
     }
 
     public void setLocal_id(String local_id) {
-        Local_id = local_id;
-    }
-
-    public String getSkill() {
-        return skill;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = skill;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
+        this.local_id = local_id;
     }
 
     public String getMobileno() {
@@ -62,72 +37,76 @@ public class SkillTrackingPojo
         this.mobileno = mobileno;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getName() {
+        return name;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getEmail() {
+        return email;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getState() {
-        return state;
+    public String getQualification() {
+        return qualification;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getTraining_stream() {
+        return training_stream;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setTraining_stream(String training_stream) {
+        this.training_stream = training_stream;
     }
 
-    public String getVillage() {
-        return village;
+    public String getSkill_center() {
+        return skill_center;
     }
 
-    public void setVillage(String village) {
-        this.village = village;
+    public void setSkill_center(String skill_center) {
+        this.skill_center = skill_center;
     }
 
-    private static final String TABLE_NAME = "Skill_Training";
-    private static final String COLUMN_LOCALID="localid";
+    public String getDate_of_completion_of_training() {
+        return date_of_completion_of_training;
+    }
+
+    public void setDate_of_completion_of_training(String date_of_completion_of_training) {
+        this.date_of_completion_of_training = date_of_completion_of_training;
+    }
+
+    private static final String TABLE_NAME = "skill_tracking";
+    private static final String COLUMN_LOCAL_ID="local_id";
     private static final String COLUMN_ID="id";
-    private static final String COLUMN_SKILL = "skill";
-    private static final String COLUMN_ADDRESS = "address";
-    private static final String COLUMN_CONTACT = "contact";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_QUALIFICATION= "qualification";
     private static final String COLUMN_MOBILENO = "mobileno";
-    private static final String COLUMN_LATITUDE = "latitude";
-    private static final String COLUMN_LONGITUDE = "longitude";
-    private static final String COLUMN_STATE= "state";
-    private static final String COLUMN_DISTRICT = "district";
-    private static final String COLUMN_VILLAGE = "village";
+    private static final String COLUMN_TRAINING_STREAM= "training_stream";
+    private static final String COLUMN_SKILL_CENTER = "skill_center";
+    private static final String COLUMN_DATE_OF_COMPLETION_OF_TRAINING= "date_of_completion_of_training";
 
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
-            + COLUMN_LOCALID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMN_ID + " INTEGER, "
-            + COLUMN_SKILL + " TEXT, "
-            + COLUMN_ADDRESS + " TEXT, "
-            + COLUMN_CONTACT + " TEXT, "
+            + COLUMN_SKILL_CENTER + " TEXT, "
+            + COLUMN_EMAIL + " TEXT, "
             + COLUMN_MOBILENO + " TEXT, "
-            + COLUMN_LATITUDE + " TEXT, "
-            + COLUMN_LONGITUDE + " TEXT, "
-            + COLUMN_STATE + " TEXT, "
-            + COLUMN_DISTRICT + " TEXT, "
-            + COLUMN_VILLAGE + " TEXT "
+            + COLUMN_NAME + " TEXT, "
+            + COLUMN_QUALIFICATION + " TEXT, "
+            + COLUMN_TRAINING_STREAM + " TEXT, "
+            + COLUMN_DATE_OF_COMPLETION_OF_TRAINING + " TEXT "
             + ")";
 
 }

@@ -839,6 +839,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return sum;
     }
 
+    public String getPSFarmerName(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select farmer_name from ps_farmer_registration where local_id ='" + id + "' ", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("farmer_name"));
+        return sum;
+    }
+
+    public String getPSLandUnit(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' ", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+
     public String getLandName(String id) {
         String sum = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -3966,7 +3984,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         try {
             if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
-                String query = "select * from ps_farmer_registration";
+                String query = "select * from ps_farmer_registration order by local_id desc";
                 Cursor cursor = sqLiteDatabase.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -4944,24 +4962,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return ids;
     }
-    public long updatePsLandData(PSLandHoldingPojo landHoldingPojo, String land_id) {
+    public long updatePsLandData(PSLandHoldingPojo psLandHoldingPojo, String land_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         long ids = 0;
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 ContentValues values = new ContentValues();
-                values.put("land_area", landHoldingPojo.getLand_area());
-               // values.put("land_id", landHoldingPojo.getLand_id());
-                //values.put("farmer_id", landHoldingPojo.getFarmer_id());
-                values.put("land_unit", landHoldingPojo.getLand_unit());
-                //values.put("land_image", landHoldingPojo.getLand_image());
-               // values.put("latitude", sharedPrefHelper.getString("LAT", ""));
-               // values.put("longitude", sharedPrefHelper.getString("LONG", ""));
+                values.put("land_area", psLandHoldingPojo.getLand_area());
+                values.put("land_id", psLandHoldingPojo.getLand_id());
+                values.put("farmer_id", psLandHoldingPojo.getFarmer_id());
+                values.put("land_unit", psLandHoldingPojo.getLand_unit());
+                values.put("land_image", psLandHoldingPojo.getLand_image());
+//                values.put("latitude", sharedPrefHelper.getString("LAT", ""));
+//                values.put("longitude", sharedPrefHelper.getString("LONG", ""));
 
-                values.put("land_name", landHoldingPojo.getLand_name());
-                values.put("flag", 0);
-                values.put("offline_sync", 1);
-                db.update("ps_land_holding", values, "local_id = '" + land_id + "'", null);
+                values.put("land_name", psLandHoldingPojo.getLand_name());
+//                values.put("flag", 0);
+//                values.put("offline_sync", 1);
+                ids=db.update("ps_land_holding", values, "land_id = '" + land_id + "'", null);
                 db.close();
             }
 
@@ -4974,10 +4992,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
     public PSLandHoldingPojo PSLandDetail(String farmer_id,String land_id) {
         PSLandHoldingPojo landHoldingPojo = new PSLandHoldingPojo();
         SQLiteDatabase db = this.getReadableDatabase();
-
+        String query="";
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
-                String query = "select * from ps_land_holding where local_id = '" + land_id + "' and farmer_id = '"+farmer_id+"'";
+                if(!farmer_id.equals("")) {
+                     query = "select * from ps_land_holding where land_id = '" + land_id + "' and farmer_id = '" + farmer_id + "'";
+                }else{
+                     query = "select * from ps_land_holding where land_id = '" + land_id + "'";
+
+                }
+
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -5006,15 +5030,24 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return landHoldingPojo;
     }
 
-    public ArrayList<PSLandHoldingPojo> PSgetRegistrationData()
+    public ArrayList<PSLandHoldingPojo> PSgetRegistrationData(String local_id)
     {
         ArrayList<PSLandHoldingPojo> psLandHoldingPojoArrayList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
+        String query="";
         try
         {
             if (db != null && db.isOpen() && !db.isReadOnly())
             {
-                String query = "select * from ps_land_holding ";
+
+                if(!local_id.equals("")){
+                    query = "select * from ps_land_holding where local_id='"+local_id+"'";
+
+                }else{
+                    query = "select * from ps_land_holding ";
+
+                }
+
 
                 @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0)
@@ -5052,18 +5085,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (DB1 != null && !DB1.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("id", householdMasterModel.getId());
-                values.put("skill", householdMasterModel.getSkill());
-                values.put("address", householdMasterModel.getAddress());
-                values.put("contact", householdMasterModel.getContact());
+                values.put("name", householdMasterModel.getName());
+                values.put("email", householdMasterModel.getEmail());
+                values.put("qualification", householdMasterModel.getQualification());
                 values.put("mobileno", householdMasterModel.getMobileno());
-                values.put("latitude", householdMasterModel.getLatitude());
-                values.put("longitude", householdMasterModel.getLongitude());
-                values.put("state", householdMasterModel.getState());
-                values.put("district", householdMasterModel.getDistrict());
-                values.put("village", householdMasterModel.getVillage());
+                values.put("training_stream", householdMasterModel.getTraining_stream());
+                values.put("skill_center", householdMasterModel.getSkill_center());
+                values.put("date_of_completion_of_training", householdMasterModel.getDate_of_completion_of_training());
 
 
-                ids = DB1.insert("Skill_Training", null, values);
+                ids = DB1.insert("skill_tracking", null, values);
                 DB1.close();
             }
         } catch (Exception e) {
@@ -5072,12 +5103,12 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return ids;
     }
-    public ArrayList<SkillTrackingPojo> getRegistrationData1() {
+    public ArrayList<SkillTrackingPojo> getPsSkillTrackingData() {
         ArrayList<SkillTrackingPojo> registerTableArrayList1 = new ArrayList<>();
         SQLiteDatabase db1 = this.getWritableDatabase();
         try {
             if (db1 != null && db1.isOpen() && !db1.isReadOnly()) {
-                String query = "select * from Skill_Training ";
+                String query = "select * from skill_tracking ";
 
                 @SuppressLint("Recycle") Cursor cursor = db1.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
@@ -5086,15 +5117,13 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
                         SkillTrackingPojo list1 = new SkillTrackingPojo();
                         list1.setId(cursor.getString(cursor.getColumnIndex("id")));
-                        list1.setSkill(cursor.getString(cursor.getColumnIndex("skill")));
-                        list1.setAddress(cursor.getString(cursor.getColumnIndex("address")));
-                        list1.setContact(cursor.getString(cursor.getColumnIndex("contact")));
+                        list1.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        list1.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                        list1.setQualification(cursor.getString(cursor.getColumnIndex("qualification")));
                         list1.setMobileno(cursor.getString(cursor.getColumnIndex("mobileno")));
-                        list1.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
-                        list1.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
-                        list1.setState(cursor.getString(cursor.getColumnIndex("state")));
-                        list1.setDistrict(cursor.getString(cursor.getColumnIndex("district")));
-                        list1.setVillage(cursor.getString(cursor.getColumnIndex("village")));
+                        list1.setTraining_stream(cursor.getString(cursor.getColumnIndex("training_stream")));
+                        list1.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
+                        list1.setDate_of_completion_of_training(cursor.getString(cursor.getColumnIndex("date_of_completion_of_training")));
 
                         registerTableArrayList1.add(list1);
                         cursor.moveToNext();

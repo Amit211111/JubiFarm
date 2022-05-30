@@ -44,15 +44,14 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
 
 
 
-        holder.center_name.setText(arrayList.get(position).getSkill());
-        holder.address.setText(arrayList.get(position).getAddress());
-        holder.contact_person.setText(arrayList.get(position).getContact());
-        holder.mobileno.setText(arrayList.get(position).getMobileno());
-        holder.latitude.setText(arrayList.get(position).getLatitude());
-        holder.longitude.setText(arrayList.get(position).getLongitude());
-        holder.state.setText(arrayList.get(position).getState());
-        holder.district.setText(arrayList.get(position).getDistrict());
-        holder.village.setText(arrayList.get(position).getVillage());
+        holder.sp_center_name.setText(arrayList.get(position).getSkill_center());
+        holder.tv_name.setText(arrayList.get(position).getName());
+        holder.tv_email.setText(arrayList.get(position).getEmail());
+        holder.tv_mobileno.setText(arrayList.get(position).getMobileno());
+        holder.tv_qualification.setText(arrayList.get(position).getQualification());
+        holder.tv_stream.setText(arrayList.get(position).getTraining_stream());
+        holder.tv_date_complitation.setText(arrayList.get(position).getDate_of_completion_of_training());
+
 
 
     }
@@ -65,22 +64,18 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView center_name,address,contact_person,mobileno,latitude,longitude,state,district,village,pincode;
+        TextView sp_center_name,tv_name,tv_email,tv_mobileno,tv_qualification,tv_stream,tv_date_complitation;
 
 
         public ViewHolder(View view) {
             super(view);
-            center_name= itemView.findViewById(R.id.center_name);
-            address= itemView.findViewById(R.id.address);
-            contact_person= itemView.findViewById(R.id.contact_person);
-            mobileno= itemView.findViewById(R.id.mobileno);
-            latitude= itemView.findViewById(R.id.latitude);
-            longitude= itemView.findViewById(R.id.longitude);
-            state= itemView.findViewById(R.id.state);
-            district= itemView.findViewById(R.id.district);
-            village= itemView.findViewById(R.id.village);
-            pincode= itemView.findViewById(R.id.pincode);
-
+            sp_center_name= itemView.findViewById(R.id.sp_center_name);
+            tv_name= itemView.findViewById(R.id.tv_name);
+            tv_email= itemView.findViewById(R.id.tv_email);
+            tv_mobileno= itemView.findViewById(R.id.tv_mobileno);
+            tv_qualification= itemView.findViewById(R.id.tv_qualification);
+            tv_stream= itemView.findViewById(R.id.tv_stream);
+            tv_date_complitation= itemView.findViewById(R.id.tv_date_complitation);
 
         }
     }

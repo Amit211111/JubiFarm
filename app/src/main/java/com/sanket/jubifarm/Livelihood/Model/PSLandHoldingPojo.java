@@ -81,13 +81,9 @@ public class PSLandHoldingPojo
 
     private static final String TABLE_NAME = "ps_land_holding";
     private static final String COLUMN_LOCAL_ID="local_id";
-
     private static final String COLUMN_FARMER_ID="farmer_id";
     private static final String COLUMN_LAND_UNIT="land_unit";
-
     private static final String COLUMN_LAND_ID="land_id";
-    //private static final String COLUMN_FARMER_NAME="farmer_name";
-
     private static final String COLUMN_LAND_IMAGE= "land_image";
     private static final String COLUMN_LAND_AREA = "land_area";
     private static final String COLUMN_LAND_NAME = "land_name";

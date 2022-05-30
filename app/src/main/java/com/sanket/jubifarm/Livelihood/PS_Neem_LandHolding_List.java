@@ -30,7 +30,7 @@ public class PS_Neem_LandHolding_List extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvLandHoldning1);
 
 
-       arrayList = sqliteHelper.PSgetRegistrationData();
+       arrayList = sqliteHelper.PSgetRegistrationData("");
         Adapter_PS_LandHolding adapter_ps_landHolding = new Adapter_PS_LandHolding(context, arrayList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

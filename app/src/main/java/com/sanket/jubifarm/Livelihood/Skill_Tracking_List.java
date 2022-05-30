@@ -37,7 +37,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv1);
 
 
-        arrayList = sqliteHelper.getRegistrationData1();
+        arrayList = sqliteHelper.getPsSkillTrackingData();
         AdapterSkillCenter adapterSkillCenter = new AdapterSkillCenter(context, arrayList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,7 +47,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
 
 
         addskill=findViewById(R.id.addskill);
-        addtraining=findViewById(R.id.addtraining);
+
 
         addskill.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +57,6 @@ public class Skill_Tracking_List extends AppCompatActivity {
             }
         });
 
-        addtraining.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Skill_Tracking_List.this,TrainningSurveyForm.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }
