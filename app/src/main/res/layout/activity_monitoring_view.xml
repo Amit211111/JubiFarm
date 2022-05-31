@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Livelihood.MonitoringView">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_land"
+        android:layout_width="387dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
+
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="Name"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="T-534 "
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="Email"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="23 hc"
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="Mobile Number"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_mobileno"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="abcd"
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/_5dp"
+            android:orientation="horizontal"
+
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10dp"
+
+                android:layout_weight="1"
+                android:padding="@dimen/_1dp"
+                android:text="Qualification"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_qualification"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="50"
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/_5dp"
+            android:orientation="horizontal"
+
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="Training Stream"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_training_stream"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="50"
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/_5dp"
+            android:orientation="horizontal"
+
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:padding="@dimen/_1dp"
+                android:text="Date of Completion"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_training_date"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_weight="1"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="50"
+                android:textColor="#01579b"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="13dp"
+
+            android:layout_marginTop="20dp"
+            android:background="#2779CC" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="#000000"
+            android:textSize="15sp"
+
+            android:fontFamily="@font/itcavantagradestdbk"
+
+            android:text="Question:"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:textColor="#000000"
+            android:text="1. Working Status ?"/>
+        <RadioGroup
+            android:id="@+id/rg_working"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:id="@+id/rb_working"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#000000"
+                android:text="Working"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_notworking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textColor="#000000"
+                android:text="Not Working" />
+
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:textColor="#000000"
+            android:textSize="15sp"
+
+            android:text=" 2.What is the current work?"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/monitor_spinner_draw"
+            android:orientation="vertical"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="4dp"
+            android:padding="4dp">
+
+            <Spinner
+                android:id="@+id/spn_current_work"
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin4"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:textSize="15sp"
+
+                android:text="3.Date of Monitoring"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="*"
+                android:textColor="#DD1212" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="13dp"
+
+            android:padding="4dp">
+
+            <EditText
+                android:id="@+id/et_date_of_monitoring"
+                android:layout_width="0dip"
+                android:layout_height="@dimen/_30dp"
+                android:layout_weight="1"
+                android:editable="false"
+                android:background="@drawable/monitor_spinner_draw"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:paddingLeft="@dimen/_5dp"
+                android:singleLine="true"
+                android:drawableRight="@drawable/ic_baseline_date_range_24"
+                android:textSize="@dimen/text_12" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:text=" 4.Remark"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/et_remark"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="3dp"
+
+            android:background="@drawable/box_type_draw"/>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="@dimen/margin150"
+            android:layout_height="41dp"
+            android:layout_marginLeft="217dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/itcavantagradestdbk"
+            android:textColor="@color/colorPrimaryDark"
+
+            android:layout_marginTop="20dp"
+            android:background="@drawable/draw"
+            android:text="Submit"
+            android:textSize="10dp" />
+    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

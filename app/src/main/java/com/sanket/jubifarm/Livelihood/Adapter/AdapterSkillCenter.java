@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sanket.jubifarm.Livelihood.LandHoldingDetailsView;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.MonitoringView;
 import com.sanket.jubifarm.Livelihood.SkillTrackingListView;
 import com.sanket.jubifarm.R;
 
@@ -59,12 +60,24 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
                 Intent intent = new Intent(context, SkillTrackingListView.class);
                 intent.putExtra("id",arrayList.get(position).getId());
                 intent.putExtra("namee",arrayList.get(position).getName());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 context.startActivity(intent);
             }
         });
 
-
+        holder.btn_monitoring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(context, MonitoringView.class);
+                intent1.putExtra("id",arrayList.get(position).getId());
+                intent1.putExtra("namee",arrayList.get(position).getName());
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(intent1);
+            }
+        });
     }
 
     @Override

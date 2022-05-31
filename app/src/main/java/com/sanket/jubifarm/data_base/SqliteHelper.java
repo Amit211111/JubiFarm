@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
+import com.sanket.jubifarm.Livelihood.Model.MonitoringStatusPojo;
 import com.sanket.jubifarm.Livelihood.Model.Neem_Monitoring_Pojo;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
@@ -109,7 +110,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
         db.execSQL(PSNeemPlantationPojo.CREATE_TABLE);
         db.execSQL(PSLandHoldingPojo.CREATE_TABLE);
         db.execSQL(SkillTrackingPojo.CREATE_TABLE);
-        db.execSQL(Neem_Monitoring_Pojo.CREATE_TABLE);
 
 
 
@@ -5242,28 +5242,5 @@ public class SqliteHelper extends SQLiteOpenHelper {
             sqLiteDatabase.close();
         }
         return hashMap;
-    }
-
-    public long AddneemMonitoring(Neem_Monitoring_Pojo neem_monitoring) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        long ids = 0;
-        try {
-            if (db != null && !db.isReadOnly()) {
-                ContentValues values = new ContentValues();
-                values.put("id", neem_monitoring.getId());
-                values.put("land_id", neem_monitoring.getLand_id());
-                values.put("neem_id", neem_monitoring.getLocal_id());
-                values.put("monitoring", neem_monitoring.getMonitoring_date());
-                values.put("neem_monitoring_image", neem_monitoring.getNeem_monitoring_image());
-                values.put("remarks", neem_monitoring.getRemarks());
-
-                ids = db.insert("neem_monitoring", null, values);
-                db.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            db.close();
-        }
-        return ids;
     }
 }

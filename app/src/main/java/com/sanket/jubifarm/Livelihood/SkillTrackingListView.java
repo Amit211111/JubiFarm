@@ -19,7 +19,7 @@ public class SkillTrackingListView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_tracking_list_view2);
+        setContentView(R.layout.activity_skill_tracking_list_view);
         getSupportActionBar().setTitle("View Data Trained Person");
         IntilizeAll();
 
@@ -42,11 +42,7 @@ public class SkillTrackingListView extends AppCompatActivity {
             name=skillTrackingPojo.getName();
 
 
-//            farmer_name = sqliteHelper.getPSFarmerName(psLandHoldingPojo.getFarmer_id());
-//          farmer_name=psLandHoldingPojo.getFarmer_id();
-//          total_plant = sqliteHelper.getTotalPlantbyid(psLandHoldingPojo.getFarmer_id());
-//            unit = sqliteHelper.getNameById("master", "master_name", "caption_id", Integer.parseInt(psLandHoldingPojo.getLand_unit()));
-//            land_image = psLandHoldingPojo.getLand_image();
+
         }
 
         //All Set Values
@@ -77,6 +73,7 @@ public class SkillTrackingListView extends AppCompatActivity {
         tv_mobileno.setText(mobile);
         tv_training_stream.setText(training_stream);
         tv_qualification.setText(qualification);
+        tv_training_date.setText(date_of_training);
 
     }
 

@@ -38,6 +38,9 @@
         tools:replace="android:allowBackup">
 
         <activity
+            android:name=".Livelihood.MonitoringView"
+            android:exported="false" />
+        <activity
             android:name=".Livelihood.PS_FarmerDetailsActivity"
             android:exported="true" />
         <activity

@@ -101,6 +101,8 @@ public class SkillTracking extends AppCompatActivity {
                 sqliteHelper.SkillTracking(skillTrackingPojo);
 
                 Intent intent=new Intent(SkillTracking.this, Skill_Tracking_List.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

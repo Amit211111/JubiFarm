@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="166dp">
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -13,7 +12,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="11dp"
 
-        app:cardBackgroundColor="#F9F6FB"
+        app:cardBackgroundColor="#FCFBFD"
         app:cardCornerRadius="9dp"
         app:cardElevation="9dp">
 
@@ -28,14 +27,16 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="158dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
-                android:text="Name                   :"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="Name         "
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="15dp"
+
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/itcavantagradestdbk"
                     android:text="Name"
                     android:textColor="@color/black"
                     android:textSize="13dp" />
@@ -67,14 +69,18 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="159dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="3dp"
+
                 android:layout_weight="1"
-                android:text="Email                    :"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="Email           "
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="15dp"
+
+
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/itcavantagradestdbk"
                     android:text="Age"
                     android:textColor="@color/black"
                     android:textSize="13dp" />
@@ -104,14 +111,15 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="156dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="3dp"
                 android:layout_weight="1"
-                android:text="Skill                       :"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="Skill              "
                 android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textSize="15dp"
+               />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,6 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/itcavantagradestdbk"
                     android:text="EDDDate"
                     android:textColor="@color/black"
                     android:textSize="13dp" />
@@ -152,6 +161,8 @@
                 android:layout_height="41dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="175dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/itcavantagradestdbk"
                 android:text="Monitori"
                 android:background="@drawable/draw"
                 android:textSize="10dp" />
@@ -163,7 +174,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/draw"
-
+                android:textColor="@color/colorPrimaryDark"
+                android:fontFamily="@font/itcavantagradestdbk"
                 android:text="View"
                 android:textSize="10dp" />
 

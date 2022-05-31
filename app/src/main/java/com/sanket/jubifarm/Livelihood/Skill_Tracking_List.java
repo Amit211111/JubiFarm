@@ -29,7 +29,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_tracking_list_view);
+        setContentView(R.layout.activity_skill_tracking_list);
         getSupportActionBar().setTitle("List of Trained Person");
         sqliteHelper = new SqliteHelper(this);
         recyclerView = findViewById(R.id.rv1);
