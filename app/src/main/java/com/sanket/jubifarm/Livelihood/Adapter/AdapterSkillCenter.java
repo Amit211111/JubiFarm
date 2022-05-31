@@ -58,7 +58,7 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
             public void onClick(View view) {
                 Intent intent = new Intent(context, SkillTrackingListView.class);
                 intent.putExtra("id",arrayList.get(position).getId());
-                intent.putExtra("name",arrayList.get(position).getName());
+                intent.putExtra("namee",arrayList.get(position).getName());
 
                 context.startActivity(intent);
             }
