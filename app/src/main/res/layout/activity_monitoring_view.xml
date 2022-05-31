@@ -220,7 +220,7 @@
             android:layout_marginRight="13dp"
 
             android:layout_marginTop="20dp"
-            android:background="#2779CC" />
+            android:background="#ff99cc00" />
 
         <TextView
             android:layout_width="match_parent"
@@ -282,7 +282,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/monitor_spinner_draw"
+            android:background="@drawable/textviewboader"
             android:orientation="vertical"
             android:layout_marginRight="13dp"
             android:layout_marginLeft="4dp"
@@ -326,7 +326,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginRight="13dp"
+            android:layout_marginRight="12dp"
+
 
             android:padding="4dp">
 
@@ -336,7 +337,7 @@
                 android:layout_height="@dimen/_30dp"
                 android:layout_weight="1"
                 android:editable="false"
-                android:background="@drawable/monitor_spinner_draw"
+                android:background="@drawable/textviewboader"
                 android:fontFamily="@font/itcavantagradestdbk"
                 android:paddingLeft="@dimen/_5dp"
                 android:singleLine="true"
@@ -363,19 +364,21 @@
             android:layout_marginLeft="3dp"
 
             android:background="@drawable/box_type_draw"/>
-        <Button
-            android:id="@+id/btn_submit"
-            android:layout_width="@dimen/margin150"
-            android:layout_height="41dp"
-            android:layout_marginLeft="217dp"
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="60dp"
             android:layout_weight="1"
-            android:fontFamily="@font/itcavantagradestdbk"
-            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/buttanshapbalck"
 
-            android:layout_marginTop="20dp"
-            android:background="@drawable/draw"
+            android:gravity="center"
             android:text="Submit"
-            android:textSize="10dp" />
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -31,8 +31,8 @@ public class MonitoringView extends AppCompatActivity {
     EditText et_date_of_monitoring;
      RadioGroup rg_working;
      RadioButton rb_working,rb_notworking;
-    TextView tv_name,tv_email,tv_mobileno,tv_qualification,tv_training_stream,tv_training_date;
-    Button btn_submit;
+    TextView tv_name,tv_email,tv_mobileno,tv_qualification,tv_training_stream,tv_training_date,tv_submit;
+
     EditText et_remark;
     private String skill_centerr = "", name = "", email = "", id = "",mobile = "", qualification = "", training_stream = "", bulk_density = "", land_name,
             date_of_training = "", soil_texture = "", ph = "",image="";
@@ -117,7 +117,7 @@ public class MonitoringView extends AppCompatActivity {
         });
 
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        tv_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MonitoringStatusPojo monitoringStatusPojo = new MonitoringStatusPojo();
@@ -143,7 +143,7 @@ public class MonitoringView extends AppCompatActivity {
     private void IntilizeAll()
     {
         sqliteHelper=new SqliteHelper(this);
-        btn_submit=findViewById(R.id.btn_submit);
+        tv_submit=findViewById(R.id.tv_submit);
         et_date_of_monitoring=findViewById(R.id.et_date_of_monitoring);
         spn_current_work=findViewById(R.id.spn_current_work);
         et_remark=findViewById(R.id.et_remark);
