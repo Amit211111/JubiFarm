@@ -10,13 +10,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sanket.jubifarm.Activity.HomeAcivity;
-import com.sanket.jubifarm.Activity.LoginScreenActivity;
 import com.sanket.jubifarm.DataDownload;
 import com.sanket.jubifarm.Modal.LoginPojo;
 import com.sanket.jubifarm.R;
@@ -37,7 +34,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.sanket.jubifarm.DataDownload;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -83,7 +79,7 @@ public class MainMenu extends AppCompatActivity {
         skillTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenu.this,Skill_Tracking_List.class);
+                Intent intent = new Intent(MainMenu.this, Skill_Tracking_List.class);
                 startActivity(intent);
 
             }

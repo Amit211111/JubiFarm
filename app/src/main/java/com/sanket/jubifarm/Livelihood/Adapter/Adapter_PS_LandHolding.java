@@ -74,6 +74,8 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
               Intent intent = new Intent(context,LandHoldingDetailsView.class);
               intent.putExtra("land_Id",arrayList.get(position).getLand_id());
               intent.putExtra("farmerId",arrayList.get(position).getFarmer_id());
+              intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+              intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
               context.startActivity(intent);
           }
       });

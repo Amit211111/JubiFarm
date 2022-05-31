@@ -117,7 +117,7 @@ public class PS_LandHolding extends AppCompatActivity {
             if (type.equals("edit")) {
 
                 isEditable=true;
-                getSupportActionBar().setTitle("Update Land Holding");
+                getSupportActionBar().setTitle("Update Land Holding Details");
                 psLHPojo=new PSLandHoldingPojo();
 
                 et_land_name.setText(psLHPojo.getLand_name());
@@ -181,15 +181,23 @@ public class PS_LandHolding extends AppCompatActivity {
                    if (type.equals("edit")) {
                        psLandHoldingPojo.setLand_id(land_id);
                        sqliteHelper.updatePsLandData(psLandHoldingPojo, land_id);
+
                    } else {
+
                        psLandHoldingPojo.setLand_id(String.valueOf(value));
                        long inserted_id = sqliteHelper.pslandholding1(psLandHoldingPojo);
+
+
                    }
 
                    try {
 
                        showSubmitDialog(context, "Data has been saved in local database successfully.");
 
+                       Intent intent=new Intent(PS_LandHolding.this,PS_LandHoldingList.class);
+                       intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                       intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                       context.startActivity(intent);
                    } catch (Exception e) {
                        e.printStackTrace();
                    }

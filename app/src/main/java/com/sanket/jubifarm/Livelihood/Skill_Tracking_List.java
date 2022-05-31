@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.sanket.jubifarm.Livelihood.Adapter.AdapterSkillCenter;
-import com.sanket.jubifarm.Livelihood.Adapter.Adapter_PS_LandHolding;
-import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
@@ -31,8 +29,8 @@ public class Skill_Tracking_List extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skill_tracking_list);
-
+        setContentView(R.layout.activity_skill_tracking_list_view);
+        getSupportActionBar().setTitle("List of Trained Person");
         sqliteHelper = new SqliteHelper(this);
         recyclerView = findViewById(R.id.rv1);
 

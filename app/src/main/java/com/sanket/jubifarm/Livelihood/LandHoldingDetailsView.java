@@ -60,7 +60,7 @@ public class LandHoldingDetailsView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_details_view);
-
+        getSupportActionBar().setTitle("Land Holding Details View");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -107,6 +107,8 @@ public class LandHoldingDetailsView extends AppCompatActivity {
                 addLandIntent.putExtra("land_id", land_id);
 
                 addLandIntent.putExtra("land_name", land_namee);
+                addLandIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                addLandIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(addLandIntent);
                 finish();
             }

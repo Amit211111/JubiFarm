@@ -5103,6 +5103,49 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return ids;
     }
+    //PSSkill Tracking Details View
+    public SkillTrackingPojo PSSkillTrackingDetail(String id,String name) {
+        SkillTrackingPojo skillTrackingPojo = new SkillTrackingPojo();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query="";
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                if(!id.equals("")) {
+                    query = "select * from skill_tracking where id = '" + id + "' and name = '" + name + "'";
+                }else{
+                    query = "select * from skill_tracking where name = '" + name + "'";
+
+                }
+
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                         skillTrackingPojo = new SkillTrackingPojo();
+
+                        skillTrackingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        skillTrackingPojo.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        skillTrackingPojo.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                        skillTrackingPojo.setQualification(cursor.getString(cursor.getColumnIndex("qualification")));
+                        skillTrackingPojo.setMobileno(cursor.getString(cursor.getColumnIndex("mobileno")));
+                        skillTrackingPojo.setTraining_stream(cursor.getString(cursor.getColumnIndex("training_stream")));
+                        skillTrackingPojo.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
+                        skillTrackingPojo.setDate_of_completion_of_training(cursor.getString(cursor.getColumnIndex("date_of_completion_of_training")));
+
+
+                        cursor.moveToNext();
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return skillTrackingPojo;
+    }
+
     public ArrayList<SkillTrackingPojo> getPsSkillTrackingData() {
         ArrayList<SkillTrackingPojo> registerTableArrayList1 = new ArrayList<>();
         SQLiteDatabase db1 = this.getWritableDatabase();

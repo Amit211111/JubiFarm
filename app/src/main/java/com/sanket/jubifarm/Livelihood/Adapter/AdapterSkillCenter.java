@@ -1,20 +1,25 @@
 package com.sanket.jubifarm.Livelihood.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.sanket.jubifarm.Livelihood.LandHoldingDetailsView;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.SkillTrackingListView;
 import com.sanket.jubifarm.R;
 
 import java.io.ByteArrayInputStream;
@@ -40,18 +45,24 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterSkillCenter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterSkillCenter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
 
-        holder.sp_center_name.setText(arrayList.get(position).getSkill_center());
-        holder.tv_name.setText(arrayList.get(position).getName());
-        holder.tv_email.setText(arrayList.get(position).getEmail());
-        holder.tv_mobileno.setText(arrayList.get(position).getMobileno());
-        holder.tv_qualification.setText(arrayList.get(position).getQualification());
-        holder.tv_stream.setText(arrayList.get(position).getTraining_stream());
-        holder.tv_date_complitation.setText(arrayList.get(position).getDate_of_completion_of_training());
+        holder.et_name.setText(arrayList.get(position).getName());
+        holder.et_email.setText(arrayList.get(position).getEmail());
+        holder.et_skill.setText(arrayList.get(position).getSkill_center());
 
+        holder.btn_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SkillTrackingListView.class);
+                intent.putExtra("id",arrayList.get(position).getId());
+                intent.putExtra("name",arrayList.get(position).getName());
+
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -64,18 +75,18 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView sp_center_name,tv_name,tv_email,tv_mobileno,tv_qualification,tv_stream,tv_date_complitation;
+        TextView et_name,et_email,et_skill;
+        Button btn_monitoring,btn_view;
 
 
         public ViewHolder(View view) {
             super(view);
-            sp_center_name= itemView.findViewById(R.id.sp_center_name);
-            tv_name= itemView.findViewById(R.id.tv_name);
-            tv_email= itemView.findViewById(R.id.tv_email);
-            tv_mobileno= itemView.findViewById(R.id.tv_mobileno);
-            tv_qualification= itemView.findViewById(R.id.tv_qualification);
-            tv_stream= itemView.findViewById(R.id.tv_stream);
-            tv_date_complitation= itemView.findViewById(R.id.tv_date_complitation);
+            btn_view= itemView.findViewById(R.id.btn_view);
+            btn_monitoring= itemView.findViewById(R.id.btn_monitoring);
+            et_name= itemView.findViewById(R.id.et_name);
+            et_email= itemView.findViewById(R.id.et_email);
+            et_skill= itemView.findViewById(R.id.et_skill);
+
 
         }
     }

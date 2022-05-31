@@ -40,7 +40,7 @@
             android:name=".Livelihood.PS_FarmerDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".Livelihood.PS_Farmer_details"
+            android:name=".Livelihood.SkillTrackingListView"
             android:exported="true" />
         <activity
             android:name=".Livelihood.TrainningSurveyForm"

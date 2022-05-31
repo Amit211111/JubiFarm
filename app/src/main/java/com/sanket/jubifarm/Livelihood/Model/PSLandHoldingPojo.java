@@ -3,25 +3,13 @@ package com.sanket.jubifarm.Livelihood.Model;
 public class PSLandHoldingPojo
 {
     private String local_id;
-
     private String farmer_id;
-   // private String farmer_name;
-
     private String land_id;
     private String land_unit;
-
     private String land_image;
-
     private String land_area;
     private String land_name;
 
-//    public String getFarmer_name() {
-//        return farmer_name;
-//    }
-//
-//    public void setFarmer_name(String farmer_name) {
-//        this.farmer_name = farmer_name;
-//    }
 
     public String getFarmer_id() {
         return farmer_id;
@@ -42,7 +30,6 @@ public class PSLandHoldingPojo
     public String getLand_id() {
         return land_id;
     }
-
     public void setLand_id(String land_id) {
         this.land_id = land_id;
     }
@@ -94,8 +81,6 @@ public class PSLandHoldingPojo
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_IMAGE + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
-           // + COLUMN_FARMER_NAME + " TEXT,"
-
             + COLUMN_LAND_AREA + " TEXT, "
             + COLUMN_LAND_NAME + " TEXT "
             + ")";
