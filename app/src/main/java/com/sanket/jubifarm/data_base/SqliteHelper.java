@@ -5243,4 +5243,81 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return hashMap;
     }
+    public long MonitoringStatus(MonitoringStatusPojo householdMasterModel) {
+        SQLiteDatabase DB1 = this.getWritableDatabase();
+        long ids = 0;
+        try {
+            if (DB1 != null && !DB1.isReadOnly()) {
+                ContentValues values = new ContentValues();
+                values.put("id", householdMasterModel.getId());
+                values.put("working_status", householdMasterModel.getWorking_status());
+                values.put("current_work", householdMasterModel.getCurrent_work());
+                values.put("remark", householdMasterModel.getRemark());
+                values.put("date_monitoring", householdMasterModel.getDate_monitoring());
+
+                ids = DB1.insert("monitoring_status", null, values);
+                DB1.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            DB1.close();
+        }
+        return ids;
+    }
+    public ArrayList<MonitoringStatusPojo> getMonitoring() {
+        ArrayList<MonitoringStatusPojo> monitoringStatusPojoArrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        try
+        {
+            if(db != null && !db.isReadOnly())
+            {
+                String query = "select * from monitoring_status";
+                Cursor cursor = db.rawQuery(query, null);
+                if(cursor != null && cursor.getCount() > 0)
+                {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast())
+                    {
+                        MonitoringStatusPojo monitoringStatusPojo = new MonitoringStatusPojo();
+                        monitoringStatusPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        monitoringStatusPojo.setWorking_status(cursor.getString(cursor.getColumnIndex("working_status")));
+                        monitoringStatusPojo.setCurrent_work(cursor.getString(cursor.getColumnIndex("current_work")));
+                        monitoringStatusPojo.setRemark(cursor.getString(cursor.getColumnIndex("remark")));
+                        monitoringStatusPojo.setDate_monitoring(cursor.getString(cursor.getColumnIndex("date_monitoring")));
+
+                        cursor.moveToNext();
+                        monitoringStatusPojoArrayList.add(monitoringStatusPojo);
+                    }
+                }
+                db.close();
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            db.close();
+        }
+        return monitoringStatusPojoArrayList;
+    }
+    public long AddneemMonitoring(Neem_Monitoring_Pojo neem_monitoring) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long ids = 0;
+        try {
+            if (db != null && !db.isReadOnly()) {
+                ContentValues values = new ContentValues();
+                values.put("id", neem_monitoring.getId());
+                values.put("land_id", neem_monitoring.getLand_id());
+                values.put("neem_id", neem_monitoring.getLocal_id());
+                values.put("monitoring", neem_monitoring.getMonitoring_date());
+                values.put("neem_monitoring_image", neem_monitoring.getNeem_monitoring_image());
+                values.put("remarks", neem_monitoring.getRemarks());
+
+                ids = db.insert("neem_monitoring", null, values);
+                db.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return ids;
+    }
 }
