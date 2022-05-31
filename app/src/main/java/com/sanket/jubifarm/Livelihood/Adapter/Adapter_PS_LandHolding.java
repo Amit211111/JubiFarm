@@ -18,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.LandHoldingDetailsView;
+import com.sanket.jubifarm.Livelihood.NeemPlantation;
+import com.sanket.jubifarm.Livelihood.PS_NeemPlantationList;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.io.ByteArrayInputStream;
@@ -31,11 +34,15 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
     Context context;
     ArrayList<PSLandHoldingPojo> arrayList;
     private SqliteHelper sqliteHelper;
+    SharedPrefHelper sharedPrefHelper;
+    String screenType = "";
 
-    public Adapter_PS_LandHolding(Context context, ArrayList<PSLandHoldingPojo> arrayList) {
+    public Adapter_PS_LandHolding(Context context, ArrayList<PSLandHoldingPojo> arrayList, String screenType) {
         this.context = context;
         this.arrayList = arrayList;
+        this.screenType = screenType;
         sqliteHelper=new SqliteHelper(context);
+        sharedPrefHelper = new SharedPrefHelper(context);
 
     }
 
@@ -68,15 +75,28 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
         holder.farmer_name.setText(sqliteHelper.getNameById("ps_farmer_registration", "farmer_name", "local_id", Integer.parseInt(arrayList.get(position).getFarmer_id())));
         holder.land_name.setText(arrayList.get(position).getLand_name());
 
+        screenType = sharedPrefHelper.getString("land", "");
+
       holder.ll_land.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              Intent intent = new Intent(context,LandHoldingDetailsView.class);
-              intent.putExtra("land_Id",arrayList.get(position).getLand_id());
-              intent.putExtra("farmerId",arrayList.get(position).getFarmer_id());
-              intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-              intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-              context.startActivity(intent);
+
+              if(screenType.equals("land")) {
+                  Intent intent = new Intent(context,LandHoldingDetailsView.class);
+                  intent.putExtra("land_Id",arrayList.get(position).getLand_id());
+                  intent.putExtra("farmerId",arrayList.get(position).getFarmer_id());
+                  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                  intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                  context.startActivity(intent);
+              }
+
+
+              else
+              {
+                  screenType = sharedPrefHelper.getString("plantation", "");
+                  Intent intent = new Intent(context, PS_NeemPlantationList.class);
+                  context.startActivity(intent);
+              }
           }
       });
 

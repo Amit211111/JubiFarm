@@ -18,7 +18,7 @@ public class PS_Neem_LandHolding_List extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
     SqliteHelper sqliteHelper;
-
+    String screenType = "";
     Context context = this;
 
     @Override
@@ -26,12 +26,19 @@ public class PS_Neem_LandHolding_List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps_neem_land_holding_list2);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+        {
+            screenType = bundle.getString("monitoring", "");
+        }
+
         sqliteHelper = new SqliteHelper(this);
         recyclerView = findViewById(R.id.rvLandHoldning1);
 
 
+
        arrayList = sqliteHelper.PSgetRegistrationData("");
-        Adapter_PS_LandHolding adapter_ps_landHolding = new Adapter_PS_LandHolding(context, arrayList);
+        Adapter_PS_LandHolding adapter_ps_landHolding = new Adapter_PS_LandHolding(context, arrayList, screenType);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter_ps_landHolding);

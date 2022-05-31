@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 
 public class ParyavaranSakhiHome extends AppCompatActivity {
     TextView farmer,tv_neem_plantation,txt_LandHolding,txt_Monitoring,txt_Syncronize;
+    boolean sharedPrefHelper;
+    String screenType = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +34,14 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
             }
         });
 
-        txt_LandHolding.setOnClickListener(new View.OnClickListener() {
+     /*   txt_LandHolding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(ParyavaranSakhiHome.this,PS_LandHolding.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         farmer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,13 +62,16 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_LandHoldingList.class);
+                /*screenType = sharedPrefHelper.getString("land", "");*/
+                screenType.equals("land");
                 startActivity(intent1);
             }
         });
         txt_Monitoring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2=new Intent(ParyavaranSakhiHome.this,PS_Neem_LandHolding_List.class);
+                Intent intent2=new Intent(ParyavaranSakhiHome.this,PS_LandHoldingList.class);
+               /* screenType = sharedPrefHelper.getString("plantation", "");*/
                 startActivity(intent2);
             }
         });

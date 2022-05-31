@@ -1,6 +1,7 @@
 package com.sanket.jubifarm.Livelihood.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -11,9 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
+import com.sanket.jubifarm.Livelihood.NeemMonitoring;
 import com.sanket.jubifarm.R;
 
 import java.io.ByteArrayInputStream;
@@ -24,11 +27,13 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
 
     Context context;
     ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
+    public String screenType;
 
     public NeemPlantationAdapter(Context context, ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos)
     {
         this.context = context;
         this.psNeemPlantationPojos = psNeemPlantationPojos;
+        this.screenType = screenType;
     }
     @NonNull
     @Override
@@ -49,8 +54,16 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             holder.img_setimage.setImageBitmap(bitmap);
         }else {
-            holder.img_setimage.setImageResource(R.drawable.ic_baseline_add_24);
+            holder.img_setimage.setImageResource(R.drawable.neem);
         }
+
+        holder.cv_student_listing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, NeemMonitoring.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -60,9 +73,11 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img_setimage;
+        CardView cv_student_listing;
         TextView Land_id, geo_cordinate, Neem_Id;
         public ViewHolder(View Itemview) {
             super(Itemview);
+            cv_student_listing = Itemview.findViewById(R.id.cv_student_listing);
             img_setimage = Itemview.findViewById(R.id.img_setimage);
             Land_id = Itemview.findViewById(R.id.Land_id);
             Neem_Id = Itemview.findViewById(R.id.Neem_Id);

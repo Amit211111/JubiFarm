@@ -22,6 +22,7 @@ public class PS_NeemPlantationList extends AppCompatActivity {
   ImageButton fab;
   RecyclerView rv_neem_Plantation;
   SqliteHelper sqliteHelper;
+  String screenType = "";
   ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
 
     @Override
