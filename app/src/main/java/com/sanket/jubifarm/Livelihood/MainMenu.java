@@ -79,7 +79,7 @@ public class MainMenu extends AppCompatActivity {
         skillTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenu.this, Skill_Tracking_List.class);
+                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
                 startActivity(intent);
 
             }

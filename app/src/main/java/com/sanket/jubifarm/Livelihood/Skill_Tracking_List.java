@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.sanket.jubifarm.Livelihood.Adapter.AdapterSkillCenter;
 import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
@@ -21,6 +22,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<SkillTrackingPojo> arrayList = new ArrayList<>();
     SqliteHelper sqliteHelper;
+    ImageView Landholding_filter;
 
     Context context = this;
 
@@ -33,6 +35,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
         getSupportActionBar().setTitle("List of Trained Person");
         sqliteHelper = new SqliteHelper(this);
         recyclerView = findViewById(R.id.rv1);
+        Landholding_filter = findViewById(R.id.Landholding_filter);
 
 
         arrayList = sqliteHelper.getPsSkillTrackingData();
