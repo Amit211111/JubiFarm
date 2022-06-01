@@ -3,36 +3,28 @@ package com.sanket.jubifarm.Livelihood.Adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.sanket.jubifarm.Livelihood.LandHoldingDetailsView;
-import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.Livelihood.MonitoringView;
-import com.sanket.jubifarm.Livelihood.SkillTrackingListView;
+import com.sanket.jubifarm.Livelihood.CandidateProfileActivity;
 import com.sanket.jubifarm.R;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.ViewHolder>
 {
     Context context;
-    ArrayList<SkillTrackingPojo> arrayList;
+    ArrayList<CandidatePojo> arrayList;
 
-    public AdapterSkillCenter(Context context, ArrayList<SkillTrackingPojo> arrayList) {
+    public AdapterSkillCenter(Context context, ArrayList<CandidatePojo> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -57,7 +49,7 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
         holder.btn_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, SkillTrackingListView.class);
+                Intent intent = new Intent(context, CandidateProfileActivity.class);
                 intent.putExtra("id",arrayList.get(position).getId());
                 intent.putExtra("namee",arrayList.get(position).getName());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

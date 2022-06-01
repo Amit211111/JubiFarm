@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Livelihood.Skill_Tracking_List">
+    tools:context=".Livelihood.CandidateList">
 
     <RelativeLayout
         android:id="@+id/rl_search"

@@ -9,6 +9,10 @@ public class Neem_Monitoring_Pojo {
     private String monitoring_date;
     private String neem_monitoring_image;
     private String remarks;
+    private String farmer_id;
+    private String flag;
+    private String latitude;
+    private String longitude;
 
     public String getLocal_id() {
         return local_id;

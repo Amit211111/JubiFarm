@@ -54,7 +54,7 @@ public class TrainningSurveyForm extends AppCompatActivity {
 //
 //                sqliteDatabase.saveHousehold2(addTraineeSurveyPojo);
 
-                Intent intent=new Intent(TrainningSurveyForm.this, Skill_Tracking_List.class);
+                Intent intent=new Intent(TrainningSurveyForm.this, CandidateList.class);
                 startActivity(intent);
 
             }

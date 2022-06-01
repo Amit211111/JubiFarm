@@ -52,7 +52,7 @@
             android:name=".Livelihood.PS_FarmerDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".Livelihood.SkillTrackingListView"
+            android:name=".Livelihood.CandidateProfileActivity"
             android:exported="true" />
         <activity
             android:name=".Livelihood.TrainningSurveyForm"
@@ -61,7 +61,7 @@
             android:name=".Livelihood.LandHoldingDetailsView"
             android:exported="false" />
         <activity
-            android:name=".Livelihood.Skill_Tracking_List"
+            android:name=".Livelihood.CandidateList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_Neem_LandHolding_List"
@@ -91,7 +91,7 @@
             android:name=".Livelihood.NeemPlantation"
             android:exported="false" />
         <activity
-            android:name=".Livelihood.SkillTracking"
+            android:name=".Livelihood.AddCandidateActivity"
             android:exported="false" />
         <activity
             android:name=".Livelihood.ParyavaranSakhiHome"

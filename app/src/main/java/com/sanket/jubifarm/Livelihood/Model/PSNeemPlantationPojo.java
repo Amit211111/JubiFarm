@@ -8,8 +8,9 @@ public class PSNeemPlantationPojo
     private String land_id;
     private String neem_id;
     private String plantation_Date;
-    private String geo_coordinates;
     private String flag;
+    private String latitude;
+    private String longitude;
 
     public String getFlag() {
         return flag;
@@ -66,14 +67,6 @@ public class PSNeemPlantationPojo
 
     public void setPlantation_Date(String plantation_Date) {
         this.plantation_Date = plantation_Date;
-    }
-
-    public String getGeo_coordinates() {
-        return geo_coordinates;
-    }
-
-    public void setGeo_coordinates(String geo_coordinates) {
-        this.geo_coordinates = geo_coordinates;
     }
 
     private static final String TABLE_NAME = "ps_neem_plantation";

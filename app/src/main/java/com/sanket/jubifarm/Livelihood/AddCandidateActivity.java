@@ -13,13 +13,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.Calendar;
 
-public class SkillTracking extends AppCompatActivity {
+public class AddCandidateActivity extends AppCompatActivity {
 
 
       String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
@@ -28,7 +28,7 @@ public class SkillTracking extends AppCompatActivity {
     EditText et_name,et_email,et_mobileno,et_qualification,et_date_completation;
     Button submit;
     SqliteHelper sqliteHelper;
-    SkillTrackingPojo skillTrackingPojo;
+    CandidatePojo candidatePojo;
     int mYear,mMonth,mDay,year,month,day;
     DatePickerDialog datePickerDialog;
 
@@ -44,12 +44,12 @@ public class SkillTracking extends AppCompatActivity {
      // IntilizeAll
         IntilizeAll();
 
-        ArrayAdapter adapter=new ArrayAdapter(SkillTracking.this,R.layout.spinner_list,skill_center);
+        ArrayAdapter adapter=new ArrayAdapter(AddCandidateActivity.this,R.layout.spinner_list,skill_center);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn_skill_center.setAdapter(adapter);
 
 
-        ArrayAdapter adapter1=new ArrayAdapter(SkillTracking.this, R.layout.spinner_list,training_stream);
+        ArrayAdapter adapter1=new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list,training_stream);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn_training_stream.setAdapter(adapter1);
 
@@ -67,7 +67,7 @@ public class SkillTracking extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); // current year
                 mMonth = c.get(Calendar.MONTH); // current month
                 mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                datePickerDialog = new DatePickerDialog(SkillTracking.this,
+                datePickerDialog = new DatePickerDialog(AddCandidateActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -88,19 +88,19 @@ public class SkillTracking extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                skillTrackingPojo = new SkillTrackingPojo();
-                skillTrackingPojo.setName(et_name.getText().toString().trim());
-                skillTrackingPojo.setEmail(et_email.getText().toString().trim());
-                skillTrackingPojo.setQualification(et_qualification.getText().toString().trim());
-                skillTrackingPojo.setMobileno(et_mobileno.getText().toString().trim());
-                skillTrackingPojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
-                skillTrackingPojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
-                skillTrackingPojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
+                candidatePojo = new CandidatePojo();
+                candidatePojo.setName(et_name.getText().toString().trim());
+                candidatePojo.setEmail(et_email.getText().toString().trim());
+                candidatePojo.setQualification(et_qualification.getText().toString().trim());
+                candidatePojo.setMobileno(et_mobileno.getText().toString().trim());
+                candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
+                candidatePojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
+                candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
 
 
-                sqliteHelper.SkillTracking(skillTrackingPojo);
+                sqliteHelper.SkillTracking(candidatePojo);
 
-                Intent intent=new Intent(SkillTracking.this, Skill_Tracking_List.class);
+                Intent intent=new Intent(AddCandidateActivity.this, CandidateList.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

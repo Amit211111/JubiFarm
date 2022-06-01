@@ -12,15 +12,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.sanket.jubifarm.Livelihood.Adapter.AdapterSkillCenter;
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.ArrayList;
 
-public class Skill_Tracking_List extends AppCompatActivity {
+public class CandidateList extends AppCompatActivity {
     RecyclerView recyclerView;
-    ArrayList<SkillTrackingPojo> arrayList = new ArrayList<>();
+    ArrayList<CandidatePojo> arrayList = new ArrayList<>();
     SqliteHelper sqliteHelper;
     ImageView Landholding_filter;
 
@@ -53,7 +53,7 @@ public class Skill_Tracking_List extends AppCompatActivity {
         addskill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Skill_Tracking_List.this,SkillTracking.class);
+                Intent intent=new Intent(CandidateList.this, AddCandidateActivity.class);
                 startActivity(intent);
             }
         });

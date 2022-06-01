@@ -8,7 +8,10 @@ public class MonitoringStatusPojo
     private String current_work;
     private String remark;
     private String date_monitoring;
-
+    private String candidate_id;
+    private String flag;
+    private String latitude;
+    private String longitude;
 
     public String getDate_monitoring() {
         return date_monitoring;

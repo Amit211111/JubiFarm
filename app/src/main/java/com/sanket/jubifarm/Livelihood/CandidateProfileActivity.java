@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
-public class SkillTrackingListView extends AppCompatActivity {
+public class CandidateProfileActivity extends AppCompatActivity {
 
     TextView skill_center,tv_name,tv_email,tv_mobileno,tv_qualification,tv_training_stream,tv_training_date;
     private String skill_centerr = "", name = "", email = "", id = "",mobile = "", qualification = "", training_stream = "", bulk_density = "", land_name,
             date_of_training = "", soil_texture = "", ph = "",image="";
-    SkillTrackingPojo skillTrackingPojo;
+    CandidatePojo candidatePojo;
     SqliteHelper sqliteHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +29,17 @@ public class SkillTrackingListView extends AppCompatActivity {
 
             id = bundle.getString("id", "");
             name = bundle.getString("namee", "");
-            skillTrackingPojo = sqliteHelper.PSSkillTrackingDetail(id,name);
+            candidatePojo = sqliteHelper.PSSkillTrackingDetail(id,name);
             if (id.equals("")) {
-                id = skillTrackingPojo.getId();
+                id = candidatePojo.getId();
             }
-            skill_centerr = skillTrackingPojo.getSkill_center();
-            email= skillTrackingPojo.getEmail();
-            mobile=skillTrackingPojo.getMobileno();
-            qualification=skillTrackingPojo.getQualification();
-            training_stream=skillTrackingPojo.getTraining_stream();
-            date_of_training=skillTrackingPojo.getDate_of_completion_of_training();
-            name=skillTrackingPojo.getName();
+            skill_centerr = candidatePojo.getSkill_center();
+            email= candidatePojo.getEmail();
+            mobile= candidatePojo.getMobileno();
+            qualification= candidatePojo.getQualification();
+            training_stream= candidatePojo.getTraining_stream();
+            date_of_training= candidatePojo.getDate_of_completion_of_training();
+            name= candidatePojo.getName();
 
 
 
