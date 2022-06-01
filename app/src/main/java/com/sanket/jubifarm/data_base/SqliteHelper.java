@@ -5189,6 +5189,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         landHoldingPojo.setLand_image(cursor.getString(cursor.getColumnIndex("land_image")));
                         landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
                         landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+                        landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
                         landHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
 
                         landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));

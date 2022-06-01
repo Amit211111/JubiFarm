@@ -50,6 +50,7 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
     public void onBindViewHolder(@NonNull NeemPlantationAdapter.ViewHolder holder, int position) {
         holder.Land_id.setText(psNeemPlantationPojos.get(position).getLand_id());
         holder.Neem_Id.setText(psNeemPlantationPojos.get(position).getLocal_id());
+        holder.geo_cordinate.setText(psNeemPlantationPojos.get(position).getLatitude() + ", " +psNeemPlantationPojos.get(position).getLongitude());
         if(psNeemPlantationPojos.get(position).getNeem_plantation_image() != null && psNeemPlantationPojos.get(position).getNeem_plantation_image().length() > 200)
         {
             byte[] decodedString = android.util.Base64.decode(psNeemPlantationPojos.get(position).getNeem_plantation_image(), Base64.NO_WRAP);

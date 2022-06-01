@@ -89,7 +89,8 @@ public class NeemPlantation extends AppCompatActivity {
 //
 //        }
 
-
+        GeoCoodinate.setText(sharedPrefHelper.getString("LAT", "") + ", " +
+                sharedPrefHelper.getString("LONG", ""));
         //Date Picker
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override

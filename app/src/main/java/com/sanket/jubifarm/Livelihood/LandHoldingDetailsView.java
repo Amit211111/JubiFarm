@@ -46,6 +46,7 @@ import java.util.ArrayList;
 public class LandHoldingDetailsView extends AppCompatActivity {
     ImageView land_imagee;
     Button tvlandedit;
+    SharedPrefHelper sharedPrefHelper;
     TextView farmer_selection,tv_total_neem_plat,land_area,tv_landid,land_name,geo_cordinate;
     ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
     String id = "";
@@ -81,6 +82,7 @@ public class LandHoldingDetailsView extends AppCompatActivity {
             land_namee= psLandHoldingPojo.getLand_name();
 
             farmer_name = sqliteHelper.getPSFarmerName(psLandHoldingPojo.getFarmer_id());
+            geo_cordinate.setText(psLandHoldingPojo.getLatitude() + ", " +psLandHoldingPojo.getLongitude());
 //            farmer_name=psLandHoldingPojo.getFarmer_id();
 //            total_plant = sqliteHelper.getTotalPlantbyid(psLandHoldingPojo.getFarmer_id());
             unit = sqliteHelper.getNameById("master", "master_name", "caption_id", Integer.parseInt(psLandHoldingPojo.getLand_unit()));
@@ -89,6 +91,8 @@ public class LandHoldingDetailsView extends AppCompatActivity {
 
         //All Set Values
         setTextValues();
+
+
 
 
 
@@ -143,6 +147,7 @@ public class LandHoldingDetailsView extends AppCompatActivity {
     private void AllIntilize()
     {
         sqliteHelper=new SqliteHelper(this);
+        sharedPrefHelper=new SharedPrefHelper(this);
         land_imagee=findViewById(R.id.land_imagee);
         tvlandedit=findViewById(R.id.tvlandedit);
         farmer_selection=findViewById(R.id.farmer_selection);
