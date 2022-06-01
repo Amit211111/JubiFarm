@@ -75,7 +75,7 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
         holder.farmer_name.setText(sqliteHelper.getNameById("ps_farmer_registration", "farmer_name", "local_id", Integer.parseInt(arrayList.get(position).getFarmer_id())));
         holder.land_name.setText(arrayList.get(position).getLand_name());
 
-        screenType = sharedPrefHelper.getString("land", "");
+        screenType = sharedPrefHelper.getString("prayawran_screenType", "");
 
       holder.ll_land.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -88,12 +88,7 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                   context.startActivity(intent);
-              }
-
-
-              else
-              {
-                  screenType = sharedPrefHelper.getString("plantation", "");
+              } else {
                   Intent intent = new Intent(context, PS_NeemPlantationList.class);
                   context.startActivity(intent);
               }

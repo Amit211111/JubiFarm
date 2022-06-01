@@ -64,6 +64,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
     static final String DATABASE_NAME = "jubi_farm.db";
     static final int DATABASE_VERSION = 5;
     String DB_PATH_SUFFIX = "/databases/";
+
     int version;
     Context ctx;
     SharedPrefHelper sharedPrefHelper;
@@ -3765,60 +3766,60 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
-//    public ArrayList<PSLandHoldingPojo> getPSLandSyn() {
-//        ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<PSLandHoldingPojo>();
-//        PSLandHoldingPojo landHoldingPojo;
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        try {
-//            if (db != null && db.isOpen() && !db.isReadOnly()) {
-//                String query = "select * from ps_land_holding where flag = 0";
-//                Cursor cursor = db.rawQuery(query, null);
-//                if (cursor != null && cursor.getCount() > 0) {
-//                    cursor.moveToFirst();
-//                    while (!cursor.isAfterLast()) {
-//                        landHoldingPojo = new PSLandHoldingPojo();
-//                        landHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
-//                        landHoldingPojo.setArea(cursor.getString(cursor.getColumnIndex("area")));
-//                        landHoldingPojo.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-//                        landHoldingPojo.setTotal_plant(cursor.getString(cursor.getColumnIndex("total_plant")));
-//                        landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
-//                        landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
-//                        landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
-//                        landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
-//                        landHoldingPojo.setImage(cursor.getString(cursor.getColumnIndex("image")));
-//                        landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
-//                        landHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
-//                        landHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
-//                        //landHoldingPojo.setSoil_type_id(cursor.getString(cursor.getColumnIndex("soil_type_id")));
-//                       // landHoldingPojo.setSoil_color_id(cursor.getString(cursor.getColumnIndex("soil_color_id")));
-//                        //      landHoldingPojo.setSoil_characteristics_id(cursor.getString(cursor.getColumnIndex("soil_characteristics_id")));
-//                        //      landHoldingPojo.setSoil_chemical_composition_id(cursor.getString(cursor.getColumnIndex("soil_chemical_composition_id")));
-////                        landHoldingPojo.setFiltration_rate(cursor.getString(cursor.getColumnIndex("filtration_rate")));
-////                        landHoldingPojo.setSoil_texture(cursor.getString(cursor.getColumnIndex("soil_texture")));
-////                        landHoldingPojo.setPh(cursor.getString(cursor.getColumnIndex("ph")));
-////                        landHoldingPojo.setBulk_density(cursor.getString(cursor.getColumnIndex("bulk_density")));
-////                        landHoldingPojo.setCation_exchange_capacity(cursor.getString(cursor.getColumnIndex("cation_exchange_capacity")));
-////                        landHoldingPojo.setEc(cursor.getString(cursor.getColumnIndex("ec")));
-////                        landHoldingPojo.setP(cursor.getString(cursor.getColumnIndex("p")));
-////                        landHoldingPojo.setS(cursor.getString(cursor.getColumnIndex("s")));
-////                        landHoldingPojo.setMg(cursor.getString(cursor.getColumnIndex("mg")));
-////                        landHoldingPojo.setK(cursor.getString(cursor.getColumnIndex("k")));
-////                        landHoldingPojo.setN(cursor.getString(cursor.getColumnIndex("n")));
-////                        landHoldingPojo.setCa(cursor.getString(cursor.getColumnIndex("ca")));
-//                        landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
-//                      //  landHoldingPojo.setOffline_sync(cursor.getInt(cursor.getColumnIndex("offline_sync")));
-//
-//                        cursor.moveToNext();
-//                        arrayList.add(landHoldingPojo);
-//                    }
-//                    db.close();
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return arrayList;
-//    }
+    public ArrayList<PSLandHoldingPojo> getPSLandSyn() {
+        ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<PSLandHoldingPojo>();
+        PSLandHoldingPojo landHoldingPojo;
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from ps_land_holding where flag = 0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        landHoldingPojo = new PSLandHoldingPojo();
+                        landHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        landHoldingPojo.setLand_area(cursor.getString(cursor.getColumnIndex("land_area")));
+                        //landHoldingPojo.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+                        //landHoldingPojo.setTotal_plant(cursor.getString(cursor.getColumnIndex("total_plant")));
+                        //landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+                        //landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        //landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        landHoldingPojo.setLand_image(cursor.getString(cursor.getColumnIndex("land_image")));
+                        landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+                        landHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        landHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+                        //landHoldingPojo.setSoil_type_id(cursor.getString(cursor.getColumnIndex("soil_type_id")));
+                       // landHoldingPojo.setSoil_color_id(cursor.getString(cursor.getColumnIndex("soil_color_id")));
+                        //      landHoldingPojo.setSoil_characteristics_id(cursor.getString(cursor.getColumnIndex("soil_characteristics_id")));
+                        //      landHoldingPojo.setSoil_chemical_composition_id(cursor.getString(cursor.getColumnIndex("soil_chemical_composition_id")));
+//                        landHoldingPojo.setFiltration_rate(cursor.getString(cursor.getColumnIndex("filtration_rate")));
+//                        landHoldingPojo.setSoil_texture(cursor.getString(cursor.getColumnIndex("soil_texture")));
+//                        landHoldingPojo.setPh(cursor.getString(cursor.getColumnIndex("ph")));
+//                        landHoldingPojo.setBulk_density(cursor.getString(cursor.getColumnIndex("bulk_density")));
+//                        landHoldingPojo.setCation_exchange_capacity(cursor.getString(cursor.getColumnIndex("cation_exchange_capacity")));
+//                        landHoldingPojo.setEc(cursor.getString(cursor.getColumnIndex("ec")));
+//                        landHoldingPojo.setP(cursor.getString(cursor.getColumnIndex("p")));
+//                        landHoldingPojo.setS(cursor.getString(cursor.getColumnIndex("s")));
+//                        landHoldingPojo.setMg(cursor.getString(cursor.getColumnIndex("mg")));
+//                        landHoldingPojo.setK(cursor.getString(cursor.getColumnIndex("k")));
+//                        landHoldingPojo.setN(cursor.getString(cursor.getColumnIndex("n")));
+//                        landHoldingPojo.setCa(cursor.getString(cursor.getColumnIndex("ca")));
+                        landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
+                      //  landHoldingPojo.setOffline_sync(cursor.getInt(cursor.getColumnIndex("offline_sync")));
+
+                        cursor.moveToNext();
+                        arrayList.add(landHoldingPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
 
 
     public ArrayList<CropPlaningPojo> getAddPlantDataToBeSync() {
@@ -3861,6 +3862,44 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    public ArrayList<PSNeemPlantationPojo> getPSNeemPlantationDataToBeSync() {
+        ArrayList<PSNeemPlantationPojo> arrayList = new ArrayList<PSNeemPlantationPojo>();
+        PSNeemPlantationPojo landHoldingPojo;
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from ps_neem_plantation where flag=0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        landHoldingPojo = new PSNeemPlantationPojo();
+                        landHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        landHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        landHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        landHoldingPojo.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
+                        landHoldingPojo.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
+                        landHoldingPojo.setPlantation_Date(cursor.getString(cursor.getColumnIndex("plantation_Date")));
+                        landHoldingPojo.setGeo_coordinates(cursor.getString(cursor.getColumnIndex("geo_coordinates")));
+                        landHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+//                        landHoldingPojo.setFruited_date(cursor.getString(cursor.getColumnIndex("fruited_date")));
+//                        landHoldingPojo.setPlanted_date(cursor.getString(cursor.getColumnIndex("planted_date")));
+//                        landHoldingPojo.setSeason(cursor.getString(cursor.getColumnIndex("season")));
+//                        landHoldingPojo.setTotal_tree(cursor.getString(cursor.getColumnIndex("total_tree")));
+
+                        cursor.moveToNext();
+                        arrayList.add(landHoldingPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
     public ArrayList<TrainingPojo> getTrainningToBeSync() {
         ArrayList<TrainingPojo> arrayList = new ArrayList<TrainingPojo>();
         TrainingPojo landHoldingPojo;
@@ -4915,6 +4954,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("land_id",householdMasterModel.getLand_id());
                 values.put("plantation_date",householdMasterModel.getPlantation_Date());
                 values.put("geo_coordinates",householdMasterModel.getGeo_coordinates());
+                values.put("flag","0");
 
 
                 ids =DB1.insert("ps_neem_plantation",null, values);
@@ -4950,6 +4990,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                // values.put("Farmer_Selection",householdMasterModel.getFarmer_Selection());
                 values.put("land_area",householdMasterModel.getLand_area());
                 values.put("land_name",householdMasterModel.getLand_name());
+                values.put("flag","0");
 
 
                 ids =DB1.insert("ps_land_holding",null, values);
@@ -4974,6 +5015,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("farmer_id", psLandHoldingPojo.getFarmer_id());
                 values.put("land_unit", psLandHoldingPojo.getLand_unit());
                 values.put("land_image", psLandHoldingPojo.getLand_image());
+                values.put("flag", "0");
 //                values.put("latitude", sharedPrefHelper.getString("LAT", ""));
 //                values.put("longitude", sharedPrefHelper.getString("LONG", ""));
 
@@ -5016,6 +5058,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         landHoldingPojo.setLand_image(cursor.getString(cursor.getColumnIndex("land_image")));
                         landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
                         landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+                        landHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
 
                         landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
 
@@ -5065,6 +5108,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         psLandHoldingPojo.setLand_image(cursor.getString(cursor.getColumnIndex("land_image")));
                         psLandHoldingPojo.setLand_area(cursor.getString(cursor.getColumnIndex("land_area")));
                         psLandHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
+                        psLandHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                         psLandHoldingPojoArrayList.add(psLandHoldingPojo);
                         cursor.moveToNext();
                     }
@@ -5202,6 +5246,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
                         ps_neem_plantation.setGeo_coordinates(cursor.getString(cursor.getColumnIndex("geo_coordinates")));
                         ps_neem_plantation.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
+                        ps_neem_plantation.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                         cursor.moveToNext();
                         psNeemPlantationPojos.add(ps_neem_plantation);
                     }

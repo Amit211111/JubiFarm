@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import com.sanket.jubifarm.Livelihood.Adapter.NeemPlantationAdapter;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 import com.shamanland.fab.FloatingActionButton;
 
@@ -25,6 +26,9 @@ public class PS_NeemPlantationList extends AppCompatActivity {
   String screenType = "";
   ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
 
+    SharedPrefHelper sharedPrefHelper;
+    String screen_type="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +38,13 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         initiliaze();
         rv_neem_Plantation = findViewById(R.id.rv_neem_Plantation);
 
+        screen_type = sharedPrefHelper.getString("prayawran_screenType", "");
 
+        if(screen_type.equals("land")){
+            fab.setVisibility(View.VISIBLE);
+        }else {
+            fab.setVisibility(View.GONE);
+        }
         psNeemPlantationPojos = sqliteHelper.getneemplantation();
         if(psNeemPlantationPojos.size()>0)
         {
@@ -55,6 +65,7 @@ public class PS_NeemPlantationList extends AppCompatActivity {
     }
 
     private void initiliaze() {
+        sharedPrefHelper=new SharedPrefHelper(this);
         psNeemPlantationPojos = new ArrayList<>();
         rv_neem_Plantation = findViewById(R.id.rv_neem_Plantation);
         sqliteHelper = new SqliteHelper(this);

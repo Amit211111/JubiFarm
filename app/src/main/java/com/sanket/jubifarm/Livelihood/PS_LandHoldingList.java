@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import com.sanket.jubifarm.Livelihood.Adapter.Adapter_PS_LandHolding;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.ArrayList;
@@ -24,8 +25,9 @@ public class PS_LandHoldingList extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
     SqliteHelper sqliteHelper;
+    SharedPrefHelper sharedPrefHelper;
     String screenType = "";
-
+    String screen_type="";
     Context context = this;
 
     @Override
@@ -36,6 +38,7 @@ public class PS_LandHoldingList extends AppCompatActivity {
         fab=findViewById(R.id.fab);
 
         sqliteHelper = new SqliteHelper(this);
+        sharedPrefHelper = new SharedPrefHelper(this);
         recyclerView = findViewById(R.id.rvLandHoldning);
 
         Bundle bundle = getIntent().getExtras();
@@ -44,6 +47,13 @@ public class PS_LandHoldingList extends AppCompatActivity {
             screenType = bundle.getString("land", "");
         }
 
+        screen_type = sharedPrefHelper.getString("prayawran_screenType", "");
+
+        if(screen_type.equals("land")){
+            fab.setVisibility(View.VISIBLE);
+        }else {
+            fab.setVisibility(View.GONE);
+        }
 
         arrayList = sqliteHelper.PSgetRegistrationData("");
         Adapter_PS_LandHolding adapter_ps_landHolding = new Adapter_PS_LandHolding(context, arrayList, screenType);

@@ -108,17 +108,17 @@ public class PS_Synchronize extends AppCompatActivity {
         if (countRegistration>0) {
             tvFarmerRegistrationCount.setText(countRegistration+"");
         }
-//        landHoldingAL=sqliteHelper.getPSLandSyn();
-//        countLandHolding=landHoldingAL.size();
-//        if (countLandHolding>0) {
-//            tvLandHoldingCount.setText(countLandHolding+"");
-//        }
+        landHoldingAL=sqliteHelper.getPSLandSyn();
+        countLandHolding=landHoldingAL.size();
+        if (countLandHolding>0) {
+            tvLandHoldingCount.setText(countLandHolding+"");
+        }
 
-//        cropPlanningsAL=sqliteHelper.getAddPlantDataToBeSync();
-//        countCropPlant=cropPlanningsAL.size();
-//        if (countCropPlant>0) {
-//            tvCropPlanningCount.setText(countCropPlant+"");
-//        }
+        psNeemPlantationPojoArrayList=sqliteHelper.getPSNeemPlantationDataToBeSync();
+        countNeemPlant=psNeemPlantationPojoArrayList.size();
+        if (countNeemPlant>0) {
+            tvNeemPlanningCount.setText(countNeemPlant+"");
+        }
 //        PlantGrowthModalList = sqliteHelper.getPlantgrwthListForSync();
 //        countPlantGrowth=PlantGrowthModalList.size();
 //        if (countPlantGrowth>0) {
@@ -139,12 +139,12 @@ public class PS_Synchronize extends AppCompatActivity {
             case R.id.llFarmerRegistration:
                 sendFarmerRegistrationDataOnServer();
                 break;
-//            case R.id.llLandHolding:
-//                sendLandHoldingDataOnServer();
-//                break;
-//            case R.id.llNeemPlanning:
-//                sendNeemPlanningDataOnServer();
-//                break;
+            case R.id.llLandHolding:
+                sendLandHoldingDataOnServer();
+                break;
+            case R.id.llNeemPlanning:
+                sendNeemPlanningDataOnServer();
+                break;
 //            case R.id.llNeemMonitoring:
 //                sendNeemMonitoringDataOnServer();
 //                break;
@@ -155,15 +155,7 @@ public class PS_Synchronize extends AppCompatActivity {
         try {
             //in users table last inserted id is user_id
             int ids = sqliteHelper.getLastInsertedLocalID();
-            //for farmer id
-            Attendance_Approval attendance_approval=new Attendance_Approval();
-            /*if (sharedPrefHelper.getString("user_type", "").equals("Farmer")) {
-                attendance_approval = sqliteHelper.getFarmerDetails(sharedPrefHelper.getString("user_id", ""));
-                farmer_id = attendance_approval.getId();
-            } else {
-                attendance_approval = sqliteHelper.getFarmerDetails(attendance_approval.getUser_id());
-                farmer_id = attendance_approval.getId();
-            }*/
+
             if (CommonClass.isInternetOn(context)) {
                 paryavaranSakhiRegistrationPojoArrayList=sqliteHelper.getPSFarmerForSyn();
                 countRegistration=paryavaranSakhiRegistrationPojoArrayList.size();
@@ -239,7 +231,7 @@ public class PS_Synchronize extends AppCompatActivity {
 
     private void sendFramerRegistrationData(RequestBody body, String localId) {
         ProgressDialog dialog = ProgressDialog.show(PS_Synchronize.this, "", getString(R.string.Please_wait), true);
-        APIClient.getClient().create(JubiForm_API.class).sendFormerRegistrationData(body).enqueue(new Callback<JsonObject>() {
+        APIClient.getClient().create(JubiForm_API.class).sendPSFarmerRegistrationdata(body).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 try {
@@ -248,29 +240,22 @@ public class PS_Synchronize extends AppCompatActivity {
                     Log.e("bchjc", "vxghs " + jsonObject.toString());
                     String status = jsonObject.optString("status");
                     String message = jsonObject.optString("message");
-                    String user_id = jsonObject.optString("user_id");
-                    String farmer_id = jsonObject.optString("farmer_id");
-                    String household_no = jsonObject.optString("household_no");
+//                    String user_id = jsonObject.optString("user_id");
+//                    String household_no = jsonObject.optString("household_no");
                     sharedPrefHelper.setString("selected_farmer","");
                     //sharedPrefHelper.setString("user_id", user_id);
                     Log.e("TAG", "StatusFarmer: "+status);
-                    if (status.equalsIgnoreCase("1")) {
+                    if (status.equalsIgnoreCase("1") ) {
                         //update flag in tables
-//                        sqliteHelper.updateId("users", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "id");
-//                        sqliteHelper.updateId("users", "id", Integer.parseInt(user_id), Integer.parseInt(user_id), "user_id");
-//                        sqliteHelper.updateId("farmer_registration", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "user_id");
+                        String last_farmer_id = jsonObject.optString("last_farmer_id");
+
+                        sqliteHelper.updateId("ps_farmer_registration", "farmer_id", Integer.parseInt(last_farmer_id), Integer.parseInt(localId), "local_id");
+                        sqliteHelper.updateId("ps_land_holding", "farmer_id", Integer.parseInt(last_farmer_id), Integer.parseInt(localId), "local_id");
 //                        sqliteHelper.updateId("farmer_registration", "id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "id");
 //                        sqliteHelper.updateId("farmer_registration", "household_no", Integer.parseInt(household_no), Integer.parseInt(user_id), "user_id");
-//                        sqliteHelper.updateId("farmer_family", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "user_id");
-//                        sqliteHelper.updateId("crop_vegetable_details", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "user_id");
-//                        sqliteHelper.updateId("land_holding", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
-//                        sqliteHelper.updateId("crop_planning", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
-//                        sqliteHelper.updateId("sale_details", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
-//                        sqliteHelper.updateId("production_details", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
-//                        sqliteHelper.updateId("plant_growth", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
-//                        //int idss = sqliteHelper.getLastInsertedLocalID();
+//                           //int idss = sqliteHelper.getLastInsertedLocalID();
 //                        sqliteHelper.updateFlag("users", Integer.parseInt(user_id), 1);
-//                        sqliteHelper.updateFlag("farmer_registration", Integer.parseInt(user_id), 1);
+                        sqliteHelper.updateFlag("ps_farmer_registration", Integer.parseInt(localId), 1);
 //                       // sqliteHelper.updateFlag("farmer_family", Integer.parseInt(user_id), 1);
                         //sqliteHelper.updateFlag("crop_vegetable_details", Integer.parseInt(user_id), 1);
 
@@ -282,21 +267,8 @@ public class PS_Synchronize extends AppCompatActivity {
 
                         Toast.makeText(PS_Synchronize.this, "" + message, Toast.LENGTH_SHORT).show();
                     }else if(status.equals("2")){
-                        //int idss = sqliteHelper.getLastInsertedLocalID();
-                        /*sqliteHelper.dropTableFamily("users", user_id);
-                        sqliteHelper.dropTableFamily("farmer_registration", user_id);
-                        sqliteHelper.dropTableFamily("farmer_family", user_id);
-                        sqliteHelper.dropTableFamily("crop_vegetable_details", user_id);*/
-//                        sqliteHelper.updateEditFlagInTable("users");
-//                        sqliteHelper.updateEditFlagInTable("farmer_registration");
-//                        sqliteHelper.updateEditFlagInTable("farmer_family");
-//                        sqliteHelper.updateEditFlagInTable("crop_vegetable_details");
-                        if(countRegistration>0){
-                            countRegistration=countRegistration-1;
-                            tvFarmerRegistrationCount.setText(countRegistration+"");
-                            dialog.dismiss();
-                        }
-                        //Toast.makeText(SyncDataActivity.this, R.string.your_number_already_exist, Toast.LENGTH_LONG).show();
+
+                        Toast.makeText(PS_Synchronize.this, R.string.your_number_already_exist, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(PS_Synchronize.this, "" + message, Toast.LENGTH_LONG).show();
                         dialog.dismiss();
@@ -314,55 +286,52 @@ public class PS_Synchronize extends AppCompatActivity {
         });
     }
 
-//    private void sendLandHoldingDataOnServer() {
-//        try {
-//            if (CommonClass.isInternetOn(context)) {
-//                paryavaranSakhiRegistrationPojoArrayList=sqliteHelper.getPSFarmerForSyn();
-//                if (paryavaranSakhiRegistrationPojoArrayList.size()==0) {
-//                    landHoldingAL = sqliteHelper.getPSLandSyn();
-//                    countLandHolding = landHoldingAL.size();
-//                    if (countLandHolding > 0) {
-//                        for (int i = 0; i < landHoldingAL.size(); i++) {
-////                            landHoldingAL.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
-////                            //send land_holding server-id while editing land
-////                            landHoldingAL.get(i).setLand_id_AI(landHoldingAL.get(i).getId());
-//////                            cropTotalPlantPlant= Integer.parseInt(sqliteHelper.getTotalPlantbyid(landHoldingAL.get(i).getId()));;
-//////
-////                            landHoldingAL.get(i).setTotal_plant(String.valueOf(cropTotalPlantPlant));
+    private void sendLandHoldingDataOnServer() {
+        try {
+            if (CommonClass.isInternetOn(context)) {
+                paryavaranSakhiRegistrationPojoArrayList = sqliteHelper.getPSFarmerForSyn();
+                if (paryavaranSakhiRegistrationPojoArrayList.size() == 0) {
+                    landHoldingAL = sqliteHelper.getPSLandSyn();
+                    countLandHolding = landHoldingAL.size();
+                    if (countLandHolding > 0) {
+                        for (int i = 0; i < landHoldingAL.size(); i++) {
+//                            landHoldingAL.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
+//                            //send land_holding server-id while editing land
+//                            landHoldingAL.get(i).setLand_id_AI(landHoldingAL.get(i).getId());
+////                            cropTotalPlantPlant= Integer.parseInt(sqliteHelper.getTotalPlantbyid(landHoldingAL.get(i).getId()));;
+////
+//                            landHoldingAL.get(i).setTotal_plant(String.valueOf(cropTotalPlantPlant));
+
+
+                            Gson gson = new Gson();
+                            String data = gson.toJson(landHoldingAL.get(i));
+                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                            RequestBody body = RequestBody.create(JSON, data);
+
+//                            if (landHoldingAL.get(i).getOffline_sync() == 1) {
+//                                sendEditLandData(body, Integer.parseInt(landHoldingAL.get(i).getLocal_id()));
+//                            } else {
+                            sendAddLandData(body, Integer.parseInt(landHoldingAL.get(i).getLocal_id()),
+                                    landHoldingAL.get(i).getLocal_id());
+                    }
+                } else {
+                    Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(context, R.string.sync_farmer_registration_data, Toast.LENGTH_LONG).show();
+            }
 //
-//
-//                            Gson gson = new Gson();
-//                            String data = gson.toJson(landHoldingAL.get(i));
-//                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                            RequestBody body = RequestBody.create(JSON, data);
-//
-////                            if (landHoldingAL.get(i).getOffline_sync() == 1) {
-////                                sendEditLandData(body, Integer.parseInt(landHoldingAL.get(i).getLocal_id()));
-////                            } else {
-////                                sendAddLandData(body, Integer.parseInt(landHoldingAL.get(i).getLocal_id()),
-////                                        landHoldingAL.get(i).getId());
-////                            }
-//                        }
-//                    }
-//                    else {
-//                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(context, R.string.sync_farmer_registration_data, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            else {
-//                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
+        }else {
+                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+////
 //    private void sendEditLandData(RequestBody body, int local_id) {
 //        ProgressDialog dialog = ProgressDialog.show(context, "", getString(R.string.Please_wait), true);
-//        APIClient.getClient().create(JubiForm_API.class).callEditLandApi(body).enqueue(new Callback<JsonObject>() {
+//        APIClient.getClient().create(JubiForm_API.class).callPSEditLandApi(body).enqueue(new Callback<JsonObject>() {
 //            @Override
 //            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 //                try {
@@ -397,124 +366,124 @@ public class PS_Synchronize extends AppCompatActivity {
 //            }
 //        });
 //    }
+////
+    private void sendAddLandData(RequestBody body, int local_id, String id) {
+        ProgressDialog dialog = ProgressDialog.show(context, "", getString(R.string.Please_wait), true);
+        APIClient.getClient().create(JubiForm_API.class).PSAddLand(body).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().toString().trim());
+                    dialog.dismiss();
+                    Log.e("bchjc", "vxghs " + jsonObject.toString());
+                    String status = jsonObject.optString("status");
+                    String message = jsonObject.optString("message");
+                    String land_id_primarykey = jsonObject.optString("land_id_primarykey");
+                    String land_id = jsonObject.optString("land_id");
+                    if (status.equalsIgnoreCase("1")) {
+                        Toast.makeText(context, "" + message, Toast.LENGTH_LONG).show();
+                        sqliteHelper.updateServerid("land_holding", local_id, Integer.parseInt(land_id_primarykey));
+                        sqliteHelper.updateLandId("land_holding", "land_id", land_id, local_id, "local_id");
+                        sqliteHelper.updateLocalFlag("land_holding", local_id, 1);
+                        sqliteHelper.updateLandServeridInCropPlanning("crop_planning", id, Integer.parseInt(land_id_primarykey));
+                        if (countLandHolding>0){
+                            countLandHolding=countLandHolding-1;
+                            tvLandHoldingCount.setText(countLandHolding+"");
+                        }
+                    } else {
+                        Toast.makeText(context, "" + message, Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    dialog.dismiss();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+    private void sendNeemPlanningDataOnServer() {
+        try {
+            if (CommonClass.isInternetOn(context)) {
+                psNeemPlantationPojoArrayList=sqliteHelper.getPSNeemPlantationDataToBeSync();
+                if (landHoldingAL.size()==0) {
+                    psNeemPlantationPojoArrayList = sqliteHelper.getPSNeemPlantationDataToBeSync();
+                    countNeemPlant = psNeemPlantationPojoArrayList.size();
+                    if (countNeemPlant > 0) {
+                        for (int i = 0; i < psNeemPlantationPojoArrayList.size(); i++) {
+                           // psNeemPlantationPojoArrayList.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
+
+                            Gson gson = new Gson();
+                            String data = gson.toJson(psNeemPlantationPojoArrayList.get(i));
+                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                            RequestBody body = RequestBody.create(JSON, data);
+
+                            sendAddPlantData(body, Integer.parseInt(psNeemPlantationPojoArrayList.get(i).getLocal_id()),
+                                    psNeemPlantationPojoArrayList.get(i).getId());
+                        }
+                    } else {
+                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(context, R.string.sync_land_holding, Toast.LENGTH_LONG).show();
+                }
+            }
+            else {
+                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 //
-//    private void sendAddLandData(RequestBody body, int local_id, String id) {
-//        ProgressDialog dialog = ProgressDialog.show(context, "", getString(R.string.Please_wait), true);
-//        APIClient.getClient().create(JubiForm_API.class).AddLand(body).enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response.body().toString().trim());
-//                    dialog.dismiss();
-//                    Log.e("bchjc", "vxghs " + jsonObject.toString());
-//                    String status = jsonObject.optString("status");
-//                    String message = jsonObject.optString("message");
-//                    String land_id_primarykey = jsonObject.optString("land_id_primarykey");
-//                    String land_id = jsonObject.optString("land_id");
-//                    if (status.equalsIgnoreCase("1")) {
-//                        Toast.makeText(context, "" + message, Toast.LENGTH_LONG).show();
-//                        sqliteHelper.updateServerid("land_holding", local_id, Integer.parseInt(land_id_primarykey));
-//                        sqliteHelper.updateLandId("land_holding", "land_id", land_id, local_id, "local_id");
-//                        sqliteHelper.updateLocalFlag("land_holding", local_id, 1);
-//                        sqliteHelper.updateLandServeridInCropPlanning("crop_planning", id, Integer.parseInt(land_id_primarykey));
-//                        if (countLandHolding>0){
-//                            countLandHolding=countLandHolding-1;
-//                            tvLandHoldingCount.setText(countLandHolding+"");
-//                        }
-//                    } else {
-//                        Toast.makeText(context, "" + message, Toast.LENGTH_LONG).show();
-//                        dialog.dismiss();
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                    dialog.dismiss();
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                if (dialog.isShowing()) {
-//                    dialog.dismiss();
-//                }
-//            }
-//        });
-//    }
-//    private void sendNeemPlanningDataOnServer() {
-//        try {
-//            if (CommonClass.isInternetOn(context)) {
-//                landHoldingAL=sqliteHelper.getAddLandDataToBeSync();
-//                if (landHoldingAL.size()==0) {
-//                    cropPlanningsAL = sqliteHelper.getAddPlantDataToBeSync();
-//                    countCropPlant = cropPlanningsAL.size();
-//                    if (countCropPlant > 0) {
-//                        for (int i = 0; i < cropPlanningsAL.size(); i++) {
-//                            cropPlanningsAL.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
-//
-//                            Gson gson = new Gson();
-//                            String data = gson.toJson(cropPlanningsAL.get(i));
-//                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                            RequestBody body = RequestBody.create(JSON, data);
-//
-//                            sendAddPlantData(body, Integer.parseInt(cropPlanningsAL.get(i).getLocal_id()),
-//                                    cropPlanningsAL.get(i).getId());
-//                        }
-//                    } else {
-//                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(context, R.string.sync_land_holding, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            else {
-//                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
-//            }
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private void sendAddPlantData(RequestBody body, int local_id, String id) {
-//        ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.Please_wait), true);
-//        APIClient.getClient().create(JubiForm_API.class).add_plant(body).enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response.body().toString().trim());
-//                    dialog.dismiss();
-//                    Log.e("bchjc", "vxghs " + jsonObject.toString());
-//                    String status = jsonObject.optString("status");
-//                    String message = jsonObject.optString("message");
-//                    if (status.equalsIgnoreCase("1")) {
-//                        sqliteHelper.updateAddPlantFlag("crop_planning",local_id,1);
-//                        String plant_id = jsonObject.optString("plant_id_AI");
-//                        String plant_ids = jsonObject.optString("plant_id");
-//                        sqliteHelper.updateAddPlantID("crop_planning",local_id, plant_ids);
-//                        sqliteHelper.updateServerid("crop_planning",local_id, Integer.parseInt(plant_id));
-//                        sqliteHelper.updateLandServeridInPlantGrowth("plant_growth", id, Integer.parseInt(plant_id));
+    private void sendAddPlantData(RequestBody body, int local_id, String id) {
+        ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.Please_wait), true);
+        APIClient.getClient().create(JubiForm_API.class).add_neem_plant(body).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().toString().trim());
+                    dialog.dismiss();
+                    Log.e("bchjc", "vxghs " + jsonObject.toString());
+                    String status = jsonObject.optString("status");
+                    String message = jsonObject.optString("message");
+                    if (status.equalsIgnoreCase("1")) {
+                        sqliteHelper.updateAddPlantFlag("crop_planning",local_id,1);
+                        String plant_id = jsonObject.optString("plant_id_AI");
+                        String plant_ids = jsonObject.optString("plant_id");
+                        sqliteHelper.updateAddPlantID("neem_plantation",local_id, plant_ids);
+                        sqliteHelper.updateServerid("neem_plantation",local_id, Integer.parseInt(plant_id));
+                        sqliteHelper.updateLandServeridInPlantGrowth("plant_growth", id, Integer.parseInt(plant_id));
 //                        if (countCropPlant>0){
 //                            countCropPlant=countCropPlant-1;
 //                            tvCropPlanningCount.setText(countCropPlant+"");
 //                        }
-//                    }
-//                    else {
-//                        Toast.makeText(PS_Synchronize.this, "" + message, Toast.LENGTH_LONG).show();
-//                        dialog.dismiss();
-//                    }
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                if (dialog.isShowing()) {
-//                    dialog.dismiss();
-//                }
-//            }
-//        });
-//    }
+                    }
+                    else {
+                        Toast.makeText(PS_Synchronize.this, "" + message, Toast.LENGTH_LONG).show();
+                        dialog.dismiss();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
 //
 //    private void sendNeemMonitoringDataOnServer() {
 //        try {

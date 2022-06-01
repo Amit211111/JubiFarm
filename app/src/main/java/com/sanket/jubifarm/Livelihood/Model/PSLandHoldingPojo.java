@@ -9,7 +9,16 @@ public class PSLandHoldingPojo
     private String land_image;
     private String land_area;
     private String land_name;
+    private String flag;
 
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public String getFarmer_id() {
         return farmer_id;
@@ -74,6 +83,7 @@ public class PSLandHoldingPojo
     private static final String COLUMN_LAND_IMAGE= "land_image";
     private static final String COLUMN_LAND_AREA = "land_area";
     private static final String COLUMN_LAND_NAME = "land_name";
+    private static final String COLUMN_Flag = "flag";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -82,6 +92,7 @@ public class PSLandHoldingPojo
             + COLUMN_LAND_IMAGE + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
             + COLUMN_LAND_AREA + " TEXT, "
+            + COLUMN_Flag + " TEXT, "
             + COLUMN_LAND_NAME + " TEXT "
             + ")";
 }

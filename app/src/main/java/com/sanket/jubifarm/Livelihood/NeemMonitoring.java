@@ -34,14 +34,14 @@ import java.util.HashMap;
 
 public class NeemMonitoring extends AppCompatActivity {
 
-    Button btn_submit;
+    Button btnSubmit;
     ImageView img_setimage;
     Spinner spnLandSelection;
-    TextView CLICKIMAGE;
+    TextView tv_click;
     EditText et_monitoring_date, remarks, neem_id;
     private int land_id = 0;
     ArrayList<String> landArrayList;
-    HashMap<String, Integer> landName;
+    HashMap<String, Integer> landName=new HashMap<>();
     EditText et_plant_date;
     String base64;
 
@@ -63,13 +63,15 @@ public class NeemMonitoring extends AppCompatActivity {
         spnLandSelection = findViewById(R.id.spnLandSelection);
         et_monitoring_date = findViewById(R.id.et_monitoring_date);
         remarks = findViewById(R.id.remarks);
-        CLICKIMAGE =(TextView) findViewById(R.id.CLICKIMAGE);
-        btn_submit = findViewById(R.id.btn_submit);
+        et_plant_date = findViewById(R.id.et_monitoring_date);
+        tv_click =findViewById(R.id.tv_click);
+        btnSubmit = findViewById(R.id.btnSubmit);
         landArrayList = new ArrayList<>();
+        sqliteHelper = new SqliteHelper(getApplicationContext());
+
         setLandSpinner();
 
 
-        sqliteHelper = new SqliteHelper(getApplicationContext());
 
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +87,7 @@ public class NeemMonitoring extends AppCompatActivity {
                 mYear = c.get(Calendar.YEAR); // current year
                 mMonth = c.get(Calendar.MONTH); // current month
                 mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                datePickerDialog = new DatePickerDialog(NeemMonitoring.this,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(NeemMonitoring.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -100,7 +102,7 @@ public class NeemMonitoring extends AppCompatActivity {
         });
 
 
-        CLICKIMAGE.setOnClickListener(new View.OnClickListener() {
+        tv_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -109,24 +111,23 @@ public class NeemMonitoring extends AppCompatActivity {
         });
 
 
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 neem_monitoring = new Neem_Monitoring_Pojo();
                 neem_monitoring.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
-                neem_monitoring.setLocal_id(neem_id.getText().toString().trim());
                 neem_monitoring.setMonitoring_date(et_monitoring_date.getText().toString().trim());
                 neem_monitoring.setNeem_monitoring_image(base64);
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
                 sqliteHelper.AddneemMonitoring(neem_monitoring);
 
-                Intent intent = new Intent(NeemMonitoring.this, ParyavaranSakhiHome.class);
+                Intent intent = new Intent(NeemMonitoring.this, PS_LandHoldingList.class);
                 startActivity(intent);
             }
         });
 
     }
-
+//
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST) {
@@ -153,7 +154,7 @@ public class NeemMonitoring extends AppCompatActivity {
         }
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
     }
-
+//
     private void setLandSpinner() {
         landArrayList.clear();
         landName = sqliteHelper.getAllPSLAND();
@@ -195,6 +196,7 @@ public class NeemMonitoring extends AppCompatActivity {
 
             }
         });
+
 
     }
 }

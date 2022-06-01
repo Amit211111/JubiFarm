@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.R;
@@ -12,7 +13,8 @@ import com.sanket.jubifarm.data_base.SharedPrefHelper;
 
 public class ParyavaranSakhiHome extends AppCompatActivity {
     TextView farmer,tv_neem_plantation,txt_LandHolding,txt_Monitoring,txt_Syncronize;
-    boolean sharedPrefHelper;
+    LinearLayout ll_Helpline,ll_Sync,ll_neem_plantation,ll_neem_monitoring,ll_land_holding,ll_farmReg;
+    SharedPrefHelper sharedPrefHelper;
     String screenType = "";
 
     @Override
@@ -22,10 +24,17 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
         getSupportActionBar().setTitle("Home");
 
         farmer =findViewById(R.id.farmer);
+        sharedPrefHelper=new SharedPrefHelper(this);
         tv_neem_plantation = findViewById(R.id.tv_neem_plantation);
         txt_LandHolding = findViewById(R.id.txt_LandHolding);
         txt_Monitoring=findViewById(R.id.txt_Monitoring);
         txt_Syncronize=findViewById(R.id.txt_Syncronize);
+        ll_neem_plantation=findViewById(R.id.ll_neem_plantation);
+        ll_neem_monitoring=findViewById(R.id.ll_neem_monitoring);
+        ll_land_holding=findViewById(R.id.ll_land_holding);
+        ll_Sync=findViewById(R.id.ll_Sync);
+        ll_farmReg=findViewById(R.id.ll_farmReg);
+        ll_Helpline=findViewById(R.id.ll_Helpline);
         tv_neem_plantation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +52,7 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
             }
         });*/
 
-        farmer.setOnClickListener(new View.OnClickListener() {
+        ll_farmReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -51,35 +60,41 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        tv_neem_plantation.setOnClickListener(new View.OnClickListener() {
+        ll_neem_plantation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_NeemPlantationList.class);
                 startActivity(intent1);
             }
         });
-        txt_LandHolding.setOnClickListener(new View.OnClickListener() {
+        ll_land_holding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_LandHoldingList.class);
-                /*screenType = sharedPrefHelper.getString("land", "");*/
-                screenType.equals("land");
+                sharedPrefHelper.setString("prayawran_screenType", "land");
                 startActivity(intent1);
             }
         });
-        txt_Monitoring.setOnClickListener(new View.OnClickListener() {
+        ll_neem_monitoring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2=new Intent(ParyavaranSakhiHome.this,PS_LandHoldingList.class);
-               /* screenType = sharedPrefHelper.getString("plantation", "");*/
+                sharedPrefHelper.setString("prayawran_screenType", "monitoring");
                 startActivity(intent2);
             }
         });
-        txt_Syncronize.setOnClickListener(new View.OnClickListener() {
+        ll_Sync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_Synchronize.class);
                 startActivity(intent1);
+            }
+        });
+        ll_Helpline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ParyavaranSakhiHome.this,PS_Helpline.class);
+                startActivity(intent);
             }
         });
     }

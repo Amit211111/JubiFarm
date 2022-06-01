@@ -37,6 +37,9 @@
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".Livelihood.PS_Helpline"
+            android:exported="true" />
+        <activity
             android:name=".Livelihood.STSynchronize"
             android:exported="false" />
         <activity
