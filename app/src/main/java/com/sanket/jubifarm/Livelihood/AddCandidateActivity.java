@@ -100,8 +100,8 @@ public class AddCandidateActivity extends AppCompatActivity {
                 candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
                 candidatePojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
                 candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
-                candidatePojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
-                candidatePojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                candidatePojo.setLatitude(sharedPrefHelper.getString("LAT",""));
+                candidatePojo.setLongitude(sharedPrefHelper.getString("LONG",""));
 
 
                 sqliteHelper.SkillTracking(candidatePojo);

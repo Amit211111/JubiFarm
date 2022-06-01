@@ -37,13 +37,14 @@ public class NeemPlantation extends AppCompatActivity {
     TextView CLICKIMAGE,GeoCoodinate, Neem_Id;
     boolean isEditable = false;
     private Context context = this;
-    SharedPrefHelper sharedPrefHelper;
+    private SharedPrefHelper sharedPrefHelper;
     Spinner spnLandSelection;
     private int land_id = 0;
     ArrayList<String> landArrayList;
     HashMap<String, Integer> landName;
     EditText et_plant_date;
     String base64;
+    String farmer_id="",landId="";
 
 
     ImageView img_setimage;
@@ -67,7 +68,6 @@ public class NeemPlantation extends AppCompatActivity {
         landArrayList = new ArrayList<>();
         landName = new HashMap<>();
         img_setimage = findViewById(R.id.img_setimage);
-        sharedPrefHelper = new SharedPrefHelper(this);
         GeoCoodinate = findViewById(R.id.GeoCoodinate);
 
 
@@ -81,6 +81,13 @@ public class NeemPlantation extends AppCompatActivity {
         sqliteHelper = new SqliteHelper(getApplicationContext());
 
         setLandSpinner();
+
+//
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            landId = bundle.getString("landId", "");
+//
+//        }
 
 
         //Date Picker
@@ -125,16 +132,24 @@ public class NeemPlantation extends AppCompatActivity {
         btn_submitDetls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Random random = new Random();
+                int value = random.nextInt(1000);
+                farmer_id= sqliteHelper.getCloumnName("farmer_id","ps_land_holding", "where local_id='"+land_id+"'");
 
                 psNeemPlantationPojo = new PSNeemPlantationPojo();
                 psNeemPlantationPojo.setNeem_plantation_image(base64);
-                psNeemPlantationPojo.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
+                psNeemPlantationPojo.setFarmer_id(farmer_id);
+                psNeemPlantationPojo.setNeem_id(String.valueOf(value));
+                psNeemPlantationPojo.setLand_id(String.valueOf(land_id));
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
-                GeoCoodinate.setText(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                psNeemPlantationPojo.setLatitude(sharedPrefHelper.getString("LAT",""));
+                psNeemPlantationPojo.setLongitude(sharedPrefHelper.getString("LONG",""));
+
+
                 sqliteHelper.PSsaveHousehold(psNeemPlantationPojo);
 
                 Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
-                sharedPrefHelper.setString("neemPlantation", "view");
+                sharedPrefHelper.setString("plantation_screenType", "view");
                 startActivity(intent);
 
             }
@@ -151,7 +166,7 @@ public class NeemPlantation extends AppCompatActivity {
         if (isEditable) {
             //farmarArrayList.add(0, farmer_name);
         } else {
-            landArrayList.add(0, getString(R.string.select_farmer));
+            landArrayList.add(0, "Select Land");
         }
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, landArrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -170,7 +185,7 @@ public class NeemPlantation extends AppCompatActivity {
         spnLandSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!spnLandSelection.getSelectedItem().toString().trim().equalsIgnoreCase(getString(R.string.select_farmer))) {
+                if (!spnLandSelection.getSelectedItem().toString().trim().equalsIgnoreCase("Select Land")) {
                     if (spnLandSelection.getSelectedItem().toString().trim() != null) {
                         land_id = landName.get(spnLandSelection.getSelectedItem().toString().trim());
                     }

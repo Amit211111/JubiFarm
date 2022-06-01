@@ -111,9 +111,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         db.execSQL(PSNeemPlantationPojo.CREATE_TABLE);
         db.execSQL(PSLandHoldingPojo.CREATE_TABLE);
         db.execSQL(CandidatePojo.CREATE_TABLE);
-
-
-
+        db.execSQL(MonitoringStatusPojo.CREATE_TABLE);
+        db.execSQL(Neem_Monitoring_Pojo.CREATE_TABLE);
 
     }
 
@@ -5075,7 +5074,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
             {
                 ContentValues values =new ContentValues();
                 values.put("id",householdMasterModel.getId());
-                values.put("neem_plantation_Image",householdMasterModel.getNeem_plantation_image());
+                values.put("neem_id",householdMasterModel.getNeem_id());
+                values.put("farmer_id",householdMasterModel.getFarmer_id());
+                values.put("neem_plantation_image",householdMasterModel.getNeem_plantation_image());
                 values.put("land_id",householdMasterModel.getLand_id());
                 values.put("plantation_date",householdMasterModel.getPlantation_Date());
                 values.put("latitude",householdMasterModel.getLatitude());
@@ -5427,6 +5428,33 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return hashMap;
     }
+    public HashMap<String, Integer> getAllPSNeem() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        PSNeemPlantationPojo psNeemPlantationPojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "select local_id,neem_id from ps_neem_plantation";
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        psNeemPlantationPojo = new PSNeemPlantationPojo();
+                        psNeemPlantationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        psNeemPlantationPojo.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
+
+                        cursor.moveToNext();
+                        hashMap.put(psNeemPlantationPojo.getNeem_id(), Integer.parseInt(psNeemPlantationPojo.getLocal_id()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+        return hashMap;
+    }
     public long MonitoringStatus(MonitoringStatusPojo householdMasterModel) {
         SQLiteDatabase DB1 = this.getWritableDatabase();
         long ids = 0;
@@ -5498,7 +5526,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (db != null && !db.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("id", neem_monitoring.getId());
-                values.put("local_id", neem_monitoring.getLocal_id());
                 values.put("neem_id", neem_monitoring.getNeem_id());
                 values.put("farmer_id", neem_monitoring.getFarmer_id());
                 values.put("monitoring_date", neem_monitoring.getMonitoring_date());
@@ -5525,7 +5552,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
 
-                String query = "select * from ps_neem_monitoring where local_id = '" + local_id + "'";
+                String query = "select * from ps_neem_plantation where local_id=" + local_id + "";
 
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
@@ -5536,8 +5563,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
                         ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
                         ps_neem_plantation.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
-                        ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
-                        ps_neem_plantation.setPlantation_Date(cursor.getString(cursor.getColumnIndex("plantation_date")));
+                        ps_neem_plantation.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
+                        ps_neem_plantation.setPlantation_Date(cursor.getString(cursor.getColumnIndex("plantation_Date")));
+                        ps_neem_plantation.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
 
                         cursor.moveToNext();
                     }
@@ -5550,4 +5578,15 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return ps_neem_plantation;
     }
+
+    public String getCloumnName(String colName, String table, String whr) {
+        String column = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select " + colName + " " + " from " + table + " " + whr , null);
+        if (cursor.moveToFirst())
+            column = cursor.getString(cursor.getColumnIndex(colName)).trim();
+        return column;
+    }
+
+
 }

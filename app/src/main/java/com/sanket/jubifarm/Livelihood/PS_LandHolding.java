@@ -114,7 +114,7 @@ public class PS_LandHolding extends AppCompatActivity {
 
         }
 
-        
+
             if (type.equals("edit")) {
 
                 isEditable=true;
@@ -178,8 +178,8 @@ public class PS_LandHolding extends AppCompatActivity {
                    psLandHoldingPojo.setLand_area(et_landto_be_added.getText().toString().trim());
                    psLandHoldingPojo.setLand_unit(String.valueOf(unit_id));
                    psLandHoldingPojo.setLand_name(et_land_name.getText().toString().trim());
-                   psLandHoldingPojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
-                   psLandHoldingPojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                   psLandHoldingPojo.setLatitude(sharedPrefHelper.getString("LAT",""));
+                   psLandHoldingPojo.setLongitude(sharedPrefHelper.getString("LONG",""));
 
                    if (type.equals("edit")) {
                        psLandHoldingPojo.setLand_id(land_id);

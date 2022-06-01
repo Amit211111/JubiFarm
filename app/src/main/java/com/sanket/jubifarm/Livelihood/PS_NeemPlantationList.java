@@ -62,7 +62,7 @@ public class PS_NeemPlantationList extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent =new Intent(PS_NeemPlantationList.this, NeemPlantation.class);
-                sharedPrefHelper.getString("neemPlantation", "view");
+                sharedPrefHelper.getString("plantation_screenType", "view");
                 startActivity(intent);
             }
         });

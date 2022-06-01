@@ -39,13 +39,16 @@ public class NeemMonitoring extends AppCompatActivity {
     ImageView img_setimage;
     Spinner spnLandSelection;
     TextView tv_click;
-    EditText et_monitoring_date, remarks, neem_id;
+    EditText et_monitoring_date, remarks;
     private int land_id = 0;
-    ArrayList<String> landArrayList;
-    HashMap<String, Integer> landName=new HashMap<>();
+    ArrayList<String> neemArrayList;
+    HashMap<String, Integer> neemHM=new HashMap<>();
     EditText et_plant_date;
     SharedPrefHelper sharedPrefHelper;
     String base64;
+    Spinner spnNeemSelection;
+    int neemId=0;
+    String landId="";
 
     boolean isEditable = false;
     private Context context = this;
@@ -55,25 +58,22 @@ public class NeemMonitoring extends AppCompatActivity {
     Neem_Monitoring_Pojo neem_monitoring;
     int mYear, mMonth, mDay, year, month, day;
     DatePickerDialog datePickerDialog;
+    String farmer_id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_monitoring);
         getSupportActionBar().setTitle("Neem Monitoring");
-        img_setimage = findViewById(R.id.img_setimage);
-        spnLandSelection = findViewById(R.id.spnLandSelection);
-        et_monitoring_date = findViewById(R.id.et_monitoring_date);
-        remarks = findViewById(R.id.remarks);
-        et_plant_date = findViewById(R.id.et_monitoring_date);
-        tv_click =findViewById(R.id.tv_click);
-        sharedPrefHelper = new SharedPrefHelper(this);
-        btnSubmit = findViewById(R.id.btnSubmit);
-        landArrayList = new ArrayList<>();
-        sqliteHelper = new SqliteHelper(getApplicationContext());
 
+        initliaze();
 
+        setNeemSpinner();
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            landId = bundle.getString("landId", "");
+        }
 
 
         et_plant_date.setOnClickListener(new View.OnClickListener() {
@@ -118,24 +118,83 @@ public class NeemMonitoring extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 neem_monitoring = new Neem_Monitoring_Pojo();
-                neem_monitoring.setLocal_id(neem_id.getText().toString().trim());
+
+                farmer_id= sqliteHelper.getCloumnName("farmer_id","ps_land_holding", "where land_id='"+landId+"'");
+
                 neem_monitoring.setMonitoring_date(et_monitoring_date.getText().toString().trim());
-                neem_monitoring.setFarmer_id(String.valueOf(land_id));
                 neem_monitoring.setNeem_monitoring_image(base64);
+                neem_monitoring.setFarmer_id(farmer_id);
+                neem_monitoring.setLand_id(landId);
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
-                neem_monitoring.setNeem_id(neem_id.getText().toString().trim());
-//               // neem_monitoring.setFarmer_id(neem_monitoring.getFarmer_id());
-                neem_monitoring.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
-                neem_monitoring.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                neem_monitoring.setNeem_id(String.valueOf(neemId));
+                neem_monitoring.setLatitude(sharedPrefHelper.getString("LAT",""));
+                neem_monitoring.setLongitude(sharedPrefHelper.getString("LONG",""));
                 sqliteHelper.AddneemMonitoring(neem_monitoring);
 
                 Intent intent = new Intent(NeemMonitoring.this, PS_LandHoldingList.class);
                 startActivity(intent);
             }
         });
-
     }
-//
+
+    private void initliaze() {
+        img_setimage = findViewById(R.id.img_setimage);
+        spnLandSelection = findViewById(R.id.spnLandSelection);
+        et_monitoring_date = findViewById(R.id.et_monitoring_date);
+        neemArrayList=new ArrayList<>();
+        sharedPrefHelper=new SharedPrefHelper(this);
+        remarks = findViewById(R.id.remarks);
+        et_plant_date = findViewById(R.id.et_monitoring_date);
+        tv_click =findViewById(R.id.tv_click);
+        btnSubmit = findViewById(R.id.btnSubmit);
+        spnNeemSelection= findViewById(R.id.spnNeemSelection);
+        sqliteHelper = new SqliteHelper(getApplicationContext());
+    }
+
+    private void setNeemSpinner() {
+        neemArrayList.clear();
+        neemHM = sqliteHelper.getAllPSNeem();
+
+        for (int i = 0; i < neemHM.size(); i++) {
+            neemArrayList.add(neemHM.keySet().toArray()[i].toString().trim());
+        }
+        if (isEditable) {
+            //farmarArrayList.add(0, farmer_name);
+        } else {
+            neemArrayList.add(0, "Select Neem");
+        }
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, neemArrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnNeemSelection.setAdapter(arrayAdapter);
+        if (isEditable) {
+            int spinnerPosition = 0;
+            Integer strpos1 = land_id;
+            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
+                strpos1 = land_id;
+                spinnerPosition = arrayAdapter.getPosition(strpos1);
+                spnNeemSelection.setSelection(spinnerPosition);
+                spinnerPosition = 0;
+            }
+        }
+
+        spnNeemSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!spnNeemSelection.getSelectedItem().toString().trim().equalsIgnoreCase("Select Neem")) {
+                    if (spnNeemSelection.getSelectedItem().toString().trim() != null) {
+                        neemId = neemHM.get(spnNeemSelection.getSelectedItem().toString().trim());
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    //
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST) {

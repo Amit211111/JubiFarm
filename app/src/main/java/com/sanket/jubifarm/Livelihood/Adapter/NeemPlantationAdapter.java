@@ -60,17 +60,19 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
             holder.img_setimage.setImageResource(R.drawable.neem);
         }
 
-        screenType = sharedPrefHelper.getString("neemPlantation", "");
+        screenType = sharedPrefHelper.getString("plantation_screenType", "");
 
         holder.cv_student_listing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(screenType.equals("view"))
-                {
-                    Intent intent = new Intent(context, NeemMonitoring.class);
+                if(screenType.equals("view")) {
+                    Intent intent = new Intent(context, NeemPlantationViewActivity.class);
+                    intent.putExtra("id",psNeemPlantationPojos.get(position).getLocal_id());
                     context.startActivity(intent);
                 }else {
-                    Intent intent = new Intent(context, NeemPlantationViewActivity.class);
+                    Intent intent = new Intent(context, NeemMonitoring.class);
+                    intent.putExtra("id",psNeemPlantationPojos.get(position).getLocal_id());
+                    intent.putExtra("landId",psNeemPlantationPojos.get(position).getLand_id());
                     context.startActivity(intent);
                 }
             }

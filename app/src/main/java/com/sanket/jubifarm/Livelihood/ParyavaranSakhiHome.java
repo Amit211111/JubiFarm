@@ -38,7 +38,7 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
         tv_neem_plantation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ParyavaranSakhiHome.this,NeemPlantation.class);
+                Intent intent = new Intent(ParyavaranSakhiHome.this,PS_NeemPlantationList.class);
                 startActivity(intent);
             }
         });
@@ -63,6 +63,8 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
         ll_neem_plantation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sharedPrefHelper.setString("plantation_screenType", "view");
+                sharedPrefHelper.setString("prayawran_screenType", "land");
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_NeemPlantationList.class);
                 startActivity(intent1);
             }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private String local_id;
     private String id;
+    private String farmer_id;
     private String neem_plantation_image;
     private String land_id;
     private String neem_id;
@@ -12,6 +13,14 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private String flag;
     private String latitude;
     private String longitude;
+
+    public String getFarmer_id() {
+        return farmer_id;
+    }
+
+    public void setFarmer_id(String farmer_id) {
+        this.farmer_id = farmer_id;
+    }
 
     public String getLatitude() {
         return latitude;
@@ -89,6 +98,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private static final String TABLE_NAME = "ps_neem_plantation";
     private static final String COLUMN_LOCAL_ID="local_id";
     private static final String COLUMN_ID="id";
+    private static final String COLUMN_FARMER_ID="farmer_id";
     private static final String COLUMN_NEEM_PLANTATION_IMAGE= "neem_plantation_image";
     private static final String COLUMN_LAND_ID = "land_id";
     private static final String COLUMN_NEEM_ID = "neem_id";
@@ -104,6 +114,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COLUMN_ID + " INTEGER, "
             + COLUMN_NEEM_PLANTATION_IMAGE + " TEXT, "
+            + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "
