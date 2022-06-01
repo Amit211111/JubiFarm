@@ -122,14 +122,11 @@ public interface JubiForm_API {
     @POST("neem_monitoring.php")
     Call<JsonObject> ps_neem_monitoring(@Body RequestBody body);
 
-    @POST("neem_monitoring.php")
+    @POST("candidate_registration.php")
     Call<JsonObject> st_candidate(@Body RequestBody body);
 
     @POST("skill_tracking_monitoring_status")
     Call<JsonObject> st_monitoring(@Body RequestBody body);
-
-
-
 
 }
 

@@ -434,7 +434,7 @@ private void sendNeemMonitoringDataOnServer() {
                         // psNeemPlantationPojoArrayList.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
 
                         Gson gson = new Gson();
-                        String data = gson.toJson(psNeemPlantationPojoArrayList.get(i));
+                        String data = gson.toJson(neem_monitoring_pojoArrayList.get(i));
                         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                         RequestBody body = RequestBody.create(JSON, data);
 
@@ -456,7 +456,7 @@ private void sendNeemMonitoringDataOnServer() {
 
     public void sendNeemMonitoringData(RequestBody body, int local_id) {
         ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.Please_wait), true);
-        APIClient.getClient().create(JubiForm_API.class).ps_neem_monitoring(body).enqueue(new Callback<JsonObject>() {
+        APIClient.getPsClient().create(JubiForm_API.class).ps_neem_monitoring(body).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 try {
@@ -464,9 +464,13 @@ private void sendNeemMonitoringDataOnServer() {
                     dialog.dismiss();
                     Log.e("subp", "neem_monitoring===" + jsonObject.toString());
                     String status = jsonObject.optString("status");
+                    String message = jsonObject.optString("message");
+                    String last_monitro_id = jsonObject.optString("last_monitro_id");
                     if (status.equals("1")) {
-                        sqliteHelper.updateVisitPlantFlag("neem_monitoring", 0, 1);
+                        sqliteHelper.updateId("neem_monitoring", "id", Integer.parseInt(last_monitro_id), local_id, "local_id");
+                        sqliteHelper.updatePSFlag("neem_monitoring",local_id, 1,"local_id");
 
+                        Toast.makeText(context, "" +message, Toast.LENGTH_SHORT).show();
                         if (countNeemMonitoring>0){
                             countNeemMonitoring=countNeemMonitoring-1;
                             tvNeemMonitoringCount.setText(countNeemPlant+"");
