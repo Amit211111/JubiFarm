@@ -13,6 +13,39 @@ public class MonitoringStatusPojo
     private String latitude;
     private String longitude;
 
+
+    public String getCandidate_id() {
+        return candidate_id;
+    }
+
+    public void setCandidate_id(String candidate_id) {
+        this.candidate_id = candidate_id;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public String getDate_monitoring() {
         return date_monitoring;
     }
@@ -68,6 +101,10 @@ public class MonitoringStatusPojo
     private static final String COLUMN_CURRENT_WORK="current_work";
     private static final String COLUMN_REMARK="remark";
     private static final String COLUMN_DATE_MONITORING="date_monitoring";
+    private static final String COLUMN_CANDIDATE_ID="candidate_id";
+    private static final String COLUMN_FLAG="flag";
+    private static final String COLUMN_LATITUDE="latitude";
+    private static final String COLUMN_LONGITUDE="longitude";
 
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
@@ -75,6 +112,10 @@ public class MonitoringStatusPojo
             + COLUMN_ID + " INTEGER,"
             + COLUMN_CURRENT_WORK + " TEXT, "
             + COLUMN_WORKING_STATUS + " TEXT, "
+            + COLUMN_FLAG + " TEXT, "
+            + COLUMN_LONGITUDE + " TEXT, "
+            + COLUMN_CANDIDATE_ID + " TEXT, "
+            + COLUMN_LATITUDE + " TEXT, "
             + COLUMN_DATE_MONITORING + " TEXT, "
             + COLUMN_REMARK + " TEXT "
             + ")";

@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.Calendar;
@@ -22,7 +23,7 @@ import java.util.Calendar;
 public class AddCandidateActivity extends AppCompatActivity {
 
 
-      String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
+    String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
     String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
     Spinner spn_training_stream,spn_skill_center;
     EditText et_name,et_email,et_mobileno,et_qualification,et_date_completation;
@@ -31,6 +32,7 @@ public class AddCandidateActivity extends AppCompatActivity {
     CandidatePojo candidatePojo;
     int mYear,mMonth,mDay,year,month,day;
     DatePickerDialog datePickerDialog;
+    SharedPrefHelper sharedPrefHelper;
 
 
     @Override
@@ -41,16 +43,18 @@ public class AddCandidateActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-     // IntilizeAll
+        // IntilizeAll
         IntilizeAll();
 
-        ArrayAdapter adapter=new ArrayAdapter(AddCandidateActivity.this,R.layout.spinner_list,skill_center);
+        ArrayAdapter adapter = new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list, skill_center);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn_skill_center.setAdapter(adapter);
 
 
-        ArrayAdapter adapter1=new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list,training_stream);
+        ArrayAdapter adapter1 = new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list, training_stream);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
         spn_training_stream.setAdapter(adapter1);
 
         et_date_completation.setOnClickListener(new View.OnClickListener() {
@@ -96,11 +100,13 @@ public class AddCandidateActivity extends AppCompatActivity {
                 candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
                 candidatePojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
                 candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
+                candidatePojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                candidatePojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
 
 
                 sqliteHelper.SkillTracking(candidatePojo);
 
-                Intent intent=new Intent(AddCandidateActivity.this, CandidateList.class);
+                Intent intent = new Intent(AddCandidateActivity.this, CandidateList.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

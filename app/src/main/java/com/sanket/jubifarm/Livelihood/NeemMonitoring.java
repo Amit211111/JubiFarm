@@ -25,6 +25,7 @@ import com.rey.material.widget.TextView;
 import com.sanket.jubifarm.Livelihood.Model.Neem_Monitoring_Pojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.io.ByteArrayOutputStream;
@@ -43,6 +44,7 @@ public class NeemMonitoring extends AppCompatActivity {
     ArrayList<String> landArrayList;
     HashMap<String, Integer> landName=new HashMap<>();
     EditText et_plant_date;
+    SharedPrefHelper sharedPrefHelper;
     String base64;
 
     boolean isEditable = false;
@@ -119,6 +121,10 @@ public class NeemMonitoring extends AppCompatActivity {
                 neem_monitoring.setMonitoring_date(et_monitoring_date.getText().toString().trim());
                 neem_monitoring.setNeem_monitoring_image(base64);
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
+                neem_monitoring.setNeem_id(neem_id.getText().toString().trim());
+//               // neem_monitoring.setFarmer_id(neem_monitoring.getFarmer_id());
+                neem_monitoring.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                neem_monitoring.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
                 sqliteHelper.AddneemMonitoring(neem_monitoring);
 
                 Intent intent = new Intent(NeemMonitoring.this, PS_LandHoldingList.class);

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.sanket.jubifarm.Livelihood.Model.MonitoringStatusPojo;
 import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.Calendar;
@@ -30,6 +31,7 @@ public class MonitoringView extends AppCompatActivity {
      RadioGroup rg_working;
      RadioButton rb_working,rb_notworking;
     TextView tv_name,tv_email,tv_mobileno,tv_qualification,tv_training_stream,tv_training_date,tv_submit;
+    SharedPrefHelper sharedPrefHelper;
 
     EditText et_remark;
     private String skill_centerr = "", name = "", email = "", id = "",mobile = "", qualification = "", training_stream = "", bulk_density = "", land_name,
@@ -124,6 +126,9 @@ public class MonitoringView extends AppCompatActivity {
                 monitoringStatusPojo.setCurrent_work(spn_current_work.getSelectedItem().toString().trim());
                 monitoringStatusPojo.setRemark(et_remark.getText().toString().trim());
                 monitoringStatusPojo.setDate_monitoring(et_date_of_monitoring.getText().toString().trim());
+                monitoringStatusPojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                monitoringStatusPojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                monitoringStatusPojo.setCandidate_id(String.valueOf(id));
                 Intent intent = new Intent(MonitoringView.this, CandidateList.class);
 
                 sqliteHelper.MonitoringStatus(monitoringStatusPojo);

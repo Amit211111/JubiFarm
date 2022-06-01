@@ -12,6 +12,22 @@ public class PSNeemPlantationPojo
     private String latitude;
     private String longitude;
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public String getLocal_id() {
         return local_id;
     }
@@ -75,6 +91,8 @@ public class PSNeemPlantationPojo
     private static final String COLUMN_NEEM_PLANTATION_IMAGE= "neem_plantation_image";
     private static final String COLUMN_LAND_ID = "land_id";
     private static final String COLUMN_NEEM_ID = "neem_id";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
     private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
     private static final String COLUMN_FLAG = "flag";
@@ -87,6 +105,8 @@ public class PSNeemPlantationPojo
             + COLUMN_NEEM_PLANTATION_IMAGE + " TEXT, "
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
+            + COLUMN_LATITUDE + " TEXT, "
+            + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
             + COLUMN_GEO_COORDINATES + " TEXT "

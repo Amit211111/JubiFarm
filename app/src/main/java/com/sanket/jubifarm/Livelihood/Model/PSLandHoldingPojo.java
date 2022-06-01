@@ -21,6 +21,21 @@ public class PSLandHoldingPojo
     public void setId(String id) {
         this.id = id;
     }
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getFlag() {
         return flag;
@@ -94,6 +109,8 @@ public class PSLandHoldingPojo
     private static final String COLUMN_LAND_IMAGE= "land_image";
     private static final String COLUMN_LAND_AREA = "land_area";
     private static final String COLUMN_LAND_NAME = "land_name";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_Flag = "flag";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
@@ -103,6 +120,8 @@ public class PSLandHoldingPojo
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_IMAGE + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
+            + COLUMN_LATITUDE + " TEXT,"
+            + COLUMN_LONGITUDE + " TEXT,"
             + COLUMN_LAND_AREA + " TEXT, "
             + COLUMN_Flag + " TEXT, "
             + COLUMN_LAND_NAME + " TEXT "

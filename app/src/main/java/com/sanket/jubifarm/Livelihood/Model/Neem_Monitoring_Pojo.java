@@ -14,6 +14,39 @@ public class Neem_Monitoring_Pojo {
     private String latitude;
     private String longitude;
 
+
+//    public String getFarmer_id() {
+//        return farmer_id;
+//    }
+//
+//    public void setFarmer_id(String farmer_id) {
+//        this.farmer_id = farmer_id;
+//    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public String getLocal_id() {
         return local_id;
     }
@@ -75,6 +108,10 @@ public class Neem_Monitoring_Pojo {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_LAND_ID = "land_id";
     private static final String COLUMN_NEEM_ID = "neem_id";
+    private static final String COLUMN_Flag = "flag";
+  //  private static final String COLUMN_FARMER_ID = "farmer_id";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE= "longitude";
     private static final String COLUMN_MONITORING_DATE = "monitoring_date";
     private static final String COLUMN_NEEM_MONITORING_IMAGE = "neem_monitoring_image";
     private static final String COLUMN_REMARKS = "remarks";
@@ -84,6 +121,10 @@ public class Neem_Monitoring_Pojo {
             + COLUMN_ID + " INTEGER, "
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
+            + COLUMN_Flag + " TEXT, "
+     //       + COLUMN_FARMER_ID + " TEXT, "
+            + COLUMN_LATITUDE + " TEXT, "
+            + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_MONITORING_DATE + " TEXT, "
             + COLUMN_NEEM_MONITORING_IMAGE + " TEXT, "
             + COLUMN_REMARKS + " TEXT "
