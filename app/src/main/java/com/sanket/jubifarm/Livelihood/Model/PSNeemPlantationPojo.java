@@ -2,7 +2,7 @@ package com.sanket.jubifarm.Livelihood.Model;
 
 public class PSNeemPlantationPojo
 {
-    private String Local_id;
+    private String local_id;
     private String id;
     private String neem_plantation_image;
     private String land_id;
@@ -12,20 +12,36 @@ public class PSNeemPlantationPojo
     private String latitude;
     private String longitude;
 
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLocal_id() {
+        return local_id;
+    }
+
+    public void setLocal_id(String local_id) {
+        this.local_id = local_id;
+    }
+
     public String getFlag() {
         return flag;
     }
 
     public void setFlag(String flag) {
         this.flag = flag;
-    }
-
-    public String getLocal_id() {
-        return Local_id;
-    }
-
-    public void setLocal_id(String local_id) {
-        Local_id = local_id;
     }
 
     public String getId() {
@@ -75,7 +91,9 @@ public class PSNeemPlantationPojo
     private static final String COLUMN_NEEM_PLANTATION_IMAGE= "neem_plantation_image";
     private static final String COLUMN_LAND_ID = "land_id";
     private static final String COLUMN_NEEM_ID = "neem_id";
-    private static final String COLUMN_PLANTATION_DATE = "plantation_date";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
+    private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
     private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
     private static final String COLUMN_FLAG = "flag";
 
@@ -87,6 +105,8 @@ public class PSNeemPlantationPojo
             + COLUMN_NEEM_PLANTATION_IMAGE + " TEXT, "
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
+            + COLUMN_LATITUDE + " TEXT, "
+            + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
             + COLUMN_GEO_COORDINATES + " TEXT "

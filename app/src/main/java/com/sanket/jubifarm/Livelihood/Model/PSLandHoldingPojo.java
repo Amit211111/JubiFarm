@@ -3,6 +3,7 @@ package com.sanket.jubifarm.Livelihood.Model;
 public class PSLandHoldingPojo
 {
     private String local_id;
+    private String id;
     private String farmer_id;
     private String land_id;
     private String land_unit;
@@ -13,6 +14,28 @@ public class PSLandHoldingPojo
     private String latitude;
     private String longitude;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 
     public String getFlag() {
         return flag;
@@ -79,20 +102,26 @@ public class PSLandHoldingPojo
 
     private static final String TABLE_NAME = "ps_land_holding";
     private static final String COLUMN_LOCAL_ID="local_id";
+    private static final String COLUMN_ID="id";
     private static final String COLUMN_FARMER_ID="farmer_id";
     private static final String COLUMN_LAND_UNIT="land_unit";
     private static final String COLUMN_LAND_ID="land_id";
     private static final String COLUMN_LAND_IMAGE= "land_image";
     private static final String COLUMN_LAND_AREA = "land_area";
     private static final String COLUMN_LAND_NAME = "land_name";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_Flag = "flag";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " INTEGER,"
             + COLUMN_LAND_ID + " INTEGER,"
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_IMAGE + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
+            + COLUMN_LATITUDE + " TEXT,"
+            + COLUMN_LONGITUDE + " TEXT,"
             + COLUMN_LAND_AREA + " TEXT, "
             + COLUMN_Flag + " TEXT, "
             + COLUMN_LAND_NAME + " TEXT "
