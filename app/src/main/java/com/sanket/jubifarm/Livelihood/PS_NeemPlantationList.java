@@ -23,10 +23,11 @@ public class PS_NeemPlantationList extends AppCompatActivity {
   ImageButton fab;
   RecyclerView rv_neem_Plantation;
   SqliteHelper sqliteHelper;
-  String screenType = "";
+  String screenType;
+  SharedPrefHelper sharedPrefHelper;
   ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
 
-    SharedPrefHelper sharedPrefHelper;
+
     String screen_type="";
 
     @Override
@@ -35,8 +36,10 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         setContentView(R.layout.activity_ps_neem_plantation_list);
         getSupportActionBar().setTitle("Neem Plantation List");
         fab=findViewById(R.id.fab);
+        sharedPrefHelper = new SharedPrefHelper(this);
         initiliaze();
         rv_neem_Plantation = findViewById(R.id.rv_neem_Plantation);
+
 
         screen_type = sharedPrefHelper.getString("prayawran_screenType", "");
 
@@ -48,7 +51,7 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         psNeemPlantationPojos = sqliteHelper.getneemplantation();
         if(psNeemPlantationPojos.size()>0)
         {
-            NeemPlantationAdapter neemPlantationAdapter = new NeemPlantationAdapter(this, psNeemPlantationPojos);
+            NeemPlantationAdapter neemPlantationAdapter = new NeemPlantationAdapter(this, psNeemPlantationPojos, screenType);
             rv_neem_Plantation.setHasFixedSize(true);
             rv_neem_Plantation.setLayoutManager(new LinearLayoutManager(this));
             rv_neem_Plantation.setAdapter(neemPlantationAdapter);
@@ -59,6 +62,7 @@ public class PS_NeemPlantationList extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent =new Intent(PS_NeemPlantationList.this, NeemPlantation.class);
+                sharedPrefHelper.getString("neemPlantation", "view");
                 startActivity(intent);
             }
         });

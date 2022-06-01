@@ -71,7 +71,7 @@ public class NeemMonitoring extends AppCompatActivity {
         landArrayList = new ArrayList<>();
         sqliteHelper = new SqliteHelper(getApplicationContext());
 
-        setLandSpinner();
+
 
 
 
@@ -117,7 +117,7 @@ public class NeemMonitoring extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 neem_monitoring = new Neem_Monitoring_Pojo();
-                neem_monitoring.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
+                neem_monitoring.setLocal_id(neem_id.getText().toString().trim());
                 neem_monitoring.setMonitoring_date(et_monitoring_date.getText().toString().trim());
                 neem_monitoring.setNeem_monitoring_image(base64);
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
@@ -160,49 +160,8 @@ public class NeemMonitoring extends AppCompatActivity {
         }
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
     }
-//
-    private void setLandSpinner() {
-        landArrayList.clear();
-        landName = sqliteHelper.getAllPSLAND();
-
-        for (int i = 0; i < landName.size(); i++) {
-            landArrayList.add(landName.keySet().toArray()[i].toString().trim());
-        }
-        if (isEditable) {
-            //farmarArrayList.add(0, farmer_name);
-        } else {
-            landArrayList.add(0, getString(R.string.select_farmer));
-        }
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, landArrayList);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnLandSelection.setAdapter(arrayAdapter);
-        if (isEditable) {
-            int spinnerPosition = 0;
-            Integer strpos1 = land_id;
-            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
-                strpos1 = land_id;
-                spinnerPosition = arrayAdapter.getPosition(strpos1);
-                spnLandSelection.setSelection(spinnerPosition);
-                spinnerPosition = 0;
-            }
-        }
-
-        spnLandSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!spnLandSelection.getSelectedItem().toString().trim().equalsIgnoreCase(getString(R.string.select_farmer))) {
-                    if (spnLandSelection.getSelectedItem().toString().trim() != null) {
-                        land_id = landName.get(spnLandSelection.getSelectedItem().toString().trim());
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
 
-    }
+
+
 }

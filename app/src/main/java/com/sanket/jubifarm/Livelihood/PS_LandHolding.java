@@ -59,12 +59,12 @@ public class PS_LandHolding extends AppCompatActivity {
     EditText et_landto_be_added,et_land_name;
     SqliteHelper sqliteHelper;
     PSLandHoldingPojo psLandHoldingPojo;
+    SharedPrefHelper sharedPrefHelper;
     PSLandHoldingPojo psLHPojo;
     ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
     public static android.app.Dialog submit_alert;
 
     ImageView img_addland;
-    private SharedPrefHelper sharedPrefHelper;
     private String land_area = "", farmer_name = "", unit = "", land_id = "", p = "", ca = "", ec = "", bulk_density = "", land_name,
             filtrationr_rate = "", soil_texture = "", ph = "",image="";
     private String land_unit="";
@@ -92,6 +92,7 @@ public class PS_LandHolding extends AppCompatActivity {
         setContentView(R.layout.activity_ps_land_holding);
         getSupportActionBar().setTitle("Land Holding");
 
+        sharedPrefHelper = new SharedPrefHelper(this);
 
 
         sqliteHelper = new SqliteHelper(getApplicationContext());

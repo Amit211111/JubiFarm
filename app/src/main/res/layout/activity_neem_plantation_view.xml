@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Livelihood.NeemPlantationViewActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_2dp"
+        android:background="#08B"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_tree"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:src="@drawable/plant" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:paddingLeft="7dp"
+                android:text="Neem ID"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/Neem_Id"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true"
+                android:paddingLeft="@dimen/_10dp"
+                android:hint="Neem_Id"
+                android:textColor="#000" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:paddingLeft="7dp"
+                android:text="@string/Land_ID"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/Land_id"
+                android:layout_width="fill_parent"
+                android:layout_gravity="center"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true"
+                android:paddingLeft="@dimen/_10dp"
+                android:hint="@string/Land_ID"
+                android:textColor="#000" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:paddingLeft="7dp"
+                android:text="@string/planted_date"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/et_plant_date"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true"
+                android:textColor="#000"
+                android:paddingLeft="@dimen/_10dp"
+                android:hint="Date" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:paddingLeft="7dp"
+                android:text="@string/Geo_Cordinates"
+                android:textColor="@android:color/black"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".6"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/GeoCoodinate"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/_30dp"
+                android:layout_marginTop="2dp"
+                android:drawSelectorOnTop="true"
+                android:textColor="#000"
+                android:paddingLeft="@dimen/_10dp"
+                android:text="15.345243, 1255.3452" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin4"
+        android:layout_marginTop="@dimen/_20dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2dp"
+            android:background="#00008B"/>
+    </LinearLayout>
+</LinearLayout>

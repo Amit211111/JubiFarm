@@ -1,7 +1,8 @@
 package com.sanket.jubifarm.Livelihood.Model;
 
-public class PSNeemPlantationPojo
-{
+import java.util.ArrayList;
+
+public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private String local_id;
     private String id;
     private String neem_plantation_image;

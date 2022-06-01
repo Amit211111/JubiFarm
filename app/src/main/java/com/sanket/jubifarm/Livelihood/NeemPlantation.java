@@ -29,6 +29,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class NeemPlantation extends AppCompatActivity {
 
@@ -44,6 +45,7 @@ public class NeemPlantation extends AppCompatActivity {
     EditText et_plant_date;
     String base64;
 
+
     ImageView img_setimage;
     private static final int CAMERA_REQUEST = 1888;
     SqliteHelper sqliteHelper;
@@ -55,6 +57,7 @@ public class NeemPlantation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_plantation);
         getSupportActionBar().setTitle("Neem Plantation");
+        sharedPrefHelper = new SharedPrefHelper(this);
 
 
         //Button
@@ -62,6 +65,7 @@ public class NeemPlantation extends AppCompatActivity {
         //All Text View
         CLICKIMAGE = findViewById(R.id.CLICKIMAGE);
         landArrayList = new ArrayList<>();
+        landName = new HashMap<>();
         img_setimage = findViewById(R.id.img_setimage);
         GeoCoodinate = findViewById(R.id.GeoCoodinate);
 
@@ -130,6 +134,7 @@ public class NeemPlantation extends AppCompatActivity {
                 sqliteHelper.PSsaveHousehold(psNeemPlantationPojo);
 
                 Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
+                sharedPrefHelper.setString("neemPlantation", "view");
                 startActivity(intent);
 
             }

@@ -5389,7 +5389,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (db != null && !db.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("id", neem_monitoring.getId());
-                values.put("land_id", neem_monitoring.getLand_id());
+                values.put("local_id", neem_monitoring.getLocal_id());
                 values.put("neem_id", neem_monitoring.getNeem_id());
                 values.put("monitoring_date", neem_monitoring.getMonitoring_date());
                 values.put("neem_monitoring_image", neem_monitoring.getNeem_monitoring_image());
@@ -5407,5 +5407,37 @@ public class SqliteHelper extends SQLiteOpenHelper {
             db.close();
         }
         return ids;
+    }
+
+    public PSNeemPlantationPojo getViewNeemPlantation(String local_id) {
+        PSNeemPlantationPojo ps_neem_plantation = new PSNeemPlantationPojo();
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+
+                String query = "select * from ps_neem_monitoring where local_id = '" + local_id + "'";
+
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        ps_neem_plantation = new PSNeemPlantationPojo();
+
+                        ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        ps_neem_plantation.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        ps_neem_plantation.setPlantation_Date(cursor.getString(cursor.getColumnIndex("plantation_date")));
+
+                        cursor.moveToNext();
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return ps_neem_plantation;
     }
 }

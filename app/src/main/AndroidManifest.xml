@@ -40,6 +40,9 @@
             android:name=".Livelihood.PS_Helpline"
             android:exported="true" />
         <activity
+            android:name=".Livelihood.NeemPlantationViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".Livelihood.STSynchronize"
             android:exported="false" />
         <activity

@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.Livelihood.NeemMonitoring;
+import com.sanket.jubifarm.Livelihood.NeemPlantationViewActivity;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -27,13 +29,15 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
 
     Context context;
     ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
-    public String screenType;
+    public String screenType = "";
+    SharedPrefHelper sharedPrefHelper;
 
-    public NeemPlantationAdapter(Context context, ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos)
+    public NeemPlantationAdapter(Context context, ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos, String screenType)
     {
         this.context = context;
         this.psNeemPlantationPojos = psNeemPlantationPojos;
         this.screenType = screenType;
+        sharedPrefHelper = new SharedPrefHelper(context);
     }
     @NonNull
     @Override
@@ -56,11 +60,19 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
             holder.img_setimage.setImageResource(R.drawable.neem);
         }
 
+        screenType = sharedPrefHelper.getString("neemPlantation", "");
+
         holder.cv_student_listing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, NeemMonitoring.class);
-                context.startActivity(intent);
+                if(screenType.equals("view"))
+                {
+                    Intent intent = new Intent(context, NeemMonitoring.class);
+                    context.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(context, NeemPlantationViewActivity.class);
+                    context.startActivity(intent);
+                }
             }
         });
     }
