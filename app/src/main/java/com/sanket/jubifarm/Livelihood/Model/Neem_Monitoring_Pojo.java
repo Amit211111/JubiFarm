@@ -15,13 +15,13 @@ public class Neem_Monitoring_Pojo {
     private String longitude;
 
 
-//    public String getFarmer_id() {
-//        return farmer_id;
-//    }
-//
-//    public void setFarmer_id(String farmer_id) {
-//        this.farmer_id = farmer_id;
-//    }
+    public String getFarmer_id() {
+        return farmer_id;
+    }
+
+    public void setFarmer_id(String farmer_id) {
+        this.farmer_id = farmer_id;
+    }
 
     public String getFlag() {
         return flag;
@@ -109,7 +109,7 @@ public class Neem_Monitoring_Pojo {
     private static final String COLUMN_LAND_ID = "land_id";
     private static final String COLUMN_NEEM_ID = "neem_id";
     private static final String COLUMN_Flag = "flag";
-  //  private static final String COLUMN_FARMER_ID = "farmer_id";
+    private static final String COLUMN_FARMER_ID = "farmer_id";
     private static final String COLUMN_LATITUDE = "latitude";
     private static final String COLUMN_LONGITUDE= "longitude";
     private static final String COLUMN_MONITORING_DATE = "monitoring_date";
@@ -122,7 +122,7 @@ public class Neem_Monitoring_Pojo {
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_Flag + " TEXT, "
-     //       + COLUMN_FARMER_ID + " TEXT, "
+            + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_MONITORING_DATE + " TEXT, "

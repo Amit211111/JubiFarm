@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.sanket.jubifarm.Activity.SyncDataActivity;
+import com.sanket.jubifarm.Livelihood.Model.Neem_Monitoring_Pojo;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
@@ -81,10 +82,10 @@ public class PS_Synchronize extends AppCompatActivity {
     private ArrayList<ParyavaranSakhiRegistrationPojo> paryavaranSakhiRegistrationPojoArrayList=new ArrayList<>();
     private ArrayList<PSLandHoldingPojo> landHoldingAL=new ArrayList<>();
     private ArrayList<PSNeemPlantationPojo> psNeemPlantationPojoArrayList=new ArrayList<>();
-    //private ArrayList<PlantGrowthPojo> PlantGrowthModalList=new ArrayList<>();
+    private ArrayList<Neem_Monitoring_Pojo> neem_monitoring_pojoArrayList=new ArrayList<>();
     private String farmer_id="";
     private int countRegistration=0, countLandHolding=0,
-            countProductDetails=0,
+            countNeemMonitoring=0,
             countNeemPlant=0, cropTotalPlantPlant=0;
 
 
@@ -119,11 +120,11 @@ public class PS_Synchronize extends AppCompatActivity {
         if (countNeemPlant>0) {
             tvNeemPlanningCount.setText(countNeemPlant+"");
         }
-//        PlantGrowthModalList = sqliteHelper.getPlantgrwthListForSync();
-//        countPlantGrowth=PlantGrowthModalList.size();
-//        if (countPlantGrowth>0) {
-//            tvCropMonitoringCount.setText(countPlantGrowth+"");
-//        }
+        neem_monitoring_pojoArrayList = sqliteHelper.getPSNeemMonitoringForSync();
+        countNeemMonitoring=neem_monitoring_pojoArrayList.size();
+        if (countNeemMonitoring>0) {
+            tvNeemMonitoringCount.setText(countNeemMonitoring+"");
+        }
     }
     private void initViews() {
         sqliteHelper=new SqliteHelper(this);
@@ -145,9 +146,9 @@ public class PS_Synchronize extends AppCompatActivity {
             case R.id.llNeemPlanning:
                 sendNeemPlanningDataOnServer();
                 break;
-//            case R.id.llNeemMonitoring:
-//                sendNeemMonitoringDataOnServer();
-//                break;
+            case R.id.llNeemMonitoring:
+                sendNeemMonitoringDataOnServer();
+                break;
         }
     }
 
@@ -242,7 +243,7 @@ public class PS_Synchronize extends AppCompatActivity {
                     String message = jsonObject.optString("message");
 //                    String user_id = jsonObject.optString("user_id");
 //                    String household_no = jsonObject.optString("household_no");
-                    sharedPrefHelper.setString("selected_farmer","");
+                     sharedPrefHelper.setString("selected_farmer","");
                     //sharedPrefHelper.setString("user_id", user_id);
                     Log.e("TAG", "StatusFarmer: "+status);
                     if (status.equalsIgnoreCase("1") ) {
@@ -421,53 +422,71 @@ public class PS_Synchronize extends AppCompatActivity {
         });
     }
 //
-//    private void sendNeemMonitoringDataOnServer() {
-//        try {
-//            if (CommonClass.isInternetOn(context)) {
-//                cropPlanningsAL = sqliteHelper.getAddPlantDataToBeSync();
-//                if (cropPlanningsAL.size()==0) {
-//                    PlantGrowthModalList = sqliteHelper.getPlantgrwthListForSync();
-//                    if (PlantGrowthModalList.size() > 0) {
-//
-//                        Gson gsonn = new Gson();
-//                        String element = gsonn.toJson(
-//                                PlantGrowthModalList,
-//                                new TypeToken<ArrayList<VisitPlantModel>>() {
-//                                }.getType());
-//                        JSONArray jsonArray = null;
-//                        try {
-//                            jsonArray = new JSONArray(element);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                        JSONObject jsonobj = new JSONObject();
-//                        try {
-//                            jsonobj.put("plant_growth", jsonArray);
-//
-//                            Gson gson = new Gson();
-//                            String data = jsonobj.toString(); //gson.toJson(jsonobj);
-//                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                            RequestBody body = RequestBody.create(JSON, data);
-//                            send_growth_plantData(body);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    } else {
-//                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//                else {
-//                    Toast.makeText(context, R.string.sync_crop_planning_data, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//            else {
-//                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
+private void sendNeemMonitoringDataOnServer() {
+    try {
+        if (CommonClass.isInternetOn(context)) {
+            psNeemPlantationPojoArrayList = sqliteHelper.getPSNeemPlantationDataToBeSync();
+            if (psNeemPlantationPojoArrayList.size() == 0) {
+                neem_monitoring_pojoArrayList = sqliteHelper.getPSNeemMonitoringForSync();
+                countNeemMonitoring = neem_monitoring_pojoArrayList.size();
+                if (countNeemMonitoring > 0) {
+                    for (int i = 0; i < neem_monitoring_pojoArrayList.size(); i++) {
+                        // psNeemPlantationPojoArrayList.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
+
+                        Gson gson = new Gson();
+                        String data = gson.toJson(psNeemPlantationPojoArrayList.get(i));
+                        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                        RequestBody body = RequestBody.create(JSON, data);
+
+                        sendNeemMonitoringData(body, Integer.parseInt(neem_monitoring_pojoArrayList.get(i).getLocal_id()));
+                    }
+                } else {
+                    Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(context, R.string.syn_neem_monitoring_data, Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
+        }
+    } catch (Exception e){
+        e.printStackTrace();
+    }
+}
+
+    public void sendNeemMonitoringData(RequestBody body, int local_id) {
+        ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.Please_wait), true);
+        APIClient.getClient().create(JubiForm_API.class).ps_neem_monitoring(body).enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().toString().trim());
+                    dialog.dismiss();
+                    Log.e("subp", "neem_monitoring===" + jsonObject.toString());
+                    String status = jsonObject.optString("status");
+                    if (status.equals("1")) {
+                        sqliteHelper.updateVisitPlantFlag("neem_monitoring", 0, 1);
+
+                        if (countNeemMonitoring>0){
+                            countNeemMonitoring=countNeemMonitoring-1;
+                            tvNeemMonitoringCount.setText(countNeemPlant+"");
+                        }
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

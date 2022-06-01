@@ -596,6 +596,8 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="Please_Enter_HouseholdNo">Please_Enter_HouseholdNo</string>
+    <string name="sync_neem_plantation_data">sync_neem_plantation_data</string>
+    <string name="syn_neem_monitoring_data">syn_neem_monitoring_data</string>
 
 
 </resources>

@@ -124,6 +124,7 @@ public class AddCandidateActivity extends AppCompatActivity {
         et_qualification=findViewById(R.id.et_qualification);
         et_date_completation=findViewById(R.id.et_date_completation);
         submit =findViewById(R.id.submit);
+        sharedPrefHelper = new SharedPrefHelper(this);
 
     }
 }

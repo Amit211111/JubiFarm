@@ -146,6 +146,7 @@ public class MonitoringView extends AppCompatActivity {
     private void IntilizeAll()
     {
         sqliteHelper=new SqliteHelper(this);
+        sharedPrefHelper=new SharedPrefHelper(this);
         tv_submit=findViewById(R.id.tv_submit);
         et_date_of_monitoring=findViewById(R.id.et_date_of_monitoring);
         spn_current_work=findViewById(R.id.spn_current_work);

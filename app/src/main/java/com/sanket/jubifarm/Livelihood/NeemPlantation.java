@@ -37,7 +37,7 @@ public class NeemPlantation extends AppCompatActivity {
     TextView CLICKIMAGE,GeoCoodinate, Neem_Id;
     boolean isEditable = false;
     private Context context = this;
-    private SharedPrefHelper sharedPrefHelper;
+    SharedPrefHelper sharedPrefHelper;
     Spinner spnLandSelection;
     private int land_id = 0;
     ArrayList<String> landArrayList;
@@ -67,6 +67,7 @@ public class NeemPlantation extends AppCompatActivity {
         landArrayList = new ArrayList<>();
         landName = new HashMap<>();
         img_setimage = findViewById(R.id.img_setimage);
+        sharedPrefHelper = new SharedPrefHelper(this);
         GeoCoodinate = findViewById(R.id.GeoCoodinate);
 
 
@@ -129,8 +130,7 @@ public class NeemPlantation extends AppCompatActivity {
                 psNeemPlantationPojo.setNeem_plantation_image(base64);
                 psNeemPlantationPojo.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
-                psNeemPlantationPojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
-                psNeemPlantationPojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
+                GeoCoodinate.setText(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
                 sqliteHelper.PSsaveHousehold(psNeemPlantationPojo);
 
                 Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);

@@ -67,6 +67,7 @@ public class NeemMonitoring extends AppCompatActivity {
         remarks = findViewById(R.id.remarks);
         et_plant_date = findViewById(R.id.et_monitoring_date);
         tv_click =findViewById(R.id.tv_click);
+        sharedPrefHelper = new SharedPrefHelper(this);
         btnSubmit = findViewById(R.id.btnSubmit);
         landArrayList = new ArrayList<>();
         sqliteHelper = new SqliteHelper(getApplicationContext());
@@ -119,6 +120,7 @@ public class NeemMonitoring extends AppCompatActivity {
                 neem_monitoring = new Neem_Monitoring_Pojo();
                 neem_monitoring.setLocal_id(neem_id.getText().toString().trim());
                 neem_monitoring.setMonitoring_date(et_monitoring_date.getText().toString().trim());
+                neem_monitoring.setFarmer_id(String.valueOf(land_id));
                 neem_monitoring.setNeem_monitoring_image(base64);
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
                 neem_monitoring.setNeem_id(neem_id.getText().toString().trim());

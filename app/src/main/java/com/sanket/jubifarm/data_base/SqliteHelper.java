@@ -572,6 +572,44 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public ArrayList<Neem_Monitoring_Pojo> getPSNeemMonitoringForSync() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Neem_Monitoring_Pojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from neem_monitoring where flag = 0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        Neem_Monitoring_Pojo plantGrowthPojo = new Neem_Monitoring_Pojo();
+                        plantGrowthPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        plantGrowthPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+                        plantGrowthPojo.setRemarks(cursor.getString(cursor.getColumnIndex("remarks")));
+                        plantGrowthPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        plantGrowthPojo.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
+                        plantGrowthPojo.setMonitoring_date(cursor.getString(cursor.getColumnIndex("monitoring_date")));
+                        plantGrowthPojo.setNeem_monitoring_image(cursor.getString(cursor.getColumnIndex("neem_monitoring_image")));
+                        plantGrowthPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        plantGrowthPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        plantGrowthPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+
+                        cursor.moveToNext();
+                        arrayList.add(plantGrowthPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
+
+
+
 
     public ArrayList<KnowledgePojo> getKnowledge() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -3210,6 +3248,43 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+    public ArrayList<CandidatePojo> getSt_CandidateForSyn() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<CandidatePojo> arrayList = new ArrayList<CandidatePojo>();
+        CandidatePojo registrationPojo;
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from candidate_registration WHERE flag=0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        registrationPojo = new CandidatePojo();
+                        registrationPojo.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        registrationPojo.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                        registrationPojo.setMobileno(cursor.getString(cursor.getColumnIndex("mobileno")));
+                        registrationPojo.setQualification(cursor.getString(cursor.getColumnIndex("qualification")));
+                        registrationPojo.setTraining_stream(cursor.getString(cursor.getColumnIndex("training_stream")));
+                        registrationPojo.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
+                        registrationPojo.setDate_of_completion_of_training(cursor.getString(cursor.getColumnIndex("date_of_completion_of_training")));
+                        registrationPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        registrationPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+//
+                        registrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));//(users table)
+                        registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
+
+                        cursor.moveToNext();
+                        arrayList.add(registrationPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
 
     public ArrayList<FarmerFamilyPojo> getFarmerFamilyTableDataToBeSync() {
         ArrayList<FarmerFamilyPojo> arrayList = new ArrayList<FarmerFamilyPojo>();
@@ -3232,6 +3307,40 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         familyPojo.setAge(cursor.getString(cursor.getColumnIndex("age")));
                         familyPojo.setGender(cursor.getString(cursor.getColumnIndex("gender")));
                         familyPojo.setRelation_id(cursor.getString(cursor.getColumnIndex("relation_id")));
+
+                        cursor.moveToNext();
+                        arrayList.add(familyPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
+    public ArrayList<MonitoringStatusPojo> getMonitoringTableDataToBeSync() {
+        ArrayList<MonitoringStatusPojo> arrayList = new ArrayList<MonitoringStatusPojo>();
+        MonitoringStatusPojo familyPojo;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "select * from monitoring_status where flag=0";
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        familyPojo = new MonitoringStatusPojo();
+                        familyPojo.setWorking_status(cursor.getString(cursor.getColumnIndex("working_status")));
+                        familyPojo.setCurrent_work(cursor.getString(cursor.getColumnIndex("current_work")));
+                        familyPojo.setRemark(cursor.getString(cursor.getColumnIndex("remark")));
+                        familyPojo.setDate_monitoring(cursor.getString(cursor.getColumnIndex("date_monitoring")));
+                        familyPojo.setCandidate_id(cursor.getString(cursor.getColumnIndex("candidate_id")));
+                        familyPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        familyPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        familyPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
 
                         cursor.moveToNext();
                         arrayList.add(familyPojo);
@@ -5391,6 +5500,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("id", neem_monitoring.getId());
                 values.put("local_id", neem_monitoring.getLocal_id());
                 values.put("neem_id", neem_monitoring.getNeem_id());
+                values.put("farmer_id", neem_monitoring.getFarmer_id());
                 values.put("monitoring_date", neem_monitoring.getMonitoring_date());
                 values.put("neem_monitoring_image", neem_monitoring.getNeem_monitoring_image());
                 values.put("remarks", neem_monitoring.getRemarks());

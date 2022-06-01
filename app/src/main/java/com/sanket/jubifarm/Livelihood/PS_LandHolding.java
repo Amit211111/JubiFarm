@@ -402,6 +402,7 @@ public class PS_LandHolding extends AppCompatActivity {
         spn_Unit=findViewById(R.id.spn_Unit);
         et_landto_be_added=findViewById(R.id.et_landto_be_added);
         et_land_name=findViewById(R.id.et_land_name);
+        sharedPrefHelper = new SharedPrefHelper(this);
     }
         private boolean checkValidation() {
             boolean ret = true;
