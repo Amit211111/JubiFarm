@@ -3,6 +3,7 @@ package com.sanket.jubifarm.Livelihood.Model;
 public class PSLandHoldingPojo
 {
     private String local_id;
+    private String id;
     private String farmer_id;
     private String land_id;
     private String land_unit;
@@ -13,6 +14,13 @@ public class PSLandHoldingPojo
     private String latitude;
     private String longitude;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFlag() {
         return flag;
@@ -79,6 +87,7 @@ public class PSLandHoldingPojo
 
     private static final String TABLE_NAME = "ps_land_holding";
     private static final String COLUMN_LOCAL_ID="local_id";
+    private static final String COLUMN_ID="id";
     private static final String COLUMN_FARMER_ID="farmer_id";
     private static final String COLUMN_LAND_UNIT="land_unit";
     private static final String COLUMN_LAND_ID="land_id";
@@ -89,6 +98,7 @@ public class PSLandHoldingPojo
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_ID + " INTEGER,"
             + COLUMN_LAND_ID + " INTEGER,"
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_IMAGE + " TEXT, "

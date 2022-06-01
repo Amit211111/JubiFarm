@@ -88,7 +88,7 @@ public class CandidatePojo
         this.date_of_completion_of_training = date_of_completion_of_training;
     }
 
-    private static final String TABLE_NAME = "skill_tracking";
+    private static final String TABLE_NAME = "candidate_registration";
     private static final String COLUMN_LOCAL_ID="local_id";
     private static final String COLUMN_ID="id";
     private static final String COLUMN_NAME = "name";

@@ -116,9 +116,6 @@ public interface JubiForm_API {
     @POST("add_land_holding.php")
     Call<JsonObject> PSAddLand(@Body RequestBody body);
 
-    @POST("edit_land.php")
-    Call<JsonObject>callPSEditLandApi(@Body RequestBody body);
-
     @POST("add_neem_plant.php")
     Call<JsonObject> add_neem_plant(@Body RequestBody body);
 
