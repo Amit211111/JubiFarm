@@ -66,8 +66,8 @@
 
 
 
-                            <TextView
-                                android:id="@+id/CLICKIMAGE"
+                            <com.rey.material.widget.TextView
+                                android:id="@+id/tv_click"
                                 android:layout_width="match_parent"
                                 android:layout_height="55dp"
                                 android:layout_gravity="center"
@@ -139,8 +139,7 @@
                             android:id="@+id/spnLandSelection"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:drawSelectorOnTop="true" />
+                            android:layout_marginTop="2dp" />
 
                         />
                     </LinearLayout>
@@ -212,6 +211,8 @@
 
 
                 <LinearLayout
+                    android:layout_marginBottom="10dp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
@@ -261,7 +262,7 @@
                                 <EditText
                                     android:id="@+id/remarks"
                                     android:layout_width="match_parent"
-                                    android:layout_height="28dp"
+                                    android:layout_height="@dimen/_25dp"
                                     android:background="@drawable/textviewboader"
                                     android:gravity="center"
                                     android:inputType="number"
@@ -294,38 +295,25 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="@dimen/margin70"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/btn_submit"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
 
 
-                        android:layout_marginHorizontal="@dimen/_20dp"
-                        android:background="@drawable/buttanshape"
-                        android:fontFamily="@font/itcavantagradestdbk"
-                        android:text="@string/Submit"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_15" />
 
 
-                </LinearLayout>
+
             </LinearLayout>
-            <LinearLayout
+
+
+            <com.rey.material.widget.Button
+                android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="vertical">
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="@dimen/_20dp"
+                android:background="@drawable/buttanshape"
+                android:fontFamily="@font/itcavantagradestdbk"
+                android:text="@string/Submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_15" />
 
-
-
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

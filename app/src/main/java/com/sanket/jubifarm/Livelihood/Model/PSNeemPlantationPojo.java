@@ -9,6 +9,15 @@ public class PSNeemPlantationPojo
     private String neem_id;
     private String plantation_Date;
     private String geo_coordinates;
+    private String flag;
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public String getLocal_id() {
         return Local_id;
@@ -75,6 +84,7 @@ public class PSNeemPlantationPojo
     private static final String COLUMN_NEEM_ID = "neem_id";
     private static final String COLUMN_PLANTATION_DATE = "plantation_date";
     private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
+    private static final String COLUMN_FLAG = "flag";
 
 
 
@@ -85,6 +95,7 @@ public class PSNeemPlantationPojo
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
+            + COLUMN_FLAG + " TEXT, "
             + COLUMN_GEO_COORDINATES + " TEXT "
             + ")";
 }

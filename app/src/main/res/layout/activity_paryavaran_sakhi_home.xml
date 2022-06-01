@@ -48,7 +48,7 @@
                         android:weightSum="2">
 
                         <LinearLayout
-                            android:id="@+id/ll_crop_farmeReg"
+                            android:id="@+id/ll_farmReg"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -163,7 +163,7 @@
 
                         </LinearLayout>
                         <LinearLayout
-                            android:id="@+id/ll_crop_planning"
+                            android:id="@+id/ll_neem_monitoring"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -209,7 +209,7 @@
                         android:weightSum="2">
 
                         <LinearLayout
-                            android:id="@+id/ll_crop_sale"
+                            android:id="@+id/ll_Helpline"
                             android:layout_width="0dip"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
