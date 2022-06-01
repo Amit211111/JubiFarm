@@ -10,6 +10,8 @@ public class PSLandHoldingPojo
     private String land_area;
     private String land_name;
     private String flag;
+    private String latitude;
+    private String longitude;
 
 
     public String getFlag() {

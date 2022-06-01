@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -17,8 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.Livelihood.Model.MonitoringStatusPojo;
-import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 
@@ -36,7 +34,7 @@ public class MonitoringView extends AppCompatActivity {
     EditText et_remark;
     private String skill_centerr = "", name = "", email = "", id = "",mobile = "", qualification = "", training_stream = "", bulk_density = "", land_name,
             date_of_training = "", soil_texture = "", ph = "",image="";
-    SkillTrackingPojo skillTrackingPojo;
+    CandidatePojo candidatePojo;
     SqliteHelper sqliteHelper;
    String rb_workingStatus;
     int mYear,mMonth,mDay,year,month,day;
@@ -60,17 +58,17 @@ public class MonitoringView extends AppCompatActivity {
         if (bundle != null) {
             id = bundle.getString("id", "");
             name = bundle.getString("namee", "");
-            skillTrackingPojo = sqliteHelper.PSSkillTrackingDetail(id,name);
+            candidatePojo = sqliteHelper.PSSkillTrackingDetail(id,name);
             if (id.equals("")) {
-                id = skillTrackingPojo.getId();
+                id = candidatePojo.getId();
             }
-            skill_centerr = skillTrackingPojo.getSkill_center();
-            email= skillTrackingPojo.getEmail();
-            mobile=skillTrackingPojo.getMobileno();
-            qualification=skillTrackingPojo.getQualification();
-            training_stream=skillTrackingPojo.getTraining_stream();
-            date_of_training=skillTrackingPojo.getDate_of_completion_of_training();
-            name=skillTrackingPojo.getName();
+            skill_centerr = candidatePojo.getSkill_center();
+            email= candidatePojo.getEmail();
+            mobile= candidatePojo.getMobileno();
+            qualification= candidatePojo.getQualification();
+            training_stream= candidatePojo.getTraining_stream();
+            date_of_training= candidatePojo.getDate_of_completion_of_training();
+            name= candidatePojo.getName();
         }
         //All Set Values
         setTextValues();
@@ -126,7 +124,7 @@ public class MonitoringView extends AppCompatActivity {
                 monitoringStatusPojo.setCurrent_work(spn_current_work.getSelectedItem().toString().trim());
                 monitoringStatusPojo.setRemark(et_remark.getText().toString().trim());
                 monitoringStatusPojo.setDate_monitoring(et_date_of_monitoring.getText().toString().trim());
-                Intent intent = new Intent(MonitoringView.this, Skill_Tracking_List.class);
+                Intent intent = new Intent(MonitoringView.this, CandidateList.class);
 
                 sqliteHelper.MonitoringStatus(monitoringStatusPojo);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

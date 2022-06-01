@@ -1,6 +1,6 @@
 package com.sanket.jubifarm.Livelihood.Model;
 
-public class SkillTrackingPojo
+public class CandidatePojo
 {
     private String local_id;
     private String id;
@@ -8,9 +8,12 @@ public class SkillTrackingPojo
     private String email;
     private String mobileno;
     private String qualification;
-    private String  training_stream;
+    private String training_stream;
     private String skill_center;
     private String date_of_completion_of_training;
+    private String flag;
+    private String latitude;
+    private String longitude;
 
 
     public String getId() {

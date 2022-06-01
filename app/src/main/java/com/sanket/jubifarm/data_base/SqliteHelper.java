@@ -15,7 +15,7 @@ import com.sanket.jubifarm.Livelihood.Model.Neem_Monitoring_Pojo;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
-import com.sanket.jubifarm.Livelihood.Model.SkillTrackingPojo;
+import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.Modal.AboutUs;
 import com.sanket.jubifarm.Modal.Attendance_Approval;
 import com.sanket.jubifarm.Modal.BlockPojo;
@@ -110,7 +110,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         db.execSQL(ParyavaranSakhiRegistrationPojo.CREATE_TABLE);
         db.execSQL(PSNeemPlantationPojo.CREATE_TABLE);
         db.execSQL(PSLandHoldingPojo.CREATE_TABLE);
-        db.execSQL(SkillTrackingPojo.CREATE_TABLE);
+        db.execSQL(CandidatePojo.CREATE_TABLE);
 
 
 
@@ -3881,7 +3881,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         landHoldingPojo.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
                         landHoldingPojo.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
                         landHoldingPojo.setPlantation_Date(cursor.getString(cursor.getColumnIndex("plantation_Date")));
-                        landHoldingPojo.setGeo_coordinates(cursor.getString(cursor.getColumnIndex("geo_coordinates")));
                         landHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
 //                        landHoldingPojo.setFruited_date(cursor.getString(cursor.getColumnIndex("fruited_date")));
 //                        landHoldingPojo.setPlanted_date(cursor.getString(cursor.getColumnIndex("planted_date")));
@@ -4953,7 +4952,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("neem_plantation_Image",householdMasterModel.getNeem_plantation_image());
                 values.put("land_id",householdMasterModel.getLand_id());
                 values.put("plantation_date",householdMasterModel.getPlantation_Date());
-                values.put("geo_coordinates",householdMasterModel.getGeo_coordinates());
                 values.put("flag","0");
 
 
@@ -5123,7 +5121,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     }
 
-    public long SkillTracking(SkillTrackingPojo householdMasterModel) {
+    public long SkillTracking(CandidatePojo householdMasterModel) {
         SQLiteDatabase DB1 = this.getWritableDatabase();
         long ids = 0;
         try {
@@ -5149,8 +5147,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return ids;
     }
     //PSSkill Tracking Details View
-    public SkillTrackingPojo PSSkillTrackingDetail(String id,String name) {
-        SkillTrackingPojo skillTrackingPojo = new SkillTrackingPojo();
+    public CandidatePojo PSSkillTrackingDetail(String id, String name) {
+        CandidatePojo candidatePojo = new CandidatePojo();
         SQLiteDatabase db = this.getReadableDatabase();
         String query="";
         try {
@@ -5167,16 +5165,16 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     cursor.moveToFirst();
 
                     while (!cursor.isAfterLast()) {
-                         skillTrackingPojo = new SkillTrackingPojo();
+                         candidatePojo = new CandidatePojo();
 
-                        skillTrackingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
-                        skillTrackingPojo.setName(cursor.getString(cursor.getColumnIndex("name")));
-                        skillTrackingPojo.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-                        skillTrackingPojo.setQualification(cursor.getString(cursor.getColumnIndex("qualification")));
-                        skillTrackingPojo.setMobileno(cursor.getString(cursor.getColumnIndex("mobileno")));
-                        skillTrackingPojo.setTraining_stream(cursor.getString(cursor.getColumnIndex("training_stream")));
-                        skillTrackingPojo.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
-                        skillTrackingPojo.setDate_of_completion_of_training(cursor.getString(cursor.getColumnIndex("date_of_completion_of_training")));
+                        candidatePojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        candidatePojo.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        candidatePojo.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                        candidatePojo.setQualification(cursor.getString(cursor.getColumnIndex("qualification")));
+                        candidatePojo.setMobileno(cursor.getString(cursor.getColumnIndex("mobileno")));
+                        candidatePojo.setTraining_stream(cursor.getString(cursor.getColumnIndex("training_stream")));
+                        candidatePojo.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
+                        candidatePojo.setDate_of_completion_of_training(cursor.getString(cursor.getColumnIndex("date_of_completion_of_training")));
 
 
                         cursor.moveToNext();
@@ -5188,11 +5186,11 @@ public class SqliteHelper extends SQLiteOpenHelper {
             e.printStackTrace();
             db.close();
         }
-        return skillTrackingPojo;
+        return candidatePojo;
     }
 
-    public ArrayList<SkillTrackingPojo> getPsSkillTrackingData() {
-        ArrayList<SkillTrackingPojo> registerTableArrayList1 = new ArrayList<>();
+    public ArrayList<CandidatePojo> getPsSkillTrackingData() {
+        ArrayList<CandidatePojo> registerTableArrayList1 = new ArrayList<>();
         SQLiteDatabase db1 = this.getWritableDatabase();
         try {
             if (db1 != null && db1.isOpen() && !db1.isReadOnly()) {
@@ -5203,7 +5201,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
 
-                        SkillTrackingPojo list1 = new SkillTrackingPojo();
+                        CandidatePojo list1 = new CandidatePojo();
                         list1.setId(cursor.getString(cursor.getColumnIndex("id")));
                         list1.setName(cursor.getString(cursor.getColumnIndex("name")));
                         list1.setEmail(cursor.getString(cursor.getColumnIndex("email")));
@@ -5244,7 +5242,6 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         PSNeemPlantationPojo ps_neem_plantation = new PSNeemPlantationPojo();
                         ps_neem_plantation.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
                         ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
-                        ps_neem_plantation.setGeo_coordinates(cursor.getString(cursor.getColumnIndex("geo_coordinates")));
                         ps_neem_plantation.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
                         ps_neem_plantation.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                         cursor.moveToNext();

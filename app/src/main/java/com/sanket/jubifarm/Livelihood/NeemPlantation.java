@@ -125,7 +125,6 @@ public class NeemPlantation extends AppCompatActivity {
                 psNeemPlantationPojo.setNeem_plantation_image(base64);
                 psNeemPlantationPojo.setLand_id(spnLandSelection.getSelectedItem().toString().trim());
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
-                psNeemPlantationPojo.setGeo_coordinates(GeoCoodinate.getText().toString().trim());
                 sqliteHelper.PSsaveHousehold(psNeemPlantationPojo);
 
                 Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
