@@ -40,6 +40,7 @@ public class ParyavaranSakhiRegistrationPojo
     private String adhar_no;
     private String flag;
     private String created_at;
+    private String user_id;
 
     public String getCreated_at() {
         return created_at;
@@ -307,6 +308,14 @@ public class ParyavaranSakhiRegistrationPojo
         this.martial_category = martial_category;
     }
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
     public static final String TABLE_NAME = "ps_farmer_registration";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_LOCAL_ID = "local_id";
@@ -345,6 +354,7 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_UPDATED_AT= "updated_at";
     public static final String COLUMN_CREATED_AT= "created_at";
     public static final String COLUMN_DEL_ACTION= "del_action";
+    public static final String COLUMN_USER_ID= "user_id";
 //    public static final String COLUMN_HOUSEHOLD_NUMBER= "household_number";
 
 
@@ -364,6 +374,7 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_DATE_OF_BIRTH + " TEXT ,"
                     + COLUMN_UPDATED_AT + " TEXT ,"
                     + COLUMN_DEL_ACTION + " TEXT ,"
+                    + COLUMN_USER_ID + " TEXT ,"
                     + COLUMN_RELIGION_ID + " INTEGER ,"
                     + COLUMN_ALTERNATIVE_LIVELIHOOD_ID + " INTEGER ,"
                     //  + COLUMN_ID_TYPE_NAME + " TEXT ,"

@@ -14,6 +14,15 @@ public class CandidatePojo
     private String flag;
     private String latitude;
     private String longitude;
+    private String user_id;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getFlag() {
         return flag;
@@ -123,6 +132,7 @@ public class CandidatePojo
     private static final String COLUMN_FLAG = "flag";
     private static final String COLUMN_LATITUTE= "latitude";
     private static final String COLUMN_LONGITUDE= "longitude";
+    private static final String COLUMN_USER_ID= "user_id";
     private static final String COLUMN_DATE_OF_COMPLETION_OF_TRAINING= "date_of_completion_of_training";
 
 
@@ -134,6 +144,7 @@ public class CandidatePojo
             + COLUMN_MOBILENO + " TEXT, "
             + COLUMN_NAME + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
+            + COLUMN_USER_ID + " TEXT, "
             + COLUMN_LATITUTE + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_QUALIFICATION + " TEXT, "

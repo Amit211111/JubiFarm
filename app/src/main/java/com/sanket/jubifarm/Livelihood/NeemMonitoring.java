@@ -125,6 +125,7 @@ public class NeemMonitoring extends AppCompatActivity {
                 neem_monitoring.setNeem_monitoring_image(base64);
                 neem_monitoring.setFarmer_id(farmer_id);
                 neem_monitoring.setLand_id(landId);
+                neem_monitoring.setUser_id(sharedPrefHelper.getString("user_id",""));
                 neem_monitoring.setRemarks(remarks.getText().toString().trim());
                 neem_monitoring.setNeem_id(String.valueOf(neemId));
                 neem_monitoring.setLatitude(sharedPrefHelper.getString("LAT",""));

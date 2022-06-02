@@ -177,6 +177,7 @@ public class PS_LandHolding extends AppCompatActivity {
                    psLandHoldingPojo.setFarmer_id(String.valueOf(farmerId));
                    psLandHoldingPojo.setLand_area(et_landto_be_added.getText().toString().trim());
                    psLandHoldingPojo.setLand_unit(String.valueOf(unit_id));
+                   psLandHoldingPojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                    psLandHoldingPojo.setLand_name(et_land_name.getText().toString().trim());
                    psLandHoldingPojo.setLatitude(sharedPrefHelper.getString("LAT",""));
                    psLandHoldingPojo.setLongitude(sharedPrefHelper.getString("LONG",""));

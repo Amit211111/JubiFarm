@@ -12,7 +12,15 @@ public class MonitoringStatusPojo
     private String flag;
     private String latitude;
     private String longitude;
+    private String user_id;
 
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getCandidate_id() {
         return candidate_id;
@@ -105,6 +113,7 @@ public class MonitoringStatusPojo
     private static final String COLUMN_FLAG="flag";
     private static final String COLUMN_LATITUDE="latitude";
     private static final String COLUMN_LONGITUDE="longitude";
+    private static final String COLUMN_USER_ID="user_id";
 
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
@@ -113,6 +122,7 @@ public class MonitoringStatusPojo
             + COLUMN_CURRENT_WORK + " TEXT, "
             + COLUMN_WORKING_STATUS + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
+            + COLUMN_USER_ID + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_CANDIDATE_ID + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "

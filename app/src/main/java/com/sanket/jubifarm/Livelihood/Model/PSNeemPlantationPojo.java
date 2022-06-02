@@ -13,6 +13,15 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private String flag;
     private String latitude;
     private String longitude;
+    private String user_id;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getFarmer_id() {
         return farmer_id;
@@ -107,6 +116,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
     //private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
     private static final String COLUMN_FLAG = "flag";
+    private static final String COLUMN_USER_ID = "user_id";
 
 
 
@@ -120,6 +130,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
             + COLUMN_LATITUDE + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
+            + COLUMN_USER_ID + " TEXT, "
             + COLUMN_FLAG + " TEXT "
            // + COLUMN_GEO_COORDINATES + " TEXT "
             + ")";

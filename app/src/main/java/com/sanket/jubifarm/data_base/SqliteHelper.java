@@ -593,6 +593,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         plantGrowthPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
                         plantGrowthPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
                         plantGrowthPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+                        plantGrowthPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
 
                         cursor.moveToNext();
                         arrayList.add(plantGrowthPojo);
@@ -3232,6 +3233,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         registrationPojo.setPincode(cursor.getString(cursor.getColumnIndex("pincode")));
                         registrationPojo.setAnnual_income(cursor.getString(cursor.getColumnIndex("annual_income")));
                         registrationPojo.setMartial_category(cursor.getString(cursor.getColumnIndex("martial_category")));
+                        registrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
                          //registrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("f_user_id")));//(farmer registration table)
                         registrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));//(users table)
                         registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
@@ -3911,6 +3913,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         //landHoldingPojo.setDescription(cursor.getString(cursor.getColumnIndex("description")));
                         //landHoldingPojo.setTotal_plant(cursor.getString(cursor.getColumnIndex("total_plant")));
                         //landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
                         landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
                         //landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
                         //landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
@@ -4012,6 +4015,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         psNeemPlantationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                         psNeemPlantationPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
                         psNeemPlantationPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        psNeemPlantationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
                         cursor.moveToNext();
                         arrayList.add(psNeemPlantationPojo);
                     }
@@ -4948,6 +4952,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("id",user.getId());
                 values.put("household_no", user.getHousehold_no());
                 values.put("farmer_image", user.getFarmer_image());
+                values.put("user_id", user.getUser_id());
 
                 values.put("farmer_name", user.getFarmer_name());
                 values.put("age", user.getAge());
@@ -5076,6 +5081,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("id",householdMasterModel.getId());
                 values.put("neem_id",householdMasterModel.getNeem_id());
                 values.put("farmer_id",householdMasterModel.getFarmer_id());
+                values.put("user_id",householdMasterModel.getUser_id());
                 values.put("neem_plantation_image",householdMasterModel.getNeem_plantation_image());
                 values.put("land_id",householdMasterModel.getLand_id());
                 values.put("plantation_date",householdMasterModel.getPlantation_Date());
@@ -5110,6 +5116,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 //values.put("farmer_id",householdMasterModel.getFarmer_id());
 
                 values.put("land_id",householdMasterModel.getLand_id());
+                values.put("user_id",householdMasterModel.getUser_id());
                 values.put("farmer_id",householdMasterModel.getFarmer_id());
                 values.put("land_unit",householdMasterModel.getLand_unit());
                // values.put("farmer_name",householdMasterModel.getFarmer_name());
@@ -5141,6 +5148,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 ContentValues values = new ContentValues();
                 values.put("land_area", psLandHoldingPojo.getLand_area());
                 values.put("land_id", psLandHoldingPojo.getLand_id());
+                values.put("user_id", psLandHoldingPojo.getUser_id());
                 values.put("farmer_id", psLandHoldingPojo.getFarmer_id());
                 values.put("land_unit", psLandHoldingPojo.getLand_unit());
                 values.put("land_image", psLandHoldingPojo.getLand_image());
@@ -5273,6 +5281,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("skill_center", householdMasterModel.getSkill_center());
                 values.put("latitude", householdMasterModel.getLatitude());
                 values.put("longitude", householdMasterModel.getLongitude());
+                values.put("user_id", householdMasterModel.getUser_id());
                 values.put("flag", "0");
                 values.put("date_of_completion_of_training", householdMasterModel.getDate_of_completion_of_training());
 
@@ -5530,6 +5539,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("id", neem_monitoring.getId());
                 values.put("neem_id", neem_monitoring.getNeem_id());
                 values.put("farmer_id", neem_monitoring.getFarmer_id());
+                values.put("user_id", neem_monitoring.getUser_id());
                 values.put("monitoring_date", neem_monitoring.getMonitoring_date());
                 values.put("neem_monitoring_image", neem_monitoring.getNeem_monitoring_image());
                 values.put("remarks", neem_monitoring.getRemarks());

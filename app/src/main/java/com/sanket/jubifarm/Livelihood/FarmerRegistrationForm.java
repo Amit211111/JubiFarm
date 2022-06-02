@@ -34,6 +34,7 @@ import com.sanket.jubifarm.Activity.FarmerRegistration;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
 import com.sanket.jubifarm.Modal.FarmerRegistrationPojo;
 import com.sanket.jubifarm.R;
+import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
 import com.sanket.jubifarm.restAPI.APIClient;
 import com.sanket.jubifarm.restAPI.JubiForm_API;
@@ -99,6 +100,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             AgroZone = 0, IDCard = 0,alternativeLivelihood = 0;
     int state_id = 0, district_id = 0, block_id = 0, village_id = 0;
     String ID_Card = "";
+    SharedPrefHelper sharedPrefHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -238,6 +240,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 
                     paryavaranSakhiRegistrationPojo.setHousehold_no(householdNo.getText().toString().trim());
                     paryavaranSakhiRegistrationPojo.setFarmer_image(base64);
+                    paryavaranSakhiRegistrationPojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                     paryavaranSakhiRegistrationPojo.setFarmer_name(FarmerName.getText().toString().trim());
                     paryavaranSakhiRegistrationPojo.setMobile(mobileNumber.getText().toString().trim());
 
@@ -334,6 +337,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     private void intializeAll()
     {
         //All Linear Layout
+        sharedPrefHelper=new SharedPrefHelper(this);
         ll_aadhar=findViewById(R.id.ll_aadhar);
         ll_other=findViewById(R.id.ll_other);
         ll_age=findViewById(R.id.ll_age);

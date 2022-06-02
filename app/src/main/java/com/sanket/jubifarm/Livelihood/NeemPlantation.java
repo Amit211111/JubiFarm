@@ -143,6 +143,7 @@ public class NeemPlantation extends AppCompatActivity {
                 psNeemPlantationPojo = new PSNeemPlantationPojo();
                 psNeemPlantationPojo.setNeem_plantation_image(base64);
                 psNeemPlantationPojo.setFarmer_id(farmer_id);
+                psNeemPlantationPojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                 psNeemPlantationPojo.setNeem_id(String.valueOf(value));
                 psNeemPlantationPojo.setLand_id(String.valueOf(landID));
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());

@@ -285,9 +285,9 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
                     if (status.equalsIgnoreCase("1")) {
                         String user_type = jsonObject.optString("user_type");
                         sharedPrefHelper.setString("user_type", user_type);
-//                        JSONObject jsonObjectProfile = jsonObject.getJSONObject("profile");
-//                        String id = jsonObjectProfile.optString("id");
-//                        sharedPrefHelper.setString("user_id", id);
+                        JSONObject jsonObjectProfile = jsonObject.getJSONObject("profile");
+                        String id = jsonObjectProfile.optString("id");
+                        sharedPrefHelper.setString("user_id", id);
 //                        String first_name = jsonObjectProfile.optString("first_name");
 //                        String last_name = jsonObjectProfile.optString("last_name");
 //                        String mobile = jsonObjectProfile.optString("mobile");

@@ -13,6 +13,15 @@ public class PSLandHoldingPojo
     private String flag;
     private String latitude;
     private String longitude;
+    private String user_id;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 
     public String getId() {
         return id;
@@ -112,6 +121,7 @@ public class PSLandHoldingPojo
     private static final String COLUMN_LATITUDE = "latitude";
     private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_Flag = "flag";
+    private static final String COLUMN_USER_ID = "user_id";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -119,6 +129,7 @@ public class PSLandHoldingPojo
             + COLUMN_LAND_ID + " INTEGER,"
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_IMAGE + " TEXT, "
+            + COLUMN_USER_ID + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
             + COLUMN_LATITUDE + " TEXT,"
             + COLUMN_LONGITUDE + " TEXT,"

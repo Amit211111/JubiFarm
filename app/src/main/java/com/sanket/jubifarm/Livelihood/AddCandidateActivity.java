@@ -97,6 +97,7 @@ public class AddCandidateActivity extends AppCompatActivity {
                 candidatePojo.setEmail(et_email.getText().toString().trim());
                 candidatePojo.setQualification(et_qualification.getText().toString().trim());
                 candidatePojo.setMobileno(et_mobileno.getText().toString().trim());
+                candidatePojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                 candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
                 candidatePojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
                 candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
