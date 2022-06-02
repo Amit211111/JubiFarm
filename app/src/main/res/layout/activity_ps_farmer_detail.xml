@@ -64,7 +64,7 @@
                             android:layout_marginTop="@dimen/_20dp"
                             android:textColor="#ffffff"
                             android:textSize="11sp"
-                            android:visibility="gone"/>
+                            android:visibility="visible"/>
 
                     </LinearLayout>
 

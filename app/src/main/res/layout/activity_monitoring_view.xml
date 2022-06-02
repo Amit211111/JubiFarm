@@ -216,7 +216,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_marginRight="13dp"
 
             android:layout_marginTop="20dp"
@@ -297,36 +297,22 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin4"
-            android:orientation="horizontal"
-            android:padding="4dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/itcavantagradestdbk"
-                android:textSize="15sp"
+                android:text=" 3.Date of Monitoring"
+                android:layout_marginTop="9dp"
+                android:textColor="#000000"
+                android:textSize="15sp" />
 
-                android:text="3.Date of Monitoring"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/itcavantagradestdbk"
-                android:text="*"
-                android:textColor="#DD1212" />
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_dob"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginRight="12dp"
+            android:layout_marginRight="11dp"
 
 
             android:padding="4dp">
@@ -336,13 +322,14 @@
                 android:layout_width="0dip"
                 android:layout_height="@dimen/_30dp"
                 android:layout_weight="1"
+                android:hint="  Select Date"
                 android:editable="false"
                 android:background="@drawable/textviewboader"
                 android:fontFamily="@font/itcavantagradestdbk"
                 android:paddingLeft="@dimen/_5dp"
                 android:singleLine="true"
                 android:drawableRight="@drawable/ic_baseline_date_range_24"
-                android:textSize="@dimen/text_12" />
+                android:textSize="@dimen/text_10" />
         </LinearLayout>
 
         <TextView
@@ -374,6 +361,7 @@
             android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:background="@drawable/buttanshapbalck"
+            android:fontFamily="@font/itcavantagradestdbk"
 
             android:gravity="center"
             android:text="Submit"

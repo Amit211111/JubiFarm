@@ -209,7 +209,7 @@
                     android:visibility="gone">
 
                     <Spinner
-                        android:id="@+id/IdCard"
+                        android:id="@+id/spnIdCard"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35dp"
                         android:layout_weight="1"/>

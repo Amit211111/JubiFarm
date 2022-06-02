@@ -896,7 +896,102 @@ public class SqliteHelper extends SQLiteOpenHelper {
             sum = cursor.getString(cursor.getColumnIndex("master_name"));
         return sum;
     }
-
+    public String getPSState(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select name from state_language where id ='" + id + "' and language_id = 1", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("name"));
+        return sum;
+    }
+    public String getPSDistrict(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select name from district_language where id ='" + id + "' and language_id = 1 ", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("name"));
+        return sum;
+    }
+    public String getPSBlock(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select name from block_language where id ='" + id + "' and language_id = 1", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("name"));
+        return sum;
+    }
+    public String getPSReligion(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 7" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSMartialCateogry(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 10" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSAnnualincome(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type=1 and language_id=1" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSCaste(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 8" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSAgrozone(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 11 and language_id=1" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSAlternativeLivelihood(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 12 and language_id=1" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSIDCardOther(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where id ='" + id + "' and master_type = 2 and language_id=1" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSEducation(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select master_name from master where caption_id ='" + id + "' and master_type = 9" , null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("master_name"));
+        return sum;
+    }
+    public String getPSVillage(String id) {
+        String sum = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select name from village_language where id ='" + id + "' and language_id = 1 ", null);
+        if (cursor.moveToFirst())
+            sum = cursor.getString(cursor.getColumnIndex("name"));
+        return sum;
+    }
     public String getLandName(String id) {
         String sum = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1328,6 +1423,33 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
                 String query = "Select id, name from village_language where block_id  = '" + block_id + "' and asigned != 0 and language_id = '"+ lang +"'";
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        villagePojo = new VillagePojo();
+                        villagePojo.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                        villagePojo.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        cursor.moveToNext();
+                        village.put(villagePojo.getName(), villagePojo.getId());
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+
+        return village;
+    }
+    public HashMap<String, Integer> getAllVillage2(int block_id,int lang) {
+        HashMap<String, Integer> village = new HashMap<>();
+        VillagePojo villagePojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "Select id, name from village_language where block_id  = '" + block_id + "' and language_id = '"+ lang +"'";
                 Cursor cursor = sqLiteDatabase.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -4377,7 +4499,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setPincode(cursor.getString(cursor.getColumnIndex("pincode")));
                    // registrationPojo.setAdd_by(cursor.getString(cursor.getColumnIndex("add_by")));
                     registrationPojo.setEducation_id(cursor.getString(cursor.getColumnIndex("education_id")));
-                  //  registrationPojo.setAnnual_income(cursor.getInt(cursor.getColumnIndex("annual_income")));
+                    registrationPojo.setAnnual_income(cursor.getString(cursor.getColumnIndex("annual_income")));
                     registrationPojo.setFather_husband_name(cursor.getString(cursor.getColumnIndex("father_husband_name")));
                     registrationPojo.setPhysical_challenges(cursor.getString(cursor.getColumnIndex("physical_challenges")));
 //                    registrationPojo.setHandicapped(cursor.getString(cursor.getColumnIndex("handicapped")));
@@ -4766,6 +4888,58 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
                 //Inserting Row
                 ids = db.update("farmer_registration", values, "id = '" + farmer_id + "'", null);
+                db.close();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+
+        return ids;
+    }
+    public long updatePSFarmerRegistrationData(ParyavaranSakhiRegistrationPojo user,String local_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long ids = 0;
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                ContentValues values = new ContentValues();
+//                values.put("user_id", user_id);
+                values.put("household_no", user.getHousehold_no());
+                values.put("farmer_name", user.getFarmer_name());
+                values.put("age", user.getAge());
+                values.put("date_of_birth", user.getDate_of_birth());
+//                values.put("what_you_know", user.getWhat_you_know());
+                values.put("id_type_id", user.getId_type_id());
+               values.put("adhar_no", user.getAadhar_no());
+                values.put("father_husband_name", user.getFather_husband_name());
+                values.put("mobile", user.getMobile());
+                values.put("farmer_image", user.getFarmer_image());
+
+                values.put("annual_income", user.getAnnual_income());
+                values.put("bpl", user.getBpl());
+                values.put("physical_challenges", user.getPhysical_challenges());
+                values.put("total_land_holding", user.getTotal_land_holding());
+                values.put("no_of_member_migrated", user.getNo_of_member_migrated());
+                values.put("martial_category", user.getMartial_category());
+                values.put("religion_id", user.getReligion_id());
+                values.put("category_id", user.getCategory_id());
+                values.put("caste", user.getCaste());
+               values.put("agro_climat_zone_id", user.getAgro_climat_zone_id());
+                values.put("education_id", user.getEducation_id());
+                values.put("state_id", user.getState_id());
+                values.put("district_id", user.getDistrict_id());
+                values.put("block_id", user.getBlock_id());
+                values.put("village_id", user.getVillage_id());
+                values.put("pincode", user.getPincode());
+                values.put("id_other_name", user.getId_other_name());
+                values.put("alternative_livelihood_id", user.getAlternative_livelihood_id());
+                values.put("address", user.getAddress());
+                //values.put("flag", 0);
+//                values.put("offline_sync", 1);
+
+                //Inserting Row
+                ids = db.update("ps_farmer_registration", values, "local_id = '" + local_id + "'", null);
                 db.close();
             }
 

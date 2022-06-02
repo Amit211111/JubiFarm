@@ -16,7 +16,6 @@
         <entry key="..\:/Mobile SetUp/Desktop/Indev Projects/JubiFarm/app/src/main/res/layout/activity_trainning_survey_form.xml" value="0.1921875" />
         <entry key="..\:/Mobile SetUp/Desktop/Indev Projects/JubiFarm/app/src/main/res/layout/activity_view_crop.xml" value="0.1921875" />
         <entry key="..\:/Mobile SetUp/Desktop/Indev Projects/JubiFarm/app/src/main/res/layout/activity_view_growth.xml" value="0.1921875" />
-        <entry key="..\:/Mobile SetUp/Desktop/Indev Projects/JubiFarm/app/src/main/res/menu/navigation_drawer.xml" value="0.1921875" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/drawable-v24/textviewboader.xml" value="0.13" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/drawable/box_type_draw.xml" value="0.13" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/drawable/btn_submit_background.xml" value="0.131" />
@@ -57,13 +56,14 @@
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_land_holding.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_login_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_main_menu.xml" value="0.22" />
-        <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_monitoring_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_monitoring_view.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_neem_monitoring.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_neem_plantation.xml" value="0.33" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_paryavaran_sakhi_home.xml" value="0.2" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_plant_growth_list.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_plant_view.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_post_plantation_acivity.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_ps_farmer_detail.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_ps_land_holding.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_ps_land_holding_list.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/activity_ps_neem_land_holding_list.xml" value="0.19814814814814816" />
@@ -100,7 +100,7 @@
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_plant_growth.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_ps_landholding.xml" value="0.33" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_regsitration.xml" value="0.33" />
-        <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_skill_center_list.xml" value="0.33" />
+        <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_skill_center_list.xml" value="0.25" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_soil_in_fo.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_spinner.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Amit kumar yadav/AndroidStudioProjects/JubiFarm/app/src/main/res/layout/custom_training.xml" value="0.20416666666666666" />

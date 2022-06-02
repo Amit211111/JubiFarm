@@ -145,7 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="90dp"
-            android:background="#1839AE" />
+            android:background="#ff99cc00" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -161,7 +161,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="175dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:fontFamily="@font/itcavantagradestdbk"
                 android:text="Monitori"
                 android:background="@drawable/buttanshapbalck"
@@ -174,7 +174,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/buttanshapbalck"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@android:color/white"
                 android:fontFamily="@font/itcavantagradestdbk"
                 android:text="View"
                 android:textSize="10dp" />

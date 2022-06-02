@@ -123,8 +123,8 @@ public class ParyavaranSakhiRegistrationPojo
         return adhar_no;
     }
 
-    public void setAadhar_no(String aadhar_no) {
-        this.adhar_no = aadhar_no;
+    public void setAadhar_no(String adhar_no) {
+        this.adhar_no = adhar_no;
     }
 
     public String getLocal_id() {

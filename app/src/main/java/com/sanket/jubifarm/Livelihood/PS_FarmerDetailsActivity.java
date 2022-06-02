@@ -54,8 +54,12 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
     private ParyavaranSakhiRegistrationPojo paryavaranSakhiRegistrationPojo;
     private SharedPrefHelper sharedPrefHelper;
     private CircleImageView img_tree;
-    private String user_id="", farmer_id;
+    private String user_id="",farmer_id, farmer_name="";
     private String farmerId="";
+    private String local_id="";
+
+    private String st_caste = "",mobile_no="", state = "",categoryy="",religion="",st_annual_income="",district="", block = "",st_date_of_birth="", village = "",st_agee="",father_husbend_name="",aadhar_noo="",house_hold_no="",st_id_other_name="",
+           st_pincode = "", st_bpl="", alternative_livelihood="", education_details="",st_martial_category="",st_physical_challenged="",st_total_landholding="",st_agro_climatic_zone="",st_no_of_member="",addresss="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +95,39 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent rfd = new Intent(PS_FarmerDetailsActivity.this, FarmerRegistrationForm.class);
                 rfd.putExtra("screen_type", "edit_profile");
-                rfd.putExtra("user_id", user_id);
-                rfd.putExtra("farmer_id", farmerId);
-                rfd.putExtra("fromLogin", "3");
+               // rfd.putExtra("user_id", user_id);
+               //rfd.putExtra("farmer_name", user_id);
+                rfd.putExtra("farmerId",farmerId);
+
+//                rfd.putExtra("farmer_name",farmer_name);
+
+//                rfd.putExtra("aadhar_no", aadhar_noo);
+//                rfd.putExtra("household_no", house_hold_no);
+//                rfd.putExtra("id_other_name", st_id_other_name);
+//                rfd.putExtra("father_husband_name", father_husbend_name);
+//                rfd.putExtra("age", st_agee);
+//                rfd.putExtra("date_of_birth", st_date_of_birth);
+//                rfd.putExtra("bpl", st_bpl);
+//                rfd.putExtra("physical_challenges", st_physical_challenged);
+//                rfd.putExtra("annual_income", st_annual_income);
+//                rfd.putExtra("alternative_livelihood_id", alternative_livelihood);
+//                rfd.putExtra("religion_id", religion);
+//                rfd.putExtra("category_id", categoryy);
+//                rfd.putExtra("state_id", state);
+//                rfd.putExtra("district_id", district);
+//                rfd.putExtra("village_id", village);
+//                rfd.putExtra("block_id", block);
+//                rfd.putExtra("address", addresss);
+//                rfd.putExtra("education_id", education_details);
+//                rfd.putExtra("pincode", st_pincode);
+//                rfd.putExtra("caste", st_caste);
+//                rfd.putExtra("martial_category", st_martial_category);
+//                rfd.putExtra("total_land_holding", st_total_landholding);
+//                rfd.putExtra("agro_climat_zone_id", st_agro_climatic_zone);
+//                rfd.putExtra("no_of_member_migrated", st_no_of_member);
+//                rfd.putExtra("mobile", mobile_no);
+////                rfd.putExtra("farmer_id", farmerId);
+////               // rfd.putExtra("fromLogin", "3");
                 startActivity(rfd);
             }
         });
