@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +41,7 @@ public class NeemPlantation extends AppCompatActivity {
     private SharedPrefHelper sharedPrefHelper;
     Spinner spnLandSelection;
     private int land_id = 0;
+    String landID="";
     ArrayList<String> landArrayList;
     HashMap<String, Integer> landName;
     EditText et_plant_date;
@@ -136,12 +138,13 @@ public class NeemPlantation extends AppCompatActivity {
                 Random random = new Random();
                 int value = random.nextInt(1000);
                 farmer_id= sqliteHelper.getCloumnName("farmer_id","ps_land_holding", "where local_id='"+land_id+"'");
+                landID= sqliteHelper.getCloumnName("land_id","ps_land_holding","where local_id=" +land_id+"");
 
                 psNeemPlantationPojo = new PSNeemPlantationPojo();
                 psNeemPlantationPojo.setNeem_plantation_image(base64);
                 psNeemPlantationPojo.setFarmer_id(farmer_id);
                 psNeemPlantationPojo.setNeem_id(String.valueOf(value));
-                psNeemPlantationPojo.setLand_id(String.valueOf(land_id));
+                psNeemPlantationPojo.setLand_id(String.valueOf(landID));
                 psNeemPlantationPojo.setPlantation_Date(et_plant_date.getText().toString().trim());
                 psNeemPlantationPojo.setLatitude(sharedPrefHelper.getString("LAT",""));
                 psNeemPlantationPojo.setLongitude(sharedPrefHelper.getString("LONG",""));
@@ -189,6 +192,7 @@ public class NeemPlantation extends AppCompatActivity {
                 if (!spnLandSelection.getSelectedItem().toString().trim().equalsIgnoreCase("Select Land")) {
                     if (spnLandSelection.getSelectedItem().toString().trim() != null) {
                         land_id = landName.get(spnLandSelection.getSelectedItem().toString().trim());
+
                     }
                 }
             }
