@@ -5384,7 +5384,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     {
                         PSNeemPlantationPojo ps_neem_plantation = new PSNeemPlantationPojo();
                         ps_neem_plantation.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
-                        ps_neem_plantation.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        ps_neem_plantation.setNeem_id(cursor.getString(cursor.getColumnIndex("neem_id")));
                         ps_neem_plantation.setNeem_plantation_image(cursor.getString(cursor.getColumnIndex("neem_plantation_image")));
                         ps_neem_plantation.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                         ps_neem_plantation.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));

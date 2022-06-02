@@ -116,6 +116,7 @@ public class Neem_Monitoring_Pojo {
     private static final String COLUMN_NEEM_MONITORING_IMAGE = "neem_monitoring_image";
     private static final String COLUMN_REMARKS = "remarks";
 
+
     public static final String CREATE_TABLE = " CREATE TABLE " + TABLE_NAME + "("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_ID + " INTEGER, "
