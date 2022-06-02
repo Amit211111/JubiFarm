@@ -4350,7 +4350,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
                     registrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
                     //registrationPojo.setId_no(cursor.getString(cursor.getColumnIndex("id_no")));
-                    registrationPojo.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
+                    registrationPojo.setAadhar_no(cursor.getString(cursor.getColumnIndex("adhar_no")));
                     registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
                     registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
                     //registrationPojo.setId_type_id(cursor.getString(cursor.getColumnIndex("id_type_id")));
@@ -4952,7 +4952,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("farmer_name", user.getFarmer_name());
                 values.put("age", user.getAge());
                 values.put("date_of_birth", user.getDate_of_birth());
-                values.put("aadhar_no", user.getAadhar_no());
+                values.put("adhar_no", user.getAadhar_no());
                 values.put("what_you_know", user.getWhat_you_know());
                 values.put("father_husband_name", user.getFather_husband_name());
                 values.put("mobile", user.getMobile());
@@ -4971,7 +4971,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("state_id", user.getState_id());
                 values.put("district_id", user.getDistrict_id());
                 values.put("block_id", user.getBlock_id());
-                values.put("aadhar_no", user.getAadhar_no());
+                values.put("adhar_no", user.getAadhar_no());
                 values.put("village_id", user.getVillage_id());
                 values.put("pincode", user.getPincode());
                 values.put("id_other_name", user.getId_other_name());
@@ -5019,7 +5019,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         list1.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
                         list1.setId(cursor.getString(cursor.getColumnIndex("id")));
                         list1.setHousehold_no(cursor.getString(cursor.getColumnIndex("household_no")));
-                        list1.setAadhar_no(cursor.getString(cursor.getColumnIndex("aadhar_no")));
+                        list1.setAadhar_no(cursor.getString(cursor.getColumnIndex("adhar_no")));
                         list1.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
                         list1.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
                         list1.setMartial_category(cursor.getString(cursor.getColumnIndex("martial_category")));

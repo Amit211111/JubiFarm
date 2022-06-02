@@ -128,5 +128,9 @@ public interface JubiForm_API {
     @POST("skill_tracking_monitoring_status")
     Call<JsonObject> st_monitoring(@Body RequestBody body);
 
+    @POST("download_ps_farmer.php")
+    Call<JsonArray> download_farmer_details(@Body RequestBody body);
+
+
 }
 

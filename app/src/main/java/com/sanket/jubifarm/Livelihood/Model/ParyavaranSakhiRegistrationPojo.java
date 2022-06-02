@@ -37,9 +37,17 @@ public class ParyavaranSakhiRegistrationPojo
     private String id_type_id;
     private String date_of_birth;
     private String farmer_image;
-    private String aadhar_no;
+    private String adhar_no;
     private String flag;
+    private String created_at;
 
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
 
     public String getFlag() {
         return flag;
@@ -92,11 +100,11 @@ public class ParyavaranSakhiRegistrationPojo
 
 
     public String getAadhar_no() {
-        return aadhar_no;
+        return adhar_no;
     }
 
     public void setAadhar_no(String aadhar_no) {
-        this.aadhar_no = aadhar_no;
+        this.adhar_no = aadhar_no;
     }
 
     public String getLocal_id() {
@@ -304,7 +312,8 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_LOCAL_ID = "local_id";
     public static final String COLUMN_FARMER_IMAGE = "farmer_image";
     public static final String COLUMN_HOUSEHOLD_NO = "household_no";
-    public static final String COLUMN_AADHAR_NO = "aadhar_no";
+    public static final String COLUMN_AADHAR_NO = "adhar_no";
+    public static final String COLUMN_EDUCATION_OTHER_NAME = "education_other_name";
     public static final String COLUMN_ID_OTHER_NAME = "id_other_name";
     public static final String COLUMN_WHAT_YOU_KNOW = "what_you_know";
     public static final String COLUMN_FARMER_NAME = "farmer_name";
@@ -333,6 +342,9 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_AGRO_CLIMAT_ZONE_ID = "agro_climat_zone_id";
     public static final String COLUMN_NO_OF_MEMBER_MIGRATED= "no_of_member_migrated";
     public static final String COLUMN_Flag= "flag";
+    public static final String COLUMN_UPDATED_AT= "updated_at";
+    public static final String COLUMN_CREATED_AT= "created_at";
+    public static final String COLUMN_DEL_ACTION= "del_action";
 //    public static final String COLUMN_HOUSEHOLD_NUMBER= "household_number";
 
 
@@ -348,7 +360,10 @@ public class ParyavaranSakhiRegistrationPojo
                      + COLUMN_ID_TYPE_ID + " INTEGER ,"
                     + COLUMN_AGE + " INTEGER ,"
                     + COLUMN_WHAT_YOU_KNOW + " TEXT ,"
+                    + COLUMN_EDUCATION_OTHER_NAME + " TEXT ,"
                     + COLUMN_DATE_OF_BIRTH + " TEXT ,"
+                    + COLUMN_UPDATED_AT + " TEXT ,"
+                    + COLUMN_DEL_ACTION + " TEXT ,"
                     + COLUMN_RELIGION_ID + " INTEGER ,"
                     + COLUMN_ALTERNATIVE_LIVELIHOOD_ID + " INTEGER ,"
                     //  + COLUMN_ID_TYPE_NAME + " TEXT ,"
@@ -362,6 +377,7 @@ public class ParyavaranSakhiRegistrationPojo
                     + COLUMN_VILLAGE_ID + " INTEGER ,"
                     + COLUMN_PINCODE + " INTEGER ,"
                     + COLUMN_EDUCATION_ID + " TEXT ,"
+                    + COLUMN_CREATED_AT + " TEXT ,"
                     + COLUMN_ANNUAL_INCOME + " TEXT ,"
                     + COLUMN_FATHER_HUSBAND_NAME + " TEXT ,"
                     + COLUMN_PHYSICAL_CHALLENGES + " TEXT ,"
