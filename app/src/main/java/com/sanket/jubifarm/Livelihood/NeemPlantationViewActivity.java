@@ -27,6 +27,8 @@ public class NeemPlantationViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_plantation_view);
+        setTitle(" View Neem Plantation ");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Neem_Id = findViewById(R.id.Neem_Id);
         Land_id = findViewById(R.id.Land_id);

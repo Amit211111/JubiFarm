@@ -35,6 +35,8 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps_neem_plantation_list);
         getSupportActionBar().setTitle("Neem Plantation List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         fab=findViewById(R.id.fab);
         sharedPrefHelper = new SharedPrefHelper(this);
         initiliaze();

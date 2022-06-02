@@ -97,7 +97,7 @@ public class PS_Synchronize extends AppCompatActivity {
         setContentView(R.layout.activity_ps_synchronize);
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setTitle(Html.fromHtml("<font color=\"#000000\">" + getString(R.string.SYNC_DATA) + "</font>"));
 
         initViews();

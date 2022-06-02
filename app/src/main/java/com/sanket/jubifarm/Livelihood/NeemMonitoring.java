@@ -65,6 +65,9 @@ public class NeemMonitoring extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_monitoring);
         getSupportActionBar().setTitle("Neem Monitoring");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         initliaze();
 
@@ -75,6 +78,7 @@ public class NeemMonitoring extends AppCompatActivity {
             landId = bundle.getString("landId", "");
         }
 
+        et_plant_date.setKeyListener(null);
 
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override

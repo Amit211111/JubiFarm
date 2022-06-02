@@ -91,6 +91,9 @@ public class PS_LandHolding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps_land_holding);
         getSupportActionBar().setTitle("Land Holding");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         sharedPrefHelper = new SharedPrefHelper(this);
 

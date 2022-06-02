@@ -16,6 +16,9 @@ public class SkillTrackingMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Home");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         setContentView(R.layout.activity_skill_tracking_menu);
         skill_Tracking_menu = findViewById(R.id.skill_Tracking_menu);
         cv_Synchronize = findViewById(R.id.cv_Synchronize);

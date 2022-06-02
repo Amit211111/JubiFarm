@@ -60,6 +60,8 @@ public class NeemPlantation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neem_plantation);
         getSupportActionBar().setTitle("Neem Plantation");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         sharedPrefHelper = new SharedPrefHelper(this);
 
 
@@ -71,6 +73,7 @@ public class NeemPlantation extends AppCompatActivity {
         landName = new HashMap<>();
         img_setimage = findViewById(R.id.img_setimage);
         GeoCoodinate = findViewById(R.id.GeoCoodinate);
+
 
 
         //All Spinner
@@ -90,6 +93,8 @@ public class NeemPlantation extends AppCompatActivity {
 //            landId = bundle.getString("landId", "");
 //
 //        }
+
+        et_plant_date.setKeyListener(null);
 
         GeoCoodinate.setText(sharedPrefHelper.getString("LAT", "") + ", " +
                 sharedPrefHelper.getString("LONG", ""));

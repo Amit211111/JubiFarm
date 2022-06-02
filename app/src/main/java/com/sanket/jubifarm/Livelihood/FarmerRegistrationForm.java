@@ -119,6 +119,9 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_registration_form);
         getSupportActionBar().setTitle("Farmer Registration Form");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         intializeAll();
         sqliteHelper = new SqliteHelper(getApplicationContext());

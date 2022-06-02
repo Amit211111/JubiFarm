@@ -531,8 +531,6 @@
                             <EditText
                                 android:layout_width="match_parent"
                                 android:layout_height="27dp"
-
-
                                 android:fontFamily="@font/itcavantagradestdbk"
                                 android:hint="23"
                                 android:inputType="number"
@@ -558,8 +556,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/textviewboader"
-                                android:drawableRight="@drawable/ic_baseline_date_range_24"
-                                />
+                                android:drawableRight="@drawable/ic_baseline_date_range_24" />
                         </LinearLayout>
 
 

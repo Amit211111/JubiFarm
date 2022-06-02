@@ -67,7 +67,7 @@ public class STSynchronize extends AppCompatActivity {
         setContentView(R.layout.activity_stsynchronize);
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         setTitle(Html.fromHtml("<font color=\"#000000\">" + getString(R.string.SYNC_DATA) + "</font>"));
 
         initViews();

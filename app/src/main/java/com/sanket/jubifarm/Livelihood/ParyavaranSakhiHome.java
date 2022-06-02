@@ -24,6 +24,9 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paryavaran_sakhi_home);
         getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         farmer =findViewById(R.id.farmer);
         sharedPrefHelper=new SharedPrefHelper(this);

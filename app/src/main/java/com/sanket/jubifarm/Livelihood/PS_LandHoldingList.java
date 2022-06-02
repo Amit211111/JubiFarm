@@ -36,6 +36,9 @@ public class PS_LandHoldingList extends AppCompatActivity {
         setContentView(R.layout.activity_ps_land_holding_list);
         getSupportActionBar().setTitle("Land Holding List");
         fab=findViewById(R.id.fab);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         sqliteHelper = new SqliteHelper(this);
         sharedPrefHelper = new SharedPrefHelper(this);

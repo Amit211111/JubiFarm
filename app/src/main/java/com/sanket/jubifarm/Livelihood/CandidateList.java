@@ -33,6 +33,8 @@ public class CandidateList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_tracking_list);
         getSupportActionBar().setTitle("List of Trained Person");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         sqliteHelper = new SqliteHelper(this);
         recyclerView = findViewById(R.id.rv1);
         Landholding_filter = findViewById(R.id.Landholding_filter);
