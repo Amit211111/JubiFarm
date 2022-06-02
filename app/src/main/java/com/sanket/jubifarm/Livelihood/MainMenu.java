@@ -98,15 +98,73 @@ public class MainMenu extends AppDrawer {
 
         });
     }
+    private void call_landholdingDataDownload() {
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                    LoginPojo userpojo = new LoginPojo();
+                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson(userpojo);
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
+
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_land_holding(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("ps_land_holding");
+
+                            for (int i=0; i<data.size(); i++){
+                                JSONObject singledata = new JSONObject(data.get(i).toString());
+                                Iterator keys = singledata.keys();
+                                ContentValues contentValues = new ContentValues();
+                                while (keys.hasNext()){
+                                    String currentDynamicKey = (String) keys.next();
+                                    contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                }
+                                sqliteHelper.saveMasterTable(contentValues, "ps_land_holding");
+                            }
+                            sharedPrefHelper.setString("prayawarn_done", "1");
+                            Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                            startActivity(intent);
+                            finish();
+                            dialog.dismiss();
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
+
 
     private void callfarmerDataDownload() {
         new AsyncTask<Void, Void, Void>(){
                 @Override
                 protected Void doInBackground(Void... voids) {
-//                    LoginPojo userpojo = new LoginPojo();
-//                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                    LoginPojo userpojo = new LoginPojo();
+                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
                     Gson gson = new Gson();
-                    String data = gson.toJson("");
+                    String data = gson.toJson(userpojo);
                     MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                     RequestBody body = RequestBody.create(JSON, data);
 
@@ -130,11 +188,13 @@ public class MainMenu extends AppDrawer {
                                     }
                                     sqliteHelper.saveMasterTable(contentValues, "ps_farmer_registration");
                                 }
-                                sharedPrefHelper.setString("prayawarn_done", "1");
-                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
-                                startActivity(intent);
-                                finish();
-                                dialog.dismiss();
+//                                sharedPrefHelper.setString("prayawarn_done", "1");
+//                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+//                                startActivity(intent);
+//                                finish();
+//                                dialog.dismiss();
+                                call_landholdingDataDownload();
+
                             }catch (Exception e){
                                 Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
                                 e.printStackTrace();

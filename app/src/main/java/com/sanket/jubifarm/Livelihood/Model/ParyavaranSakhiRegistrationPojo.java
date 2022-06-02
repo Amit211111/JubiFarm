@@ -41,6 +41,25 @@ public class ParyavaranSakhiRegistrationPojo
     private String flag;
     private String created_at;
     private String user_id;
+    private String add_by;
+    private String multi_cropping;
+
+
+    public String getAdd_by() {
+        return add_by;
+    }
+
+    public void setAdd_by(String add_by) {
+        this.add_by = add_by;
+    }
+
+    public String getMulti_cropping() {
+        return multi_cropping;
+    }
+
+    public void setMulti_cropping(String multi_cropping) {
+        this.multi_cropping = multi_cropping;
+    }
 
     public String getCreated_at() {
         return created_at;
@@ -330,6 +349,7 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_AGE = "age";
     public static final String COLUMN_DATE_OF_BIRTH = "date_of_birth";
     public static final String COLUMN_BPL = "bpl";
+    public static final String COLUMN_MULTI_CROPING = "multi_cropping";
     public static final String COLUMN_ADDRESS = "address";
     public static final String COLUMN_MOBILE = "mobile";
     public static final String COLUMN_PHYSICAL_CHALLENGES = "physical_challenges";
@@ -344,6 +364,7 @@ public class ParyavaranSakhiRegistrationPojo
     public static final String COLUMN_EDUCATION_ID = "education_id";
     public static final String COLUMN_PINCODE = "pincode";
     public static final String COLUMN_CASTE = "caste";
+    public static final String COLUMN_Add_by = "add_by";
     public static final String COLUMN_ID_TYPE_ID= "id_type_id";
     public static final String COLUMN_MARTIAL_CATEGORY = "martial_category";
     //    public static final String COLUMN_EDUCATION_QUALIFICATION = "education_qualification";
@@ -380,6 +401,7 @@ public class ParyavaranSakhiRegistrationPojo
                     //  + COLUMN_ID_TYPE_NAME + " TEXT ,"
                     + COLUMN_ADDRESS + " TEXT ,"
                     + COLUMN_CASTE + " TEXT ,"
+                    + COLUMN_MULTI_CROPING + " TEXT ,"
                     + COLUMN_ID_OTHER_NAME + " TEXT ,"
                     + COLUMN_CATEGORY_ID + " TEXT ,"
                     + COLUMN_STATE_ID + " INTEGER ,"

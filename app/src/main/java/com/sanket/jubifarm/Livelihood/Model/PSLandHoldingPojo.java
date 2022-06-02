@@ -14,6 +14,33 @@ public class PSLandHoldingPojo
     private String latitude;
     private String longitude;
     private String user_id;
+    private String total_no_of_plant;
+    private String del_action;
+    private String created_at;
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getDel_action() {
+        return del_action;
+    }
+
+    public void setDel_action(String del_action) {
+        this.del_action = del_action;
+    }
+
+    public String getTotal_no_of_plant() {
+        return total_no_of_plant;
+    }
+
+    public void setTotal_no_of_plant(String total_no_of_plant) {
+        this.total_no_of_plant = total_no_of_plant;
+    }
 
     public String getUser_id() {
         return user_id;
@@ -120,7 +147,10 @@ public class PSLandHoldingPojo
     private static final String COLUMN_LAND_NAME = "land_name";
     private static final String COLUMN_LATITUDE = "latitude";
     private static final String COLUMN_LONGITUDE = "longitude";
+    private static final String COLUMN_DEL_ACTION = "del_action";
     private static final String COLUMN_Flag = "flag";
+    private static final String COLUMN_CREATED_AT = "created_at";
+    private static final String COLUMN_TOTAL_NO_OF_PLANT = "total_no_of_plant";
     private static final String COLUMN_USER_ID = "user_id";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
@@ -132,9 +162,12 @@ public class PSLandHoldingPojo
             + COLUMN_USER_ID + " TEXT, "
             + COLUMN_LAND_UNIT + " TEXT,"
             + COLUMN_LATITUDE + " TEXT,"
+            + COLUMN_TOTAL_NO_OF_PLANT + " TEXT,"
             + COLUMN_LONGITUDE + " TEXT,"
             + COLUMN_LAND_AREA + " TEXT, "
             + COLUMN_Flag + " TEXT, "
+            + COLUMN_DEL_ACTION + " TEXT, "
+            + COLUMN_CREATED_AT + " TEXT, "
             + COLUMN_LAND_NAME + " TEXT "
             + ")";
 }
