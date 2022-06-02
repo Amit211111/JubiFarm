@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -91,9 +92,15 @@ public class MainMenu extends AppDrawer {
         skillTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
-                startActivity(intent);
-
+                if (sharedPrefHelper.getString("skillTracking_done", "").equalsIgnoreCase("done")) {
+                    Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    call_skillTrackinghDataDownload();
+                }
             }
 
         });
@@ -614,6 +621,59 @@ public class MainMenu extends AppDrawer {
         AlertDialog alert = builder.create();
         alert.show();
     }
+    private void call_skillTrackinghDataDownload() {
+        new AsyncTask<Void, Void, Void>(){
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected Void doInBackground(Void... voids) {
+//                LoginPojo userpojo = new LoginPojo();
+//                userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson("");
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
 
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_skill_center(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("candidate_registration");
+
+                            for (int i = 0; i < data.size(); i++) {
+                                JSONObject singledata = new JSONObject(data.get(i).toString());
+                                Iterator keys = singledata.keys();
+                                ContentValues contentValues = new ContentValues();
+                                while (keys.hasNext()) {
+                                    String currentDynamicKey = (String) keys.next();
+                                    contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                }
+                                sqliteHelper.saveMasterTable(contentValues, "candidate_registration");
+                            }
+
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
 
 }

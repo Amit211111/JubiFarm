@@ -461,11 +461,11 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 
-//                    Gson gson = new Gson();
-//                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);
-//                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-//                    RequestBody body = RequestBody.create(JSON, data);
-//                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
+                    Gson gson = new Gson();
+                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);
+                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                    RequestBody body = RequestBody.create(JSON, data);
+                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
                     }
                 }else{
                     Toast.makeText(FarmerRegistrationForm.this, "jhdgjhd", Toast.LENGTH_SHORT).show();
@@ -477,46 +477,46 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     }
 
 
-//        private void sendPS_FarmerRegistrationdata(RequestBody body, String localId) {
-//            ProgressDialog dialog = ProgressDialog.show(FarmerRegistrationForm.this, "", getString(R.string.Please_wait), true);
-//            APIClient.getClient().create(JubiForm_API.class).sendPSFarmerRegistrationdata(body).enqueue(new Callback<JsonObject>() {
-//
-//                @Override
-//                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                    try {
-//                        JSONObject jsonObject = new JSONObject(response.body().toString());
-//                        Log.e("TAG", "onResponse: " + jsonObject.toString());
-//                        String success = jsonObject.optString("status");
-//                        String message = jsonObject.optString("message");
-//                        String lat_insert_id = jsonObject.optString("let_inssert_id");
-//                        if (Integer.valueOf(success) == 1) {
-//
-//                            Intent intent = new Intent(FarmerRegistrationForm.this, FarmerRecycle.class);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            startActivity(intent);
-//
-//                            Toast.makeText(getApplicationContext(), "Registration Success" + message, Toast.LENGTH_SHORT).show();
-//                            //                      sqliteHelper.update("school_list", "id='" + id + "'", lat_insert_id, "id");
-//
-//                        } else {
-//                            Toast.makeText(FarmerRegistrationForm.this, "Farmer Registration Not Register", Toast.LENGTH_SHORT).show();
-//                            dialog.dismiss();
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                        dialog.dismiss();
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<JsonObject> call, Throwable t) {
-//                    Toast.makeText(FarmerRegistrationForm.this, "Fail", Toast.LENGTH_SHORT).show();
-//                    Log.e("FarmerRegistration", "Failure" + t + "," + call);
-//                    dialog.dismiss();
-//                }
-//            });
-//        }
+        private void sendPS_FarmerRegistrationdata(RequestBody body, String localId) {
+            ProgressDialog dialog = ProgressDialog.show(FarmerRegistrationForm.this, "", getString(R.string.Please_wait), true);
+            APIClient.getClient().create(JubiForm_API.class).sendPSFarmerRegistrationdata(body).enqueue(new Callback<JsonObject>() {
+
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().toString());
+                        Log.e("TAG", "onResponse: " + jsonObject.toString());
+                        String success = jsonObject.optString("status");
+                        String message = jsonObject.optString("message");
+                        String lat_insert_id = jsonObject.optString("let_inssert_id");
+                        if (Integer.valueOf(success) == 1) {
+
+                            Intent intent = new Intent(FarmerRegistrationForm.this, FarmerRecycle.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+
+                            Toast.makeText(getApplicationContext(), "Registration Success" + message, Toast.LENGTH_SHORT).show();
+                            //                      sqliteHelper.update("school_list", "id='" + id + "'", lat_insert_id, "id");
+
+                        } else {
+                            Toast.makeText(FarmerRegistrationForm.this, "Farmer Registration Not Register", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        dialog.dismiss();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Toast.makeText(FarmerRegistrationForm.this, "Fail", Toast.LENGTH_SHORT).show();
+                    Log.e("FarmerRegistration", "Failure" + t + "," + call);
+                    dialog.dismiss();
+                }
+            });
+        }
 
 
     private void intializeAll()

@@ -2,23 +2,41 @@ package com.sanket.jubifarm.Livelihood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
 import com.sanket.jubifarm.data_base.SqliteHelper;
+import com.sanket.jubifarm.restAPI.APIClient;
+import com.sanket.jubifarm.restAPI.JubiForm_API;
+
+import org.json.JSONObject;
 
 import java.util.Calendar;
+import java.util.Iterator;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddCandidateActivity extends AppCompatActivity {
 
@@ -115,6 +133,8 @@ public class AddCandidateActivity extends AppCompatActivity {
         });
 
     }
+
+
     private void IntilizeAll()
     {
         spn_training_stream =findViewById(R.id.spn_training_stream);

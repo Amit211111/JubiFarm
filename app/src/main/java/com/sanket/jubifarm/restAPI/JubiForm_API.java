@@ -134,6 +134,8 @@ public interface JubiForm_API {
     @POST("download_land_holding_data.php")
     Call<JsonArray> download_land_holding(@Body RequestBody body);
 
+    @POST("download_skill_center.php")
+    Call<JsonArray> download_skill_center(@Body RequestBody body);
 
 
 }
