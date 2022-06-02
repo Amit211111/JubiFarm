@@ -125,7 +125,7 @@ public interface JubiForm_API {
     @POST("candidate_registration.php")
     Call<JsonObject> st_candidate(@Body RequestBody body);
 
-    @POST("skill_tracking_monitoring_status")
+    @POST("skill_tracking_monitoring_status.php")
     Call<JsonObject> st_monitoring(@Body RequestBody body);
 
     @POST("download_ps_farmer.php")
@@ -144,7 +144,11 @@ public interface JubiForm_API {
     Call<JsonArray> download_skill_monitoring(@Body RequestBody body);
 
 
+    @POST("download_neem_plant.php")
+    Call<JsonArray> download_neem_plant(@Body RequestBody body);
 
+    @POST("download_neem_monitoring.php")
+    Call<JsonArray> download_neem_monitoring(@Body RequestBody body);
 
 
 }

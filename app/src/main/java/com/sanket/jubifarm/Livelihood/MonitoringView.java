@@ -125,13 +125,15 @@ public class MonitoringView extends AppCompatActivity {
                 monitoringStatusPojo.setWorking_status(rb_workingStatus);
                 monitoringStatusPojo.setCurrent_work(spn_current_work.getSelectedItem().toString().trim());
                 monitoringStatusPojo.setRemark(et_remark.getText().toString().trim());
+                monitoringStatusPojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                 monitoringStatusPojo.setDate_monitoring(et_date_of_monitoring.getText().toString().trim());
                 monitoringStatusPojo.setLatitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
                 monitoringStatusPojo.setLongitude(sharedPrefHelper.getString("LAT","")+", "+sharedPrefHelper.getString("LONG",""));
                 monitoringStatusPojo.setCandidate_id(String.valueOf(id));
-                Intent intent = new Intent(MonitoringView.this, CandidateList.class);
 
                 sqliteHelper.MonitoringStatus(monitoringStatusPojo);
+
+                Intent intent = new Intent(MonitoringView.this, CandidateList.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

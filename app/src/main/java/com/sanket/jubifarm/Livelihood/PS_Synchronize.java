@@ -396,9 +396,9 @@ public class PS_Synchronize extends AppCompatActivity {
                     String message = jsonObject.optString("message");
                     String last_neem_id = jsonObject.optString("last_neem_id");
                     if (status.equalsIgnoreCase("1")) {
-                        sqliteHelper.updateId("ps_neem_plantation", "id", Integer.parseInt(last_neem_id), local_id, "local_id");
+                        sqliteHelper.updateId("add_neem_plant", "id", Integer.parseInt(last_neem_id), local_id, "local_id");
                         sqliteHelper.updateId("neem_monitoring", "neem_id", Integer.parseInt(last_neem_id), local_id, "local_id");
-                        sqliteHelper.updatePSFlag("ps_neem_plantation",local_id, 1,"local_id");
+                        sqliteHelper.updatePSFlag("add_neem_plant",local_id, 1,"local_id");
                         if (countNeemPlant>0) {
                             countNeemPlant=countNeemPlant-1;
                             tvNeemPlanningCount.setText(countNeemPlant+"");

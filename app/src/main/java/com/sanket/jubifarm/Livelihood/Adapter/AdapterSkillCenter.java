@@ -50,7 +50,7 @@ public class AdapterSkillCenter extends RecyclerView.Adapter<AdapterSkillCenter.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, CandidateProfileActivity.class);
-                intent.putExtra("id",arrayList.get(position).getId());
+                intent.putExtra("id",arrayList.get(position).getLocal_id());
                 intent.putExtra("namee",arrayList.get(position).getName());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

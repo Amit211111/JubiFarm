@@ -104,7 +104,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
         this.plantation_Date = plantation_Date;
     }
 
-    private static final String TABLE_NAME = "ps_neem_plantation";
+    private static final String TABLE_NAME = "add_neem_plant";
     private static final String COLUMN_LOCAL_ID="local_id";
     private static final String COLUMN_ID="id";
     private static final String COLUMN_FARMER_ID="farmer_id";

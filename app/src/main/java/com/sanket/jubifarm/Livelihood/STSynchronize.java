@@ -83,8 +83,6 @@ public class STSynchronize extends AppCompatActivity {
             if (countMonitoring > 0) {
                 tvLandHoldingCount.setText(countMonitoring + "");
             }
-//
-//
         }
 
         private void initViews () {
@@ -94,9 +92,7 @@ public class STSynchronize extends AppCompatActivity {
 
 
         @OnClick({R.id.llFarmerRegistration,
-                R.id.llLandHolding,
-                R.id.llNeemPlanning,
-                R.id.llNeemMonitoring})
+                R.id.llLandHolding})
         void onClick (View v){
             switch (v.getId()) {
                 case R.id.llFarmerRegistration:
@@ -153,20 +149,14 @@ public class STSynchronize extends AppCompatActivity {
                         Log.e("bchjc", "vxghs " + jsonObject.toString());
                         String status = jsonObject.optString("status");
                         String message = jsonObject.optString("message");
-//                    String user_id = jsonObject.optString("user_id");
-//                    String household_no = jsonObject.optString("household_no");
-                       // sharedPrefHelper.setString("selected_farmer", "");
-                        //sharedPrefHelper.setString("user_id", user_id);
-//                        Log.e("TAG", "StatusFarmer: " + status);
+                        String last_candidate_id = jsonObject.optString("last_candidate_id");
+
                         if (status.equalsIgnoreCase("1")) {
                             //update flag in tables
-//                            String last_farmer_id = jsonObject.optString("last_farmer_id");
 
-//                            sqliteHelper.updateId("ps_farmer_registration", "id", Integer.parseInt(last_farmer_id), Integer.parseInt(localId), "local_id");
-//                            sqliteHelper.updateId("ps_land_holding", "farmer_id", Integer.parseInt(last_farmer_id), Integer.parseInt(localId), "local_id");
+                            sqliteHelper.updateId("candidate_registration", "id", Integer.parseInt(last_candidate_id), Integer.parseInt(localId), "local_id");
+                            sqliteHelper.updateId("monitoring_status", "candidate_id", Integer.parseInt(last_candidate_id), Integer.parseInt(localId), "local_id");
                             sqliteHelper.updatePSFlag("candidate_registration", Integer.parseInt(localId), 1, "local_id");
-//                       // sqliteHelper.updateFlag("farmer_family", Integer.parseInt(user_id), 1);
-                            //sqliteHelper.updateFlag("crop_vegetable_details", Integer.parseInt(user_id), 1);
 
                             if (countCandidate > 0) {
                                 countCandidate = countCandidate - 1;
@@ -235,10 +225,10 @@ public class STSynchronize extends AppCompatActivity {
 //                        Log.e("land_Data", "landData " + jsonObject.toString());
                         String status = jsonObject.optString("status");
                         String message = jsonObject.optString("message");
-                        String last_land_id = jsonObject.optString("last_land_id");
+                        String last_motitor_id = jsonObject.optString("last_motitor_id");
                         if (status.equalsIgnoreCase("1")) {
                             Toast.makeText(context, "" + message, Toast.LENGTH_LONG).show();
-                            sqliteHelper.updateId("monitoring_status", "id", Integer.parseInt(last_land_id), local_id, "local_id");
+                            sqliteHelper.updateId("monitoring_status", "id", Integer.parseInt(last_motitor_id), local_id, "local_id");
                             sqliteHelper.updatePSFlag("monitoring_status", local_id, 1, "local_id");
                             if (countMonitoring > 0) {
                                 countMonitoring = countMonitoring - 1;

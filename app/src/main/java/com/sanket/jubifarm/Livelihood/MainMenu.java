@@ -64,8 +64,12 @@ public class MainMenu extends AppDrawer {
             public void onClick(View view) {
                 if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("prayawarn_done","").equals("1") ) {
                     dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
-                    callfarmerDataDownload();
-                }else{
+//                    callfarmerDataDownload();
+                    Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                    startActivity(intent);
+                    finish();
+                    dialog.dismiss();
+            }else{
                      Intent intent = new Intent(MainMenu.this,ParyavaranSakhiHome.class);
                      startActivity(intent);
                 }
@@ -92,14 +96,13 @@ public class MainMenu extends AppDrawer {
         skillTracking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sharedPrefHelper.getString("skillTracking_done", "").equalsIgnoreCase("done")) {
+                if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("skillsathi_done","").equals("1") ) {
+                    dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
+                    call_skillTrackinghDataDownload();
+                } else {
                     Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else
-                {
-                    call_skillTrackinghDataDownload();
                 }
             }
 
@@ -122,25 +125,29 @@ public class MainMenu extends AppDrawer {
                 call.enqueue(new Callback<JsonArray>() {
                     @Override
                     public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                        try{
+                        try {
                             JsonArray data = response.body();
                             sqliteHelper.dropTable("ps_land_holding");
+                            if(data.size()>0) {
 
-                            for (int i=0; i<data.size(); i++){
+                            for (int i = 0; i < data.size(); i++) {
                                 JSONObject singledata = new JSONObject(data.get(i).toString());
                                 Iterator keys = singledata.keys();
                                 ContentValues contentValues = new ContentValues();
-                                while (keys.hasNext()){
+                                while (keys.hasNext()) {
                                     String currentDynamicKey = (String) keys.next();
                                     contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
                                 }
                                 sqliteHelper.saveMasterTable(contentValues, "ps_land_holding");
                             }
-                            sharedPrefHelper.setString("prayawarn_done", "1");
-                            Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
-                            startActivity(intent);
-                            finish();
-                            dialog.dismiss();
+
+                            call_neemPlantDataDownload();
+                        }else {
+                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }
                         }catch (Exception e){
                             Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
                             e.printStackTrace();
@@ -149,6 +156,132 @@ public class MainMenu extends AppDrawer {
 
                     @Override
                     public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
+    private void call_neemPlantMonitoringDataDownload() {
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                    LoginPojo userpojo = new LoginPojo();
+                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson(userpojo);
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
+
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_neem_monitoring(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("neem_monitoring");
+                            if(data.size()>0) {
+
+                                for (int i = 0; i < data.size(); i++) {
+                                    JSONObject singledata = new JSONObject(data.get(i).toString());
+                                    Iterator keys = singledata.keys();
+                                    ContentValues contentValues = new ContentValues();
+                                    while (keys.hasNext()) {
+                                        String currentDynamicKey = (String) keys.next();
+                                        contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                    }
+                                    sqliteHelper.saveMasterTable(contentValues, "neem_monitoring");
+                                }
+                                sharedPrefHelper.setString("prayawarn_done", "1");
+                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }else{
+                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
+    private void call_neemPlantDataDownload() {
+        new AsyncTask<Void, Void, Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                    LoginPojo userpojo = new LoginPojo();
+                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson(userpojo);
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
+
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_neem_plant(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("add_neem_plant");
+                            if(data.size()>0) {
+                                for (int i = 0; i < data.size(); i++) {
+                                    JSONObject singledata = new JSONObject(data.get(i).toString());
+                                    Iterator keys = singledata.keys();
+                                    ContentValues contentValues = new ContentValues();
+                                    while (keys.hasNext()) {
+                                        String currentDynamicKey = (String) keys.next();
+                                        contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                    }
+                                    sqliteHelper.saveMasterTable(contentValues, "add_neem_plant");
+                                }
+                                call_neemPlantMonitoringDataDownload();
+                            }else{
+                                Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        dialog.dismiss();
+
+
                         Log.d("Failure", ""+t.getMessage());
                     }
                 });
@@ -181,15 +314,16 @@ public class MainMenu extends AppDrawer {
                     call.enqueue(new Callback<JsonArray>() {
                         @Override
                         public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                            try{
+                            try {
                                 JsonArray data = response.body();
                                 sqliteHelper.dropTable("ps_farmer_registration");
 
-                                for (int i=0; i<data.size(); i++){
+                                if(data.size()>0){
+                                for (int i = 0; i < data.size(); i++) {
                                     JSONObject singledata = new JSONObject(data.get(i).toString());
                                     Iterator keys = singledata.keys();
                                     ContentValues contentValues = new ContentValues();
-                                    while (keys.hasNext()){
+                                    while (keys.hasNext()) {
                                         String currentDynamicKey = (String) keys.next();
                                         contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
                                     }
@@ -202,7 +336,13 @@ public class MainMenu extends AppDrawer {
 //                                dialog.dismiss();
                                 call_landholdingDataDownload();
 
-                            }catch (Exception e){
+                        }else {
+                            Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+                            startActivity(intent);
+                            finish();
+                            dialog.dismiss();
+                        }
+                    }catch (Exception e){
                                 Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
                                 e.printStackTrace();
                             }
@@ -621,6 +761,136 @@ public class MainMenu extends AppDrawer {
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+
+    private void call_candidateData() {
+        new AsyncTask<Void, Void, Void>(){
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected Void doInBackground(Void... voids) {
+                LoginPojo userpojo = new LoginPojo();
+                userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson(userpojo);
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
+
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_skill_tracking_candidate(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("candidate_registration");
+
+                            if(data.size()>0) {
+                                for (int i = 0; i < data.size(); i++) {
+                                    JSONObject singledata = new JSONObject(data.get(i).toString());
+                                    Iterator keys = singledata.keys();
+                                    ContentValues contentValues = new ContentValues();
+                                    while (keys.hasNext()) {
+                                        String currentDynamicKey = (String) keys.next();
+                                        contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                    }
+                                    sqliteHelper.saveMasterTable(contentValues, "candidate_registration");
+                                }
+                                call_MonitoringStatus();
+                            }else{
+                                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }
+
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
+    private void call_MonitoringStatus() {
+        new AsyncTask<Void, Void, Void>(){
+            @SuppressLint("StaticFieldLeak")
+            @Override
+            protected Void doInBackground(Void... voids) {
+                LoginPojo userpojo = new LoginPojo();
+                userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                Gson gson = new Gson();
+                String data = gson.toJson(userpojo);
+                MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                RequestBody body = RequestBody.create(JSON, data);
+
+                final JubiForm_API apiService = APIClient.getPsClient().create(JubiForm_API.class);
+                Call<JsonArray> call = apiService.download_skill_monitoring(body);
+//                    final int finalJ = j;
+                call.enqueue(new Callback<JsonArray>() {
+                    @Override
+                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                        try{
+                            JsonArray data = response.body();
+                            sqliteHelper.dropTable("monitoring_status");
+
+                            if(data.size()>0) {
+                                for (int i = 0; i < data.size(); i++) {
+                                    JSONObject singledata = new JSONObject(data.get(i).toString());
+                                    Iterator keys = singledata.keys();
+                                    ContentValues contentValues = new ContentValues();
+                                    while (keys.hasNext()) {
+                                        String currentDynamicKey = (String) keys.next();
+                                        contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                    }
+                                    sqliteHelper.saveMasterTable(contentValues, "monitoring_status");
+                                }
+                                sharedPrefHelper.setString("skillsathi_done", "1");
+                                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }else{
+                                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
+                            }
+
+                        }catch (Exception e){
+                            Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                        Log.d("Failure", ""+t.getMessage());
+                    }
+                });
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+                super.onPostExecute(unused);
+            }
+        }.execute();
+    }
     private void call_skillTrackinghDataDownload() {
         new AsyncTask<Void, Void, Void>(){
             @SuppressLint("StaticFieldLeak")
@@ -641,17 +911,25 @@ public class MainMenu extends AppDrawer {
                     public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                         try{
                             JsonArray data = response.body();
-                            sqliteHelper.dropTable("candidate_registration");
+                            sqliteHelper.dropTable("skill_center");
 
-                            for (int i = 0; i < data.size(); i++) {
-                                JSONObject singledata = new JSONObject(data.get(i).toString());
-                                Iterator keys = singledata.keys();
-                                ContentValues contentValues = new ContentValues();
-                                while (keys.hasNext()) {
-                                    String currentDynamicKey = (String) keys.next();
-                                    contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                            if(data.size()>0) {
+                                for (int i = 0; i < data.size(); i++) {
+                                    JSONObject singledata = new JSONObject(data.get(i).toString());
+                                    Iterator keys = singledata.keys();
+                                    ContentValues contentValues = new ContentValues();
+                                    while (keys.hasNext()) {
+                                        String currentDynamicKey = (String) keys.next();
+                                        contentValues.put(currentDynamicKey, singledata.get(currentDynamicKey).toString());
+                                    }
+                                    sqliteHelper.saveMasterTable(contentValues, "skill_center");
                                 }
-                                sqliteHelper.saveMasterTable(contentValues, "candidate_registration");
+                                call_candidateData();
+                            }else{
+                                Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+                                startActivity(intent);
+                                finish();
+                                dialog.dismiss();
                             }
 
                         }catch (Exception e){

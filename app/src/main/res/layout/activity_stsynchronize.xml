@@ -78,7 +78,7 @@
                         android:background="@android:color/darker_gray"
                         android:fontFamily="@font/itcavantagradestdbk"
                         android:gravity="center"
-                        android:text="Skill Tracking"
+                        android:text="Candidate Registration"
                         android:textColor="#000"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -92,7 +92,7 @@
                         android:background="@android:color/darker_gray"
                         android:fontFamily="@font/itcavantagradestdbk"
                         android:gravity="center"
-                        android:text="Monetring View"
+                        android:text="Candidate Monitoring"
                         android:textColor="#000"
                         android:textSize="15sp"
                         android:textStyle="bold" />

@@ -3394,6 +3394,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         registrationPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
                         registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
 //
+                        registrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));//(users table)
                         registrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));//(users table)
                         registrationPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));//(users table)
 
@@ -3456,6 +3457,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     cursor.moveToFirst();
                     while (!cursor.isAfterLast()) {
                         familyPojo = new MonitoringStatusPojo();
+                        familyPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        familyPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        familyPojo.setCandidate_id(cursor.getString(cursor.getColumnIndex("candidate_id")));
                         familyPojo.setWorking_status(cursor.getString(cursor.getColumnIndex("working_status")));
                         familyPojo.setCurrent_work(cursor.getString(cursor.getColumnIndex("current_work")));
                         familyPojo.setRemark(cursor.getString(cursor.getColumnIndex("remark")));
@@ -3464,6 +3468,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                         familyPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
                         familyPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
                         familyPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+                        familyPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));//(users table)
 
                         cursor.moveToNext();
                         arrayList.add(familyPojo);
@@ -4122,7 +4127,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
-                String query = "select * from ps_neem_plantation where flag=0";
+                String query = "select * from add_neem_plant where flag=0";
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -5264,7 +5269,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                 values.put("flag","0");
 
 
-                ids =DB1.insert("ps_neem_plantation",null, values);
+                ids =DB1.insert("add_neem_plant",null, values);
                 DB1.close();
             }
         }
@@ -5528,6 +5533,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     while (!cursor.isAfterLast()) {
 
                         CandidatePojo list1 = new CandidatePojo();
+                        list1.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
                         list1.setId(cursor.getString(cursor.getColumnIndex("id")));
                         list1.setName(cursor.getString(cursor.getColumnIndex("name")));
                         list1.setEmail(cursor.getString(cursor.getColumnIndex("email")));
@@ -5558,7 +5564,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         {
             if(db != null && !db.isReadOnly())
             {
-                String query = "select * from ps_neem_plantation";
+                String query = "select * from add_neem_plant";
                 Cursor cursor = db.rawQuery(query, null);
                 if(cursor != null && cursor.getCount() > 0)
                 {
@@ -5619,7 +5625,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         try {
             if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
-                String query = "select local_id,neem_id from ps_neem_plantation";
+                String query = "select local_id,neem_id from add_neem_plant";
                 Cursor cursor = sqLiteDatabase.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -5647,6 +5653,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (DB1 != null && !DB1.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("id", householdMasterModel.getId());
+                values.put("user_id", householdMasterModel.getUser_id());
                 values.put("working_status", householdMasterModel.getWorking_status());
                 values.put("current_work", householdMasterModel.getCurrent_work());
                 values.put("remark", householdMasterModel.getRemark());
@@ -5738,7 +5745,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
 
-                String query = "select * from ps_neem_plantation where local_id=" + local_id + "";
+                String query = "select * from add_neem_plant where local_id=" + local_id + "";
 
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
