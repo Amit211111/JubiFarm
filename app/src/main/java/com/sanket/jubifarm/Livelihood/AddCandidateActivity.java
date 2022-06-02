@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -29,7 +30,9 @@ import com.sanket.jubifarm.restAPI.JubiForm_API;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import okhttp3.MediaType;
@@ -41,18 +44,19 @@ import retrofit2.Response;
 public class AddCandidateActivity extends AppCompatActivity {
 
 
-    String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
-    String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
-    Spinner spn_training_stream,spn_skill_center;
-    EditText et_name,et_email,et_mobileno,et_qualification,et_date_completation;
+//    String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
+   // String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
+    Spinner spn_skill_center;
+    EditText et_training_stream, et_name,et_email,et_mobileno,et_qualification,et_date_completation;
     Button submit;
     SqliteHelper sqliteHelper;
     CandidatePojo candidatePojo;
     int mYear,mMonth,mDay,year,month,day;
     DatePickerDialog datePickerDialog;
     SharedPrefHelper sharedPrefHelper;
-
-
+    ArrayList<String> SkillCenterArrayList = new ArrayList<>();
+    HashMap<String, Integer> SkillCenterHM = new HashMap<>();
+    int skill_centerHM = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,17 +67,10 @@ public class AddCandidateActivity extends AppCompatActivity {
 
         // IntilizeAll
         IntilizeAll();
+//        ArrayAdapter adapter = new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list, skill_center);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spn_skill_center.setAdapter(adapter);
 
-        ArrayAdapter adapter = new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list, skill_center);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spn_skill_center.setAdapter(adapter);
-
-
-        ArrayAdapter adapter1 = new ArrayAdapter(AddCandidateActivity.this, R.layout.spinner_list, training_stream);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
-        spn_training_stream.setAdapter(adapter1);
 
         et_date_completation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +103,8 @@ public class AddCandidateActivity extends AppCompatActivity {
 
 
         sqliteHelper = new SqliteHelper(getApplicationContext());
+        getSkillCenterSpinner();
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,7 +116,7 @@ public class AddCandidateActivity extends AppCompatActivity {
                 candidatePojo.setMobileno(et_mobileno.getText().toString().trim());
                 candidatePojo.setUser_id(sharedPrefHelper.getString("user_id",""));
                 candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
-                candidatePojo.setTraining_stream(spn_training_stream.getSelectedItem().toString().trim());
+                candidatePojo.setTraining_stream(et_training_stream.getText().toString().trim());
                 candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
                 candidatePojo.setLatitude(sharedPrefHelper.getString("LAT",""));
                 candidatePojo.setLongitude(sharedPrefHelper.getString("LONG",""));
@@ -137,7 +136,7 @@ public class AddCandidateActivity extends AppCompatActivity {
 
     private void IntilizeAll()
     {
-        spn_training_stream =findViewById(R.id.spn_training_stream);
+        et_training_stream =findViewById(R.id.et_training_stream);
         spn_skill_center =findViewById(R.id.spn_skill_center);
         et_name =findViewById(R.id.et_name);
         et_email =findViewById(R.id.et_email);
@@ -147,5 +146,41 @@ public class AddCandidateActivity extends AppCompatActivity {
         submit =findViewById(R.id.submit);
         sharedPrefHelper = new SharedPrefHelper(this);
 
+    }
+    private void getSkillCenterSpinner() {
+
+        SkillCenterArrayList.clear();
+        SkillCenterHM = sqliteHelper.getSkillCenter();
+        for (int i = 0; i < SkillCenterHM.size(); i++) {
+            SkillCenterArrayList.add(SkillCenterHM.keySet().toArray()[i].toString().trim());
+        }
+//        Collections.sort(blockArrayList);
+        SkillCenterArrayList.add(0, "Select Skill Center");
+        //state spinner choose
+        ArrayAdapter skill_center_adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, SkillCenterArrayList);
+        skill_center_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spn_skill_center.setAdapter(skill_center_adapter);
+//        if (screen_type.equals("edit_profile")) {
+//            st_religion = sqliteHelper.getPSReligion(editparyavaranSakhiRegistrationPojo.getReligion_id());
+//            int pos = religion_adapter.getPosition(st_religion.trim());
+//            religion.setSelection(pos);
+//        }
+
+        spn_skill_center.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                skill_centerHM = 0;
+                if (!spn_skill_center.getSelectedItem().toString().trim().equalsIgnoreCase("Select Skill Center")) {
+                    if (spn_skill_center.getSelectedItem().toString().trim() != null) {
+                        skill_centerHM = SkillCenterHM.get(spn_skill_center.getSelectedItem().toString().trim());
+                    }
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }

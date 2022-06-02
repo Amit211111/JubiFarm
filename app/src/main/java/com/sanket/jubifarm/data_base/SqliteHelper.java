@@ -16,6 +16,7 @@ import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
 import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
 import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
+import com.sanket.jubifarm.Livelihood.Model.SkillCenter_Pojo;
 import com.sanket.jubifarm.Modal.AboutUs;
 import com.sanket.jubifarm.Modal.Attendance_Approval;
 import com.sanket.jubifarm.Modal.BlockPojo;
@@ -113,6 +114,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
         db.execSQL(CandidatePojo.CREATE_TABLE);
         db.execSQL(MonitoringStatusPojo.CREATE_TABLE);
         db.execSQL(Neem_Monitoring_Pojo.CREATE_TABLE);
+        db.execSQL(SkillCenter_Pojo.CREATE_TABLE);
+
 
     }
 
@@ -4271,6 +4274,33 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return hashMap;
     }
+    public HashMap<String, Integer> getSkillCenter() {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        SkillCenter_Pojo skillCenter_pojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "select * from skill_center ";
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        skillCenter_pojo = new SkillCenter_Pojo();
+                        skillCenter_pojo.setCenter_name(cursor.getString(cursor.getColumnIndex("center_name")));
+                        skillCenter_pojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        cursor.moveToNext();
+                        hashMap.put(skillCenter_pojo.getCenter_name(), Integer.parseInt(skillCenter_pojo.getId()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+        return hashMap;
+    }
+
 
 
     public HashMap<String, Integer> getAllPSFARMER() {
