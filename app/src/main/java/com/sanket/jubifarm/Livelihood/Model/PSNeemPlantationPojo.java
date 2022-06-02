@@ -105,7 +105,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private static final String COLUMN_LATITUDE = "latitude";
     private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
-    private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
+    //private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
     private static final String COLUMN_FLAG = "flag";
 
 
@@ -120,7 +120,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
             + COLUMN_LATITUDE + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
-            + COLUMN_FLAG + " TEXT, "
-            + COLUMN_GEO_COORDINATES + " TEXT "
+            + COLUMN_FLAG + " TEXT "
+           // + COLUMN_GEO_COORDINATES + " TEXT "
             + ")";
 }

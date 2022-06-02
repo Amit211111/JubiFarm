@@ -12,7 +12,7 @@ import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
 
 public class ParyavaranSakhiHome extends AppCompatActivity {
-    TextView farmer,tv_neem_plantation,txt_LandHolding,txt_Monitoring,txt_Syncronize;
+    TextView farmer,txt_LandHolding,txt_Monitoring,txt_Syncronize;
     LinearLayout ll_Helpline,ll_Sync,ll_neem_plantation,ll_neem_monitoring,ll_land_holding,ll_farmReg;
     SharedPrefHelper sharedPrefHelper;
     String screenType = "";
@@ -25,7 +25,6 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
 
         farmer =findViewById(R.id.farmer);
         sharedPrefHelper=new SharedPrefHelper(this);
-        tv_neem_plantation = findViewById(R.id.tv_neem_plantation);
         txt_LandHolding = findViewById(R.id.txt_LandHolding);
         txt_Monitoring=findViewById(R.id.txt_Monitoring);
         txt_Syncronize=findViewById(R.id.txt_Syncronize);
@@ -35,13 +34,6 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
         ll_Sync=findViewById(R.id.ll_Sync);
         ll_farmReg=findViewById(R.id.ll_farmReg);
         ll_Helpline=findViewById(R.id.ll_Helpline);
-        tv_neem_plantation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ParyavaranSakhiHome.this,PS_NeemPlantationList.class);
-                startActivity(intent);
-            }
-        });
 
      /*   txt_LandHolding.setOnClickListener(new View.OnClickListener() {
             @Override

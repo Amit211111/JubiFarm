@@ -32,17 +32,17 @@ public class PS_Helpline extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         click=findViewById( R.id.click);
 
-        click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent Regintent = new Intent(PS_Helpline.this, ParyavaranSakhiHome.class);
-                startActivity(Regintent);
-                finish();
-
-            }
-        });
-    }
+//        click.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent Regintent = new Intent(PS_Helpline.this, ParyavaranSakhiHome.class);
+//                startActivity(Regintent);
+//                finish();
+//
+//            }
+//        });
+//    }
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
@@ -74,6 +74,6 @@ public class PS_Helpline extends AppCompatActivity {
 //            finish();
 //        }
 //        return super.onOptionsItemSelected(item);
-//    }
+    }
 
 }
