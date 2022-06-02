@@ -137,6 +137,15 @@ public interface JubiForm_API {
     @POST("download_skill_center.php")
     Call<JsonArray> download_skill_center(@Body RequestBody body);
 
+    @POST("download_candidate_reg.php")
+    Call<JsonArray> download_skill_tracking_candidate(@Body RequestBody body);
+
+    @POST("download_skill_tkms.php")
+    Call<JsonArray> download_skill_monitoring(@Body RequestBody body);
+
+
+
+
 
 }
 

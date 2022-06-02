@@ -59,6 +59,8 @@ public class FarmerRecycle extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_recycle);
         getSupportActionBar().setTitle("Farmer List");
 
+        //setTitle(Html.fromHtml("<font color=\"#000000\">" +getString(R.string.FARMER_LIST)+ "</font>"));
+
        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fab1=findViewById(R.id.fab1);

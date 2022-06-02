@@ -26,6 +26,7 @@ public class SkillTrackingMenuActivity extends AppCompatActivity {
         skill_Tracking_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(SkillTrackingMenuActivity.this, CandidateList.class);
                 startActivity(intent);
             }
