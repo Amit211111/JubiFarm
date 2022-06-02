@@ -1,5 +1,6 @@
 package com.sanket.jubifarm.Livelihood;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -7,6 +8,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.google.gson.JsonArray;
 import com.sanket.jubifarm.Activity.HomeAcivity;
 import com.sanket.jubifarm.DataDownload;
+import com.sanket.jubifarm.Drawer.AppDrawer;
+import com.sanket.jubifarm.Livelihood.Model.ParyavaranSakhiRegistrationPojo;
 import com.sanket.jubifarm.Modal.LoginPojo;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
@@ -28,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -37,14 +42,13 @@ import retrofit2.Response;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends AppDrawer {
 
     CardView jubifarm,skillTracking,paryavaran;
     private ProgressDialog dialog;
     private Context context = this;
     SharedPrefHelper sharedPrefHelper;
     SqliteHelper sqliteHelper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +61,13 @@ public class MainMenu extends AppCompatActivity {
         paryavaran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                callfarmerDataDownload();
-//                Intent intent = new Intent(MainMenu.this,ParyavaranSakhiHome.class);
-//                startActivity(intent);
-
+                if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("prayawarn_done","").equals("1") ) {
+                    dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
+                    callfarmerDataDownload();
+                }else{
+                     Intent intent = new Intent(MainMenu.this,ParyavaranSakhiHome.class);
+                     startActivity(intent);
+                }
 
             }
         });
@@ -93,12 +100,11 @@ public class MainMenu extends AppCompatActivity {
     }
 
     private void callfarmerDataDownload() {
-            new AsyncTask<Void, Void, Void>(){
+        new AsyncTask<Void, Void, Void>(){
                 @Override
                 protected Void doInBackground(Void... voids) {
 //                    LoginPojo userpojo = new LoginPojo();
 //                    userpojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
-
                     Gson gson = new Gson();
                     String data = gson.toJson("");
                     MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -124,10 +130,11 @@ public class MainMenu extends AppCompatActivity {
                                     }
                                     sqliteHelper.saveMasterTable(contentValues, "ps_farmer_registration");
                                 }
-//                                    sharedPrefHelper.setString("isLogin", "Yes");
+                                sharedPrefHelper.setString("prayawarn_done", "1");
                                 Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
                                 startActivity(intent);
                                 finish();
+                                dialog.dismiss();
                             }catch (Exception e){
                                 Toast.makeText(context, "Something is wrong", Toast.LENGTH_LONG).show();
                                 e.printStackTrace();
@@ -520,5 +527,33 @@ public class MainMenu extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.dialog_alert);
+        builder.setTitle("Alert!");
+        builder.setMessage(R.string.are_you_sure_to_want_to_exit_application);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                finishAffinity();
+//                Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+//                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
 }

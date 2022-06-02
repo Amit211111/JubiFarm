@@ -112,13 +112,14 @@ public class    SplashScreen extends AppCompatActivity {
 
                 splashLoaded = sharedPrefHelper.getString("isSplashLoaded", "No");
                 String user_type = sharedPrefHelper.getString("user_type", "");
+                String islogin= sharedPrefHelper.getString("login", "");
 
                 if (splashLoaded.equals("No")) {
                     DataDownload dataDownload = new DataDownload();
                     dataDownload.getMasterTables(SplashScreen.this);
                     dataDownload.getTables(SplashScreen.this);
                 } else if (user_type.equals("Farmer") || user_type.equals("krishi_mitra")
-                        || user_type.equals("Supplier")) {
+                        || user_type.equals("Supplier") && islogin.equals("1")) {
 //                    Intent intent = new Intent(SplashScreen.this, HomeAcivity.class);
                     Intent intent = new Intent(SplashScreen.this, MainMenu.class);
                     startActivity(intent);

@@ -283,8 +283,8 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
                     String status = jsonObject.optString("status");
                     String message = jsonObject.optString("message");
                     if (status.equalsIgnoreCase("1")) {
-//                        String user_type = jsonObject.optString("user_type");
-//                        sharedPrefHelper.setString("user_type", user_type);
+                        String user_type = jsonObject.optString("user_type");
+                        sharedPrefHelper.setString("user_type", user_type);
 //                        JSONObject jsonObjectProfile = jsonObject.getJSONObject("profile");
 //                        String id = jsonObjectProfile.optString("id");
 //                        sharedPrefHelper.setString("user_id", id);
@@ -594,6 +594,7 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
 
                         //
 //                        Intent intent = new Intent(LoginScreenActivity.this,HomeAcivity.class);
+                        sharedPrefHelper.setString("login","1");
                         Intent intent = new Intent(LoginScreenActivity.this,MainMenu.class);
                         startActivity(intent);
                         finish();

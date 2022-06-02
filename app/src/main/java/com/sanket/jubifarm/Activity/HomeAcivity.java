@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.navigation.NavigationView;
 import com.sanket.jubifarm.Drawer.AppDrawer;
@@ -22,7 +23,7 @@ import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.util.Locale;
 
-public class HomeAcivity extends AppDrawer {
+public class HomeAcivity extends AppCompatActivity {
     LinearLayout ll_crop_farmeReg,ll_LnadHolding,ll_crop_planning,
             ll_crop_inputOrd,ll_crop_sale,ll_Helpline,ll_knowledge,
             ll_crop_monitoring,ll_Sync,ll_select_farmer;
@@ -221,30 +222,30 @@ public class HomeAcivity extends AppDrawer {
     //on back press exit alert dialog
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setIcon(R.drawable.dialog_alert);
-        builder.setTitle("Alert!");
-        builder.setMessage(R.string.are_you_sure_to_want_to_exit_application);
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setCancelable(false);
+//        builder.setIcon(R.drawable.dialog_alert);
+//        builder.setTitle("Alert!");
+//        builder.setMessage(R.string.are_you_sure_to_want_to_exit_application);
+//        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
                 //if user pressed "yes", then he is allowed to exit from application
 //                finishAffinity();
                 Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                 startActivity(intent);
-
-            }
-        });
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //if user select "No", just cancel this dialog and continue with app
-                dialog.cancel();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+//
+//            }
+//        });
+//        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                //if user select "No", just cancel this dialog and continue with app
+//                dialog.cancel();
+//            }
+//        });
+//        AlertDialog alert = builder.create();
+//        alert.show();
     }
 
 

@@ -3,6 +3,7 @@
 
     <item android:id="@+id/account"
         android:icon="@drawable/ic_account"
+        android:visible="false"
         android:title="@string/my_account"/>
 
     <item android:id="@+id/changePassword"
@@ -14,6 +15,7 @@
         android:title="@string/change_language"/>
 
     <item android:id="@+id/sync_data"
+        android:visible="false"
         android:icon="@drawable/ic_baseline_update_24"
         android:title="@string/sync_data"/>
 
