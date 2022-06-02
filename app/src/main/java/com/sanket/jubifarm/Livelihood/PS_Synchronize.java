@@ -81,7 +81,7 @@ public class PS_Synchronize extends AppCompatActivity {
     private SharedPrefHelper sharedPrefHelper;
     private ArrayList<ParyavaranSakhiRegistrationPojo> paryavaranSakhiRegistrationPojoArrayList=new ArrayList<>();
     private ArrayList<PSLandHoldingPojo> landHoldingAL=new ArrayList<>();
-    private ArrayList<PSNeemPlantationPojo> psNeemPlantationPojoArrayList=new ArrayList<>();
+    private ArrayList<PSNeemPlantationPojo> psNeemAL=new ArrayList<>();
     private ArrayList<Neem_Monitoring_Pojo> neem_monitoring_pojoArrayList=new ArrayList<>();
     private String farmer_id="";
     private int countRegistration=0, countLandHolding=0,
@@ -115,8 +115,8 @@ public class PS_Synchronize extends AppCompatActivity {
             tvLandHoldingCount.setText(countLandHolding+"");
         }
 
-        psNeemPlantationPojoArrayList=sqliteHelper.getPSNeemPlantationDataToBeSync();
-        countNeemPlant=psNeemPlantationPojoArrayList.size();
+        psNeemAL=sqliteHelper.getPSPlantSyn();
+        countNeemPlant=psNeemAL.size();
         if (countNeemPlant>0) {
             tvNeemPlanningCount.setText(countNeemPlant+"");
         }
@@ -144,7 +144,7 @@ public class PS_Synchronize extends AppCompatActivity {
                 sendLandHoldingDataOnServer();
                 break;
             case R.id.llNeemPlanning:
-                sendNeemPlanningDataOnServer();
+                sendNeemDataOnServer();
                 break;
             case R.id.llNeemMonitoring:
                 sendNeemMonitoringDataOnServer();
@@ -311,6 +311,38 @@ public class PS_Synchronize extends AppCompatActivity {
         }
     }
 
+
+private void sendNeemDataOnServer() {
+        try {
+            if (CommonClass.isInternetOn(context)) {
+                landHoldingAL = sqliteHelper.getPSLandSyn();
+                if (landHoldingAL.size() == 0) {
+                    psNeemAL = sqliteHelper.getPSPlantSyn();
+                    countNeemPlant = psNeemAL.size();
+                    if (countNeemPlant > 0) {
+                        for (int i = 0; i < psNeemAL.size(); i++) {
+                            Gson gson = new Gson();
+                            String data = gson.toJson(psNeemAL.get(i));
+                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                            RequestBody body = RequestBody.create(JSON, data);
+
+                            sendAddPlantData(body, Integer.parseInt(psNeemAL.get(i).getLocal_id()));
+                        }
+                    } else {
+                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(context, R.string.sync_land_holding, Toast.LENGTH_LONG).show();
+                }
+            }
+            else {
+                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+}
+
     private void sendAddLandData(RequestBody body, int local_id) {
         ProgressDialog dialog = ProgressDialog.show(context, "", getString(R.string.Please_wait), true);
         APIClient.getPsClient().create(JubiForm_API.class).PSAddLand(body).enqueue(new Callback<JsonObject>() {
@@ -349,40 +381,7 @@ public class PS_Synchronize extends AppCompatActivity {
             }
         });
     }
-    private void sendNeemPlanningDataOnServer() {
-        try {
-            if (CommonClass.isInternetOn(context)) {
-                psNeemPlantationPojoArrayList=sqliteHelper.getPSNeemPlantationDataToBeSync();
-                landHoldingAL=sqliteHelper.getPSLandSyn();
-                if (landHoldingAL.size()==0) {
-                    psNeemPlantationPojoArrayList = sqliteHelper.getPSNeemPlantationDataToBeSync();
-                    countNeemPlant = psNeemPlantationPojoArrayList.size();
-                    if (countNeemPlant > 0) {
-                        for (int i = 0; i < psNeemPlantationPojoArrayList.size(); i++) {
-                           // psNeemPlantationPojoArrayList.get(i).setRole_id(sharedPrefHelper.getString("role_id", ""));
 
-                            Gson gson = new Gson();
-                            String data = gson.toJson(psNeemPlantationPojoArrayList.get(i));
-                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-                            RequestBody body = RequestBody.create(JSON, data);
-
-                            sendAddPlantData(body, Integer.parseInt(psNeemPlantationPojoArrayList.get(i).getLocal_id()));
-                        }
-                    } else {
-                        Toast.makeText(context, R.string.no_data_pending, Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    Toast.makeText(context, R.string.sync_land_holding, Toast.LENGTH_LONG).show();
-                }
-            }
-            else {
-                Toast.makeText(PS_Synchronize.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-//
     private void sendAddPlantData(RequestBody body, int local_id) {
         ProgressDialog dialog = ProgressDialog.show(this, "", getString(R.string.Please_wait), true);
         APIClient.getPsClient().create(JubiForm_API.class).add_neem_plant(body).enqueue(new Callback<JsonObject>() {
@@ -425,8 +424,8 @@ public class PS_Synchronize extends AppCompatActivity {
 private void sendNeemMonitoringDataOnServer() {
     try {
         if (CommonClass.isInternetOn(context)) {
-            psNeemPlantationPojoArrayList = sqliteHelper.getPSNeemPlantationDataToBeSync();
-            if (psNeemPlantationPojoArrayList.size() == 0) {
+            psNeemAL = sqliteHelper.getPSNeemPlantationDataToBeSync();
+            if (psNeemAL.size() == 0) {
                 neem_monitoring_pojoArrayList = sqliteHelper.getPSNeemMonitoringForSync();
                 countNeemMonitoring = neem_monitoring_pojoArrayList.size();
                 if (countNeemMonitoring > 0) {

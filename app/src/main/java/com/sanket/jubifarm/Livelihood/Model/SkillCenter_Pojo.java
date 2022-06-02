@@ -83,12 +83,14 @@ public class SkillCenter_Pojo {
     private static final String COLUMN_VILLAGE_ID = "village_id";
     private static final String COLUMN_PINCODE = "pincode";
     private static final String COLUMN_STATUS = "status";
+    private static final String COLUMN_CREATED_AT = "created_at";
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_CENTER_NAME + " INTEGER,"
             + COLUMN_STATE_ID + " TEXT, "
             + COLUMN_DISTRICT_ID + " TEXT, "
+            + COLUMN_CREATED_AT + " TEXT, "
             + COLUMN_BLOCK_ID + " TEXT,"
             + COLUMN_VILLAGE_ID + " TEXT,"
             + COLUMN_PINCODE + " TEXT,"

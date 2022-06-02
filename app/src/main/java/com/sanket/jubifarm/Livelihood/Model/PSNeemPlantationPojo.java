@@ -2,7 +2,8 @@ package com.sanket.jubifarm.Livelihood.Model;
 
 import java.util.ArrayList;
 
-public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
+public class PSNeemPlantationPojo  {
+
     private String local_id;
     private String id;
     private String farmer_id;
@@ -114,7 +115,6 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
     private static final String COLUMN_LATITUDE = "latitude";
     private static final String COLUMN_LONGITUDE = "longitude";
     private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
-    //private static final String COLUMN_GEO_COORDINATES = "geo_coordinates";
     private static final String COLUMN_FLAG = "flag";
     private static final String COLUMN_USER_ID = "user_id";
 
@@ -122,7 +122,7 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
             + COLUMN_LOCAL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +COLUMN_ID + " INTEGER, "
+            + COLUMN_ID + " INTEGER, "
             + COLUMN_NEEM_PLANTATION_IMAGE + " TEXT, "
             + COLUMN_FARMER_ID + " TEXT, "
             + COLUMN_LAND_ID + " TEXT, "
@@ -132,6 +132,5 @@ public class PSNeemPlantationPojo extends ArrayList<PSNeemPlantationPojo> {
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_USER_ID + " TEXT, "
             + COLUMN_FLAG + " TEXT "
-           // + COLUMN_GEO_COORDINATES + " TEXT "
             + ")";
 }

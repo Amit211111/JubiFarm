@@ -133,6 +133,7 @@ public class CandidatePojo
     private static final String COLUMN_LATITUTE= "latitude";
     private static final String COLUMN_LONGITUDE= "longitude";
     private static final String COLUMN_USER_ID= "user_id";
+    private static final String COLUMN_STATUS= "status";
     private static final String COLUMN_DATE_OF_COMPLETION_OF_TRAINING= "date_of_completion_of_training";
 
 
@@ -145,6 +146,7 @@ public class CandidatePojo
             + COLUMN_NAME + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
             + COLUMN_USER_ID + " TEXT, "
+            + COLUMN_STATUS + " TEXT, "
             + COLUMN_LATITUTE + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_QUALIFICATION + " TEXT, "

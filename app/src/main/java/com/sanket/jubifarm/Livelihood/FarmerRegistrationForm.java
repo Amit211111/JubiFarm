@@ -460,13 +460,13 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
-
-                    Gson gson = new Gson();
-                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);
-                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-                    RequestBody body = RequestBody.create(JSON, data);
-                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
                     }
+//                    Gson gson = new Gson();
+//                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);
+//                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+//                    RequestBody body = RequestBody.create(JSON, data);
+//                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
+//                    }
                 }else{
                     Toast.makeText(FarmerRegistrationForm.this, "jhdgjhd", Toast.LENGTH_SHORT).show();
                 }

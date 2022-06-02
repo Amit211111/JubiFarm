@@ -114,6 +114,7 @@ public class MonitoringStatusPojo
     private static final String COLUMN_LATITUDE="latitude";
     private static final String COLUMN_LONGITUDE="longitude";
     private static final String COLUMN_USER_ID="user_id";
+    private static final String COLUMN_STATUS="status";
 
 
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +"("
@@ -123,6 +124,7 @@ public class MonitoringStatusPojo
             + COLUMN_WORKING_STATUS + " TEXT, "
             + COLUMN_FLAG + " TEXT, "
             + COLUMN_USER_ID + " TEXT, "
+            + COLUMN_STATUS + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_CANDIDATE_ID + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "
