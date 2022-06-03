@@ -26,6 +26,8 @@ public class PS_NeemPlantationList extends AppCompatActivity {
   String screenType;
   SharedPrefHelper sharedPrefHelper;
   ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
+  String land_id = "";
+
 
 
     String screen_type="";
@@ -50,7 +52,19 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         }else {
             fab.setVisibility(View.GONE);
         }
-        psNeemPlantationPojos = sqliteHelper.getneemplantation();
+
+        /*get intent value here*/
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            land_id = bundle.getString("land_ID", "");
+        }
+
+        if(sharedPrefHelper.getString("plantation_list","").equals("plantation")){
+            psNeemPlantationPojos = sqliteHelper.getneemplantation("");
+        }else{
+            psNeemPlantationPojos = sqliteHelper.getneemplantation(land_id);
+        }
+
         if(psNeemPlantationPojos.size()>0)
         {
             NeemPlantationAdapter neemPlantationAdapter = new NeemPlantationAdapter(this, psNeemPlantationPojos, screenType);

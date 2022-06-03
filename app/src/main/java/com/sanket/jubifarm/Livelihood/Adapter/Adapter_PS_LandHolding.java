@@ -94,6 +94,7 @@ public class Adapter_PS_LandHolding extends RecyclerView.Adapter<Adapter_PS_Land
                   sharedPrefHelper.setString("prayawran_screenType", "monitoring");
                   sharedPrefHelper.setString("plantation_screenType", "monitoring");
                   Intent intent = new Intent(context, PS_NeemPlantationList.class);
+                  intent.putExtra("land_ID",arrayList.get(position).getLand_id());
                   context.startActivity(intent);
               }
           }

@@ -62,6 +62,7 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
             public void onClick(View view) {
                 sharedPrefHelper.setString("plantation_screenType", "view");
                 sharedPrefHelper.setString("prayawran_screenType", "land");
+                sharedPrefHelper.setString("plantation_list", "plantation");
                 Intent intent1=new Intent(ParyavaranSakhiHome.this,PS_NeemPlantationList.class);
                 startActivity(intent1);
             }
@@ -79,6 +80,7 @@ public class ParyavaranSakhiHome extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent2=new Intent(ParyavaranSakhiHome.this,PS_LandHoldingList.class);
                 sharedPrefHelper.setString("prayawran_screenType", "monitoring");
+                sharedPrefHelper.setString("plantation_list", "monitoring");
                 startActivity(intent2);
             }
         });

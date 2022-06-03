@@ -5625,14 +5625,19 @@ public class SqliteHelper extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<PSNeemPlantationPojo> getneemplantation() {
+    public ArrayList<PSNeemPlantationPojo> getneemplantation(String land_id) {
         ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
+        String query="";
         try
         {
             if(db != null && !db.isReadOnly())
             {
-                String query = "select * from add_neem_plant";
+                if(land_id.equals("")){
+                     query = "select * from add_neem_plant";
+                }else{
+                     query = "select * from add_neem_plant where land_id ='" + land_id + "'";
+                }
                 Cursor cursor = db.rawQuery(query, null);
                 if(cursor != null && cursor.getCount() > 0)
                 {
