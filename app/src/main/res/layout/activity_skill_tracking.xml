@@ -261,10 +261,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30dp"
                     android:hint="Enter Your Qualification"
-
                     android:background="@drawable/textviewboader"
                     android:fontFamily="@font/itcavantagradestdbk"
-
                     android:maxLength="10"
                     android:paddingLeft="@dimen/_5dp"
                     android:singleLine="true"

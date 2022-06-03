@@ -451,7 +451,10 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                        paryavaranSakhiRegistrationPojo.setFarmer_name(local_id);
                         sqliteHelper.updatePSFarmerRegistrationData(paryavaranSakhiRegistrationPojo, local_id);
                         Intent intent=new Intent(FarmerRegistrationForm.this,FarmerRecycle.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                     } else {
                         long id = sqliteHelper.getPSFarmerRegistrationData(paryavaranSakhiRegistrationPojo);
 
@@ -460,6 +463,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+                        finish();
                     }
 //                    Gson gson = new Gson();
 //                    String data = gson.toJson(paryavaranSakhiRegistrationPojo);

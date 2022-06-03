@@ -137,6 +137,8 @@ public class NeemMonitoring extends AppCompatActivity {
                 sqliteHelper.AddneemMonitoring(neem_monitoring);
 
                 Intent intent = new Intent(NeemMonitoring.this, PS_LandHoldingList.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

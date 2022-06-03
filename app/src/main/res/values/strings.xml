@@ -598,6 +598,13 @@
     <string name="Please_Enter_HouseholdNo">Please_Enter_HouseholdNo</string>
     <string name="sync_neem_plantation_data">sync_neem_plantation_data</string>
     <string name="syn_neem_monitoring_data">syn_neem_monitoring_data</string>
+    <string name="Please_Enter_Name">Please_Enter_Name</string>
+    <string name="Please_Valid_Email_id" />
+    <string name="Please_Enter_Valid_Email_id" />
+    <string name="Please_Enter_Valid_Mobile_Number">Please_Enter_Valid_Mobile_Number</string>
+    <string name="Please_Enter_Valid_email_id">Please_Enter_Valid_email_id</string>
+    <string name="Please_Enter_Qualification">Please_Enter_Qualification</string>
+    <string name="Please_Enter_Complitation_Date">Please_Enter_Complitation_Date</string>
 
 
 </resources>

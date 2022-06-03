@@ -82,6 +82,8 @@ public class FarmerRecycle extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent1=new Intent(FarmerRecycle.this,FarmerRegistrationForm.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
             }
         });

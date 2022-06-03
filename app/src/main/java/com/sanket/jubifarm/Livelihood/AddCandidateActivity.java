@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -34,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Random;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -44,19 +46,21 @@ import retrofit2.Response;
 public class AddCandidateActivity extends AppCompatActivity {
 
 
-//    String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
-   // String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
+    //    String [] skill_center={"Select Center","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
+    // String [] training_stream={"Select Training Stream","Java","Python","C#.Net","Php","Other"};
     Spinner spn_skill_center;
-    EditText et_training_stream, et_name,et_email,et_mobileno,et_qualification,et_date_completation;
+    EditText et_training_stream, et_name, et_email, et_mobileno, et_qualification, et_date_completation;
     Button submit;
     SqliteHelper sqliteHelper;
     CandidatePojo candidatePojo;
-    int mYear,mMonth,mDay,year,month,day;
+    int mYear, mMonth, mDay, year, month, day;
     DatePickerDialog datePickerDialog;
     SharedPrefHelper sharedPrefHelper;
     ArrayList<String> SkillCenterArrayList = new ArrayList<>();
     HashMap<String, Integer> SkillCenterHM = new HashMap<>();
     int skill_centerHM = 0;
+    private Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,30 +112,81 @@ public class AddCandidateActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (checkValidation()) {
+                    Random random = new Random();
+                    int value = random.nextInt(1000);
 
-                candidatePojo = new CandidatePojo();
-                candidatePojo.setName(et_name.getText().toString().trim());
-                candidatePojo.setEmail(et_email.getText().toString().trim());
-                candidatePojo.setQualification(et_qualification.getText().toString().trim());
-                candidatePojo.setMobileno(et_mobileno.getText().toString().trim());
-                candidatePojo.setUser_id(sharedPrefHelper.getString("user_id",""));
-                candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
-                candidatePojo.setTraining_stream(et_training_stream.getText().toString().trim());
-                candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
-                candidatePojo.setLatitude(sharedPrefHelper.getString("LAT",""));
-                candidatePojo.setLongitude(sharedPrefHelper.getString("LONG",""));
+                    candidatePojo = new CandidatePojo();
+                    candidatePojo.setName(et_name.getText().toString().trim());
+                    candidatePojo.setEmail(et_email.getText().toString().trim());
+                    candidatePojo.setQualification(et_qualification.getText().toString().trim());
+                    candidatePojo.setMobileno(et_mobileno.getText().toString().trim());
+                    candidatePojo.setUser_id(sharedPrefHelper.getString("user_id", ""));
+                    candidatePojo.setDate_of_completion_of_training(et_date_completation.getText().toString().trim());
+                    candidatePojo.setTraining_stream(et_training_stream.getText().toString().trim());
+                    candidatePojo.setSkill_center(spn_skill_center.getSelectedItem().toString().trim());
+                    candidatePojo.setLatitude(sharedPrefHelper.getString("LAT", ""));
+                    candidatePojo.setLongitude(sharedPrefHelper.getString("LONG", ""));
 
 
-                sqliteHelper.SkillTracking(candidatePojo);
+                    sqliteHelper.SkillTracking(candidatePojo);
 
-                Intent intent = new Intent(AddCandidateActivity.this, CandidateList.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                    Intent intent = new Intent(AddCandidateActivity.this, CandidateList.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
             }
-        });
 
+        });
     }
+
+    private boolean checkValidation() {
+        boolean ret = true;
+        if (!et_name.getText().toString().trim().matches("[a-zA-Z ]+")) {
+            EditText flagEditfield = et_name;
+            String msg = getString(R.string.Please_Enter_Name);
+            et_name.setError(msg);
+            et_name.requestFocus();
+            return false;
+        }
+        if (et_mobileno.getText().toString().trim().length() > 10) {
+            EditText flagEditfield = et_mobileno;
+            String msg = getString(R.string.Please_Enter_Valid_Contact_Number);
+            et_mobileno.setError(msg);
+            et_mobileno.requestFocus();
+            return false;
+        }
+        if (!et_qualification.getText().toString().trim().matches("[a-zA-Z ]+")) {
+            EditText flagEditfield = et_qualification;
+            String msg = getString(R.string.Please_Enter_Qualification);
+            et_qualification.setError(msg);
+            et_qualification.requestFocus();
+            return false;
+        }
+        if (!et_training_stream.getText().toString().trim().matches("[a-zA-Z ]+")) {
+            EditText flagEditfield = et_training_stream;
+            String msg = getString(R.string.Please_Enter_Training_Name);
+            et_training_stream.setError(msg);
+            et_training_stream.requestFocus();
+            return false;
+        }
+
+//        if (!et_date_completation.getText().toString().trim().matches("[a-zA-Z ]+")) {
+//            EditText flagEditfield = et_date_completation;
+//            String msg = getString(R.string.Please_Enter_Complitation_Date);
+//            et_date_completation.setError(msg);
+//            et_date_completation.requestFocus();
+//            return false;
+//        }
+
+        if (et_email.getText().toString().trim().length() == 0) {
+            Toast.makeText(context, R.string.Please_Enter_Valid_email_id, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return ret;
+    }
+
 
 
     private void IntilizeAll()

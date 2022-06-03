@@ -96,8 +96,10 @@ public class NeemPlantation extends AppCompatActivity {
 
         et_plant_date.setKeyListener(null);
 
-        GeoCoodinate.setText(sharedPrefHelper.getString("LAT", "") + ", " +
-                sharedPrefHelper.getString("LONG", ""));
+        String lat=sharedPrefHelper.getString("LAT", "");
+        String lng=sharedPrefHelper.getString("LONG", "");
+        GeoCoodinate.setText( lat+ ", " +lng);
+
         //Date Picker
         et_plant_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +162,10 @@ public class NeemPlantation extends AppCompatActivity {
 
                 Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
                 sharedPrefHelper.setString("plantation_screenType", "view");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                finish();
 
             }
         });
