@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -241,6 +244,30 @@ public class NeemPlantation extends AppCompatActivity {
         }
         return Base64.encodeToString(byteArrayOS.toByteArray(), Base64.NO_WRAP);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(NeemPlantation.this, PS_NeemPlantationList.class);
+                startActivity(intent);
+                return true;
+            case R.id.home_menu:
+                Intent intent1 = new Intent(this,ParyavaranSakhiHome.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
 
 

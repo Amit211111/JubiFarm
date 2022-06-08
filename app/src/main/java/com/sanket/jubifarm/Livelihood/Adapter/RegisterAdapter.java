@@ -93,7 +93,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
         TextView txt_farmer_name, txt_farmer_location, txt_set_default,txt_mobilenoo;
         LinearLayout linearLayoutfarmer,ll_holder;
         ImageView img_farmer,IV_profile;
-        TextView tv_EditDetail;
+        TextView tv_EditDetail,tv_search;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -105,6 +105,7 @@ public class RegisterAdapter extends RecyclerView.Adapter<RegisterAdapter.ViewHo
             this.ll_holder = (LinearLayout) itemView.findViewById(R.id.ll_holder);
             //this.IV_profile = (ImageView) itemView.findViewById(R.id.IV_profile);
             this.img_farmer = (ImageView) itemView.findViewById(R.id.img_farmer);
+           // this.tv_search = (TextView) itemView.findViewById(R.id.tv_search);
 
         }
     }

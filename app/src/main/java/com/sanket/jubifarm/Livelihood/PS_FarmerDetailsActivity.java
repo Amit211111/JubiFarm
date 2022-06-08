@@ -65,8 +65,7 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ps_farmer_detail);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setTitle(Html.fromHtml("<font color=\"#000000\">" +getString(R.string.FARMER_DETAILS)+ "</font>"));
 
@@ -389,6 +388,28 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
         paryavaranSakhiRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
 
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(PS_FarmerDetailsActivity.this, FarmerRecycle.class);
+                startActivity(intent);
+                return true;
+            case R.id.home_menu:
+                Intent intent1 = new Intent(this,ParyavaranSakhiHome.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

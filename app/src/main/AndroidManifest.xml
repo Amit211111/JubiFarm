@@ -38,15 +38,12 @@
         tools:replace="android:allowBackup">
         <activity
             android:name=".Livelihood.PS_Helpline"
-            android:parentActivityName=".Livelihood.ParyavaranSakhiHome"
             android:exported="true" />
         <activity
             android:name=".Livelihood.NeemPlantationViewActivity"
-            android:parentActivityName=".Livelihood.PS_NeemPlantationList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.STSynchronize"
-            android:parentActivityName=".Livelihood.ParyavaranSakhiHome"
             android:exported="false" />
         <activity
             android:name=".Livelihood.SkillTrackingMenuActivity"
@@ -54,6 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".Livelihood.MonitoringView"
+            android:parentActivityName=".Livelihood.CandidateList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_FarmerDetailsActivity"
@@ -69,22 +67,19 @@
             android:exported="false" />
         <activity
             android:name=".Livelihood.CandidateList"
-            android:parentActivityName=".Livelihood.SkillTrackingMenuActivity"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_Neem_LandHolding_List"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_Synchronize"
-            android:parentActivityName=".Livelihood.ParyavaranSakhiHome"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_LandHoldingList"
-            android:parentActivityName=".Livelihood.ParyavaranSakhiHome"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_NeemPlantationList"
-            android:parentActivityName=".Livelihood.ParyavaranSakhiHome"
+            android:parentActivityName=".Livelihood.PS_LandHoldingList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.FarmerRecycle"
@@ -92,27 +87,21 @@
             android:exported="false" />
         <activity
             android:name=".Livelihood.FarmerRegistrationForm"
-            android:parentActivityName=".Livelihood.FarmerRecycle"
             android:exported="false" />
         <activity
             android:name=".Livelihood.PS_LandHolding"
-            android:parentActivityName=".Livelihood.PS_LandHoldingList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.NeemMonitoring"
-            android:parentActivityName=".Livelihood.PS_NeemPlantationList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.NeemPlantation"
-            android:parentActivityName=".Livelihood.PS_NeemPlantationList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.AddCandidateActivity"
-            android:parentActivityName=".Livelihood.CandidateList"
             android:exported="false" />
         <activity
             android:name=".Livelihood.ParyavaranSakhiHome"
-            android:parentActivityName=".Livelihood.MainMenu"
             android:exported="false" />
         <activity
             android:name=".Livelihood.MainMenu"

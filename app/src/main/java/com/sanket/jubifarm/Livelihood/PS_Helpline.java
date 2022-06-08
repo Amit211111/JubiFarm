@@ -75,5 +75,24 @@ public class PS_Helpline extends AppCompatActivity {
 //        }
 //        return super.onOptionsItemSelected(item);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.home_menu) {
+
+            Intent intent = new Intent(this, ParyavaranSakhiHome.class);
+            this.startActivity(intent);
+        }
+        return true;
+
+    }
 
 }

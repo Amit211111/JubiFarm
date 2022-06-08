@@ -345,11 +345,12 @@
             android:id="@+id/et_remark"
             android:layout_width="match_parent"
             android:layout_height="82dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginRight="13dp"
+            android:gravity="center_vertical | top"
+            android:padding="4dp"
+            android:text=""
+            android:textSize="@dimen/text_12"
             android:layout_marginLeft="3dp"
-
             android:background="@drawable/box_type_draw"/>
         <TextView
             android:id="@+id/tv_submit"

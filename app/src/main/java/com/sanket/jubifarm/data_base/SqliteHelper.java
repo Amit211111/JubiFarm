@@ -338,6 +338,87 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public ArrayList<ParyavaranSakhiRegistrationPojo> getPSFarmerList(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<ParyavaranSakhiRegistrationPojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "";
+                if (name.equals("")) {
+
+                    //  query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id ";
+                    query = "select * from ps_farmer_registration ";
+                } else {
+
+                    query = "select * from ps_farmer_registration where farmer_name Like '"+name+"%'" ;
+                }
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        ParyavaranSakhiRegistrationPojo farmerRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
+                        farmerRegistrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                      //  farmerRegistrationPojo.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                        farmerRegistrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
+                        farmerRegistrationPojo.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+                        farmerRegistrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                        //farmerRegistrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                        farmerRegistrationPojo.setFarmer_image(cursor.getString(cursor.getColumnIndex("farmer_image")));
+
+                        // farmerRegistrationPojo.setProfile_photo(cursor.getString(cursor.getColumnIndex("profile_photo")));
+                        cursor.moveToNext();
+                        arrayList.add(farmerRegistrationPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
+
+    public ArrayList<CandidatePojo> getSkillCenter(String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<CandidatePojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "";
+                if (name.equals("")) {
+
+                    //  query = "select * from farmer_registration INNER JOIN users ON farmer_registration.user_id = users.id ";
+                    query = "select * from candidate_registration ";
+                } else {
+
+                    query = "select * from candidate_registration where name Like '"+name+"%'" ;
+                }
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        CandidatePojo candidatePojo = new CandidatePojo();
+                        candidatePojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        candidatePojo.setName(cursor.getString(cursor.getColumnIndex("name")));
+                        candidatePojo.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                        candidatePojo.setSkill_center(cursor.getString(cursor.getColumnIndex("skill_center")));
+
+                        cursor.moveToNext();
+                        arrayList.add(candidatePojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
+
+
     public ArrayList<FarmerRegistrationPojo> getFarmerListforfilter(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<FarmerRegistrationPojo> arrayList = new ArrayList<>();
@@ -371,6 +452,41 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    public ArrayList<ParyavaranSakhiRegistrationPojo> getPSFarmerListforfilter(String village) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<ParyavaranSakhiRegistrationPojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String   query = "select * from ps_farmer_registration where village_id ='"+village+"'" ;
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        ParyavaranSakhiRegistrationPojo farmerRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
+                        farmerRegistrationPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        //farmerRegistrationPojo.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                        farmerRegistrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
+                        farmerRegistrationPojo.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+                        farmerRegistrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                        //farmerRegistrationPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                       // farmerRegistrationPojo.setProfile_photo(cursor.getString(cursor.getColumnIndex("profile_photo")));
+
+                        // farmerRegistrationPojo.setProfile_photo(cursor.getString(cursor.getColumnIndex("profile_photo")));
+                        cursor.moveToNext();
+                        arrayList.add(farmerRegistrationPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
+
 
 
     public ArrayList<FarmerRegistrationPojo> getFarmerFamily(String user_id) {
@@ -1096,6 +1212,65 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return stat;
     }
 
+    public HashMap<String, Integer> getPSFarmerspinner() {
+        HashMap<String, Integer> stat = new HashMap<>();
+        ParyavaranSakhiRegistrationPojo farmerRegistrationPojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "select local_id, farmer_name from ps_farmer_registration";
+
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        farmerRegistrationPojo = new ParyavaranSakhiRegistrationPojo();
+                        farmerRegistrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
+                        farmerRegistrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                       // farmerRegistrationPojo.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                        cursor.moveToNext();
+                        stat.put(farmerRegistrationPojo.getFarmer_name(), Integer.valueOf(farmerRegistrationPojo.getLocal_id()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+        return stat;
+    }
+
+    public HashMap<String, Integer> getPSNeemspinner() {
+        HashMap<String, Integer> stat = new HashMap<>();
+        LandHoldingPojo farmerRegistrationPojo;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        try {
+            if (sqLiteDatabase != null && sqLiteDatabase.isOpen() && !sqLiteDatabase.isReadOnly()) {
+                String query = "select local_id, land_id from ps_land_holding";
+
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast()) {
+                        farmerRegistrationPojo = new LandHoldingPojo();
+                      //  farmerRegistrationPojo.setFarmer_name(cursor.getString(cursor.getColumnIndex("farmer_name")));
+                        farmerRegistrationPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        // farmerRegistrationPojo.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                        farmerRegistrationPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                        cursor.moveToNext();
+                        stat.put(farmerRegistrationPojo.getLand_id(), Integer.valueOf(farmerRegistrationPojo.getLocal_id()));
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqLiteDatabase.close();
+        }
+        return stat;
+    }
+
     public HashMap<String, Integer> getPlantSpinner(String farmer_id) {
         HashMap<String, Integer> stat = new HashMap<>();
         CropPlaningPojo farmerRegistrationPojo;
@@ -1560,6 +1735,48 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+
+    public ArrayList<PSLandHoldingPojo> getPSLandList(String farmer_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<PSLandHoldingPojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "";
+                if (farmer_id.equals("")) {
+                    query = "SELECT * FROM ps_land_holding ";
+                } else {
+                    query = "SELECT * FROM ps_land_holding where farmer_id = '" + farmer_id + "' ";
+                }
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        PSLandHoldingPojo landHoldingPojo = new PSLandHoldingPojo();
+                        landHoldingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        landHoldingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        landHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                       // landHoldingPojo.set(cursor.getString(cursor.getColumnIndex("image")));
+                        landHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+                        landHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+                        landHoldingPojo.setTotal_no_of_plant(cursor.getString(cursor.getColumnIndex("total_no_of_plant")));
+                        landHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        landHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        landHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
+
+                        cursor.moveToNext();
+                        arrayList.add(landHoldingPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
+
     public HashMap<String, Integer> getLandHoldingListforFarmer(String farmerId) {
         HashMap<String, Integer> hashMap = new HashMap<>();
         CropPlaningPojo cropPlaningPojo;
@@ -5462,7 +5679,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return landHoldingPojo;
     }
 
-    public ArrayList<PSLandHoldingPojo> PSgetRegistrationData(String local_id)
+    public ArrayList<PSLandHoldingPojo> PSgetRegistrationData(String farmer_id)
     {
         ArrayList<PSLandHoldingPojo> psLandHoldingPojoArrayList = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
@@ -5472,8 +5689,8 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (db != null && db.isOpen() && !db.isReadOnly())
             {
 
-                if(!local_id.equals("")){
-                    query = "select * from ps_land_holding where local_id='"+local_id+"'";
+                if(!farmer_id.equals("")){
+                    query = "select * from ps_land_holding where farmer_id='"+farmer_id+"'";
 
                 }else{
                     query = "select * from ps_land_holding ";
@@ -5512,6 +5729,58 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return psLandHoldingPojoArrayList;
 
     }
+
+    public ArrayList<PSNeemPlantationPojo> PSgetNeemData(String farmer_id)
+    {
+        ArrayList<PSNeemPlantationPojo> psLandHoldingPojoArrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query="";
+        try
+        {
+            if (db != null && db.isOpen() && !db.isReadOnly())
+            {
+
+                if(!farmer_id.equals("")){
+                    query = "select * from ps_land_holding where farmer_id='"+farmer_id+"'";
+
+                }else{
+                    query = "select * from ps_land_holding ";
+
+                }
+
+
+                @SuppressLint("Recycle") Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0)
+                {
+                    cursor.moveToFirst();
+                    while (!cursor.isAfterLast())
+                    {
+
+                        PSNeemPlantationPojo psLandHoldingPojo = new PSNeemPlantationPojo();
+                        psLandHoldingPojo.setLocal_id(cursor.getString(cursor.getColumnIndex("local_id")));
+                        psLandHoldingPojo.setLand_id(cursor.getString(cursor.getColumnIndex("land_id")));
+                       // psLandHoldingPojo.setLand_unit(cursor.getString(cursor.getColumnIndex("land_unit")));
+                        psLandHoldingPojo.setFarmer_id(cursor.getString(cursor.getColumnIndex("farmer_id")));
+                        //psLandHoldingPojo.setLand_image(cursor.getString(cursor.getColumnIndex("land_image")));
+//                        psLandHoldingPojo.setLand_area(cursor.getString(cursor.getColumnIndex("land_area")));
+//                        psLandHoldingPojo.setLand_name(cursor.getString(cursor.getColumnIndex("land_name")));
+                        psLandHoldingPojo.setFlag(cursor.getString(cursor.getColumnIndex("flag")));
+                        psLandHoldingPojo.setLatitude(cursor.getString(cursor.getColumnIndex("latitude")));
+                        psLandHoldingPojo.setLongitude(cursor.getString(cursor.getColumnIndex("longitude")));
+                        psLandHoldingPojoArrayList.add(psLandHoldingPojo);
+                        cursor.moveToNext();
+                    }
+                }
+                db.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return psLandHoldingPojoArrayList;
+
+    }
+
 
     public long SkillTracking(CandidatePojo householdMasterModel) {
         SQLiteDatabase DB1 = this.getWritableDatabase();

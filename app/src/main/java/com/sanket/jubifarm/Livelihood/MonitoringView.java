@@ -6,6 +6,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -24,7 +27,7 @@ import com.sanket.jubifarm.data_base.SqliteHelper;
 import java.util.Calendar;
 
 public class MonitoringView extends AppCompatActivity {
-    String [] sp_current_work={"Select Current Work","Delhi","Noida","Hyderabad","Mumbai","Kolkata","Munirka"};
+    String [] sp_current_work={"Select Current Work","Employed","Non Employed"};
 
     Spinner spn_current_work;
     EditText et_date_of_monitoring;
@@ -46,6 +49,7 @@ public class MonitoringView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring_view);
         getSupportActionBar().setTitle("Monitoring");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sqliteHelper = new SqliteHelper(getApplicationContext());
 
         IntilizeAll();
@@ -176,4 +180,28 @@ public class MonitoringView extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(MonitoringView.this, CandidateList.class);
+                startActivity(intent);
+                return true;
+            case R.id.home_menu:
+                Intent intent1 = new Intent(this,ParyavaranSakhiHome.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

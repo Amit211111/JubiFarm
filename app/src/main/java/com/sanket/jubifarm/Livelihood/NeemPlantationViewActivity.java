@@ -2,7 +2,11 @@ package com.sanket.jubifarm.Livelihood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.Livelihood.Model.PSNeemPlantationPojo;
@@ -54,4 +58,28 @@ public class NeemPlantationViewActivity extends AppCompatActivity {
         et_plant_date.setText(ps_neem_plantation.getPlantation_Date());
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(NeemPlantationViewActivity.this, PS_NeemPlantationList.class);
+                startActivity(intent);
+                return true;
+            case R.id.home_menu:
+                Intent intent1 = new Intent(this,ParyavaranSakhiHome.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

@@ -2,7 +2,11 @@ package com.sanket.jubifarm.Livelihood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.sanket.jubifarm.Livelihood.Model.CandidatePojo;
@@ -21,6 +25,7 @@ public class CandidateProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_skill_tracking_list_view);
         getSupportActionBar().setTitle("View Data Trained Person");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         IntilizeAll();
 
         /*get intent values here*/
@@ -75,6 +80,28 @@ public class CandidateProfileActivity extends AppCompatActivity {
         tv_qualification.setText(qualification);
         tv_training_date.setText(date_of_training);
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(CandidateProfileActivity.this, CandidateList.class);
+                startActivity(intent);
+                return true;
+            case R.id.home_menu:
+                Intent intent1 = new Intent(this,ParyavaranSakhiHome.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

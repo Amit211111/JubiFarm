@@ -5,7 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.sanket.jubifarm.Livelihood.Adapter.Adapter_PS_LandHolding;
 import com.sanket.jubifarm.Livelihood.Model.PSLandHoldingPojo;
@@ -44,6 +48,26 @@ public class PS_Neem_LandHolding_List extends AppCompatActivity {
         recyclerView.setAdapter(adapter_ps_landHolding);
 
 
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+        menu.findItem(R.id.home_filter).setVisible(true);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.home_menu) {
+
+            Intent intent = new Intent(this, ParyavaranSakhiHome.class);
+            this.startActivity(intent);
+        }
+        return true;
 
     }
 }
