@@ -1568,6 +1568,12 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
             }
         }
 
+
+
+        /////////////////////////////////////////////////////////Camera
+
+
+
         findViewById(R.id.imageView_profile).setOnClickListener(v -> {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -3477,7 +3483,9 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                 } catch (Exception e) {
                     uiHelper.toast(this, getString(R.string.Please_select_another_image));
                 }
-            } else if (scanningResult != null) {
+
+            }
+            else if (scanningResult != null) {
                 //we have a result
                 String scanContent = scanningResult.getContents();
                 String scanFormat = scanningResult.getFormatName();

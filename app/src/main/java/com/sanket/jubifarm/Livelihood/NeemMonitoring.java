@@ -50,8 +50,10 @@ public class NeemMonitoring extends AppCompatActivity {
     SharedPrefHelper sharedPrefHelper;
     String base64;
     Spinner spnNeemSelection;
+    ArrayList<Neem_Monitoring_Pojo>neem_monitoring_pojoArrayList;
     int neemId=0;
     String landId="";
+    String neem_id="";
 
     boolean isEditable = false;
     private Context context = this;
@@ -61,7 +63,9 @@ public class NeemMonitoring extends AppCompatActivity {
     Neem_Monitoring_Pojo neem_monitoring;
     int mYear, mMonth, mDay, year, month, day;
     DatePickerDialog datePickerDialog;
+    Neem_Monitoring_Pojo neem_monitoring_pojo;
     String farmer_id="";
+    String local_id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +78,14 @@ public class NeemMonitoring extends AppCompatActivity {
 
         initliaze();
 
-        setNeemSpinner();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             landId = bundle.getString("landId", "");
-        }
+            neem_id = bundle.getString("neem_id", "");
 
+        }
+        setNeemSpinner();
         et_plant_date.setKeyListener(null);
 
         et_plant_date.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +163,9 @@ public class NeemMonitoring extends AppCompatActivity {
         tv_click =findViewById(R.id.tv_click);
         btnSubmit = findViewById(R.id.btnSubmit);
         spnNeemSelection= findViewById(R.id.spnNeemSelection);
+        neem_monitoring_pojoArrayList=new ArrayList<>();
+        sqliteHelper=new SqliteHelper(this);
+        neem_monitoring_pojo=new Neem_Monitoring_Pojo();
         sqliteHelper = new SqliteHelper(getApplicationContext());
     }
 
@@ -176,16 +184,13 @@ public class NeemMonitoring extends AppCompatActivity {
         final ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.spinner_list, neemArrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnNeemSelection.setAdapter(arrayAdapter);
-        if (isEditable) {
-            int spinnerPosition = 0;
-            Integer strpos1 = land_id;
-            if (strpos1 != null || !strpos1.equals(null) || !strpos1.equals("")) {
-                strpos1 = land_id;
-                spinnerPosition = arrayAdapter.getPosition(strpos1);
-                spnNeemSelection.setSelection(spinnerPosition);
-                spinnerPosition = 0;
-            }
-        }
+
+//            neem_id = sqliteHelper.getPSNeemId(neem_monitoring_pojo.getNeem_id());
+            int pos = arrayAdapter.getPosition(neem_id);
+            spnNeemSelection.setSelection(pos);
+            spnNeemSelection.setEnabled(false);
+            spnNeemSelection.requestFocus();
+//        }
 
         spnNeemSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

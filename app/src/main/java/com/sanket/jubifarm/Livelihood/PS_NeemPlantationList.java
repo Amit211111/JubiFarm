@@ -85,7 +85,6 @@ public class PS_NeemPlantationList extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fab = findViewById(R.id.fab);
-        sharedPrefHelper = new SharedPrefHelper(this);
         initiliaze();
 
         rv_neem_Plantation = findViewById(R.id.rv_neem_Plantation);
@@ -252,10 +251,10 @@ public class PS_NeemPlantationList extends AppCompatActivity {
 
 
     private void initiliaze() {
+        sqliteHelper = new SqliteHelper(this);
         sharedPrefHelper = new SharedPrefHelper(this);
         psNeemPlantationPojos = new ArrayList<>();
         rv_neem_Plantation = findViewById(R.id.rv_neem_Plantation);
-        sqliteHelper = new SqliteHelper(this);
         //PlantCount = findViewById(R.id.PlantCount);
         cropplaning_filter = findViewById(R.id.cropplaning_filter);
       //  tv_no_data = findViewById(R.id.tv_no_data);

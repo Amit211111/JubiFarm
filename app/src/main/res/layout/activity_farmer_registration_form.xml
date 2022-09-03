@@ -45,9 +45,13 @@
                             android:id="@+id/img_selection_pencil"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
-                            android:layout_centerInParent="true"
-                            android:src="@drawable/ic_image_update" />
+                            android:layout_marginTop="122dp"
+                            android:layout_marginEnd="115dp"
+                            android:layout_marginBottom="4dp"
+                            android:src="@drawable/ic_baseline_photo_camera_24" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -230,7 +234,7 @@
                         android:layout_height="@dimen/_30dp"
                         android:layout_weight="1"
                         android:layout_marginTop="8dp"
-
+                        android:inputType="number"
                         android:background="@drawable/textviewboader"
                         android:fontFamily="@font/itcavantagradestdbk"
                         android:maxLength="12"
@@ -240,7 +244,30 @@
                         android:textSize="@dimen/text_12" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_other_enter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:padding="4dp">
 
+                    <EditText
+                        android:id="@+id/et_other_card_value"
+                        android:layout_width="0dip"
+                        android:layout_height="@dimen/_30dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:inputType="textCapCharacters"
+                        android:background="@drawable/textviewboader"
+                        android:fontFamily="@font/itcavantagradestdbk"
+                        android:maxLength="10"
+                        android:singleLine="true"
+                        android:paddingLeft="@dimen/_5dp"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/text_12" />
+
+                </LinearLayout>
 
 
 
@@ -1117,7 +1144,7 @@
                         android:layout_height="@dimen/_30dp"
                         android:background="@drawable/textviewboader"
                         android:fontFamily="@font/itcavantagradestdbk"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:maxLength="4"
 
                         android:paddingLeft="@dimen/_5dp"

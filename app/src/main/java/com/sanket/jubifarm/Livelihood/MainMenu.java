@@ -93,20 +93,20 @@ public class MainMenu extends AppDrawer {
 
         });
 
-        skillTracking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("skillsathi_done","").equals("1") ) {
-                    dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
-                    call_skillTrackinghDataDownload();
-                } else {
-                    Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-
-        });
+//        skillTracking.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("skillsathi_done","").equals("1") ) {
+//                    dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
+//                    call_skillTrackinghDataDownload();
+//                } else {
+//                    Intent intent = new Intent(MainMenu.this, SkillTrackingMenuActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }
+//
+//        });
     }
     private void call_landholdingDataDownload() {
         new AsyncTask<Void, Void, Void>(){
@@ -366,7 +366,7 @@ public class MainMenu extends AppDrawer {
 
     private void initi() {
         jubifarm=findViewById(R.id.jubifarm);
-        skillTracking=findViewById(R.id.skillTracking);
+//        skillTracking=findViewById(R.id.skillTracking);
         paryavaran=findViewById(R.id.paryavaran);
         sharedPrefHelper = new SharedPrefHelper(getApplicationContext());
         sqliteHelper = new SqliteHelper(getApplicationContext());

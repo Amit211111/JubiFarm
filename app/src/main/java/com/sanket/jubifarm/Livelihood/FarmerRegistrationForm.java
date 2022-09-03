@@ -74,8 +74,8 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     Button alldataSubmit;
     CheckBox term_condition;
     ArrayList<ParyavaranSakhiRegistrationPojo> paryavaranSakhiRegistrationPojoArrayList = new ArrayList<>();
-    LinearLayout ll_aadhar,ll_other,ll_age,ll_dob,rl_profile_image;
-    EditText householdNo,FarmerAge,Farmerdob,FarmerName,AadharNo,husbandFatherName,mobileNumber,Address,pincode,TotalLandHoldingArea,NoOfMembers;
+    LinearLayout ll_aadhar,ll_other,ll_age,ll_dob,rl_profile_image,ll_other_enter;
+    EditText et_other_card_value,householdNo,FarmerAge,Farmerdob,FarmerName,AadharNo,husbandFatherName,mobileNumber,Address,pincode,TotalLandHoldingArea,NoOfMembers;
     RadioGroup rg_IdCard,rg_age,rg_bpls,rg_PhysicalChallenges;
     RadioButton rb_AadharCard,rb_otherNationalIdCard,rb_age,rb_dob,rb_BPLYes,rb_BPLNo,rb_PhysicalChallengesNo,rb_PhysicalChallengesYes;
     SqliteHelper sqliteHelper;
@@ -239,9 +239,13 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             if (!age.equalsIgnoreCase("")){
                 rb_age.setChecked(true);
                 ll_age.setVisibility(View.VISIBLE);
+                ll_dob.setVisibility(View.GONE);
+
             }else {
                 rb_dob.setChecked(true);
                 ll_dob.setVisibility(View.VISIBLE);
+                ll_age.setVisibility(View.GONE);
+
 
             }
 
@@ -350,13 +354,16 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                     case R.id.rb_AadharCard:
                         ll_aadhar.setVisibility(View.VISIBLE);
                         ll_other.setVisibility(View.GONE);
+                        ll_other_enter.setVisibility(View.GONE);
+                        AadharNo.getText().clear();
                         ID_Card = "Aadhar Card";
-
                         break;
                     case R.id.rb_otherNationalIdCard:
-                        ll_aadhar.setVisibility(View.VISIBLE);
+                        ll_aadhar.setVisibility(View.GONE);
                         ll_other.setVisibility(View.VISIBLE);
+                        ll_other_enter.setVisibility(View.VISIBLE);
                         ID_Card = "Other";
+                        et_other_card_value.getText().clear();
                         break;
                 }
             }
@@ -368,6 +375,8 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                 switch (i) {
                     case R.id.rb_age:
                         ll_age.setVisibility(View.VISIBLE);
+                        ll_dob.setVisibility(View.GONE);
+
                         break;
                     case R.id.rb_dob:
                         ll_age.setVisibility(View.GONE);
@@ -436,7 +445,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
                     paryavaranSakhiRegistrationPojo.setMartial_category(String.valueOf(hmCategory));
                     paryavaranSakhiRegistrationPojo.setId_other_name(ID_Card);
                     paryavaranSakhiRegistrationPojo.setId_type_id(String.valueOf(IDCard));
-                    paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim());
+                    paryavaranSakhiRegistrationPojo.setAadhar_no(AadharNo.getText().toString().trim()+et_other_card_value.getText().toString().trim());
                     paryavaranSakhiRegistrationPojo.setAge(FarmerAge.getText().toString().trim());
                     paryavaranSakhiRegistrationPojo.setDate_of_birth(Farmerdob.getText().toString().trim());
 
@@ -528,8 +537,10 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 
     private void intializeAll()
     {
-        //All Linear Layout
+        //All Linear
+
         sharedPrefHelper=new SharedPrefHelper(this);
+        ll_other_enter=findViewById(R.id.ll_other_enter);
         ll_aadhar=findViewById(R.id.ll_aadhar);
         ll_other=findViewById(R.id.ll_other);
         ll_age=findViewById(R.id.ll_age);
@@ -540,6 +551,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         //Submit All Button
         alldataSubmit =findViewById(R.id.alldataSubmit);
         //All Edit Text
+        et_other_card_value=findViewById(R.id.et_other_card_value);
         FarmerAge=findViewById(R.id.FarmerAge);
         Farmerdob=findViewById(R.id.Farmerdob);
         householdNo =findViewById(R.id.householdNo);
@@ -1103,18 +1115,46 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             return false;
         }
         if (rb_AadharCard.isChecked() || rb_otherNationalIdCard.isChecked()) {
+            if(rb_AadharCard.isChecked()){
+                if (AadharNo.getText().toString().trim().length() < 12 ) {
+                    EditText flagEditfield = husbandFatherName;
+                    String msg = getString(R.string.Please_enter_valid_id);
+                    AadharNo.setError(msg);
+                    AadharNo.requestFocus();
+                    return false;
+                }
+
+            }
+
+            else if(rb_otherNationalIdCard.isChecked()){
+
+                if (spnIdCard.getSelectedItemPosition() > 0) {
+                    String itemvalue = String.valueOf(spnIdCard.getSelectedItem());
+                } else {
+                    TextView errorTextview = (TextView) spnIdCard.getSelectedView();
+                    errorTextview.setError("Error");
+                    errorTextview.requestFocus();
+                    return false;
+                }
+
+                if (!et_other_card_value.getText().toString().trim().matches("[A-Z]{5}[0-9]{4}[A-Z]{1}") ) {
+                    EditText flagEditfield = husbandFatherName;
+                    String msg = getString(R.string.Please_enter_valid_id);
+                    et_other_card_value.setError(msg);
+                    et_other_card_value.requestFocus();
+
+                    return false;
+                }
+
+
+            }
+
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.Please_select_Id_Number), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (AadharNo.getText().toString().trim().length() < 12 ) {
-            EditText flagEditfield = husbandFatherName;
-            String msg = getString(R.string.Please_enter_valid_id);
-            AadharNo.setError(msg);
-            AadharNo.requestFocus();
-            return false;
-        }
+
 
         if (!husbandFatherName.getText().toString().trim().matches("[a-zA-Z ]+")){
             EditText flagEditfield = husbandFatherName;
@@ -1316,8 +1356,6 @@ public class FarmerRegistrationForm extends AppCompatActivity {
             ret=false;
             Toast.makeText(FarmerRegistrationForm.this, R.string.terms_and_conmdition, Toast.LENGTH_SHORT).show();
         }
-
-
         return ret;
     }
     @Override

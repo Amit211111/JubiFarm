@@ -57,6 +57,8 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
     private String user_id="",farmer_id, farmer_name="";
     private String farmerId="";
     private String local_id="";
+    String religion_id="";
+    String religion_name="";
 
     private String st_caste = "",mobile_no="", state = "",categoryy="",religion="",st_annual_income="",district="", block = "",st_date_of_birth="", village = "",st_agee="",father_husbend_name="",aadhar_noo="",house_hold_no="",st_id_other_name="",
            st_pincode = "", st_bpl="", alternative_livelihood="", education_details="",st_martial_category="",st_physical_challenged="",st_total_landholding="",st_agro_climatic_zone="",st_no_of_member="",addresss="";
@@ -207,7 +209,12 @@ public class PS_FarmerDetailsActivity extends AppCompatActivity {
         }
         tv_Pincode.setText(paryavaranSakhiRegistrationPojo.getPincode());
         tv_Address.setText(paryavaranSakhiRegistrationPojo.getAddress());
-        tv_Religion.setText(paryavaranSakhiRegistrationPojo.getReligion_id());
+
+        religion_id=paryavaranSakhiRegistrationPojo.getReligion_id();
+//       religion_name= sqliteHelper.getCloumnNameReligionName("master_name","master","where caption_id='" +religion_id+"'" );
+
+        tv_Religion.setText(religion_name);
+
         tv_totallandHolding.setText(paryavaranSakhiRegistrationPojo.getTotal_land_holding());
         tv_physicalChallenges.setText(paryavaranSakhiRegistrationPojo.getPhysical_challenges());
 //                tv_Irrigation.setText(farmerRegistrationPojo.getIrrigation_facility());

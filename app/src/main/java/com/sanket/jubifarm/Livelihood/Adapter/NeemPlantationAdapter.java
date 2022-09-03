@@ -21,6 +21,7 @@ import com.sanket.jubifarm.Livelihood.NeemMonitoring;
 import com.sanket.jubifarm.Livelihood.NeemPlantationViewActivity;
 import com.sanket.jubifarm.R;
 import com.sanket.jubifarm.data_base.SharedPrefHelper;
+import com.sanket.jubifarm.data_base.SqliteHelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -31,14 +32,17 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
     Context context;
     ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos;
     public String screenType = "";
+    SqliteHelper sqliteHelper;
     SharedPrefHelper sharedPrefHelper;
-
+    String land_name="";
     public NeemPlantationAdapter(Context context, ArrayList<PSNeemPlantationPojo> psNeemPlantationPojos, String screenType)
     {
         this.context = context;
         this.psNeemPlantationPojos = psNeemPlantationPojos;
         this.screenType = screenType;
+        sqliteHelper=new SqliteHelper(context);
         sharedPrefHelper = new SharedPrefHelper(context);
+
     }
     @NonNull
     @Override
@@ -49,7 +53,10 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
 
     @Override
     public void onBindViewHolder(@NonNull NeemPlantationAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.Land_id.setText(psNeemPlantationPojos.get(position).getLand_id());
+       land_name= sqliteHelper.getCloumnNameLand("land_name","ps_land_holding","where land_id='" +psNeemPlantationPojos.get(position).getLand_id()+"'");
+
+
+        holder.Land_id.setText(land_name);
         holder.Neem_Id.setText(psNeemPlantationPojos.get(position).getNeem_id());
         holder.geo_cordinate.setText(psNeemPlantationPojos.get(position).getLatitude() + ", " +psNeemPlantationPojos.get(position).getLongitude());
         if(psNeemPlantationPojos.get(position).getNeem_plantation_image() != null && psNeemPlantationPojos.get(position).getNeem_plantation_image().length() > 200)
@@ -70,10 +77,15 @@ public class NeemPlantationAdapter extends RecyclerView.Adapter<NeemPlantationAd
                 if(screenType.equals("view")) {
                     Intent intent = new Intent(context, NeemPlantationViewActivity.class);
                     intent.putExtra("id",psNeemPlantationPojos.get(position).getLocal_id());
+//                    intent.putExtra("land_name",land_name);
+//                    intent.putExtra("neem_id",psNeemPlantationPojos.get(position).getNeem_id());
+//                    intent.putExtra("date_cordinates",psNeemPlantationPojos.get(position).getPlantation_Date());
+
                     context.startActivity(intent);
                 }else {
                     Intent intent = new Intent(context, NeemMonitoring.class);
                     intent.putExtra("id",psNeemPlantationPojos.get(position).getLocal_id());
+                    intent.putExtra("neem_id",psNeemPlantationPojos.get(position).getNeem_id());
                     intent.putExtra("landId",psNeemPlantationPojos.get(position).getLand_id());
                     context.startActivity(intent);
                 }
