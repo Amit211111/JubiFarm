@@ -206,8 +206,8 @@ public class SyncDataActivity extends AppCompatActivity {
                 countRegistration=farmerRegistrationPojoArrayList.size();
                 if (countRegistration > 0) {
                     for (int i = 0; i < farmerRegistrationPojoArrayList.size(); i++) {
-                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync());
-                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync());
+                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync(farmerRegistrationPojoArrayList.get(i).getId()));
+                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync(farmerRegistrationPojoArrayList.get(i).getId()));
 
                         String userId = "";
                         if (sharedPrefHelper.getString("user_type", "").equals("Farmer")) {
@@ -318,7 +318,9 @@ public class SyncDataActivity extends AppCompatActivity {
                         sqliteHelper.updateId("farmer_registration", "id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "id");
                         sqliteHelper.updateId("farmer_registration", "household_no", Integer.parseInt(household_no), Integer.parseInt(user_id), "user_id");
                         sqliteHelper.updateId("farmer_family", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "user_id");
+                        sqliteHelper.updateId("farmer_family", "farmer_registration_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_registration_id");
                         sqliteHelper.updateId("crop_vegetable_details", "user_id", Integer.parseInt(user_id), Integer.parseInt(localId), "user_id");
+                        sqliteHelper.updateId("crop_vegetable_details", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
                         sqliteHelper.updateId("land_holding", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
                         sqliteHelper.updateId("crop_planning", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");
                         sqliteHelper.updateId("sale_details", "farmer_id", Integer.parseInt(farmer_id), Integer.parseInt(localId), "farmer_id");

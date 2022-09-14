@@ -2132,8 +2132,8 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                                 farmerRegistrationPojoArrayList = sqliteHelper.getTableDataToBeSync();
                                 if (farmerRegistrationPojoArrayList.size() > 0) {
                                     for (int i = 0; i < farmerRegistrationPojoArrayList.size(); i++) {
-                                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync());
-                                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync());
+                                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync(0));
+                                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync(0));
                                         farmerRegistrationPojoArrayList.get(i).setUser_id(sharedPrefHelper.getString("user_id", ""));
                                         farmerRegistrationPojoArrayList.get(i).setFarmer_id(farmer_id);
 
@@ -2325,8 +2325,8 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                                 farmerRegistrationPojoArrayList = sqliteHelper.getTableDataToBeSync();
                                 if (farmerRegistrationPojoArrayList.size() > 0) {
                                     for (int i = 0; i < farmerRegistrationPojoArrayList.size(); i++) {
-                                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync());
-                                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync());
+                                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync(0));
+                                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync(0));
 
                                         Gson gson = new Gson();
                                         String data = gson.toJson(farmerRegistrationPojoArrayList.get(i));

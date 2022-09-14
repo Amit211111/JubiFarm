@@ -2606,6 +2606,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("user_id", id);
+                values.put("farmer_registration_id", id);
                 values.put("name", user.getName());
                 values.put("age", user.getAge());
                 values.put("education_id", user.getEducation_id());
@@ -2640,6 +2641,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
                 ContentValues values = new ContentValues();
                 values.put("user_id", id);
+                values.put("farmer_id", id);
                 values.put("crop_name", user.getCrop_name());
                 values.put("area", user.getArea());
                 values.put("quantity", user.getQuantity());
@@ -3637,14 +3639,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
-    public ArrayList<FarmerFamilyPojo> getFarmerFamilyTableDataToBeSync() {
+    public ArrayList<FarmerFamilyPojo> getFarmerFamilyTableDataToBeSync(int farmer_registration_id) {
         ArrayList<FarmerFamilyPojo> arrayList = new ArrayList<FarmerFamilyPojo>();
         FarmerFamilyPojo familyPojo;
 
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
-                String query = "select * from farmer_family where flag=0";
+                String query = "select * from farmer_family where flag=0 and farmer_registration_id='"+farmer_registration_id+"'";
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
@@ -3709,14 +3711,14 @@ public class SqliteHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
-    public ArrayList<CropVegitableDetails> getCropVegetableDataToBeSync() {
+    public ArrayList<CropVegitableDetails> getCropVegetableDataToBeSync(int farmer_id) {
         ArrayList<CropVegitableDetails> arrayList = new ArrayList<>();
         CropVegitableDetails familyPojo;
 
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             if (db != null && db.isOpen() && !db.isReadOnly()) {
-                String query = "select * from crop_vegetable_details where flag=0";
+                String query = "select * from crop_vegetable_details where flag=0 and farmer_id='"+farmer_id+"'";
                 Cursor cursor = db.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
                     cursor.moveToFirst();
