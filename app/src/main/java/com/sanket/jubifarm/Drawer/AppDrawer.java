@@ -240,6 +240,9 @@ public class AppDrawer extends AppCompatActivity {
                     sharedPrefHelper.setString("mobile", "");
                     sharedPrefHelper.setString("photo", "");
                     sharedPrefHelper.setString("selected_farmer","");
+                    sharedPrefHelper.setString("jubifarm_done", "");
+                    sharedPrefHelper.setString("prayawarn_done", "");
+
                     // drop tables
                     sqliteHelper.dropTable("users");
                     sqliteHelper.dropTable("farmer_registration");

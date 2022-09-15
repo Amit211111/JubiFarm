@@ -21,7 +21,6 @@ public interface JubiForm_API {
 
     @POST("download_master.php")
     Call<JsonObject> getMasterTables(@Body RequestBody body);
-
     @POST("download_general.php")
     Call<JsonArray> getMasterType(@Body RequestBody body);
 

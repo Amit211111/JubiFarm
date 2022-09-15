@@ -64,10 +64,10 @@ public class MainMenu extends AppDrawer {
             public void onClick(View view) {
                 if(sharedPrefHelper.getString("login","").equals("1") && !sharedPrefHelper.getString("prayawarn_done","").equals("1") ) {
                     dialog = ProgressDialog.show(context, "", getString(R.string.plase), true);
-//                    callfarmerDataDownload();
-                    Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
-                    startActivity(intent);
-                    finish();
+                    callfarmerDataDownload();
+//                    Intent intent = new Intent(MainMenu.this, ParyavaranSakhiHome.class);
+//                    startActivity(intent);
+//                    finish();
                     dialog.dismiss();
             }else{
                      Intent intent = new Intent(MainMenu.this,ParyavaranSakhiHome.class);

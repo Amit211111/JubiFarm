@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -222,30 +223,18 @@ public class HomeAcivity extends AppCompatActivity {
     //on back press exit alert dialog
     @Override
     public void onBackPressed() {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setCancelable(false);
-//        builder.setIcon(R.drawable.dialog_alert);
-//        builder.setTitle("Alert!");
-//        builder.setMessage(R.string.are_you_sure_to_want_to_exit_application);
-//        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-                //if user pressed "yes", then he is allowed to exit from application
-//                finishAffinity();
+//
                 Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                 startActivity(intent);
-//
-//            }
-//        });
-//        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                //if user select "No", just cancel this dialog and continue with app
-//                dialog.cancel();
-//            }
-//        });
-//        AlertDialog alert = builder.create();
-//        alert.show();
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
