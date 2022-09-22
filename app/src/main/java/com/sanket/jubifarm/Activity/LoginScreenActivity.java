@@ -114,6 +114,9 @@ public class LoginScreenActivity extends AppCompatActivity implements GoogleApiC
         tv_sapyler = findViewById(R.id.tv_sapyler);
         cb_showPassword=findViewById(R.id.cb_showPassword);
 
+
+
+
         showPassword();
 
         btnLogIn.setOnClickListener(new View.OnClickListener() {

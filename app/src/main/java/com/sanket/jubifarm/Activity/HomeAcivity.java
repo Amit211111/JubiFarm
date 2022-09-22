@@ -37,6 +37,8 @@ public class HomeAcivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_acivity);
+        setTitle("Home");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sharedPrefHelper = new SharedPrefHelper(this);
         sqliteHelper=new SqliteHelper(this);

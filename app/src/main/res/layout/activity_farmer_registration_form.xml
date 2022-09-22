@@ -1146,7 +1146,6 @@
                         android:fontFamily="@font/itcavantagradestdbk"
                         android:inputType="numberDecimal"
                         android:maxLength="4"
-
                         android:paddingLeft="@dimen/_5dp"
                         android:textColor="#000000"
                         android:textSize="@dimen/text_12"/>

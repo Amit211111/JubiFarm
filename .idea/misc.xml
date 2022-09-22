@@ -198,8 +198,17 @@
         <entry key="..\:/Users/Manish/AndroidStudioProjects/JubiFarm/app/src/main/res/menu/logo.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Manish/AndroidStudioProjects/JubiFarm/app/src/main/res/menu/navigation_drawer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Manish/AndroidStudioProjects/JubiFarm/app/src/main/res/menu/sync.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/drawable/popup_dialog_background.xml" value="0.135" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_add_lang.xml" value="0.22" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_farmer_deatil.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_farmer_registration_form.xml" value="0.18" />
         <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_home_acivity.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_main_menu.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_registration.xml" value="0.22" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/activity_registration_list.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/changelanguage.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/layout/toolbar.xml" value="0.17798913043478262" />
+        <entry key="..\:/Users/Neha/Desktop/JubiFarm/app/src/main/res/menu/navigation_drawer.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

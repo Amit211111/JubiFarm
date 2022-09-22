@@ -258,7 +258,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.HomeAcivity"
-            android:parentActivityName=".Livelihood.MainMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.AddPlantAcivity"

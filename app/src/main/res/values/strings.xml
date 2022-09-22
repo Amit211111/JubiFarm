@@ -119,7 +119,7 @@
     <string name="kannada">कन्नड़</string>
 
     <!-- Language for English-->
-    <string name="hone_screen">HOME</string>
+    <string name="hone_screen">Main Menu</string>
     <string name="Farmer_detals">Farmer details</string>
     <string name="farmer_reg">Farmer Registration</string>
     <string name="crop_planning">Crop Planning</string>

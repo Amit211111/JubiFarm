@@ -3301,7 +3301,7 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                 startActivity(intentHome);
                 finish();
             } else {
-                Intent intentHome = new Intent(FarmerRegistration.this, HomeAcivity.class);
+                Intent intentHome = new Intent(FarmerRegistration.this, RegistrationListActivity.class);
                 startActivity(intentHome);
                 finish();
             }
