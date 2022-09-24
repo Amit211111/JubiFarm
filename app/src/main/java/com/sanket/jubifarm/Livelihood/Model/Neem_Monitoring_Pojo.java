@@ -14,6 +14,24 @@ public class Neem_Monitoring_Pojo {
     private String latitude;
     private String longitude;
     private String user_id;
+    private String created_at;
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
 
     public String getUser_id() {
         return user_id;
@@ -124,6 +142,8 @@ public class Neem_Monitoring_Pojo {
     private static final String COLUMN_NEEM_MONITORING_IMAGE = "neem_monitoring_image";
     private static final String COLUMN_REMARKS = "remarks";
     private static final String COLUMN_USER_ID = "user_id";
+    private static final String COLUMN_CREATED_AT = "created_at";
+    private static final String COLUMN_STATUS = "status";
 
 
     public static final String CREATE_TABLE = " CREATE TABLE " + TABLE_NAME + "("
@@ -132,7 +152,9 @@ public class Neem_Monitoring_Pojo {
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_Flag + " TEXT, "
+            + COLUMN_STATUS + " TEXT, "
             + COLUMN_FARMER_ID + " TEXT, "
+            + COLUMN_CREATED_AT + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "
             + COLUMN_USER_ID + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "

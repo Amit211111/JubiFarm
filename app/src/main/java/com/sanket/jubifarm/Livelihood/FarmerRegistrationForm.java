@@ -52,6 +52,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -850,6 +851,8 @@ public class FarmerRegistrationForm extends AppCompatActivity {
         for (int i = 0; i < villageNameHM.size(); i++) {
             villageArrayList.add(villageNameHM.keySet().toArray()[i].toString().trim());
         }
+        Collections.sort(villageArrayList, String.CASE_INSENSITIVE_ORDER);
+
 //        Collections.sort(blockArrayList);
         villageArrayList.add(0, "Select Village");
         //state spinner choose

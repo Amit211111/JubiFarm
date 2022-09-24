@@ -15,6 +15,24 @@ public class PSNeemPlantationPojo  {
     private String latitude;
     private String longitude;
     private String user_id;
+    private String del_action;
+    private String created_at;
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getDel_action() {
+        return del_action;
+    }
+
+    public void setDel_action(String del_action) {
+        this.del_action = del_action;
+    }
 
     public String getUser_id() {
         return user_id;
@@ -117,6 +135,8 @@ public class PSNeemPlantationPojo  {
     private static final String COLUMN_PLANTATION_DATE = "plantation_Date";
     private static final String COLUMN_FLAG = "flag";
     private static final String COLUMN_USER_ID = "user_id";
+    private static final String COLUMN_DEL_ACTION = "del_action";
+    private static final String COLUMN_CREATED_AT = "created_at";
 
 
 
@@ -128,6 +148,8 @@ public class PSNeemPlantationPojo  {
             + COLUMN_LAND_ID + " TEXT, "
             + COLUMN_NEEM_ID + " TEXT, "
             + COLUMN_LATITUDE + " TEXT, "
+            + COLUMN_DEL_ACTION + " TEXT, "
+            + COLUMN_CREATED_AT + " TEXT, "
             + COLUMN_LONGITUDE + " TEXT, "
             + COLUMN_PLANTATION_DATE + " TEXT, "
             + COLUMN_USER_ID + " TEXT, "
