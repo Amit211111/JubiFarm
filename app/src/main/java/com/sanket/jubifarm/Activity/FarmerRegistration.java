@@ -311,7 +311,7 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
 
     private void setEditableFalse() {
         et_householdNo.setEnabled(false);
-        et_householdNo.setTextColor(getResources().getColor(R.color.gray));
+        et_householdNo.setTextColor(getResources().getColor(R.color.gray_first));
     }
 
     private void setFamilyDetails() {
@@ -3350,7 +3350,8 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
         Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         File file;
         try {
-            file = getImageFile(); // 1
+            file = getImageFile();
+            Log.e("TAG", "openCamera: " +file);// 1
         } catch (Exception e) {
             e.printStackTrace();
             uiHelper.toast(this, getString(R.string.Please_take_another_image));
@@ -3367,15 +3368,15 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
 
     private File getImageFile() throws IOException {
         String imageFileName = "JPEG_" + System.currentTimeMillis() + "_";
-        /*File storageDir = new File(
+        File storageDir = new File(
                 Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DCIM
                 ), "Camera"
-        ); */
-        String imagesFolder="images";
-        File storageDir = new File(
-                Environment.getExternalStorageDirectory(), imagesFolder
         );
+        String imagesFolder="images";
+//        File storageDir = new File(
+//                Environment.getExternalStorageDirectory(), imagesFolder
+//        );
         System.out.println(storageDir.getAbsolutePath());
         if (!storageDir.exists()){
             storageDir.mkdirs();

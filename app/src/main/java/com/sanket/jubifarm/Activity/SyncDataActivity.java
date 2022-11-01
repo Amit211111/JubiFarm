@@ -1,5 +1,11 @@
 package com.sanket.jubifarm.Activity;
 
+import static android.os.Build.VERSION.SDK_INT;
+import static android.provider.Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION;
+
+import static com.sanket.jubifarm.data_base.SqliteHelper.DATABASE_NAME;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -7,7 +13,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -40,7 +49,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,6 +119,7 @@ public class SyncDataActivity extends AppCompatActivity {
     private ArrayList<SaleDetailsPojo> saleDetailsPojosAL=new ArrayList<>();
     private ArrayList<SaleDetailsPojo> saleDetailsPojosAL2=new ArrayList<>();
     private String farmer_id="";
+    String Currentdate = "";
     private int countRegistration=0, countLandHolding=0,
             countProductDetails=0, countSaleDetails=0,
             countCropPlant=0, countPlantGrowth=0, cropTotalPlantPlant=0;
@@ -116,6 +135,9 @@ public class SyncDataActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         setTitle(Html.fromHtml("<font color=\"#000000\">" + getString(R.string.SYNC_DATA) + "</font>"));
 
+        Date dt = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Currentdate = dateFormat.format(dt);
         initViews();
     }
 
@@ -806,6 +828,109 @@ public class SyncDataActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public static File getDBFile() {
+        String DB_PATH_ALT="data/data/com.sanket.jubifarm/databases/"+DATABASE_NAME;
+        File dbFile = new File(DB_PATH_ALT);
+
+        return dbFile;
+    }
+
+    public void exportDb(View view) {
+        if (hasManageExternalStoragePermission()){
+            final File file = getDBFile();
+            try {
+                copyFileUsingStream(file, copyToSDcard(DATABASE_NAME));
+                Toast.makeText(this, "DB Exported", Toast.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1201) {
+            final File file = getDBFile();
+            try {
+                copyFileUsingStream(file, copyToSDcard(DATABASE_NAME));
+                Toast.makeText(this, "DB Exported", Toast.LENGTH_LONG).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean hasManageExternalStoragePermission() {
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            if (Environment.isExternalStorageManager()) {
+                return true;
+            } else {
+                if (Environment.isExternalStorageLegacy()) {
+                    return true;
+                }
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                    intent.setData(Uri.parse("package:com.sanket.jubifarm"));
+                    startActivityForResult(intent, 1201); //result code is just an int
+                    return false;
+                } catch (Exception e) {
+                    return false;
+                }
+            }
+        }
+        if (SDK_INT >= Build.VERSION_CODES.Q) {
+            if (Environment.isExternalStorageLegacy()) {
+                return true;
+            } else {
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                    intent.setData(Uri.parse("package:com.sanket.jubifarm"));
+                    startActivityForResult(intent, 1201); //result code is just an int
+                    return false;
+                } catch (Exception e) {
+                    return true; //if anything needs adjusting it would be this
+                }
+            }
+        }
+        return true; // assumed storage permissions granted
+    }
+
+    private static void copyFileUsingStream(File source, File dest) throws IOException {
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = new FileInputStream(source);
+            os = new FileOutputStream(dest);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            if (is!=null)
+                is.close();
+            if (os!=null)
+                os.close();
+        }
+    }
+    public File copyToSDcard(String sFileName) {
+        File root = new File(Environment.getExternalStorageDirectory(), "Db_Backup");
+        if (!root.exists()) {
+            root.mkdirs();
+        } else {
+            root.delete();
+            File root2 = new File(Environment.getExternalStorageDirectory(), "Db_Backup");
+            root2.mkdirs();
+            Toast.makeText(this, "File Replaced", Toast.LENGTH_LONG).show();
+        }
+        File gpxfile = new File(root, sFileName);
+        return gpxfile;
     }
 
     @Override

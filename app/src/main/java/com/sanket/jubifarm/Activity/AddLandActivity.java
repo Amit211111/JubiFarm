@@ -957,15 +957,15 @@ public class AddLandActivity extends AppCompatActivity implements IImagePickerLi
 
     private File getImageFile() throws IOException {
         String imageFileName = "JPEG_" + System.currentTimeMillis() + "_";
-        /*File storageDir = new File(
+        File storageDir = new File(
                 Environment.getExternalStoragePublicDirectory(
                         Environment.DIRECTORY_DCIM
                 ), "Camera"
-        ); */
-        String imagesFolder="images";
-        File storageDir = new File(
-                Environment.getExternalStorageDirectory(), imagesFolder
         );
+ //       String imagesFolder="images";
+//        File storageDir = new File(
+//                Environment.getExternalStorageDirectory(), imagesFolder
+//        );
         System.out.println(storageDir.getAbsolutePath());
         if (!storageDir.exists()){
             storageDir.mkdirs();

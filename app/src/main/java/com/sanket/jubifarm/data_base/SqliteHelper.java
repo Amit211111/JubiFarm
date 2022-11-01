@@ -62,7 +62,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class SqliteHelper extends SQLiteOpenHelper {
-    static final String DATABASE_NAME = "jubi_farm.db";
+    public static final String DATABASE_NAME = "jubi_farm.db";
     static final int DATABASE_VERSION = 5;
     String DB_PATH_SUFFIX = "/databases/";
 
@@ -5486,7 +5486,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
         SQLiteDatabase db1 = this.getWritableDatabase();
         try {
             if (db1 != null && db1.isOpen() && !db1.isReadOnly()) {
-                String query = "select * from ps_farmer_registration ";
+                String query = "select * from ps_farmer_registration order by id desc ";
 
                 @SuppressLint("Recycle") Cursor cursor = db1.rawQuery(query, null);
                 if (cursor != null && cursor.getCount() > 0) {
