@@ -428,6 +428,18 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/buttanshape"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:text="Export Excel"
+        android:onClick="exportExcel"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
 
 
 </LinearLayout>

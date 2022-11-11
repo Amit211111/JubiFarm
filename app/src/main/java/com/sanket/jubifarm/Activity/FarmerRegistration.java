@@ -1946,6 +1946,7 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                 et_NoOfMembers.setText(farmerRegistrationPojo.getNof_member_migrated());
               //  et_CropDetails.setText(farmerRegistrationPojo.getCrop_vegetable_details());
                 Multicropping = farmerRegistrationPojo.getMulti_cropping();
+                if(Multicropping!= null){
                 if (Multicropping.equals("Yes")) {
                     rb_MulticroppingYes.setChecked(true);
                 } else if (Multicropping.equals("No")) {
@@ -1955,27 +1956,32 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                 } else if (Multicropping.equals("नहीं")) {
                     rb_MulticroppingNo.setChecked(true);
                 }
+                }
                 Fertilizer = farmerRegistrationPojo.getFertilizer();
-                if (Fertilizer.equals("Yes")) {
-                    rb_FertilizerYes.setChecked(true);
-                } else if (Fertilizer.equals("No")) {
-                    rb_FertilizerNo.setChecked(true);
-                }else  if (Fertilizer.equals("हाँ")) {
-                    rb_FertilizerYes.setChecked(true);
-                } else if (Fertilizer.equals("नहीं")) {
-                    rb_FertilizerNo.setChecked(true);
+                if(Fertilizer!= null) {
+
+                    if (Fertilizer.equals("Yes")) {
+                        rb_FertilizerYes.setChecked(true);
+                    } else if (Fertilizer.equals("No")) {
+                        rb_FertilizerNo.setChecked(true);
+                    } else if (Fertilizer.equals("हाँ")) {
+                        rb_FertilizerYes.setChecked(true);
+                    } else if (Fertilizer.equals("नहीं")) {
+                        rb_FertilizerNo.setChecked(true);
+                    }
                 }
                 IrrigationFacility = farmerRegistrationPojo.getIrrigation_facility();
-                if (IrrigationFacility.equals("Yes")) {
-                    rb_IrrigationFacilityYes.setChecked(true);
-                } else if (IrrigationFacility.equals("No")) {
-                    rb_IrrigationFacilityNo.setChecked(true);
-                }else  if (IrrigationFacility.equals("हाँ")) {
-                    rb_IrrigationFacilityYes.setChecked(true);
-                } else if (IrrigationFacility.equals("नहीं")) {
-                    rb_IrrigationFacilityNo.setChecked(true);
+                if(IrrigationFacility != null) {
+                    if (IrrigationFacility.equals("Yes")) {
+                        rb_IrrigationFacilityYes.setChecked(true);
+                    } else if (IrrigationFacility.equals("No")) {
+                        rb_IrrigationFacilityNo.setChecked(true);
+                    } else if (IrrigationFacility.equals("हाँ")) {
+                        rb_IrrigationFacilityYes.setChecked(true);
+                    } else if (IrrigationFacility.equals("नहीं")) {
+                        rb_IrrigationFacilityNo.setChecked(true);
+                    }
                 }
-
                 farmerfamilyPojoArrayList.clear();
                 farmerfamilyPojoArrayList = sqliteHelper.getFarmerFamily(String.valueOf(farmerRegistrationPojo.getId()));
                 MyOperationLayoutAddMemeber.addforEdit(FarmerRegistration.this, farmerfamilyPojoArrayList);
@@ -2171,184 +2177,187 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                     }
                 }
                 else {
-                    if (checkValidation()) {
-                        Random random = new Random();
-                        int value = random.nextInt(1000);
+                    String checkMobileNumber= sqliteHelper.getColumnName("mobile", "farmer_registration", " where mobile='"+et_mobileNumber.getText().toString().trim()+"'");
+                    if(checkMobileNumber.equals("")) {
+                        if (checkValidation()) {
+                            Random random = new Random();
+                            int value = random.nextInt(1000);
 //                        farmerRegistrationPojo.setHousehold_no(et_householdNo.getText().toString().trim());
-                        farmerRegistrationPojo.setFarmer_name(et_FarmerName.getText().toString().trim());
-                        farmerRegistrationPojo.setId_no(et_Aadhar.getText().toString().trim());
-                        farmerRegistrationPojo.setFather_husband_name(et_husbandFatherName.getText().toString().trim());
-                        farmerRegistrationPojo.setMobile((et_mobileNumber.getText().toString().trim()));
-                        farmerRegistrationPojo.setHousehold_no(String.valueOf(value));
-                        /*here age condition for month*/
-                        if (et_FarmerAge.getText().toString().trim().equalsIgnoreCase("0")) {
-                            if (age_in_month.length() == 1) {
-                                age_in_month = "0.0" + age_in_month;
-                            }
-                            if (age_in_month.length() == 2) {
-                                age_in_month = "0." + age_in_month;
-                            }
-                            farmerRegistrationPojo.setAge(age_in_month);
-                        } else {
-                            farmerRegistrationPojo.setAge(et_FarmerAge.getText().toString().trim());
-                        }
-                        farmerRegistrationPojo.setDate_of_birth(et_Farmerdob.getText().toString().trim());
-                        farmerRegistrationPojo.setWhat_you_know(what_you_know);
-
-                        //farmerRegistrationPojo.setEducation_qualification(et_Educationdetails.getText().toString());
-                        farmerRegistrationPojo.setTotal_land_holding((et_TotalLandHoldingArea.getText().toString().trim()));
-                        farmerRegistrationPojo.setNof_member_migrated(et_NoOfMembers.getText().toString().trim());
-                        //farmerRegistrationPojo.setCrop_vegetable_details(et_CropDetails.getText().toString().trim());
-                        farmerRegistrationPojo.setAddress(et_address.getText().toString().trim());
-                        farmerRegistrationPojo.setPincode(et_pincode.getText().toString().trim());
-                        farmerRegistrationPojo.setId_type_id(String.valueOf(ID_Card));
-                        farmerRegistrationPojo.setId_other_name(IdCard);
-                        farmerRegistrationPojo.setBpl(bpl);
-                        farmerRegistrationPojo.setPhysical_challenges(PhysicalChallenges);
-                //        farmerRegistrationPojo.setHandicapped(Handicapped);
-                        farmerRegistrationPojo.setMulti_cropping(Multicropping);
-                        farmerRegistrationPojo.setFertilizer(Fertilizer);
-                        farmerRegistrationPojo.setIrrigation_facility(IrrigationFacility);
-                        farmerRegistrationPojo.setReligion_id(String.valueOf(hmReligion));
-                        farmerRegistrationPojo.setCaste(String.valueOf(hmcaste));
-                        farmerRegistrationPojo.setAgro_climat_zone_id(String.valueOf(AgroZone));
-                        farmerRegistrationPojo.setAlternative_livelihood_id(String.valueOf(stralternetLivehood));
-                        farmerRegistrationPojo.setEducation_id(String.valueOf(hmEducation));
-                        farmerRegistrationPojo.setAnnual_income(annualicme);
-                        farmerRegistrationPojo.setCategory_id(String.valueOf(hmCategory));
-                        farmerRegistrationPojo.setState_id(String.valueOf(state_id));
-                        farmerRegistrationPojo.setDistrict_id(String.valueOf(district_id));
-                        farmerRegistrationPojo.setBlock_id(String.valueOf(block_id));
-                        farmerRegistrationPojo.setVillage_id(String.valueOf(village_id));
-                        farmerRegistrationPojo.setGender("Female");
-                        usersPojo.setFirst_name(et_FarmerName.getText().toString().trim());
-                        usersPojo.setLast_name(et_FarmerName.getText().toString().trim());
-                        farmerRegistrationPojo.setGender(getString(R.string.Female));
-                        usersPojo.setFirst_name(et_FarmerName.getText().toString().trim());
-                        usersPojo.setLast_name(et_FarmerName.getText().toString().trim());
-                        usersPojo.setMobile(farmerRegistrationPojo.getMobile());
-                        usersPojo.setEmail(et_FarmerName.getText().toString().trim());
-                        usersPojo.setProfile_photo(base64);
-                        Long aLong = System.currentTimeMillis()/1000;
-                        int uuid = Integer.parseInt(aLong.toString());
-                        usersPojo.setId(uuid);
-
-                        sqliteHelper.saveUsersData(usersPojo);
-                        //in users table last inserted id is user_id
-                        int ids = sqliteHelper.getLastInsertedLocalID();
-
-                        sqliteHelper.getFarmerRegistrationData(farmerRegistrationPojo, String.valueOf(ids));
-
-                        //for crop details
-                        cropDetailHM.clear();
-                        cropDetailHM = MyOperationLayoutAddCropDetails.display(FarmerRegistration.this);
-                        ArrayList<String> cropnameAl = new ArrayList<>();
-                        ArrayList<String> areaAl = new ArrayList<>();
-                        ArrayList<String> quantityAl = new ArrayList<>();
-                        ArrayList<String> seasonAl = new ArrayList<>();
-                        ArrayList<String> unitAl = new ArrayList<>();
-                        ArrayList<String> unitsAl = new ArrayList<>();
-                        ArrayList<String> subAl = new ArrayList<>();
-                        cropnameAl=cropDetailHM.get("name");
-                        areaAl=cropDetailHM.get("area");
-                        seasonAl=cropDetailHM.get("season");
-                        unitAl=cropDetailHM.get("unit");
-                        unitsAl=cropDetailHM.get("units");
-                        subAl=cropDetailHM.get("subname");
-                        quantityAl=cropDetailHM.get("quantity");
-
-                        if (cropnameAl.size()>0 && areaAl.size()>0 && seasonAl.size() >0 && unitAl.size()>0 && unitsAl.size()>0 ){
-                            for (int i = 0; i < cropnameAl.size() ; i++) {
-                                CropVegitableDetails vegitableDetails=new CropVegitableDetails();
-                                vegitableDetails.setCrop_name(String.valueOf(cropCategoryHM.get(cropnameAl.get(i))));
-                                getsubcategoey(Integer.parseInt(vegitableDetails.getCrop_name()));
-                                vegitableDetails.setCrop_type_subcatagory_id(String.valueOf(subCategoryHM.get(subAl.get(i))));
-                                vegitableDetails.setArea(areaAl.get(i));
-                                vegitableDetails.setQuantity(quantityAl.get(i));
-                                vegitableDetails.setSeason_id(seasonAl.get(i));
-                                vegitableDetails.setUnit_id(String.valueOf(unitHM.get(unitAl.get(i).trim())));
-                                vegitableDetails.setUnits_id(String.valueOf(unitshm.get(unitsAl.get(i).trim())));
-                                sqliteHelper.setCropDetailsData(vegitableDetails,String.valueOf(ids));
-                            }
-                        }
-
-                        cropVegitableDetails.setCrop_name(String.valueOf(cat_ID));
-                        cropVegitableDetails.setCrop_type_subcatagory_id(String.valueOf(subcropCategory_id));
-                        cropVegitableDetails.setArea(et_Area.getText().toString().trim());
-                        cropVegitableDetails.setQuantity(et_quantity.getText().toString().trim());
-                        cropVegitableDetails.setUnit_id(String.valueOf(unitId));
-                        cropVegitableDetails.setUnits_id(String.valueOf(unitsId));
-                        cropVegitableDetails.setSeason_id(String.valueOf(seasonId));
-                        sqliteHelper.setCropDetailsData(cropVegitableDetails,String.valueOf(ids));
-                        // for family table
-                        familyHM.clear();
-                        familyHM = MyOperationLayoutAddMemeber.display(FarmerRegistration.this);
-                        ArrayList<String> nameAl = new ArrayList<>();
-                        ArrayList<String> ageAl = new ArrayList<>();
-                        ArrayList<String> educationAl = new ArrayList<>();
-                        ArrayList<String> occupationAl = new ArrayList<>();
-                        ArrayList<String> genderAl = new ArrayList<>();
-                        ArrayList<String> monthlyAl = new ArrayList<>();
-                        ArrayList<String> relationAl = new ArrayList<>();
-                        nameAl = familyHM.get("name");
-                        ageAl = familyHM.get("age");
-                        educationAl = familyHM.get("education");
-                        occupationAl = familyHM.get("occupation");
-                        genderAl = familyHM.get("gender");
-                        monthlyAl = familyHM.get("monthly");
-                        relationAl = familyHM.get("relation");
-                        if (nameAl.size() > 0 && ageAl.size() > 0 && educationAl.size() > 0 && occupationAl.size() > 0
-                                && genderAl.size() > 0 && monthlyAl.size() > 0) {
-                            for (int i = 0; i < nameAl.size(); i++) {
-                                FarmerRegistrationPojo registrationPojo = new FarmerRegistrationPojo();
-                                registrationPojo.setName(nameAl.get(i));
-                                registrationPojo.setEducation_id(String.valueOf(FamilyEducationNameHM.get(educationAl.get(i))));
-                                registrationPojo.setAge(ageAl.get(i));
-                                registrationPojo.setOccupation(alternetLivehoodNameHM.get(occupationAl.get(i)));
-                                registrationPojo.setGender(genderAl.get(i));
-                                registrationPojo.setMonthly_income(FamiliymonthlyNameHM.get(monthlyAl.get(i)));
-                                registrationPojo.setRelation_id((relationHM.get(relationAl.get(i))));
-                                sqliteHelper.getFarmerFamilyData(registrationPojo, String.valueOf(ids));
-                            }
-                        }
-                        farmerRegistrationPojo.setName(et_name.getText().toString().trim());
-                        farmerRegistrationPojo.setEducation_id(String.valueOf(FamiliyEducation));
-                        farmerRegistrationPojo.setAge((et_Age.getText().toString().trim()));
-                        farmerRegistrationPojo.setGender(spn_gender.getSelectedItem().toString().trim());
-                        farmerRegistrationPojo.setMonthly_income(Familiymonthly);
-                        farmerRegistrationPojo.setOccupation((stralternetLivehood));
-                        farmerRegistrationPojo.setRelation_id((relation_id));
-                        sqliteHelper.getFarmerFamilyData(farmerRegistrationPojo, String.valueOf(ids));
-
-                        try {
-                            if (isInternetOn() && fromLogin.equals("1")) {
-                                farmerRegistrationPojoArrayList = sqliteHelper.getTableDataToBeSync();
-                                if (farmerRegistrationPojoArrayList.size() > 0) {
-                                    for (int i = 0; i < farmerRegistrationPojoArrayList.size(); i++) {
-                                        farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync(0));
-                                        farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync(0));
-
-                                        Gson gson = new Gson();
-                                        String data = gson.toJson(farmerRegistrationPojoArrayList.get(i));
-                                        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-                                        RequestBody body = RequestBody.create(JSON, data);
-                                        sendFramerRegistrationData(body, farmerRegistrationPojoArrayList.get(i).getUid());
-                                    }
+                            farmerRegistrationPojo.setFarmer_name(et_FarmerName.getText().toString().trim());
+                            farmerRegistrationPojo.setId_no(et_Aadhar.getText().toString().trim());
+                            farmerRegistrationPojo.setFather_husband_name(et_husbandFatherName.getText().toString().trim());
+                            farmerRegistrationPojo.setMobile((et_mobileNumber.getText().toString().trim()));
+                            farmerRegistrationPojo.setHousehold_no(String.valueOf(value));
+                            /*here age condition for month*/
+                            if (et_FarmerAge.getText().toString().trim().equalsIgnoreCase("0")) {
+                                if (age_in_month.length() == 1) {
+                                    age_in_month = "0.0" + age_in_month;
                                 }
-                            }else if(fromLogin.equals("2")){
+                                if (age_in_month.length() == 2) {
+                                    age_in_month = "0." + age_in_month;
+                                }
+                                farmerRegistrationPojo.setAge(age_in_month);
+                            } else {
+                                farmerRegistrationPojo.setAge(et_FarmerAge.getText().toString().trim());
+                            }
+                            farmerRegistrationPojo.setDate_of_birth(et_Farmerdob.getText().toString().trim());
+                            farmerRegistrationPojo.setWhat_you_know(what_you_know);
 
+                            //farmerRegistrationPojo.setEducation_qualification(et_Educationdetails.getText().toString());
+                            farmerRegistrationPojo.setTotal_land_holding((et_TotalLandHoldingArea.getText().toString().trim()));
+                            farmerRegistrationPojo.setNof_member_migrated(et_NoOfMembers.getText().toString().trim());
+                            //farmerRegistrationPojo.setCrop_vegetable_details(et_CropDetails.getText().toString().trim());
+                            farmerRegistrationPojo.setAddress(et_address.getText().toString().trim());
+                            farmerRegistrationPojo.setPincode(et_pincode.getText().toString().trim());
+                            farmerRegistrationPojo.setId_type_id(String.valueOf(ID_Card));
+                            farmerRegistrationPojo.setId_other_name(IdCard);
+                            farmerRegistrationPojo.setBpl(bpl);
+                            farmerRegistrationPojo.setPhysical_challenges(PhysicalChallenges);
+                            //        farmerRegistrationPojo.setHandicapped(Handicapped);
+                            farmerRegistrationPojo.setMulti_cropping(Multicropping);
+                            farmerRegistrationPojo.setFertilizer(Fertilizer);
+                            farmerRegistrationPojo.setIrrigation_facility(IrrigationFacility);
+                            farmerRegistrationPojo.setReligion_id(String.valueOf(hmReligion));
+                            farmerRegistrationPojo.setCaste(String.valueOf(hmcaste));
+                            farmerRegistrationPojo.setAgro_climat_zone_id(String.valueOf(AgroZone));
+                            farmerRegistrationPojo.setAlternative_livelihood_id(String.valueOf(stralternetLivehood));
+                            farmerRegistrationPojo.setEducation_id(String.valueOf(hmEducation));
+                            farmerRegistrationPojo.setAnnual_income(annualicme);
+                            farmerRegistrationPojo.setCategory_id(String.valueOf(hmCategory));
+                            farmerRegistrationPojo.setState_id(String.valueOf(state_id));
+                            farmerRegistrationPojo.setDistrict_id(String.valueOf(district_id));
+                            farmerRegistrationPojo.setBlock_id(String.valueOf(block_id));
+                            farmerRegistrationPojo.setVillage_id(String.valueOf(village_id));
+                            farmerRegistrationPojo.setGender("Female");
+                            usersPojo.setFirst_name(et_FarmerName.getText().toString().trim());
+                            usersPojo.setLast_name(et_FarmerName.getText().toString().trim());
+                            farmerRegistrationPojo.setGender(getString(R.string.Female));
+                            usersPojo.setFirst_name(et_FarmerName.getText().toString().trim());
+                            usersPojo.setLast_name(et_FarmerName.getText().toString().trim());
+                            usersPojo.setMobile(farmerRegistrationPojo.getMobile());
+                            usersPojo.setEmail(et_FarmerName.getText().toString().trim());
+                            usersPojo.setProfile_photo(base64);
+                            Long aLong = System.currentTimeMillis() / 1000;
+                            int uuid = Integer.parseInt(aLong.toString());
+                            usersPojo.setId(uuid);
+
+                            sqliteHelper.saveUsersData(usersPojo);
+                            //in users table last inserted id is user_id
+                            int ids = sqliteHelper.getLastInsertedLocalID();
+
+                            sqliteHelper.getFarmerRegistrationData(farmerRegistrationPojo, String.valueOf(ids));
+
+                            //for crop details
+                            cropDetailHM.clear();
+                            cropDetailHM = MyOperationLayoutAddCropDetails.display(FarmerRegistration.this);
+                            ArrayList<String> cropnameAl = new ArrayList<>();
+                            ArrayList<String> areaAl = new ArrayList<>();
+                            ArrayList<String> quantityAl = new ArrayList<>();
+                            ArrayList<String> seasonAl = new ArrayList<>();
+                            ArrayList<String> unitAl = new ArrayList<>();
+                            ArrayList<String> unitsAl = new ArrayList<>();
+                            ArrayList<String> subAl = new ArrayList<>();
+                            cropnameAl = cropDetailHM.get("name");
+                            areaAl = cropDetailHM.get("area");
+                            seasonAl = cropDetailHM.get("season");
+                            unitAl = cropDetailHM.get("unit");
+                            unitsAl = cropDetailHM.get("units");
+                            subAl = cropDetailHM.get("subname");
+                            quantityAl = cropDetailHM.get("quantity");
+
+                            if (cropnameAl.size() > 0 && areaAl.size() > 0 && seasonAl.size() > 0 && unitAl.size() > 0 && unitsAl.size() > 0) {
+                                for (int i = 0; i < cropnameAl.size(); i++) {
+                                    CropVegitableDetails vegitableDetails = new CropVegitableDetails();
+                                    vegitableDetails.setCrop_name(String.valueOf(cropCategoryHM.get(cropnameAl.get(i))));
+                                    getsubcategoey(Integer.parseInt(vegitableDetails.getCrop_name()));
+                                    vegitableDetails.setCrop_type_subcatagory_id(String.valueOf(subCategoryHM.get(subAl.get(i))));
+                                    vegitableDetails.setArea(areaAl.get(i));
+                                    vegitableDetails.setQuantity(quantityAl.get(i));
+                                    vegitableDetails.setSeason_id(seasonAl.get(i));
+                                    vegitableDetails.setUnit_id(String.valueOf(unitHM.get(unitAl.get(i).trim())));
+                                    vegitableDetails.setUnits_id(String.valueOf(unitshm.get(unitsAl.get(i).trim())));
+                                    sqliteHelper.setCropDetailsData(vegitableDetails, String.valueOf(ids));
+                                }
+                            }
+
+                            cropVegitableDetails.setCrop_name(String.valueOf(cat_ID));
+                            cropVegitableDetails.setCrop_type_subcatagory_id(String.valueOf(subcropCategory_id));
+                            cropVegitableDetails.setArea(et_Area.getText().toString().trim());
+                            cropVegitableDetails.setQuantity(et_quantity.getText().toString().trim());
+                            cropVegitableDetails.setUnit_id(String.valueOf(unitId));
+                            cropVegitableDetails.setUnits_id(String.valueOf(unitsId));
+                            cropVegitableDetails.setSeason_id(String.valueOf(seasonId));
+                            sqliteHelper.setCropDetailsData(cropVegitableDetails, String.valueOf(ids));
+                            // for family table
+                            familyHM.clear();
+                            familyHM = MyOperationLayoutAddMemeber.display(FarmerRegistration.this);
+                            ArrayList<String> nameAl = new ArrayList<>();
+                            ArrayList<String> ageAl = new ArrayList<>();
+                            ArrayList<String> educationAl = new ArrayList<>();
+                            ArrayList<String> occupationAl = new ArrayList<>();
+                            ArrayList<String> genderAl = new ArrayList<>();
+                            ArrayList<String> monthlyAl = new ArrayList<>();
+                            ArrayList<String> relationAl = new ArrayList<>();
+                            nameAl = familyHM.get("name");
+                            ageAl = familyHM.get("age");
+                            educationAl = familyHM.get("education");
+                            occupationAl = familyHM.get("occupation");
+                            genderAl = familyHM.get("gender");
+                            monthlyAl = familyHM.get("monthly");
+                            relationAl = familyHM.get("relation");
+                            if (nameAl.size() > 0 && ageAl.size() > 0 && educationAl.size() > 0 && occupationAl.size() > 0
+                                    && genderAl.size() > 0 && monthlyAl.size() > 0) {
+                                for (int i = 0; i < nameAl.size(); i++) {
+                                    FarmerRegistrationPojo registrationPojo = new FarmerRegistrationPojo();
+                                    registrationPojo.setName(nameAl.get(i));
+                                    registrationPojo.setEducation_id(String.valueOf(FamilyEducationNameHM.get(educationAl.get(i))));
+                                    registrationPojo.setAge(ageAl.get(i));
+                                    registrationPojo.setOccupation(alternetLivehoodNameHM.get(occupationAl.get(i)));
+                                    registrationPojo.setGender(genderAl.get(i));
+                                    registrationPojo.setMonthly_income(FamiliymonthlyNameHM.get(monthlyAl.get(i)));
+                                    registrationPojo.setRelation_id((relationHM.get(relationAl.get(i))));
+                                    sqliteHelper.getFarmerFamilyData(registrationPojo, String.valueOf(ids));
+                                }
+                            }
+                            farmerRegistrationPojo.setName(et_name.getText().toString().trim());
+                            farmerRegistrationPojo.setEducation_id(String.valueOf(FamiliyEducation));
+                            farmerRegistrationPojo.setAge((et_Age.getText().toString().trim()));
+                            farmerRegistrationPojo.setGender(spn_gender.getSelectedItem().toString().trim());
+                            farmerRegistrationPojo.setMonthly_income(Familiymonthly);
+                            farmerRegistrationPojo.setOccupation((stralternetLivehood));
+                            farmerRegistrationPojo.setRelation_id((relation_id));
+                            sqliteHelper.getFarmerFamilyData(farmerRegistrationPojo, String.valueOf(ids));
+
+                            try {
+                                if (isInternetOn() && fromLogin.equals("1")) {
+                                    farmerRegistrationPojoArrayList = sqliteHelper.getTableDataToBeSync();
+                                    if (farmerRegistrationPojoArrayList.size() > 0) {
+                                        for (int i = 0; i < farmerRegistrationPojoArrayList.size(); i++) {
+                                            farmerRegistrationPojoArrayList.get(i).setFarmer_family(sqliteHelper.getFarmerFamilyTableDataToBeSync(0));
+                                            farmerRegistrationPojoArrayList.get(i).setCrop_vegetable_details(sqliteHelper.getCropVegetableDataToBeSync(0));
+
+                                            Gson gson = new Gson();
+                                            String data = gson.toJson(farmerRegistrationPojoArrayList.get(i));
+                                            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                                            RequestBody body = RequestBody.create(JSON, data);
+                                            sendFramerRegistrationData(body, farmerRegistrationPojoArrayList.get(i).getUid());
+                                        }
+                                    }
+                                } else if (fromLogin.equals("2")) {
 
 
 //                                Toast.makeText(FarmerRegistration.this, R.string.no_internet_data_saved_locally, Toast.LENGTH_LONG).show();
-                                showSubmitDialog(context,"Data has been saved in local database successfully.");
+                                    showSubmitDialog(context, "Data has been saved in local database successfully.");
 
+                                } else {
+                                    Toast.makeText(FarmerRegistration.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                            else {
-                                Toast.makeText(FarmerRegistration.this, getString(R.string.please_chekc_network), Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
                         }
+                    }else{
+                        Toast.makeText(context, "Your number already exist", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -2439,7 +2448,7 @@ public class FarmerRegistration extends AppCompatActivity implements IImagePicke
                         sqliteHelper.dropTableFamily("farmer_registration", String.valueOf(idss));
                         sqliteHelper.dropTableFamily("farmer_family", String.valueOf(idss));
                         sqliteHelper.dropTableFamily("crop_vegetable_details", String.valueOf(idss));
-                           Toast.makeText(FarmerRegistration.this, R.string.your_number_already_exist, Toast.LENGTH_LONG).show();
+                        Toast.makeText(FarmerRegistration.this, R.string.your_number_already_exist, Toast.LENGTH_LONG).show();
                     } else {
 
                         Toast.makeText(FarmerRegistration.this, "" + message, Toast.LENGTH_LONG).show();
