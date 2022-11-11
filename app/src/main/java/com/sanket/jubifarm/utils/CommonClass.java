@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 
 public class CommonClass {
     public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static String currentDateandTime="";
+
 
     public static boolean isInternetOn(Context context) {
         ConnectivityManager connec = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -30,6 +32,7 @@ public class CommonClass {
         }
         return false;
     }
+
 
     public static long getDaysBetweenDates(String start, String end) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH);
@@ -55,5 +58,13 @@ public class CommonClass {
         String uuid= dateFormatUUID.format(date);
 
         return uuid;
+    }
+
+
+    public static String getCurrentDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        currentDateandTime = sdf.format(new Date());
+
+        return currentDateandTime;
     }
 }

@@ -4739,9 +4739,9 @@ public class SqliteHelper extends SQLiteOpenHelper {
                     registrationPojo.setFather_husband_name(cursor.getString(cursor.getColumnIndex("father_husband_name")));
                     registrationPojo.setPhysical_challenges(cursor.getString(cursor.getColumnIndex("physical_challenges")));
                     //registrationPojo.setHandicapped(cursor.getString(cursor.getColumnIndex("handicapped")));
-                    //registrationPojo.setMulti_cropping(cursor.getString(cursor.getColumnIndex("multi_cropping")));
+                    registrationPojo.setMulti_cropping(cursor.getString(cursor.getColumnIndex("multi_cropping")));
                     registrationPojo.setBpl(cursor.getString(cursor.getColumnIndex("bpl")));
-                    //registrationPojo.setIrrigation_facility(cursor.getString(cursor.getColumnIndex("irrigation_facility")));
+                    registrationPojo.setIrrigation_facility(cursor.getString(cursor.getColumnIndex("irrigation_facility")));
                     //registrationPojo.setEducation_qualification(cursor.getString(cursor.getColumnIndex("education_qualification")));
                     registrationPojo.setEducation_name_other(cursor.getString(cursor.getColumnIndex("education_name_other")));
                     registrationPojo.setTotal_land_holding(cursor.getString(cursor.getColumnIndex("total_land_holding")));
@@ -6178,4 +6178,20 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return psNeemPlantationPojoArrayList;
     }
+
+
+    @SuppressLint("Range")
+    public String getColumnName(String colName, String table, String whr) {
+        String column = "";
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select " + colName + " " + " from " + table + " " + whr, null);
+            if (cursor.moveToFirst())
+                column = cursor.getString(cursor.getColumnIndex(colName)).trim();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return column;
+    }
+
 }

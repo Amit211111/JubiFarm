@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ajts.androidmads.library.SQLiteToExcel;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
@@ -59,6 +60,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -119,6 +121,8 @@ public class SyncDataActivity extends AppCompatActivity {
     private ArrayList<SaleDetailsPojo> saleDetailsPojosAL=new ArrayList<>();
     private ArrayList<SaleDetailsPojo> saleDetailsPojosAL2=new ArrayList<>();
     private String farmer_id="";
+    SQLiteToExcel sqliteToExcel;
+    int count=1;
     String Currentdate = "";
     private int countRegistration=0, countLandHolding=0,
             countProductDetails=0, countSaleDetails=0,
@@ -848,6 +852,53 @@ public class SyncDataActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void AllFileExport() {
+        ArrayList<String> columnsToExclude = new ArrayList<String>();
+        columnsToExclude.add("local_id");
+        //columnsToExclude.add("created_at");
+        sqliteToExcel.setExcludeColumns(columnsToExclude);
+
+        HashMap<String, String> prettyNameMapping = new HashMap<String, String>();
+        prettyNameMapping.put("income_date", "Date");
+        sqliteToExcel.setPrettyNameMapping(prettyNameMapping);
+        String file_name = "farmer_registration"+ CommonClass.getUUID() + ".xls";
+        sqliteToExcel.exportSingleTable("farmer_registration", file_name, new SQLiteToExcel.ExportListener() {
+            @Override
+            public void onStart() {
+
+            }
+            @Override
+            public void onCompleted(String filePath) {
+                sqliteHelper.dropTable("farmer_registration");
+                count++;
+                AllFileExport();
+                Toast.makeText(getApplicationContext(),"Successfully Exported", Toast.LENGTH_LONG).show();
+
+            }
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+
+
+    }
+
+    public void exportExcel(View view) {
+        String directory_path = String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
+        File file = new File(directory_path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        // Export SQLite DB as EXCEL FILE
+        sqliteToExcel = new SQLiteToExcel(getApplicationContext(), SqliteHelper.DATABASE_NAME, directory_path);
+        if (count==1) {
+            AllFileExport();
+        }
+
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
