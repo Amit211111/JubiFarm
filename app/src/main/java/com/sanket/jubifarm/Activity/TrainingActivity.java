@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,7 +37,7 @@ public class TrainingActivity extends AppCompatActivity {
     TrainingAdapter trainingAdapter;
     String format ;
     private ArrayList<TrainingPojo> trainingPojoArrayList;
-    TextView traiCount;
+    TextView traiCount,search,cancel;
     SqliteHelper sqliteHelper;
     ImageButton Button;
     TextView tra_tab_knowledge,tra_tab_Tranning;
@@ -46,8 +49,10 @@ public class TrainingActivity extends AppCompatActivity {
     int yy;
     int mm;
     int dd;
+    String from_date="",to_date="";
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +65,8 @@ public class TrainingActivity extends AppCompatActivity {
         tra_tab_Tranning = findViewById(R.id.tra_tab_Tranning);
         et_todate = findViewById(R.id.et_todate);
        et_fromdate = findViewById(R.id.et_fromdates);
+        search = findViewById(R.id.search);
+        cancel = findViewById(R.id.cancel);
      //   et_totime = findViewById(R.id.et_totim);
      //   et_fromtime = findViewById(R.id.et_fromtime);
         traiCount = findViewById(R.id.traiCount);
@@ -77,7 +84,6 @@ public class TrainingActivity extends AppCompatActivity {
              Intent Regintent = new Intent(TrainingActivity.this, AddTranner.class);
                 startActivity(Regintent);
                 finish();
-
             }
         });
         tra_tab_knowledge.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +106,16 @@ public class TrainingActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                et_todate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+                                if (monthOfYear<=8 && dayOfMonth<=9){
+                                    to_date = "" + year  + "-0" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else if (monthOfYear<=8){
+                                    to_date = "" + year  + "-0" + (monthOfYear + 1) + "-" +dayOfMonth;
+                                }else if (dayOfMonth<=9){
+                                    to_date = "" + year  + "-" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else {
+                                    to_date = "" + year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }
+                                et_todate.setText(to_date);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -121,12 +136,25 @@ public class TrainingActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                et_fromdate.setText(year + "/" + (monthOfYear + 1) + "/" + dayOfMonth);
+
+                                if (monthOfYear<=8 && dayOfMonth<=9){
+                                    from_date = "" + year  + "-0" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else if (monthOfYear<=8){
+                                    from_date = "" + year  + "-0" + (monthOfYear + 1) + "-" +dayOfMonth;
+                                }else if (dayOfMonth<=9){
+                                    from_date = "" + year  + "-" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else {
+                                    from_date = "" + year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }
+                                et_fromdate.setText(from_date);
+
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
             }
         });
+
+
 
     /*    et_fromtime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -174,6 +202,36 @@ public class TrainingActivity extends AppCompatActivity {
         rv_training.setHasFixedSize(true);
         rv_training.setLayoutManager(new LinearLayoutManager(this));
         rv_training.setAdapter(trainingAdapter);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                et_fromdate.setText("");
+                et_todate.setText("");
+                trainingPojoArrayList= sqliteHelper.getTrainingData();
+                trainingAdapter  = new TrainingAdapter(TrainingActivity.this, trainingPojoArrayList);
+                int counter = trainingPojoArrayList.size();
+                traiCount.setText(getString(R.string.Total_Training) +": "+counter);
+                rv_training.setHasFixedSize(true);
+                rv_training.setLayoutManager(new LinearLayoutManager(TrainingActivity.this));
+                rv_training.setAdapter(trainingAdapter);
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                trainingPojoArrayList= sqliteHelper.getTrainingDataSearch(from_date,to_date);
+                trainingAdapter  = new TrainingAdapter(TrainingActivity.this, trainingPojoArrayList);
+                rv_training.setHasFixedSize(true);
+                rv_training.setLayoutManager(new LinearLayoutManager(TrainingActivity.this));
+                rv_training.setAdapter(trainingAdapter);
+            }
+        });
+
+
+
     }
 
     @Override

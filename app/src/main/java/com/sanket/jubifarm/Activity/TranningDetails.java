@@ -148,7 +148,7 @@ public class TranningDetails extends AppCompatActivity {
                 Intent vintent = new Intent(TranningDetails.this, View_Attendance.class);
                 vintent.putExtra("userID", id);
                 startActivity(vintent);
-                finish();
+//                finish();
             }
         });
     }

@@ -85,7 +85,7 @@
                 android:layout_marginTop="@dimen/_2dp"
                 android:orientation="horizontal">
                 <EditText
-                    android:id="@+id/tv_todate"
+                    android:id="@+id/et_fromdate"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -97,7 +97,7 @@
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_18" />
                 <EditText
-                    android:id="@+id/et_fromdate"
+                    android:id="@+id/tv_todate"
                     android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

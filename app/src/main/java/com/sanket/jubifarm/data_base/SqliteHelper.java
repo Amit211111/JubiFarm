@@ -2786,6 +2786,45 @@ public class SqliteHelper extends SQLiteOpenHelper {
         }
         return arrayList;
     }
+    public ArrayList<TrainingPojo> getTrainingDataSearch(String from_date,String to_date) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<TrainingPojo> arrayList = new ArrayList<>();
+        try {
+            if (db != null && db.isOpen() && !db.isReadOnly()) {
+                String query = "SELECT * from training WHERE from_date>='"+from_date+"' and to_date<='"+to_date+"'";
+
+                Cursor cursor = db.rawQuery(query, null);
+                if (cursor != null && cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()) {
+                        TrainingPojo trainingPojo = new TrainingPojo();
+                        trainingPojo.setId(cursor.getString(cursor.getColumnIndex("id")));
+                        trainingPojo.setUser_id(cursor.getString(cursor.getColumnIndex("user_id")));
+                        trainingPojo.setFrom_date(cursor.getString(cursor.getColumnIndex("from_date")));
+                        trainingPojo.setFrom_time(cursor.getString(cursor.getColumnIndex("from_time")));
+                        trainingPojo.setTo_time(cursor.getString(cursor.getColumnIndex("to_time")));
+                        trainingPojo.setTo_date(cursor.getString(cursor.getColumnIndex("to_date")));
+                        trainingPojo.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+                        trainingPojo.setMobile(cursor.getString(cursor.getColumnIndex("mobile")));
+                        trainingPojo.setTrainer_name(cursor.getString(cursor.getColumnIndex("trainer_name")));
+                        trainingPojo.setTraining_name(cursor.getString(cursor.getColumnIndex("training_name")));
+                        trainingPojo.setBrief_description(cursor.getString(cursor.getColumnIndex("brief_description")));
+                        trainingPojo.setVillage_id(cursor.getString(cursor.getColumnIndex("village_id")));
+                        trainingPojo.setTrainer_designation(cursor.getString(cursor.getColumnIndex("trainer_designation")));
+
+                        cursor.moveToNext();
+                        arrayList.add(trainingPojo);
+                    }
+                    db.close();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            db.close();
+        }
+        return arrayList;
+    }
 
 
     public ArrayList<TrainingAttandancePojo> getTrainingAttendance(String training_id) {

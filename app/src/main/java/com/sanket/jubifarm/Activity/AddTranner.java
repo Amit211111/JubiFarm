@@ -81,6 +81,7 @@ public class AddTranner extends AppCompatActivity {
     Calendar mCalendar;
     Calendar mCalendar1;
     String dateFrom="", dateTo="";
+    String from_date="",to_date="";
     String user_id;
     SharedPrefHelper sharedPrefHelper;
     boolean b = false;
@@ -133,7 +134,16 @@ public class AddTranner extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                tv_todate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                if (monthOfYear<=8 && dayOfMonth<=9){
+                                    to_date = "" + year  + "-0" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else if (monthOfYear<=8){
+                                    to_date = "" + year  + "-0" + (monthOfYear + 1) + "-" +dayOfMonth;
+                                }else if (dayOfMonth<=9){
+                                    to_date = "" + year  + "-" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else {
+                                    to_date = "" + year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }
+                                tv_todate.setText(to_date);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -154,7 +164,18 @@ public class AddTranner extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                et_fromdate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                                if (monthOfYear<=8 && dayOfMonth<=9){
+                                    from_date = "" + year  + "-0" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else if (monthOfYear<=8){
+                                    from_date = "" + year  + "-0" + (monthOfYear + 1) + "-" +dayOfMonth;
+                                }else if (dayOfMonth<=9){
+                                    from_date = "" + year  + "-" + (monthOfYear + 1) + "-0" +dayOfMonth;
+                                }else {
+                                    from_date = "" + year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
+                                }
+                                et_fromdate.setText(from_date);
+
+
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -281,8 +302,8 @@ public class AddTranner extends AppCompatActivity {
                     trainingPojo.setTraining_name(et_training.getText().toString());
                     trainingPojo.setBrief_description(ed_brief_description.getText().toString());
                     trainingPojo.setVillage_id(idsd);
-                    trainingPojo.setTo_date(tv_todate.getText().toString());
-                    trainingPojo.setFrom_date(et_fromdate.getText().toString());
+                    trainingPojo.setTo_date(to_date);
+                    trainingPojo.setFrom_date(from_date);
                     trainingPojo.setFrom_time(et_fromtime.getText().toString());
                     trainingPojo.setTo_time(et_totime.getText().toString());
                     trainingPojo.setAddress(et_location.getText().toString());

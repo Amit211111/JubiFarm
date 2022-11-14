@@ -140,6 +140,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.View_Attendance"
+
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activity.SubMonitoring"

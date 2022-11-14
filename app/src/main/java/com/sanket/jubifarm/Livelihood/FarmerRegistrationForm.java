@@ -485,7 +485,7 @@ public class FarmerRegistrationForm extends AppCompatActivity {
 //                    sendPS_FarmerRegistrationdata(body, String.valueOf(id));
 //                    }
                 }else{
-                    Toast.makeText(FarmerRegistrationForm.this, "jhdgjhd", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FarmerRegistrationForm.this, "Please fill all required filed", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -626,13 +626,14 @@ public class FarmerRegistrationForm extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] bytes = stream.toByteArray();
-//
-            base64 = encodeTobase64(photo);
-            IV_profile.setImageBitmap(photo);
+            if(resultCode != RESULT_CANCELED) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                byte[] bytes = stream.toByteArray();
+                base64 = encodeTobase64(photo);
+                IV_profile.setImageBitmap(photo);
+            }
         }
 
     }

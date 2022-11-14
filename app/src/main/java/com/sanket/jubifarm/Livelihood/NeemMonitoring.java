@@ -213,13 +213,15 @@ public class NeemMonitoring extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_REQUEST) {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] bytes = stream.toByteArray();
-//
-            base64 = encodeTobase64(photo);
-            img_setimage.setImageBitmap(photo);
+            if(resultCode != RESULT_CANCELED) {
+                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                photo.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                byte[] bytes = stream.toByteArray();
+
+                base64 = encodeTobase64(photo);
+                img_setimage.setImageBitmap(photo);
+            }
         }
 
     }

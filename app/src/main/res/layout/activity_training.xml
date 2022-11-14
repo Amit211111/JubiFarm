@@ -100,10 +100,11 @@
         android:orientation="horizontal"
         android:padding="@dimen/_5dp">
         <TextView
-            android:id="@+id/et_todate"
+            android:id="@+id/et_fromdates"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
+            android:inputType="date"
             android:background="@drawable/textviewboader"
             android:drawableRight="@drawable/ic_baseline_date_range_24"
             android:editable="false"
@@ -112,10 +113,11 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_18" />
         <TextView
-            android:id="@+id/et_fromdates"
+            android:id="@+id/et_todate"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
+            android:inputType="date"
             android:background="@drawable/textviewboader"
             android:drawableRight="@drawable/ic_baseline_date_range_24"
             android:layout_marginLeft="@dimen/_5dp"
@@ -126,11 +128,22 @@
             android:textSize="@dimen/text_18" />
 
         <TextView
-            android:layout_width="0dip"
-            android:layout_weight="0.2"
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_marginLeft="@dimen/_8dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|center_vertical"
             android:drawableLeft="@drawable/ic_baseline_search_24"/>
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:layout_marginLeft="@dimen/_5dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+
+            android:drawableLeft="@drawable/ic_baseline_cancel_24"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
